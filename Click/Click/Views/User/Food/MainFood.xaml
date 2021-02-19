@@ -81,6 +81,7 @@
                 <CollectionView x:Name="OrganisationCollection"
                                 ItemsSource="{Binding BrandInfos}"
                                 SelectionMode="Single"
+                                SelectionChanged="OrganisationCollection_SelectionChanged"
                                 Grid.Row="4">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -124,6 +125,10 @@
                                               VerticalOptions="End">
                                             <Image Source="{Binding Banner}"
                                                    Style="{StaticResource BannerCompanyImage}"/>
+                                            <Frame Style="{StaticResource LogoFrame}">
+                                                <Image Source="{Binding Logo}"
+                                                       Style="{StaticResource LogoImage}"/>
+                                            </Frame>
                                         </Grid>
                                     </Grid>
                                 </Frame>

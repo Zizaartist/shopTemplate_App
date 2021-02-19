@@ -36,5 +36,14 @@ namespace Click.Views.User.Food
         {
 
         }
+
+        private void OrganisationCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.Any())
+            {
+                OrganisationCollection.SelectedItem = null;
+                Navigation.PushModalAsync(new FoodAssortment());
+            }
+        }
     }
 }

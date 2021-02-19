@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Food.FoodAssortment"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid>
+            <CollectionView x:Name="CategoriesCollection"
+                            ItemsSource="{Binding FoodCategories}"
+                            SelectionMode="Single"
+                            SelectionChanged="CategoriesCollection_SelectionChanged">
+                <CollectionView.Header>
+                    <Grid RowDefinitions="Auto,Auto,Auto">
+                        <Grid Style="{StaticResource HeaderGrid}">
+                            <ImageButton x:Name="Back"
+                                         Clicked="Back_Clicked"
+                                         Style="{StaticResource BackButton}"/>
+                            <Image Style="{StaticResource Restaurant}"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"/>
+                            <Label Text="У Вас 0"
+                                   Style="{StaticResource WhiteMediumLabel}"
+                                   Margin="0,0,10,0"
+                                   Grid.Column="2"/>
+                            <ImageButton x:Name="Bonus"
+                                         Clicked="Bonus_Clicked"
+                                         Style="{StaticResource BonusButton}"
+                                         Grid.Column="3"/>
+                        </Grid>
+                        <Grid Grid.Row="1"
+                              Margin="0,-8,0,0">
+                            <Image Source="temp14.png"
+                                   Style="{StaticResource BannerSubImage}"/>
+                            <Frame Style="{StaticResource LogoFrame}">
+                                <Image Source="temp5.png"
+                                       Style="{StaticResource LogoImage}"/>
+                            </Frame>
+                        </Grid>
+                        <Grid RowDefinitions="Auto,Auto"
+                              Grid.Row="2"
+                              Padding="15,10,15,15">
+                            <Label Text="Burger King"
+                                   Style="{StaticResource VeryBigBlackLabel}"/>
+                            <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto">
+                                <Frame CornerRadius="15"
+                                       WidthRequest="70"
+                                       HeightRequest="20"
+                                       BackgroundColor="{StaticResource WhiteColor}"
+                                       Padding="0">
+                                    <Grid Style="{StaticResource StarGridBackground}"
+                                          HorizontalOptions="Center">
+                                        <Grid Style="{StaticResource StarGrid}"
+                                          x:Name="Star"/>
+                                        <Image Style="{StaticResource StarRating}"/>
+                                    </Grid>
+                                </Frame>
+                                <Label Text="(562)"
+                                       Style="{StaticResource GrayVerySmallLabel}"
+                                       Grid.Column="1"/>
+                            </Grid>
+                            <Grid Grid.Column="1"
+                                  Grid.RowSpan="2">
+                                <Button Text="Отзывы"
+                                        x:Name="Reviews"
+                                        Clicked="Reviews_Clicked"
+                                        Style="{StaticResource WhiteSmallButton}"/>
+                                <Button Text="Подробнее"
+                                        x:Name="About"
+                                        Clicked="About_Clicked"
+                                        Style="{StaticResource WhiteSmallButton}"
+                                        Grid.Column="1"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <Frame Style="{StaticResource CategoryFrame}">
+                                <Grid RowDefinitions="Auto,Auto">
+                                    <Image Source="{Binding Image}"
+                                       Style="{StaticResource CategoryImage}"/>
+                                    <Label Text="{Binding Name}"
+                                       Style="{StaticResource BlackLabelMedium}"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="1"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
