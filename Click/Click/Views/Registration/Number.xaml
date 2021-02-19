@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.Registration.Number"
+             Style="{StaticResource WhiteContentPage}">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource WrapperGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="ClickPreview.png"
+                   Style="{StaticResource RegistrationImage}"
+                   Grid.Column="1"/>
+            <StackLayout Grid.Row="1"
+                         Grid.Column="1"
+                         VerticalOptions="Start">
+                <Frame Style="{StaticResource EntryFrame}"
+                       Margin="10">
+                    <Entry x:Name="NumberEntry"
+                           Style="{StaticResource EntryGray}"
+                           Placeholder="Ввести номер телефона"/>
+                </Frame>
+                <Label Style="{StaticResource SmallBlackLabel}"
+                       Text="При подтверждении на номер будет отправлено СМС с паролем"
+                       Margin="10"/>
+                <Button x:Name="Confirm"
+                        Clicked="Confirm_Clicked"
+                        Text="Отправить"
+                        Margin="10"
+                        Style="{StaticResource GreenButton}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

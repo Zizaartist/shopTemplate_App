@@ -1,0 +1,50 @@
+@string/appbar_scrolling_view_behavior;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\flyoutcontent.xml
+@string/appbar_scrolling_view_behavior;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\rootlayout.xml
+adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
+adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
+alpha;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromleft.xml
+alpha;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\exittoleft.xml
+android.support.design.widget.AppBarLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\flyoutcontent.xml
+android.support.design.widget.AppBarLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\rootlayout.xml
+android.support.design.widget.AppBarLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\shellcontent.xml
+android.support.design.widget.BottomNavigationView;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\bottomtablayout.xml
+android.support.design.widget.CoordinatorLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\flyoutcontent.xml
+android.support.design.widget.CoordinatorLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\rootlayout.xml
+android.support.design.widget.CoordinatorLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\shellcontent.xml
+android.support.design.widget.TabLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\rootlayout.xml
+android.support.design.widget.TabLayout;obj\Debug\90\res\layout\tabbar.xml
+android.support.v7.widget.RecyclerView;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\flyoutcontent.xml
+android.support.v7.widget.Toolbar;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\rootlayout.xml
+android.support.v7.widget.Toolbar;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\shellcontent.xml
+android.support.v7.widget.Toolbar;obj\Debug\90\res\layout\toolbar.xml
+attr;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\attrs.xml
+background;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
+background;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
+cache-path;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+color;obj\Debug\90\res\values\colors.xml
+declare-styleable;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\attrs.xml
+external-cache-path;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+external-path;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon.xml
+foreground;obj\Debug\90\res\mipmap-anydpi-v26\icon_round.xml
+FrameLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\bottomtablayout.xml
+item;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
+LinearLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\bottomtablayout.xml
+paths;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+resources;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\attrs.xml
+resources;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\strings.xml
+resources;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
+resources;obj\Debug\90\res\values\colors.xml
+resources;obj\Debug\90\res\values\styles.xml
+set;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromleft.xml
+set;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromright.xml
+set;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\exittoleft.xml
+set;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\exittoright.xml
+string;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\strings.xml
+style;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\values\styles.xml
+style;obj\Debug\90\res\values\styles.xml
+translate;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromleft.xml
+translate;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\enterfromright.xml
+translate;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\exittoleft.xml
+translate;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\anim\exittoright.xml
+xamarin.forms.platform.android.appcompat.FormsViewPager;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\90\lp\39\jl\res\layout\rootlayout.xml

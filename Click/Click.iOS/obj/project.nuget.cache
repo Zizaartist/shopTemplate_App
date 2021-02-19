@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "zsQT60zgfFIKG6yzqMLSYIav45pL1XcVkeabFy8435+Qzqhrw/0MsblTPauoINgMAwRzKPav7UHgUnKVLNYkCw==",
+  "success": true,
+  "projectFilePath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\xamarin.forms\\4.8.0.1451\\xamarin.forms.4.8.0.1451.nupkg.sha512"
+  ],
+  "logs": []
+}

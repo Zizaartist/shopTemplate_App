@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.Registration.SMS"
+             Style="{StaticResource WhiteContentPage}">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource WrapperGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="ClickPreview.png"
+                   Style="{StaticResource RegistrationImage}"
+                   Grid.Column="1"
+                   Grid.RowSpan="2"/>
+            <StackLayout VerticalOptions="Center"
+                         Grid.Column="1"
+                         Grid.Row="1"
+                         Grid.RowSpan="3">
+                <Label Text="На ваш мобильный телефон отправлен код подтверждения, введите его ниже, чтобы закончить регистрацию"
+                       Style="{StaticResource SmallBlackLabel}"
+                       Margin="10"/>
+                <Frame Style="{StaticResource EntryFrame}"
+                       Margin="10">
+                    <Entry Placeholder="Код"
+                           x:Name="EntrySMS"
+                           Style="{StaticResource EntryGray}"/>
+                </Frame>
+                <Button Style="{StaticResource GreenButton}"
+                        Text="Подтвердить"
+                        x:Name="Confirm"
+                        Clicked="Confirm_Clicked"
+                        Margin="10"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="CheckOne"/>
+                    <Label Text="Согласен с обработкой персональных данных и подтверждаю, что ознакомлен с политикой конфиденциальности"
+                           Style="{StaticResource SmallBlackLabel}"
+                           HorizontalTextAlignment="Start"
+                           Margin="10"
+                           Grid.Column="1"/>
+                    <CheckBox Grid.Row="1"
+                              x:Name="CheckTwo"/>
+                    <Label Text="Согласен на получение рекламы"
+                           Margin="10"
+                           Style="{StaticResource SmallBlackLabel}"
+                           HorizontalTextAlignment="Start"
+                           Grid.Column="1"
+                           Grid.Row="1"/>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

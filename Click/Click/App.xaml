@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.App">
+    <Application.Resources>
+        <!--ContentPages-->
+        <Style x:Key="WhiteContentPage" TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
+        </Style>
+        <Style x:Key="GrayContentPage" TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
+        </Style>
+        <!--Grids-->
+        <Style x:Key="WrapperGrid" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
+        </Style>
+        <Style x:Key="HeaderGrid" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{DynamicResource OrangeColor}"/>
+            <Setter Property="HeightRequest" Value="65"/>
+            <Setter Property="Padding" Value="20,0,20,0"/>
+            <Setter Property="ColumnDefinitions" Value="Auto,*,Auto,Auto"/>
+            <Setter Property="RowDefinitions" Value="*"/>
+        </Style>
+        <Style x:Key="StarGridBackground" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{DynamicResource GrayColor}"/>
+            <Setter Property="HeightRequest" Value="12"/>
+            <Setter Property="WidthRequest" Value="65"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+        </Style>
+        <Style x:Key="StarGrid" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{DynamicResource YellowColor}"/>
+            <Setter Property="HeightRequest" Value="12"/>
+            <Setter Property="WidthRequest" Value="65"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+        </Style>
+        <!--Frames-->
+        <Style x:Key="EntryFrame" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource GrayColorLight}"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="30,10,30,10"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="WidthRequest" Value="280"/>
+        </Style>
+        <Style x:Key="MainBannerFrame" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="17"/>
+            <Setter Property="WidthRequest" Value="260"/>
+            <Setter Property="HeightRequest" Value="380"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource StrawberryColor}"/>
+        </Style>
+        <Style x:Key="FoodBannerFrame" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="WidthRequest" Value="370"/>
+            <Setter Property="HeightRequest" Value="150"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource OrangeColor}"/>
+        </Style>
+        <Style x:Key="BannerFrame" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="WidthRequest" Value="370"/>
+            <Setter Property="HeightRequest" Value="200"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
+        </Style>
+        <!--Entries-->
+        <Style x:Key="EntryGray" TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="PlaceholderColor" Value="{DynamicResource GrayColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="WidthRequest" Value="320"/>
+        </Style>
+        <!--Buttons-->
+        <Style x:Key="GreenButton" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource GreenColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="WidthRequest" Value="320"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="CornerRadius" Value="40"/>
+            <Setter Property="FontSize" Value="{DynamicResource ButtonFont}"/>
+        </Style>
+        <Style x:Key="TagButton" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="BorderColor" Value="{DynamicResource OrangeColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="WidthRequest" Value="110"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+        </Style>
+        <Style x:Key="TagSelected" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource OrangeColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="BorderColor" Value="{DynamicResource OrangeColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="WidthRequest" Value="110"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+        </Style>
+        <!--Images-->
+        <Style x:Key="RegistrationImage" TargetType="Image">
+            <Setter Property="WidthRequest" Value="290"/>
+            <Setter Property="HeightRequest" Value="90"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+        </Style>
+        <Style x:Key="BannerImage" TargetType="Image">
+            <Setter Property="WidthRequest" Value="260"/>
+            <Setter Property="HeightRequest" Value="290"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFill"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style x:Key="BannerFoodImage" TargetType="Image">
+            <Setter Property="WidthRequest" Value="370"/>
+            <Setter Property="HeightRequest" Value="110"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFill"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style x:Key="BannerCompanyImage" TargetType="Image">
+            <Setter Property="WidthRequest" Value="370"/>
+            <Setter Property="HeightRequest" Value="140"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFill"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style x:Key="StarRating" TargetType="Image">
+            <Setter Property="WidthRequest" Value="65"/>
+            <Setter Property="HeightRequest" Value="12"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Source" Value="StarRating.png"/>
+        </Style>
+        <Style x:Key="BankCard" TargetType="Image">
+            <Setter Property="WidthRequest" Value="20"/>
+            <Setter Property="HeightRequest" Value="20"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Source" Value="StarRating.png"/>
+        </Style>
+        <Style x:Key="Money" TargetType="Image">
+            <Setter Property="WidthRequest" Value="20"/>
+            <Setter Property="HeightRequest" Value="13"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Source" Value="StarRating.png"/>
+        </Style>
+        <Style x:Key="FoodTime" TargetType="Image">
+            <Setter Property="WidthRequest" Value="13"/>
+            <Setter Property="HeightRequest" Value="13"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Source" Value="StarRating.png"/>
+        </Style>
+        <Style x:Key="Discount" TargetType="Image">
+            <Setter Property="WidthRequest" Value="39"/>
+            <Setter Property="HeightRequest" Value="22"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Source" Value="StarRating.png"/>
+        </Style>
+        <!--ImageButton-->
+        <Style x:Key="ChoiceButton" TargetType="ImageButton">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="WidthRequest" Value="90"/>
+            <Setter Property="HeightRequest" Value="90"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+        </Style>
+        <Style x:Key="BackButton" TargetType="ImageButton">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="WidthRequest" Value="25"/>
+            <Setter Property="HeightRequest" Value="25"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="Source" Value="Back.png"/>
+        </Style>
+        <Style x:Key="BonusButton" TargetType="ImageButton">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="WidthRequest" Value="25"/>
+            <Setter Property="HeightRequest" Value="25"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="Source" Value="BonusIcon.png"/>
+        </Style>
+        <Style x:Key="SearchButton" TargetType="ImageButton">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="WidthRequest" Value="30"/>
+            <Setter Property="HeightRequest" Value="30"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="Source" Value="Find.png"/>
+        </Style>
+        <!--Labels-->
+        <Style x:Key="BigBlackLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource ButtonFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="BlackLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="SmallBlackLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="WhiteBoldLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
+        <Style x:Key="WhiteLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
+        <Style x:Key="WhiteMediumLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
+        <Style x:Key="WhiteHeaderLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource HeaderFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
+        <Style x:Key="GrayMediumLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource GrayText}"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="BigOrangeLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource OrangeColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource ButtonFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="VerySmallOrangeLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource OrangeColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource VerySmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <!--Colors-->
+        <Color x:Key="WhiteColor">#FEFFFF</Color>
+        <Color x:Key="BackgroundColor">#E2E2E2</Color>
+        <Color x:Key="GrayText">#525252</Color>
+        <Color x:Key="GrayColor">#686868</Color>
+        <Color x:Key="GrayColorLight">#EFEFEF</Color>
+        <Color x:Key="GreenColor">#3AB600</Color>
+        <Color x:Key="BlackColor">#1C1C1C</Color>
+        <Color x:Key="StrawberryColor">#FF4B40</Color>
+        <Color x:Key="OrangeColor">#E65100</Color>
+        <Color x:Key="YellowColor">#FFC800</Color>
+        <!--FontSizes-->
+        <x:Double x:Key="VerySmallFont">12</x:Double>
+        <x:Double x:Key="SmallFont">14</x:Double>
+        <x:Double x:Key="MediumFont">16</x:Double>
+        <x:Double x:Key="ButtonFont">18</x:Double>
+        <x:Double x:Key="HeaderFont">20</x:Double>
+    </Application.Resources>
+</Application>
