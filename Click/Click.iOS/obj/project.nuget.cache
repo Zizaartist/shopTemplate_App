@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "zGqpPUjCdWsN9VbI+dbuYKK7S6udQnBzFI1frR1lbzVHzbzN1m3dCS25IlI01fYLRY1CqR1I6Wsj8nCW4zoh6w==",
+  "dgSpecHash": "mAAv4E8IFd6bGqQS1T6pw1BQNPGJ/HUUG77rPh6FPLs41Bo9JUZaV7fpUflktd3FtNs796lNorpGBYixPshejw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
+  "projectFilePath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Syberia-10\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\Syberia-10\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
-    "C:\\Users\\Syberia-10\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
   ],
   "logs": []
 }

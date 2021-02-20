@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click.iOS\\Click.iOS.csproj": {}
+    "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click.iOS\\Click.iOS.csproj": {
+    "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
+        "projectUniqueName": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
         "projectName": "Click.iOS",
-        "projectPath": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
-        "packagesPath": "C:\\Users\\Syberia-10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click.iOS\\obj\\",
+        "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
+        "packagesPath": "C:\\Users\\Syberia-13\\.nuget\\packages\\",
+        "outputPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Syberia-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Syberia-13\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click\\Click.csproj": {
-                "projectPath": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click\\Click.csproj"
+              "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj": {
+                "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj"
               }
             }
           }
@@ -65,20 +65,20 @@
         }
       }
     },
-    "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click\\Click.csproj": {
+    "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click\\Click.csproj",
+        "projectUniqueName": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj",
         "projectName": "Click",
-        "projectPath": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click\\Click.csproj",
-        "packagesPath": "C:\\Users\\Syberia-10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Syberia-10\\Documents\\GitHub\\Click\\Click\\Click\\obj\\",
+        "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj",
+        "packagesPath": "C:\\Users\\Syberia-13\\.nuget\\packages\\",
+        "outputPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Syberia-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Syberia-13\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -130,7 +130,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
