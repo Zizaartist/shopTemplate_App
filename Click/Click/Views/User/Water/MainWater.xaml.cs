@@ -34,7 +34,7 @@ namespace Click.Views.User.Water
 
         private void Vodovoz_Clicked(object sender, EventArgs e)
         {
-            //Navigation.PushModalAsync(new MainFood());
+            Navigation.PushModalAsync(new WaterMenu());
         }
     }
 }

@@ -610,3 +610,5 @@ C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\sta
 C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\stamp\_GenerateJavaStubs.stamp
 C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\res\drawable\bootle.png
+C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\res\drawable\vodovoz.png
