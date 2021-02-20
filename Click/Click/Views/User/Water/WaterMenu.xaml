@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Water.WaterMenu">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowDefinitions="Auto, *">
+                <Grid BackgroundColor="#1D9BD5"
+                      HeightRequest="64"
+                      VerticalOptions="Center"
+                      ColumnDefinitions="Auto,*,Auto,Auto"
+                      RowDefinitions="*">
+                    <ImageButton HeightRequest="25" 
+                             WidthRequest="25"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Margin="20,0,20,0"
+                             Source="Back.png"
+                             Aspect="AspectFit"
+                             x:Name="Back"
+                             Clicked="Back_Clicked"/>
+                             <Label Text="Вода" 
+                                    TextColor="#FFFFFF" 
+                                    FontSize="20"
+                                    HorizontalOptions="Start" 
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"/>
+                              <Label Text="У Вас 0" 
+                                     TextColor="#FFFFFF" 
+                                     FontSize="16"
+                                     HorizontalOptions="Center" 
+                                     VerticalOptions="Center" 
+                                     Grid.Column="2"/>
+                    <ImageButton HeightRequest="25"
+                             WidthRequest="25"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Margin="20,0,20,0"
+                             Source="BonusIcon.png"
+                             Aspect="AspectFit"
+                             Grid.Column="3"
+                             x:Name="Bonus"
+                             Clicked="Bonus_Clicked"/>
+                </Grid>
+                <StackLayout Grid.Row="1">
+                    <Frame BackgroundColor="#FFFFFF"
+                           Grid.Row="1" 
+                           CornerRadius="20"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           WidthRequest="371"
+                           Margin="20">
+                        <Grid RowDefinitions="Auto,Auto">
+                            <Grid Padding="10,10,10,0"
+                              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                                <Label Text="Улица"
+                                   TextColor="#1B1B1B"
+                                   FontSize="16" 
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="0"/>
+                                <Entry Placeholder="Например Пояркова"
+                                   FontSize="16"
+                                   PlaceholderColor="#959595"
+                                   VerticalOptions="Center"
+                                   Grid.Row="1"/>
+                                <Label Text="Дом"
+                                   TextColor="#1B1B1B"
+                                   FontSize="16"
+                                       HeightRequest="15"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="2"/>
+                                <Entry Placeholder="Например Пояркова"
+                                   FontSize="16"
+                                   PlaceholderColor="#959595"
+                                   VerticalOptions="Center"
+                                   Grid.Row="3"/>
+                                <Label Text="Кубометр (м3)"
+                                   TextColor="#1B1B1B"
+                                   FontSize="16" 
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="4"/>
+                                <Entry Placeholder="Например Пояркова"
+                                   FontSize="16"
+                                   PlaceholderColor="#959595"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="5"/>
+                                <Label Text="Время доставки"
+                                   TextColor="#1B1B1B"
+                                   FontSize="16" 
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="6"/>
+                                <Entry Placeholder="Например Пояркова"
+                                   FontSize="16"
+                                   PlaceholderColor="#959595"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="7"/>
+                                <Label Text="Предложите цену"
+                                   TextColor="#1B1B1B"
+                                   FontSize="16" 
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="8"/>
+                                <Entry Placeholder="Например Пояркова"
+                                   FontSize="16"
+                                   PlaceholderColor="#959595"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="9"/>
+                                <Label Text="Способ оплаты"
+                                   TextColor="#1B1B1B"
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Grid.Row="10"/>
+                                <Grid Grid.Row="11">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto">
+                                        <Button Text="Наличными"
+                                            FontSize="10"
+                                            TextColor="#FFFFFF"
+                                            BackgroundColor="#3AB600"
+                                            CornerRadius="11"
+                                            HeightRequest="50"
+                                            WidthRequest="96"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"/>
+                                        <Button Text="Сбер.Онлайн"
+                                            FontSize="10"
+                                            TextColor="#1B1B1B"
+                                            BackgroundColor="#FFFFFF"
+                                            CornerRadius="11"
+                                            BorderColor="Black"
+                                            BorderWidth="0.5"
+                                            HeightRequest="50"
+                                            WidthRequest="108"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"/>
+                                        <Button Text="Картой"
+                                            FontSize="10"
+                                            TextColor="#1B1B1B"
+                                            BackgroundColor="#FFFFFF"
+                                            CornerRadius="11"
+                                            BorderColor="Black"
+                                            BorderWidth="0.5"
+                                            HeightRequest="50"
+                                            WidthRequest="75"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="Center"
+                                            Grid.Column="2"/>
+
+                                    </Grid>
+                                </Grid>
+                                
+                            </Grid>
+                            <Button Text="Заказать"
+                                            FontSize="10"
+                                            TextColor="#1B1B1B"
+                                            BackgroundColor="#FFFFFF"
+                                            CornerRadius="11"
+                                            BorderColor="Black"
+                                            BorderWidth="0.5"
+                                            HeightRequest="50"
+                                            WidthRequest="335"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Grid.Row="2"/>
+                        </Grid>
+                        
+                        
+                    </Frame>
+                    
+
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,5 +1,6 @@
 ﻿using Click.ViewModels;
 using Click.Views.User.Food;
+using Click.Views.User.Water;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Click.Views.User
 
         private void Water_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new MainWater());
         }
 
         private void Flowers_Clicked(object sender, EventArgs e)
