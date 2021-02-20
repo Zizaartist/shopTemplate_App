@@ -123,7 +123,7 @@
                 </Grid>
             </Frame>
             <Grid x:Name="AboutProductGrid"
-                  IsVisible="true">
+                  IsVisible="false">
                 <Grid BackgroundColor="{StaticResource WhiteColor}"
                       Opacity="0.5"/>
                 <Button x:Name="Clear"
@@ -133,14 +133,14 @@
                        Style="{StaticResource AboutProduct}">
                     <Grid RowDefinitions="Auto,Auto">
                         <Image Style="{StaticResource ProductImage}"
-                               Source="temp17.png"/>
+                               x:Name="ImageProduct"/>
                         <Grid Padding="10"
                               Grid.Row="1"
                               RowDefinitions="Auto,Auto,Auto,Auto">
-                            <Label Text="Биг Кинг ХХХ"
+                            <Label x:Name="LabelTitle"
                                    Style="{StaticResource BlackLabel}"/>
-                            <Label Text="Нежные булочки с сочной говяжьей котлетой, хрустящими огурчиками, свежими помидорами, луком, острым перцем. беконом, яйцом и сыром заправлен соусом bbq"
-                                   HorizontalTextAlignment="Start"
+                            <Label HorizontalTextAlignment="Start"
+                                   x:Name="LabelDescription"
                                    Style="{StaticResource BlackLabelMedium}"
                                    Grid.Row="1"/>
                             <Button HeightRequest="1"
@@ -148,15 +148,21 @@
                                     Grid.Row="2"/>
                             <Grid Grid.Row="3" 
                                   ColumnDefinitions="Auto,Auto,Auto,*"
+                                  RowDefinitions="Auto"
                                   Padding="0,10,0,10">
                                 <ImageButton Source="Minus.png"
+                                             x:Name="Minus"
+                                             Clicked="Minus_Clicked"
                                              Style="{StaticResource MinusPlusBig}"/>
                                 <Label Style="{StaticResource BigBlackLabel}"
                                        Text="1"
+                                       x:Name="LabelQuantity"
                                        Grid.Column="1"
                                        Margin="15,0,15,0"/>
                                 <ImageButton Source="Plus.png"
                                              Style="{StaticResource MinusPlusBig}"
+                                             x:Name="Plus"
+                                             Clicked="Plus_Clicked"
                                              Grid.Column="2"/>
                                 <Button x:Name="AddButton"
                                         Grid.Column="3"
@@ -168,7 +174,8 @@
                                            Margin="0,0,10,0">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="319"/>
+                                                <Span Text=""
+                                                      x:Name="SpanPrice"/>
                                                 <Span Text=" р"/>
                                             </FormattedString>
                                         </Label.FormattedText>

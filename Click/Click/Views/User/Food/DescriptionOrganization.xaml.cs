@@ -16,5 +16,10 @@ namespace Click.Views.User.Food
         {
             InitializeComponent();
         }
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
     }
 }

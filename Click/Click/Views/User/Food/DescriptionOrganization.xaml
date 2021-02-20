@@ -1,12 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.User.Food.DescriptionOrganization">
+             x:Class="Click.Views.User.Food.DescriptionOrganization"
+             Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowDefinitions="Auto,Auto,*">
+            <Grid Style="{StaticResource HeaderGrid}">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Style="{StaticResource BackButton}"/>
+            </Grid>
+            <Grid Grid.Row="1"
+                              Margin="0,-8,0,0">
+                <Image Source="temp14.png"
+                                   Style="{StaticResource BannerSubImage}"/>
+                <Frame Style="{StaticResource LogoFrame}">
+                    <Image Source="temp5.png"
+                                       Style="{StaticResource LogoImage}"/>
+                </Frame>
+            </Grid>
+            <StackLayout Grid.Row="2"
+                         Padding="20,0,20,0">
+                <Label Style="{StaticResource BigBlackLabelBold}"
+                       Text="Бургер Кинг"/>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

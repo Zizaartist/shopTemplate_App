@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Click.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,22 @@ namespace Click.Views.User.Food
         public Reviews()
         {
             InitializeComponent();
+            ReviewsCollection.BindingContext = new ReviewsViewModel();
+        }
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
+        private void Bonus_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReviewsCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

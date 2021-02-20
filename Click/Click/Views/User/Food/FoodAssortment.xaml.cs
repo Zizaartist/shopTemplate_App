@@ -40,12 +40,12 @@ namespace Click.Views.User.Food
 
         private void About_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new DescriptionOrganization());
         }
 
         private void Reviews_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new Reviews());
         }
     }
 }

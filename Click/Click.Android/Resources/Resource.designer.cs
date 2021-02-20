@@ -8424,67 +8424,82 @@ namespace Click.Droid
 			public const int Restaurant = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int StarRating = 2131165315;
+			public const int SmileRatingFive = 2131165315;
 			
 			// aapt resource value: 0x7F070084
-			public const int temp1 = 2131165316;
+			public const int SmileRatingFour = 2131165316;
 			
 			// aapt resource value: 0x7F070085
-			public const int temp10 = 2131165317;
+			public const int SmileRatingOne = 2131165317;
 			
 			// aapt resource value: 0x7F070086
-			public const int temp11 = 2131165318;
+			public const int SmileRatingThree = 2131165318;
 			
 			// aapt resource value: 0x7F070087
-			public const int temp12 = 2131165319;
+			public const int SmileRatingTwo = 2131165319;
 			
 			// aapt resource value: 0x7F070088
-			public const int temp13 = 2131165320;
+			public const int StarRating = 2131165320;
 			
 			// aapt resource value: 0x7F070089
-			public const int temp14 = 2131165321;
+			public const int temp1 = 2131165321;
 			
 			// aapt resource value: 0x7F07008A
-			public const int temp15 = 2131165322;
+			public const int temp10 = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
-			public const int temp16 = 2131165323;
+			public const int temp11 = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int temp17 = 2131165324;
+			public const int temp12 = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int temp2 = 2131165325;
+			public const int temp13 = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int temp3 = 2131165326;
+			public const int temp14 = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int temp4 = 2131165327;
+			public const int temp15 = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int temp5 = 2131165328;
+			public const int temp16 = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int temp6 = 2131165329;
+			public const int temp17 = 2131165329;
 			
 			// aapt resource value: 0x7F070092
-			public const int temp7 = 2131165330;
+			public const int temp2 = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int temp8 = 2131165331;
+			public const int temp3 = 2131165331;
 			
 			// aapt resource value: 0x7F070094
-			public const int temp9 = 2131165332;
+			public const int temp4 = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int tooltip_frame_dark = 2131165333;
+			public const int temp5 = 2131165333;
 			
 			// aapt resource value: 0x7F070096
-			public const int tooltip_frame_light = 2131165334;
+			public const int temp6 = 2131165334;
 			
 			// aapt resource value: 0x7F070097
-			public const int Water = 2131165335;
+			public const int temp7 = 2131165335;
+			
+			// aapt resource value: 0x7F070098
+			public const int temp8 = 2131165336;
+			
+			// aapt resource value: 0x7F070099
+			public const int temp9 = 2131165337;
+			
+			// aapt resource value: 0x7F07009A
+			public const int tooltip_frame_dark = 2131165338;
+			
+			// aapt resource value: 0x7F07009B
+			public const int tooltip_frame_light = 2131165339;
+			
+			// aapt resource value: 0x7F07009C
+			public const int Water = 2131165340;
 			
 			static Drawable()
 			{
