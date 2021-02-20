@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Water.MainWater">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <Grid BackgroundColor="#1D9BD5"
+                  HeightRequest="64"
+                  VerticalOptions="Center"
+                  ColumnDefinitions="Auto,*,Auto,Auto">
+                <ImageButton HeightRequest="25" 
+                             WidthRequest="25"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Margin="20,0,20,0"
+                             Source="Back.png"
+                             Aspect="AspectFit"
+                             x:Name="Back"
+                             Clicked="Back_Clicked"/>
+                <Label Text="Вода" 
+                       TextColor="#FFFFFF" 
+                       FontSize="20"
+                       HorizontalOptions="Start" 
+                       VerticalOptions="Center"
+                       Grid.Column="1"/>
+                <Label Text="У Вас 0" 
+                       TextColor="#FFFFFF" 
+                       FontSize="16"
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" 
+                       Grid.Column="2"/>
+                <ImageButton HeightRequest="25"
+                             WidthRequest="25"
+                             BackgroundColor="Transparent"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Margin="20,0,20,0"
+                             Source="BonusIcon.png"
+                             Aspect="AspectFit"
+                             Grid.Column="3"
+                             x:Name="Bonus"
+                             Clicked="Bonus_Clicked"/> 
+            </Grid>
+            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+                <Frame BackgroundColor="#FFFFFF"
+                       CornerRadius="20"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       WidthRequest="170"
+                       HeightRequest="150"
+                       Padding="0">
+                    <Grid RowDefinitions="*, Auto"
+                          Padding="10">
+                        <Button BackgroundColor="Transparent"
+                                x:Name="Bootle"
+                                Clicked="Bootle_Clicked"/>
+                        <Image Source="Bootle.png"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               WidthRequest="44"
+                               HeightRequest="92"
+                               BackgroundColor="Transparent"/>
+                        <Label Text="Бутыль" 
+                               TextColor="#1B1B1B"
+                               FontSize="18" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Grid.Row="1"/>
+                    </Grid> 
+                </Frame>
+                <Frame Grid.Column="1"
+                       BackgroundColor="#FFFFFF"
+                       CornerRadius="20"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       WidthRequest="170"
+                       HeightRequest="150"
+                       Padding="0">
+                    <Grid RowDefinitions="*, Auto"
+                          Padding="10">
+                        <Button BackgroundColor="Transparent"
+                                x:Name="Vodovoz"
+                                Clicked="Vodovoz_Clicked"/>
+                        <Image Source="Vodovoz.png"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               WidthRequest="98"
+                               HeightRequest="50"
+                               BackgroundColor="Transparent"/>
+                        <Label Text="Водовоз" 
+                               TextColor="#1B1B1B"
+                               FontSize="18" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Grid.Row="1"/>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </Grid>
+            
+    </ContentPage.Content>
+</ContentPage>
