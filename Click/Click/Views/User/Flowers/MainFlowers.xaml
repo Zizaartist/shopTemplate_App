@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Flowers.MainFlowers"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <CollectionView x:Name="OrganisationCollection"
+                        ItemsSource="{Binding BrandInfos}"
+                        SelectionMode="Single"
+                        SelectionChanged="OrganisationCollection_SelectionChanged">
+            <CollectionView.Header>
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+                    <Grid Style="{StaticResource HeaderGrid}"
+                          BackgroundColor="{StaticResource GreenColor}">
+                        <ImageButton x:Name="Back"
+                                     Clicked="Back_Clicked"
+                                     Style="{StaticResource BackButton}"/>
+                        <Label Text="Цветы"
+                               Style="{StaticResource WhiteHeaderLabel}"
+                               Margin="10,0,0,0"
+                               Grid.Column="1"/>
+                        <Label Text="У Вас 0"
+                               Style="{StaticResource WhiteMediumLabel}"
+                               Margin="0,0,10,0"
+                               Grid.Column="2"/>
+                        <ImageButton x:Name="Bonus"
+                                     Clicked="Bonus_Clicked"
+                                     Style="{StaticResource BonusButton}"
+                                     Grid.Column="3"/>
+                    </Grid>
+                    <CollectionView x:Name="AdFoodCollection"
+                                    ItemsSource="{Binding AdBannerFoods}"
+                                    SelectionMode="None"
+                                    HeightRequest="160"
+                                    Grid.Row="1">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10">
+                                    <Frame Style="{StaticResource FoodBannerFrame}"
+                                           BackgroundColor="{StaticResource GreenColor}">
+                                        <Grid RowDefinitions="Auto, Auto">
+                                            <Image Source="{Binding Banner}"
+                                                   Style="{StaticResource BannerFoodImage}"/>
+                                            <Label Text="{Binding Text}"
+                                                   Style="{StaticResource WhiteBoldLabel}"
+                                                   HorizontalOptions="Center"
+                                                   Grid.Row="1"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <CollectionView x:Name="TagCollection"
+                                    ItemsSource="{Binding TagFoods}"
+                                    SelectionMode="None"
+                                    HeightRequest="45"
+                                    Grid.Row="2">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid RowDefinitions="Auto">
+                                    <Button Text="{Binding Tag}"
+                                            Style="{StaticResource TagButtonGreen}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Grid Grid.Row="3"
+                          ColumnDefinitions="Auto,*,Auto"
+                          HeightRequest="30"
+                          Padding="10,0,10,0">
+                        <Switch x:Name="Working"/>
+                        <Label Text="cейчас работают"
+                               Style="{StaticResource GrayMediumLabel}"
+                               Grid.Column="1"/>
+                        <ImageButton x:Name="Find"
+                                     Clicked="Find_Clicked"
+                                     Style="{StaticResource SearchButton}"
+                                     Source="FindGreen.png"
+                                     Grid.Column="2"/>
+                    </Grid>
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0,10,0,0"
+                          RowDefinitions="Auto"
+                          Margin="0,0,0,10">
+                        <Frame Style="{StaticResource BannerFrame}">
+                            <Grid RowDefinitions="Auto,Auto,*">
+                                <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto"
+                                      Padding="20,0,20,0">
+                                    <Grid Style="{StaticResource StarGridBackground}"
+                                          HorizontalOptions="Center">
+                                        <Grid Style="{StaticResource StarGrid}"
+                                              x:Name="Star"/>
+                                        <Image Style="{StaticResource StarRating}"/>
+                                    </Grid>
+                                    <Image Source="{Binding BankPayment}"
+                                           Style="{StaticResource BankCard}"
+                                           Grid.Column="1"/>
+                                    <Image Source="{Binding CashPayment}"
+                                           Style="{StaticResource Money}"
+                                           Grid.Column="2"/>
+                                    <Image Source="FlowersTime.png"
+                                           Style="{StaticResource FoodTime}"
+                                           Grid.Column="3"/>
+                                    <Label Text="{Binding DeliveryTime}"
+                                           Style="{StaticResource VerySmallGreenLabel}"
+                                           Grid.Column="4"/>
+                                    <Image Source="{Binding Discount}"
+                                           Grid.Column="5"/>
+                                </Grid>
+                                <Grid Grid.Row="1"
+                                      ColumnDefinitions="Auto,Auto"
+                                      Padding="20,0,20,0">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource BlackLabel}"/>
+                                    <Label Text="{Binding Tags}"
+                                           Style="{StaticResource SmallBlackLabel}"
+                                           Grid.Column="1"/>
+                                </Grid>
+                                <Grid Grid.Row="2"
+                                      VerticalOptions="End">
+                                    <Image Source="{Binding Banner}"
+                                           Style="{StaticResource BannerCompanyImage}"/>
+                                    <Frame Style="{StaticResource LogoFrame}">
+                                        <Image Source="{Binding Logo}"
+                                               Style="{StaticResource LogoImage}"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

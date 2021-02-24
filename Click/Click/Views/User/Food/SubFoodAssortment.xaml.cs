@@ -45,7 +45,7 @@ namespace Click.Views.User.Food
 
         private void Bonus_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new BonusHistory());
         }
 
         private void Basket_Clicked(object sender, EventArgs e)
