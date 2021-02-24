@@ -4,7 +4,7 @@
              x:Class="Click.Views.User.Main"
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto,Auto">
+        <Grid RowDefinitions="Auto,*,Auto">
             <CollectionView x:Name="AdCollection"
                             ItemsSource="{Binding AdBanners}"
                             SelectionMode="None"
@@ -35,7 +35,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Grid RowDefinitions="Auto,Auto,Auto"
-                  Padding="20"
+                  Padding="0"
                   Grid.Row="1">
                 <Label Text="Выберите что хотите заказать"
                        Style="{StaticResource BigBlackLabel}"
@@ -69,8 +69,38 @@
                            Grid.Row="1"
                            Grid.Column="2"
                            Style="{StaticResource BigOrangeLabel}"/>
-
                 </Grid>
+            </Grid>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*"
+                  Grid.Row="2"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Source="HomeIconSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Row="1"
+                       Text="Главная"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             Source="OrdersIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             Source="BasketIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Корзина"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="3"
+                             Source="ProfileIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Профиль"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

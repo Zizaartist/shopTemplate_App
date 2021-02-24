@@ -46,3 +46,5 @@ C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click\obj\Debug\netstandard2.0\
 C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click\obj\Debug\netstandard2.0\Click.pdb
 C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\MainWater.xaml.g.cs
 C:\Users\Syberia-10\Documents\GitHub\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\WaterMenu.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\MainWater.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\WaterMenu.xaml.g.cs

@@ -28,6 +28,7 @@ namespace Click.Views.User.Food
             {
                 FoodCollection.SelectedItem = null;
                 getItemSelectedData = e.CurrentSelection.FirstOrDefault() as GoodsFood;
+                LabelQuantity.Text = "1";
                 ImageProduct.Source = getItemSelectedData.Image;
                 LabelTitle.Text = getItemSelectedData.Title;
                 LabelDescription.Text = getItemSelectedData.Description;

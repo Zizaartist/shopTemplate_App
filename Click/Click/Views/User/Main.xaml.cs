@@ -36,5 +36,10 @@ namespace Click.Views.User
         {
 
         }
+
+        private void Profile_Clicked()
+        {
+
+        }
     }
 }

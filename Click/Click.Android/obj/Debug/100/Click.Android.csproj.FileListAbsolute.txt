@@ -1226,3 +1226,16 @@ C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\stamp\_GenerateJavaStubs.stamp
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\stamp\_GeneratePackageManagerJava.stamp
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\stamp\_ResolveLibraryProjectImports.stamp
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\smileratingthree.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\smileratingtwo.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\smileratingfive.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\smileratingfour.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\smileratingone.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\ordersicon.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\ordersiconselected.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\profileicon.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\profileiconselected.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\basketicon.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\basketiconselected.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\homeicon.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\homeiconselected.png

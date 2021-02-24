@@ -36,6 +36,11 @@
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="Start"/>
         </Style>
+        <Style x:Key="NavigationPanelGrid" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PanelColor}"/>
+            <Setter Property="HeightRequest" Value="67"/>
+            <Setter Property="VerticalOptions" Value="End"/>
+        </Style>
         <!--Frames-->
         <Style x:Key="EntryFrame" TargetType="Frame">
             <Setter Property="CornerRadius" Value="10"/>
@@ -249,6 +254,21 @@
             <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
+        <Style x:Key="GrayAgreeButton" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="BorderWidth" Value="1.5"/>
+            <Setter Property="BorderColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="WidthRequest" Value="160"/>
+            <Setter Property="HeightRequest" Value="30"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="CornerRadius" Value="40"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
         <!--Images-->
         <Style x:Key="RegistrationImage" TargetType="Image">
             <Setter Property="WidthRequest" Value="290"/>
@@ -434,6 +454,15 @@
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="Aspect" Value="AspectFill"/>
         </Style>
+        <Style x:Key="PanelImageButton" TargetType="ImageButton">
+            <Setter Property="WidthRequest" Value="30"/>
+            <Setter Property="HeightRequest" Value="30"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
         <!--Labels-->
         <Style x:Key="VeryBigBlackLabel" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
@@ -507,6 +536,14 @@
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="WhiteVerySmallLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
         <Style x:Key="WhiteBoldLabel" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
             <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
@@ -571,6 +608,14 @@
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="GrayVerySmallLabelPanel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource GrayTextPanel}"/>
+            <Setter Property="FontSize" Value="{DynamicResource VerySmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
         <Style x:Key="BigOrangeLabel" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource OrangeColor}"/>
             <Setter Property="FontSize" Value="{DynamicResource ButtonFont}"/>
@@ -591,11 +636,13 @@
         <Color x:Key="WhiteColor">#FEFFFF</Color>
         <Color x:Key="BackgroundColor">#E2E2E2</Color>
         <Color x:Key="GrayText">#525252</Color>
+        <Color x:Key="GrayTextPanel">#9E9E9E</Color>
         <Color x:Key="GrayColor">#686868</Color>
         <Color x:Key="GrayColorLight">#EFEFEF</Color>
         <Color x:Key="GreenColor">#3AB600</Color>
         <Color x:Key="DarkGreenColor">#2A8400</Color>
         <Color x:Key="BlackColor">#1C1C1C</Color>
+        <Color x:Key="PanelColor">#455A64</Color>
         <Color x:Key="StrawberryColor">#FF4B40</Color>
         <Color x:Key="OrangeColor">#E65100</Color>
         <Color x:Key="YellowColor">#FFC800</Color>
