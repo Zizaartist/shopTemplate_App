@@ -3,6 +3,8 @@ using Click.Views.Registration;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Linq;
+
 [assembly: ExportFont("NeoSansPro-Regular.ttf", Alias = "NeoSansPro")]
 [assembly: ExportFont("NeoSansPro-Medium.ttf", Alias = "NeoSansProBold")]
 namespace Click
@@ -12,6 +14,10 @@ namespace Click
         public App()
         {
             InitializeComponent();
+
+            Akavache.BlobCache.ApplicationName = "Click";
+            Akavache.BlobCache.EnsureInitialized();
+
             MainPage = new Preview();
         }
 

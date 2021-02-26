@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+namespace Click.StaticValues
+{
+    //Меняйте как хотите
+    public static class AlertMessages
+    {
+        public static string EMPTY_FIELDS = "Заполните все поля";
+
+        //Errors
+        public static string UNEXPECTED_ERROR = "Возникла непредвиденная ошибка";
+        public static string ERROR_NUMBER_IS_TAKEN = "Указанный вами номер телефона уже зарегистрирован";
+        public static string ERROR_NUMBER_IS_INVALID = "Указан неправильный номер";
+        public static string ERROR_CODE_IS_INVALID = "Указан неверный код";
+    }
+}

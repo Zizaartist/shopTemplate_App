@@ -23,6 +23,7 @@
                 <Frame Style="{StaticResource EntryFrame}"
                        Margin="10">
                     <Entry x:Name="NumberEntry"
+                           Text="{Binding Phone, Mode=TwoWay}"
                            Style="{StaticResource EntryGray}"
                            Placeholder="Ввести номер телефона"/>
                 </Frame>
@@ -30,6 +31,7 @@
                        Text="При подтверждении на номер будет отправлено СМС с паролем"
                        Margin="10"/>
                 <Button x:Name="Confirm"
+                        IsEnabled="{Binding IsValidNumber}"
                         Clicked="Confirm_Clicked"
                         Text="Отправить"
                         Margin="10"

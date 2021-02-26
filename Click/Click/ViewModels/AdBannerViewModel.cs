@@ -7,36 +7,23 @@ using Xamarin.Forms;
 
 namespace Click.ViewModels
 {
-    class AdBannerViewModel : BindableObject
+    class AdBannerViewModel : ViewModel
     {
         private ObservableCollection<AdBanner> adBanners;
-        public ObservableCollection<AdBanner> AdBanners
+        public ObservableCollection<AdBanner> AdBanners { get; set; } = new ObservableCollection<AdBanner>()
         {
-            get => adBanners;
-            set
+            new AdBanner()
             {
-                if (value == adBanners) return;
-                adBanners = value;
-                OnPropertyChanged();
-            }
-        }
-        public AdBannerViewModel()
-        {
-            AdBanners = new ObservableCollection<AdBanner>()
+                Banner = "temp1.png",
+                Title = "Акции до 15 февраля!",
+                Description = "Бизнес-ланчи за полцены!",
+            },
+            new AdBanner()
             {
-                new AdBanner()
-                {
-                    Banner = "temp1.png",
-                    Title = "Акции до 15 февраля!",
-                    Description = "Бизнес-ланчи за полцены!",
-                },
-                new AdBanner()
-                {
-                    Banner = "temp2.png",
-                    Title = "Акции до 15 февраля!",
-                    Description = "Бизнес-ланчи за полцены!",
-                },
-            };
-        }
+                Banner = "temp2.png",
+                Title = "Акции до 15 февраля!",
+                Description = "Бизнес-ланчи за полцены!",
+            },
+        };
     }
 }
