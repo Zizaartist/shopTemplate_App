@@ -10,6 +10,8 @@ namespace Click.Models.LocalModels
 {
     public class BrandLocal
     {
+
+
         public BrandLocal(Brand _brand)
         {
             Brand = _brand;
@@ -31,6 +33,7 @@ namespace Click.Models.LocalModels
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
             };
+            //Rating = 
         }
 
         public Brand Brand { get; private set; }
@@ -39,5 +42,6 @@ namespace Click.Models.LocalModels
         public bool CashPayment { get; private set; } = false;
         public UriImageSource Banner { get; private set; }
         public UriImageSource Logo { get; private set; }
+        public float Rating { get; private set; } = 0f;
     }
 }

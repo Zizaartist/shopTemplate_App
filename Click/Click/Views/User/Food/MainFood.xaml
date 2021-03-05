@@ -101,6 +101,7 @@
                                                 <Grid Style="{StaticResource StarGridBackground}"
                                                   HorizontalOptions="Center">
                                                     <Grid Style="{StaticResource StarGrid}"
+                                                        WidthRequest="{Binding Rating}"
                                                       x:Name="Star"/>
                                                     <Image Style="{StaticResource StarRating}"/>
                                                 </Grid>
