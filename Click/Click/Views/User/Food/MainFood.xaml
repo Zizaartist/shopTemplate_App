@@ -69,7 +69,8 @@
                       ColumnDefinitions="Auto,*,Auto"
                       HeightRequest="30"
                       Padding="10,0,10,0">
-                    <Switch x:Name="Working"/>
+                    <Switch x:Name="Working"
+                            IsToggled="{Binding IsWorkingCriteria, Mode=TwoWay}"/>
                     <Label Text="cейчас работают"
                            Style="{StaticResource GrayMediumLabel}"
                            Grid.Column="1"/>
@@ -78,64 +79,74 @@
                                  Style="{StaticResource SearchButton}"
                                  Grid.Column="2"/>
                 </Grid>
-                <CollectionView x:Name="OrganisationCollection"
-                                ItemsSource="{Binding BrandInfos}"
+                <RefreshView x:Name="Refreshable"
+                            IsRefreshing="{Binding GetDataLock, Mode=OneWay}"
+                            Command="{Binding GetInitialData}"
+                            Grid.Row="4">
+                    <CollectionView x:Name="OrganisationCollection"
+                                ItemsSource="{Binding Brands}"
                                 SelectionMode="Single"
                                 SelectionChanged="OrganisationCollection_SelectionChanged"
-                                Grid.Row="4">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Padding="0,10,0,0"
+                                RemainingItemsThresholdReachedCommand="{Binding GetMoreData}"
+                                RemainingItemsThreshold="{Binding ItemTreshold}"
+                                >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="0,10,0,0"
                                   RowDefinitions="Auto">
-                                <Frame Style="{StaticResource BannerFrame}">
-                                    <Grid RowDefinitions="Auto,Auto,*">
-                                        <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto"
+                                    <Frame Style="{StaticResource BannerFrame}">
+                                        <Grid RowDefinitions="Auto,Auto,*">
+                                            <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto"
                                               Padding="20,0,20,0">
-                                            <Grid Style="{StaticResource StarGridBackground}"
+                                                <Grid Style="{StaticResource StarGridBackground}"
                                                   HorizontalOptions="Center">
-                                                <Grid Style="{StaticResource StarGrid}"
+                                                    <Grid Style="{StaticResource StarGrid}"
                                                       x:Name="Star"/>
-                                                <Image Style="{StaticResource StarRating}"/>
-                                            </Grid>
-                                            <Image Source="{Binding BankPayment}"
+                                                    <Image Style="{StaticResource StarRating}"/>
+                                                </Grid>
+                                                <Image Source="BankCard.png"
+                                                   IsVisible="{Binding BankPayment}"
                                                    Style="{StaticResource BankCard}"
                                                    Grid.Column="1"/>
-                                            <Image Source="{Binding CashPayment}"
+                                                <Image Source="Money.png"
+                                                   IsVisible="{Binding CashPayment}"
                                                    Style="{StaticResource Money}"
                                                    Grid.Column="2"/>
-                                            <Image Source="FoodTime.png"
+                                                <Image Source="FoodTime.png"
                                                    Style="{StaticResource FoodTime}"
                                                    Grid.Column="3"/>
-                                            <Label Text="{Binding DeliveryTime}"
+                                                <Label Text="{Binding Brand.DeliveryTime}"
                                                    Style="{StaticResource VerySmallOrangeLabel}"
                                                    Grid.Column="4"/>
-                                            <Image Source="{Binding Discount}"
+                                                <Image Source="Discount.png"
+                                                   IsVisible="{Binding Brand.HasDiscounts}"
                                                    Grid.Column="5"/>
-                                        </Grid>
-                                        <Grid Grid.Row="1"
+                                            </Grid>
+                                            <Grid Grid.Row="1"
                                               ColumnDefinitions="Auto,Auto"
                                               Padding="20,0,20,0">
-                                            <Label Text="{Binding Name}"
+                                                <Label Text="{Binding Brand.BrandName}"
                                                    Style="{StaticResource BlackLabel}"/>
-                                            <Label Text="{Binding Tags}"
+                                                <Label Text="{Binding Tags}"
                                                    Style="{StaticResource SmallBlackLabel}"
                                                    Grid.Column="1"/>
-                                        </Grid>
-                                        <Grid Grid.Row="2"
+                                            </Grid>
+                                            <Grid Grid.Row="2"
                                               VerticalOptions="End">
-                                            <Image Source="{Binding Banner}"
+                                                <Image Source="{Binding Banner}"
                                                    Style="{StaticResource BannerCompanyImage}"/>
-                                            <Frame Style="{StaticResource LogoFrame}">
-                                                <Image Source="{Binding Logo}"
+                                                <Frame Style="{StaticResource LogoFrame}">
+                                                    <Image Source="{Binding Logo}"
                                                        Style="{StaticResource LogoImage}"/>
-                                            </Frame>
+                                                </Frame>
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
-                                </Frame>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

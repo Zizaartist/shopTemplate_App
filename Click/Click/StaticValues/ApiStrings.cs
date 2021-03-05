@@ -20,9 +20,11 @@ namespace Click.StaticValues
         public const string API_BRANDS_GET_BY_CATEGORY = "GetBrandsByCategory/";
         public const string API_BRANDS_GET_MY_BRANDS = "GetMyBrands/";
         public const string API_BRANDS_GET_BY_FILTER = "GetBrandsByFilter/";
+        public const string API_BRANDS_GET_BY_NAME = "GetBrandsByName/"; //{category}?name=blah
+
         public const string API_MENU_CONTROLLER = "BrandsMenu/";
         public const string API_MENU_GET_BY_BRAND = "GetMenusByBrand/";
-        public const string API_MENU_GET_MY_MENUS = "GetMyMenus/";
+        public const string API_MENU_GET_MY_MENUS = "GetMyMenus/"; 
 
         public const string API_PRODUCTS_CONTROLLER = "Products/";
         public const string API_PRODUCTS_GET_BY_MENU = "GetProductsByMenu/";

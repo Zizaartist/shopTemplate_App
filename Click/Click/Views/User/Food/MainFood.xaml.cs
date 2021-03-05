@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using ApiClick.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +20,9 @@ namespace Click.Views.User.Food
             NavigationPage.SetHasNavigationBar(this, false);
             AdFoodCollection.BindingContext = new AdBannerFoodViewModel();
             TagCollection.BindingContext = new TagFoodViewModel();
-            OrganisationCollection.BindingContext = new BrandInfoViewModel();
+            var brandVM = new BrandsViewModel(Category.food, false);
+            Refreshable.BindingContext = brandVM;
+            Task.Run(() => brandVM.GetCachedData());
         }
 
         private void Back_Clicked(object sender, EventArgs e)
