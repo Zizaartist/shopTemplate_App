@@ -244,6 +244,38 @@
             <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
+        <Style x:Key="TagButtonGreen" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="BorderColor" Value="{DynamicResource GreenColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="WidthRequest" Value="110"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style x:Key="TagSelectedGreen" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource GreenColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="BorderColor" Value="{DynamicResource GreenColor}"/>
+            <Setter Property="BorderWidth" Value="1"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="WidthRequest" Value="110"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
         <Style x:Key="WhiteSmallButton" TargetType="Button">
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="VerticalOptions" Value="Center"/>
@@ -487,6 +519,14 @@
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="HeaderBlackLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource HeaderFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
         <Style x:Key="BigBlackLabel" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
             <Setter Property="FontSize" Value="{DynamicResource ButtonFont}"/>
@@ -607,6 +647,22 @@
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="GrayMediumLabelBold" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource GrayText}"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="GraySmallLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource GrayText}"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
         <Style x:Key="GrayVerySmallLabel" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource GrayText}"/>
             <Setter Property="FontSize" Value="{DynamicResource VerySmallFont}"/>
@@ -639,6 +695,23 @@
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="VerySmallGreenLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource GreenColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource VerySmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="MediumGreenLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource GreenColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <!--Colors-->
         <!--#endregion-->
         <!--#region Colors-->
         <Color x:Key="WhiteColor">#FEFFFF</Color>

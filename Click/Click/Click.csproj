@@ -48,6 +48,9 @@
     <EmbeddedResource Update="Views\Registration\SMS.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\User\BonusHistory.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\User\Food\DescriptionOrganization.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -75,6 +78,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\User\Flowers\" />
+    <Compile Update="Views\User\Flowers\DescriptionOrganizationFlowers.xaml.cs">
+      <DependentUpon>DescriptionOrganizationFlowers.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\User\Flowers\FlowersAssortment.xaml.cs">
+      <DependentUpon>FlowersAssortment.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\User\Flowers\MainFlowers.xaml.cs">
+      <DependentUpon>MainFlowers.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\User\Flowers\ReviewsFlowers.xaml.cs">
+      <DependentUpon>ReviewsFlowers.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\User\Flowers\SubFlowersAssortment.xaml.cs">
+      <DependentUpon>SubFlowersAssortment.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
