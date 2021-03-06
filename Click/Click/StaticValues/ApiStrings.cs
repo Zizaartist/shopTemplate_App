@@ -6,7 +6,7 @@ namespace Click.StaticValues
 {
     public static class ApiStrings
     {
-        public const string API_HOST = "https://clickapidebug.azurewebsites.net/";
+        public const string API_HOST = "https://clickapidebug.azurewebsites.net/";//"https://10.0.2.2:44358/";
 
         public const string API_USERS_CONTROLLER = "Users/";
         public const string API_USERS_AUTH = "PhoneCheck/";

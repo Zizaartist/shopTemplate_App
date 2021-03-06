@@ -101,7 +101,7 @@ namespace Click.ViewModels
             try
             {
                 CodeIsValid = false;
-                var client = new HttpClient();
+                var client = NewHttpClient;
                 var response = await client.PostAsync(ApiStrings.API_HOST + "/api/SmsCheck/" + "?phone=" + Phone, null);
                 return response;
             }
@@ -115,7 +115,7 @@ namespace Click.ViewModels
         {
             try
             {
-                var client = new HttpClient();
+                var client = NewHttpClient;
                 var response = await client.PostAsync(ApiStrings.API_HOST + "/api/CodeCheck/" + "?code=" + Code + "&phone=" + Phone, null);
                 return response;
             }
@@ -129,7 +129,7 @@ namespace Click.ViewModels
         {
             try
             {
-                var client = new HttpClient();
+                var client = NewHttpClient;
                 User user = new User()
                 {
                     Phone = Phone
@@ -151,7 +151,7 @@ namespace Click.ViewModels
         {
             try
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = NewHttpClient;
 
                 HttpResponseMessage msg = await client.PostAsync(ApiStrings.API_HOST + "api/" + ApiStrings.API_VERIFY_NUMBER + "?phone=" + Phone, null);
                 CorrectPhone = await msg.Content.ReadAsStringAsync();

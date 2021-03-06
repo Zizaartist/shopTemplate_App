@@ -25,7 +25,7 @@ namespace Click.ViewModels
         {
             try
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = NewHttpClient;
                 if (await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key) != null)
                 {
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key));
@@ -51,7 +51,7 @@ namespace Click.ViewModels
         {
             try
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = NewHttpClient;
                 return await client.PostAsync(ApiStrings.API_HOST + "api/" +
                                                 ApiStrings.API_USERS_AUTH +
                                                 "?phone=" + _phone ?? "", null);
@@ -71,7 +71,7 @@ namespace Click.ViewModels
         {
             try
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = NewHttpClient;
                 if (await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key) != null)
                 {
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key));
@@ -94,7 +94,7 @@ namespace Click.ViewModels
         {
             try
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = NewHttpClient;
 
                 return await client.PostAsync(ApiStrings.API_HOST + "api/" +
                                                 ApiStrings.API_USERTOKEN_CONTROLLER +
@@ -114,7 +114,7 @@ namespace Click.ViewModels
         {
             try
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = NewHttpClient;
 
                 return await client.PostAsync(ApiStrings.API_HOST + "api/" +
                                                 ApiStrings.API_ADMINTOKEN_CONTROLLER +

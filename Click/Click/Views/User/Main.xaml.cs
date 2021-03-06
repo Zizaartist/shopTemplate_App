@@ -20,6 +20,9 @@ namespace Click.Views.User
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             AdCollection.BindingContext = new AdBannerViewModel();
+
+            Task.Run(() => UsersViewModel.Instance.GetData());
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
         }
 
         private void Food_Clicked(object sender, EventArgs e)
@@ -33,11 +36,6 @@ namespace Click.Views.User
         }
 
         private void Flowers_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Profile_Clicked()
         {
 
         }

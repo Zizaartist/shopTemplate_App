@@ -49,18 +49,23 @@ namespace Click.ViewModels
             }
         }
 
-        public ObservableCollection<Hashtag> SelectedHashtags = new ObservableCollection<Hashtag>();
+        public ObservableCollection<HashtagLocal> SelectedHashtags;
 
         private Category category;
 
         #endregion
 
-        public BrandsViewModel(Category _category, bool _nameSearchMode)
+        public BrandsViewModel(Category _category, bool _nameSearchMode, ObservableCollection<HashtagLocal> _selectedHashtags = null)
         {
             category = _category;
 
-            NotifyCollectionChangedEventHandler handler = (object sender, NotifyCollectionChangedEventArgs e) => GetInitialData.Execute(null);
-            SelectedHashtags.CollectionChanged += handler; //При любом изменении коллекции выбранных хэштегов запрашивать данные
+            if (_selectedHashtags != null)
+            {
+                SelectedHashtags = _selectedHashtags;
+
+                NotifyCollectionChangedEventHandler handler = (object sender, NotifyCollectionChangedEventArgs e) => GetInitialData.Execute(null);
+                SelectedHashtags.CollectionChanged += handler; //При любом изменении коллекции выбранных хэштегов запрашивать данные
+            }
 
             GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
             if (_nameSearchMode)
@@ -100,7 +105,7 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Отправляем список хэштегов, даже будучи пустым
-                var serializedObj = JsonConvert.SerializeObject(SelectedHashtags.Select(e => e.HashTagId).ToList());
+                var serializedObj = JsonConvert.SerializeObject(SelectedHashtags.Select(e => e.Hashtag.HashTagId).ToList());
                 StringContent data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(ApiStrings.API_HOST + "api/" + 
                                                                         ApiStrings.API_BRANDS_GET_BY_FILTER + (int)category +
@@ -117,7 +122,7 @@ namespace Click.ViewModels
                     }
 
                     await BlobCache.LocalMachine.InsertObject(Caches.BRANDS_CACHE.key + "_" +
-                                                              category.ToString(), Brands.Select(e => e.Brand).ToList(), Caches.BRANDS_CACHE.lifeTime);
+                                                              category.ToString(), tempList, Caches.BRANDS_CACHE.lifeTime);
                 }
             }
             catch (NoConnectionException)
@@ -151,7 +156,7 @@ namespace Click.ViewModels
             {
                 try
                 {
-                    await GetInitial();
+                    GetInitialData.Execute(null);
                 }
                 catch (NoConnectionException)
                 {
@@ -171,7 +176,7 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Отправляем список хэштегов, даже будучи пустым
-                var serializedObj = JsonConvert.SerializeObject(SelectedHashtags.Select(e => e.HashTagId).ToList());
+                var serializedObj = JsonConvert.SerializeObject(SelectedHashtags.Select(e => e.Hashtag.HashTagId).ToList());
                 StringContent data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(ApiStrings.API_HOST + "api/" +
                                                                         ApiStrings.API_BRANDS_GET_BY_NAME + (int)category +

@@ -8,21 +8,38 @@ using System.Threading.Tasks;
 using ApiClick.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Click.Models.LocalModels;
 
 namespace Click.Views.User.Food
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainFood : ContentPage
     {
+        private static Category CATEGORY = Category.food;
+
         public MainFood()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
             AdFoodCollection.BindingContext = new AdBannerFoodViewModel();
-            TagCollection.BindingContext = new TagFoodViewModel();
-            var brandVM = new BrandsViewModel(Category.food, false);
+
+            var hashtagsVM = new HashtagViewModel();
+            TagCollection.BindingContext = hashtagsVM;
+            Task.Run(() => hashtagsVM.GetData(CATEGORY));
+
+            Points.BindingContext = UsersViewModel.Instance;
+
+            var brandVM = new BrandsViewModel(CATEGORY, false, hashtagsVM.SelectedHashtags);
+            Working.BindingContext = brandVM;
             Refreshable.BindingContext = brandVM;
             Task.Run(() => brandVM.GetCachedData());
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -44,8 +61,9 @@ namespace Click.Views.User.Food
         {
             if (e.CurrentSelection.Any())
             {
+                var selectedBrand = OrganisationCollection.SelectedItem as BrandLocal;
                 OrganisationCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new FoodAssortment());
+                Navigation.PushModalAsync(new FoodAssortment(selectedBrand));
             }
         }
     }
