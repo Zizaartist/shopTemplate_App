@@ -1,4 +1,6 @@
-﻿using Click.ViewModels;
+﻿using ApiClick.Models;
+using Click.Models.LocalModels;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +15,33 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainFlowers : ContentPage
     {
+        private static Category CATEGORY = Category.flowers;
+
         public MainFlowers()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             AdFoodCollection.BindingContext = new AdBannerFlowersViewModel();
-            TagCollection.BindingContext = new TagFlowersViewModel();
-            OrganisationCollection.BindingContext = new BrandInfoViewModelFlowers();
+
+            //Загружаем теги
+            var hashtagsVM = new HashtagViewModel();
+            TagCollection.BindingContext = hashtagsVM;
+            Task.Run(() => hashtagsVM.GetData(CATEGORY));
+
+            //Баллы достаточно просто сбайндить
+            Points.BindingContext = UsersViewModel.Instance;
+
+            //Загружаем бренды
+            var brandVM = new BrandsViewModel(CATEGORY, false, hashtagsVM.SelectedHashtags);
+            Working.BindingContext = brandVM;
+            Refreshable.BindingContext = brandVM;
+            Task.Run(() => brandVM.GetCachedData());
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -41,8 +63,9 @@ namespace Click.Views.User.Flowers
         {
             if (e.CurrentSelection.Any())
             {
+                var selectedBrand = OrganisationCollection.SelectedItem as BrandLocal;
                 OrganisationCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new FlowersAssortment());
+                Navigation.PushModalAsync(new FlowersAssortment(selectedBrand));
             }
         }
     }

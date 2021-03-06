@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models.LocalModels;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,33 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FlowersAssortment : ContentPage
     {
-        public FlowersAssortment()
+        public FlowersAssortment(BrandLocal _brandLocal)
         {
             InitializeComponent();
-            CategoriesCollection.BindingContext = new FlowersCategoryViewModel();
+
+            //Загружаем меню
+            var brandMenuVM = new BrandMenuViewModel(_brandLocal.Brand);
+            Refreshable.BindingContext = brandMenuVM;
+            Task.Run(() => brandMenuVM.GetCachedData());
+
+            //Получаем количество отзывов
+            var messagesVM = new MessagesViewModel(_brandLocal.Brand.BrandId);
+            ReviewCount.BindingContext = messagesVM;
+            Task.Run(() => messagesVM.GetReviewCount());
+
+            Points.BindingContext = UsersViewModel.Instance;
+
+            //brand-related
+            BrandName.Text = _brandLocal.Brand.BrandName;
+            BrandLogo.Source = _brandLocal.Logo;
+            BrandBanner.Source = _brandLocal.Banner;
+            Star.BindingContext = _brandLocal;
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)

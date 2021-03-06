@@ -11,7 +11,7 @@ namespace Click.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var grid = parameter as Grid;
-            return 65 / 5 * (float)value;
+            return 65 / 5 * (float)(value ?? 0f);
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -10,7 +10,7 @@
             <local:RatingConverter x:Key="ratingConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <Grid>
             <RefreshView x:Name="Refreshable"
@@ -41,9 +41,11 @@
                             </Grid>
                             <Grid Grid.Row="1"
                               Margin="0,-8,0,0">
-                                <Image x:Name="BrandBanner" Style="{StaticResource BannerSubImage}"/>
+                                <Image x:Name="BrandBanner" 
+                                       Style="{StaticResource BannerSubImage}"/>
                                 <Frame Style="{StaticResource LogoFrame}">
-                                    <Image x:Name="BrandLogo" Style="{StaticResource LogoImage}"/>
+                                    <Image x:Name="BrandLogo" 
+                                           Style="{StaticResource LogoImage}"/>
                                 </Frame>
                             </Grid>
                             <Grid RowDefinitions="Auto,Auto"

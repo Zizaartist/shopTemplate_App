@@ -14,8 +14,7 @@
     <ContentPage.Content>
         <RefreshView x:Name="Refreshable"
                             IsRefreshing="{Binding GetDataLock, Mode=OneWay}"
-                            Command="{Binding GetInitialData}"
-                            Grid.Row="4">
+                            Command="{Binding GetInitialData}">
             <CollectionView x:Name="OrganisationCollection"
                                 ItemsSource="{Binding Brands}"
                                 SelectionMode="Single"

@@ -19,10 +19,12 @@ namespace Click.Views.User.Food
         {
             InitializeComponent();
 
+            //Загружаем меню
             var brandMenuVM = new BrandMenuViewModel(_brandLocal.Brand);
             Refreshable.BindingContext = brandMenuVM;
             Task.Run(() => brandMenuVM.GetCachedData());
 
+            //Получаем количество отзывов
             var messagesVM = new MessagesViewModel(_brandLocal.Brand.BrandId);
             ReviewCount.BindingContext = messagesVM;
             Task.Run(() => messagesVM.GetReviewCount());

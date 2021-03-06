@@ -24,12 +24,15 @@ namespace Click.Views.User.Food
 
             AdFoodCollection.BindingContext = new AdBannerFoodViewModel();
 
+            //Загружаем теги
             var hashtagsVM = new HashtagViewModel();
             TagCollection.BindingContext = hashtagsVM;
             Task.Run(() => hashtagsVM.GetData(CATEGORY));
 
+            //Баллы достаточно просто сбайндить
             Points.BindingContext = UsersViewModel.Instance;
 
+            //Загружаем бренды
             var brandVM = new BrandsViewModel(CATEGORY, false, hashtagsVM.SelectedHashtags);
             Working.BindingContext = brandVM;
             Refreshable.BindingContext = brandVM;
@@ -49,7 +52,7 @@ namespace Click.Views.User.Food
 
         private void Bonus_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new BonusHistory());
         }
 
         private void Find_Clicked(object sender, EventArgs e)
