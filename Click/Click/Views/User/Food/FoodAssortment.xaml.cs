@@ -58,8 +58,9 @@ namespace Click.Views.User.Food
         {
             if (e.CurrentSelection.Any())
             {
+                var brandMenu = CategoriesCollection.SelectedItem as BrandMenuLocal;
                 CategoriesCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new SubFoodAssortment());
+                Navigation.PushModalAsync(new SubFoodAssortment(brandMenu));
             }
         }
 

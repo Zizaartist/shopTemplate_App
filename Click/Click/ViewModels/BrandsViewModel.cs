@@ -122,7 +122,7 @@ namespace Click.ViewModels
                     }
 
                     await BlobCache.LocalMachine.InsertObject(Caches.BRANDS_CACHE.key + "_" +
-                                                              category.ToString(), tempList, Caches.BRANDS_CACHE.lifeTime);
+                                                              category.ToString(), Brands.Select(e => e.Brand), Caches.BRANDS_CACHE.lifeTime);
                 }
             }
             catch (NoConnectionException)

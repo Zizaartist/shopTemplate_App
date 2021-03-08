@@ -44,7 +44,8 @@ namespace Click.Views.Registration
                     App.Current.MainPage = new NavigationPage(new Number());
                     break;
                 case AuthResult.error:
-                    bool response = DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, null, "Понятно").Result;
+                    bool result = await DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, null, "Понятно");
+                    //Выход из приложения
                     break;
             }
 
@@ -105,7 +106,7 @@ namespace Click.Views.Registration
                 //Попыток авторизации не осталось
                 return AuthResult.error;
             }
-            catch
+            catch(Exception e)
             {
                 return AuthResult.error; //Необработанная ошибка
             }

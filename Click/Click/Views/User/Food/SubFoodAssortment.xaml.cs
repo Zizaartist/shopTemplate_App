@@ -1,4 +1,5 @@
 ﻿using Click.Models;
+using Click.Models.LocalModels;
 using Click.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,26 +15,33 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubFoodAssortment : ContentPage
     {
-        GoodsFood getItemSelectedData;
-        int Price;
-        public SubFoodAssortment()
+        public SubFoodAssortment(BrandMenuLocal _brandMenuLocal)
         {
             InitializeComponent();
-            FoodCollection.BindingContext = new GoodsFoodViewModel();
+
+            //Загружаем продукцию
+            var productVM = new ProductListViewModel(_brandMenuLocal.BrandMenu);
+            BindingContext = productVM;
+            Task.Run(() => productVM.GetCachedData());
+
+            //Баллы достаточно просто сбайндить
+            Points.BindingContext = UsersViewModel.Instance;
+
+            //brandMenu-related
+            MinimalPrice.Text = (_brandMenuLocal.BrandMenu.Brand.MinimalPrice ?? default).ToString();
+            BrandName.Text = _brandMenuLocal.BrandMenu.Brand.BrandName;
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void FoodCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection.Any())
             {
-                FoodCollection.SelectedItem = null;
-                getItemSelectedData = e.CurrentSelection.FirstOrDefault() as GoodsFood;
-                LabelQuantity.Text = "1";
-                ImageProduct.Source = getItemSelectedData.Image;
-                LabelTitle.Text = getItemSelectedData.Title;
-                LabelDescription.Text = getItemSelectedData.Description;
-                SpanPrice.Text = getItemSelectedData.Price;
-                Price = Convert.ToInt32(SpanPrice.Text);
                 AboutProductGrid.IsVisible = true;
             }
         }
@@ -56,32 +64,6 @@ namespace Click.Views.User.Food
         private void Clear_Clicked(object sender, EventArgs e)
         {
             AboutProductGrid.IsVisible = false;
-        }
-
-        private void Plus_Clicked(object sender, EventArgs e)
-        {
-            PlusMinusGoods("Plus");
-        }
-
-        private void Minus_Clicked(object sender, EventArgs e)
-        {
-            PlusMinusGoods("Minus");
-        }
-        private void PlusMinusGoods(string TypeButton)
-        {           
-            switch (TypeButton)
-            {
-                case "Plus":
-                    LabelQuantity.Text = (Convert.ToInt32(LabelQuantity.Text) + 1).ToString();
-                    break;
-                case "Minus":
-                    if (Convert.ToInt32(LabelQuantity.Text) > 1)
-                    {
-                        LabelQuantity.Text = (Convert.ToInt32(LabelQuantity.Text) - 1).ToString();
-                    }
-                    break;
-            }
-            SpanPrice.Text = (Price * Convert.ToInt32(LabelQuantity.Text)).ToString();
         }
     }
 }

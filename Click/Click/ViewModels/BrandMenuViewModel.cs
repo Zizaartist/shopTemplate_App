@@ -41,18 +41,19 @@ namespace Click.ViewModels
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    List<BrandMenu> _brandMenu = JsonConvert.DeserializeObject<List<BrandMenu>>(result);
+                    List<BrandMenu> tempList = JsonConvert.DeserializeObject<List<BrandMenu>>(result);
+                    tempList.ForEach(e => e.Brand = brand);
 
                     BrandMenus.Clear();
 
-                    foreach (var item in _brandMenu)
+                    foreach (var item in tempList)
                     {
                         BrandMenus.Add(new BrandMenuLocal(item));
                     }
 
                     await BlobCache.LocalMachine.InsertObject(Caches.MENUS_CACHE.key + "_" +
                                                                 brand.Category.ToString() + "_" +
-                                                                brand.BrandId.ToString(), _brandMenu, Caches.MENUS_CACHE.lifeTime);
+                                                                brand.BrandId.ToString(), tempList, Caches.MENUS_CACHE.lifeTime);
                 }
             }
             catch (NoConnectionException)

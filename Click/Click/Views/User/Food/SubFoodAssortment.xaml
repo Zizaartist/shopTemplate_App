@@ -6,81 +6,92 @@
     <ContentPage.Content>
         <Grid>
             <!--при появлении BasketPanel, у этой CollectionView надо выставить значение Margin="0,0,0,100" и обратно по нулям при исчезновении-->
-            <CollectionView x:Name="FoodCollection"
-                            ItemsSource="{Binding GoodsFoods}"
+
+            <RefreshView x:Name="Refreshable"
+                            IsRefreshing="{Binding GetDataLock, Mode=OneWay}"
+                            Command="{Binding GetInitialData}">
+                <CollectionView x:Name="FoodCollection"
+                            ItemsSource="{Binding ProductLists}"
                             SelectionMode="Single"
-                            SelectionChanged="FoodCollection_SelectionChanged">
-                <CollectionView.Header>
-                    <Grid RowDefinitions="Auto,Auto">
-                        <Grid Style="{StaticResource HeaderGrid}">
-                            <ImageButton x:Name="Back"
+                            SelectionChanged="FoodCollection_SelectionChanged"
+                            SelectedItem="{Binding ProductSetter, Mode=TwoWay}"
+                            RemainingItemsThresholdReachedCommand="{Binding GetMoreData}"
+                            RemainingItemsThreshold="{Binding ItemTreshold}">
+                    <CollectionView.Header>
+                        <Grid RowDefinitions="Auto,Auto">
+                            <Grid Style="{StaticResource HeaderGrid}">
+                                <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
-                            <Label Text="Burger King"
+                                <Label x:Name="BrandName"
                                    Style="{StaticResource WhiteHeaderLabel}"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
-                            <Label Text="У Вас 0"
+                                <Label x:Name="Points"
+                                   Text="{Binding Points, StringFormat='У Вас {0}'}"
                                    Style="{StaticResource WhiteMediumLabel}"
                                    Margin="0,0,10,0"
                                    Grid.Column="2"/>
-                            <ImageButton x:Name="Bonus"
+                                <ImageButton x:Name="Bonus"
                                          Clicked="Bonus_Clicked"
                                          Style="{StaticResource BonusButton}"
                                          Grid.Column="3"/>
-                        </Grid>
-                        <Label Text="Бургеры с говядиной"
+                            </Grid>
+                            <Label Text="{Binding BrandMenu.BrandMenuName}"
                                Style="{StaticResource BlackLabel}"
                                Margin="20,0,0,0"
                                Grid.Row="1"/>
-                    </Grid>
-                </CollectionView.Header>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="20,10,20,10">
-                            <Frame Style="{StaticResource FrameFoodList}">
-                                <Grid RowDefinitions="Auto"
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="20,10,20,10">
+                                <Frame Style="{StaticResource FrameFoodList}">
+                                    <Grid RowDefinitions="Auto"
                                       ColumnDefinitions="Auto,Auto">
-                                    <Frame Style="{StaticResource FrameImageFoodList}">
-                                        <Image Style="{StaticResource FoodListImage}"
+                                        <Frame Style="{StaticResource FrameImageFoodList}">
+                                            <Image Style="{StaticResource FoodListImage}"
                                                Source="{Binding Image}"/>
-                                    </Frame>
-                                    <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto">
-                                        <Label Text="{Binding Title}"
+                                        </Frame>
+                                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto">
+                                            <Label Text="{Binding Product.ProductName}"
                                                Style="{StaticResource BlackLabel}"/>
-                                        <Label Text="{Binding Description}"
+                                            <Label Text="{Binding Product.Description}"
                                                Style="{StaticResource SmallBlackLabel}"
                                                Grid.Row="1"/>
-                                        <!--Менять изображения на PlusSelected, MinusSelected-->
-                                        <Grid Grid.Row="2"
+                                            <!--Менять изображения на PlusSelected, MinusSelected-->
+                                            <Grid Grid.Row="2"
                                               RowDefinitions="Auto"
                                               HorizontalOptions="End"
                                               ColumnDefinitions="Auto,Auto,Auto">
-                                            <ImageButton Source="Minus.png"
+                                                <ImageButton Source="Minus.png"
+                                                         Command="{Binding SubCount}"
                                                          Style="{StaticResource MinusPlus}"/>
-                                            <Label Style="{StaticResource SmallBlackLabelBold}"
+                                                <Label Style="{StaticResource SmallBlackLabelBold}"
                                                    Grid.Column="1">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding Price}"/>
-                                                        <Span Text=" р"/>
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <ImageButton Source="Plus.png"
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding CountView}"/>
+                                                            <Span Text=" р"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <ImageButton Source="Plus.png"
+                                                         Command="{Binding AddCount}"
                                                          Style="{StaticResource MinusPlus}"
                                                          Grid.Column="2"/>
+                                            </Grid>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
             <Frame VerticalOptions="End"
                    x:Name="BasketPanel"
-                   IsVisible="false"
+                   IsVisible="{Binding AddToCartNotEmpty}"
                    Style="{StaticResource FrameFood}">
                 <Grid RowDefinitions="Auto,Auto">
                     <Label Style="{StaticResource SmallBlackLabel}"
@@ -88,7 +99,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Бесплатная доставка от "/>
-                                <Span Text="500"/>
+                                <Span x:Name="MinimalPrice"/>
                                 <Span Text=" р."/>
                             </FormattedString>
                         </Label.FormattedText>
@@ -103,13 +114,13 @@
                                 <Label Style="{StaticResource WhiteLabel}"
                                        HorizontalOptions="Center"
                                        HorizontalTextAlignment="Center"
-                                       Text="1"/>
+                                       Text="{Binding AddToCartCount}"/>
                             </Frame>
                             <Label Style="{StaticResource WhiteButtonLabelBold}"
                                    Grid.Column="2">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="319"/>
+                                        <Span Text="{Binding SumTotal}"/>
                                         <Span Text=" р"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -133,15 +144,18 @@
                        Style="{StaticResource AboutProduct}">
                     <Grid RowDefinitions="Auto,Auto">
                         <Image Style="{StaticResource ProductImage}"
+                               Source="{Binding SelectedProduct.Image}"
                                x:Name="ImageProduct"/>
                         <Grid Padding="10"
                               Grid.Row="1"
                               RowDefinitions="Auto,Auto,Auto,Auto">
                             <Label x:Name="LabelTitle"
+                                   Text="{Binding SelectedProduct.Product.ProductName}"
                                    Style="{StaticResource BlackLabel}"/>
                             <Label HorizontalTextAlignment="Start"
                                    x:Name="LabelDescription"
                                    Style="{StaticResource BlackLabelMedium}"
+                                   Text="{Binding SelectedProduct.Product.Description}"
                                    Grid.Row="1"/>
                             <Button HeightRequest="1"
                                     BackgroundColor="{StaticResource BackgroundColor}"
@@ -152,17 +166,17 @@
                                   Padding="0,10,0,10">
                                 <ImageButton Source="Minus.png"
                                              x:Name="Minus"
-                                             Clicked="Minus_Clicked"
+                                             Command="{Binding SelectedProduct.SubCount}"
                                              Style="{StaticResource MinusPlusBig}"/>
                                 <Label Style="{StaticResource BigBlackLabel}"
-                                       Text="1"
+                                       Text="{Binding SelectedProduct.Count}"
                                        x:Name="LabelQuantity"
                                        Grid.Column="1"
                                        Margin="15,0,15,0"/>
                                 <ImageButton Source="Plus.png"
                                              Style="{StaticResource MinusPlusBig}"
                                              x:Name="Plus"
-                                             Clicked="Plus_Clicked"
+                                             Command="{Binding SelectedProduct.AddCount}"
                                              Grid.Column="2"/>
                                 <Button x:Name="AddButton"
                                         Grid.Column="3"
@@ -174,7 +188,7 @@
                                            Margin="0,0,10,0">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text=""
+                                                <Span Text="{Binding SelectedProduct.SumPrice}"
                                                       x:Name="SpanPrice"/>
                                                 <Span Text=" р"/>
                                             </FormattedString>
