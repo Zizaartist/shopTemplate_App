@@ -15,9 +15,13 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FoodAssortment : ContentPage
     {
+        BrandLocal brandLocal;
+
         public FoodAssortment(BrandLocal _brandLocal)
         {
             InitializeComponent();
+
+            brandLocal = _brandLocal;
 
             //Загружаем меню
             var brandMenuVM = new BrandMenuViewModel(_brandLocal.Brand);
@@ -66,7 +70,7 @@ namespace Click.Views.User.Food
 
         private void About_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new DescriptionOrganization());
+            Navigation.PushModalAsync(new DescriptionOrganization(brandLocal));
         }
 
         private void Reviews_Clicked(object sender, EventArgs e)

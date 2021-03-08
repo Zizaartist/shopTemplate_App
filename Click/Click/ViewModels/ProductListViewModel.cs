@@ -41,7 +41,7 @@ namespace Click.ViewModels
 
         public int AddToCartCount { get => ProductLists.Sum(e => e.Count); }
 
-        public bool AddToCartNotEmpty { get => ProductLists.Count > 0; }
+        public bool AddToCartNotEmpty { get => AddToCartCount > 0; }
 
         public decimal SumTotal { get => ProductLists.Sum(e => e.SumPrice); }
 
@@ -57,6 +57,8 @@ namespace Click.ViewModels
 
             GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
             GetMoreData = new GetDataCommand(async () => await GetRemoteData(), value => GetDataLock = value, () => GetDataLock);
+
+            ProductLists.CollectionChanged += (sender, e) => UpdateBindings();
         }
 
         public async Task GetInitial()

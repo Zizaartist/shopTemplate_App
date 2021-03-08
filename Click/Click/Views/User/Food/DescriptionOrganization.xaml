@@ -13,60 +13,51 @@
                 </Grid>
                 <Grid Grid.Row="1"
                       Margin="0,-8,0,0">
-                    <Image Source="temp14.png"
+                    <Image  x:Name="Banner"
                            Style="{StaticResource BannerSubImage}"/>
                     <Frame Style="{StaticResource LogoFrame}">
-                        <Image Source="temp5.png"
+                        <Image  x:Name="Logo"
                                Style="{StaticResource LogoImage}"/>
                     </Frame>
                 </Grid>
                 <StackLayout Grid.Row="2"
                              Padding="20,0,20,0">
                     <Label Style="{StaticResource BigBlackLabelBold}"
-                           Text="Бургер Кинг"/>
+                           x:Name="BrandName"/>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                            Text="Описание"/>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            HorizontalTextAlignment="Start"
-                           Text="Ресторан быстрого питания"/>
+                           x:Name="Description"/>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                            Text="Оплата"/>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            HorizontalTextAlignment="Start"
-                           Text="Карта и наличные"/>
+                           x:Name="PaymentMethods"/>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                        Text="Условия доставки"/>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            HorizontalTextAlignment="Start"
-                           Text="Доставка по городу 149 рублей. Радиус доставки - 7 км. Оплата толкьо по безналичному рачету через терминал"/>
+                           x:Name="DeliveryTerms"/>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                            Text="Контакты"/>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            HorizontalTextAlignment="Start"
-                           Text="+7(964)421-78-97"/>
+                           x:Name="Contact"/>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                            Text="Режим работы"/>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            HorizontalTextAlignment="Start"
                            Text=" без обеда  без обеда  без обеда  без обеда  без обеда  без обеда  без обеда">
                         <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="ПН 12:00 - 21:45 &#10;"/>
-                                <Span Text="ПН 12:00 - 21:45 &#10;"/>
-                                <Span Text="ВТ 10:00 - 21:45 &#10;"/>
-                                <Span Text="СР 10:00 - 21:45 &#10;"/>
-                                <Span Text="ЧТ 10:00 - 21:45 &#10;"/>
-                                <Span Text="ПТ 10:00 - 21:45 &#10;"/>
-                                <Span Text="СБ 10:00 - 21:45 &#10;"/>
-                                <Span Text="ВС 10:00 - 21:45 &#10;"/>
-                            </FormattedString>
+                            <FormattedString x:Name="Schedule"/>
                         </Label.FormattedText>
                     </Label>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                            Text="Мин. стоимость заказа"/>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            HorizontalTextAlignment="Start"
-                           Text="500 руб."/>
+                            x:Name="MinimalPrice"/>
                     <Button Text="Понятно"
                             Clicked="Back_Clicked"
                             Margin="0,20,0,20"

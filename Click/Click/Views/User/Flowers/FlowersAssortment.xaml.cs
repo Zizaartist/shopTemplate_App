@@ -14,9 +14,13 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FlowersAssortment : ContentPage
     {
+        BrandLocal brandLocal;
+
         public FlowersAssortment(BrandLocal _brandLocal)
         {
             InitializeComponent();
+
+            brandLocal = _brandLocal;
 
             //Загружаем меню
             var brandMenuVM = new BrandMenuViewModel(_brandLocal.Brand);
@@ -64,7 +68,7 @@ namespace Click.Views.User.Flowers
 
         private void About_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new DescriptionOrganizationFlowers());
+            Navigation.PushModalAsync(new DescriptionOrganizationFlowers(brandLocal));
         }
 
         private void Reviews_Clicked(object sender, EventArgs e)

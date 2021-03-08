@@ -20,4 +20,29 @@ namespace ApiClick.Models.ArrayModels
         [ForeignKey("BrandId")]
         public virtual Brand Brand { get; set; }
     }
+
+    public class DayOfWeekDictionaries 
+    {
+        public static Dictionary<DayOfWeek, string> GetStringFromDayOfWeek = new Dictionary<DayOfWeek, string>() 
+        {
+            { DayOfWeek.Sunday, "ВС" },
+            { DayOfWeek.Monday, "ПН" },
+            { DayOfWeek.Tuesday, "ВТ" },
+            { DayOfWeek.Wednesday, "СР" },
+            { DayOfWeek.Thursday, "ЧТ" },
+            { DayOfWeek.Friday, "ПТ" },
+            { DayOfWeek.Saturday, "СБ" },
+        };
+
+        public static List<DayOfWeek> CorrectlyOrderedDays = new List<DayOfWeek>()
+            {
+                DayOfWeek.Monday,
+                DayOfWeek.Tuesday,
+                DayOfWeek.Wednesday,
+                DayOfWeek.Thursday,
+                DayOfWeek.Friday,
+                DayOfWeek.Saturday,
+                DayOfWeek.Sunday
+            };
+    }
 }
