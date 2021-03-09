@@ -16,7 +16,7 @@ namespace Click.Views.User.Flowers
         public ReviewsFlowers()
         {
             InitializeComponent();
-            ReviewsCollection.BindingContext = new ReviewsViewModel();
+           //ReviewsCollection.BindingContext = new ReviewsViewModel();
         }
 
         private void Back_Clicked(object sender, EventArgs e)

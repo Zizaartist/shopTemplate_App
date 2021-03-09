@@ -1,4 +1,5 @@
 ﻿using ApiClick.Models;
+using Click.Models.LocalModels;
 using Click.StaticValues;
 using Newtonsoft.Json;
 using System;
@@ -16,7 +17,7 @@ namespace Click.ViewModels
     {
         #region properties
 
-        public ObservableCollection<Message> Messages { get; } = new ObservableCollection<Message>();
+        public ObservableCollection<MessageLocal> Messages { get; } = new ObservableCollection<MessageLocal>();
 
         private int allReviewsCount;
         public int AllReviewsCount 
@@ -42,14 +43,6 @@ namespace Click.ViewModels
             }
         }
 
-        //Пагинация
-        public int Page { get; private set; } = 0;
-        private bool GetMoreDataLock;
-        private bool GetInitialDataLock;
-        public int ItemTreshold { get; } = 1;
-        public Command GetMoreData { get; protected set; }
-        public Command GetInitialData { get; protected set; }
-
         private int? brandId;
 
         #endregion
@@ -57,8 +50,8 @@ namespace Click.ViewModels
         public MessagesViewModel(int? _brandId = null) 
         {
             brandId = _brandId;
-            GetMoreData = new Command(() => GetMoreReviews());
-            GetInitialData = new Command(() => GetInitial());
+            GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
+            GetMoreData = new GetDataCommand(async () => await GetRemoteData(), value => GetDataLock = value, () => GetDataLock);
         }
 
         public async Task GetInitial() 
@@ -68,7 +61,7 @@ namespace Click.ViewModels
 
             try
             {
-                GetMoreData.Execute(null);
+                await GetMoreData.ExecuteAsSubtask();
             }
             catch (NoConnectionException)
             {
@@ -80,11 +73,8 @@ namespace Click.ViewModels
             }
         }
 
-        public async Task GetMoreReviews()
+        public async Task GetRemoteData()
         {
-            if (GetMoreDataLock) return;
-            GetMoreDataLock = true;
-
             try
             {
                 HttpClient client = await createUserClient();
@@ -103,7 +93,7 @@ namespace Click.ViewModels
 
                     foreach (var item in tempList)
                     {
-                        Messages.Add(item);
+                        Messages.Add(new MessageLocal(item));
                     }
                 }
             }
@@ -114,10 +104,6 @@ namespace Click.ViewModels
             catch (Exception e)
             {
                 throw CheckIfConnectionException(e);
-            }
-            finally
-            {
-                GetMoreDataLock = false;
             }
         }
 

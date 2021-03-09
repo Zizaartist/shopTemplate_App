@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models.LocalModels;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,25 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Reviews : ContentPage
     {
-        public Reviews()
+        public Reviews(BrandLocal _brandLocal)
         {
             InitializeComponent();
-            ReviewsCollection.BindingContext = new ReviewsViewModel();
+
+            var messagesVM = new MessagesViewModel(_brandLocal.Brand.BrandId);
+            BindingContext = messagesVM;
+            Task.Run(() => messagesVM.GetInitialData.Execute(null));
+            Task.Run(() => messagesVM.GetReviewCount());
+
+            Points.BindingContext = UsersViewModel.Instance;
+
+            //brand-related
+            Star.BindingContext = _brandLocal;
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Back_Clicked(object sender, EventArgs e)

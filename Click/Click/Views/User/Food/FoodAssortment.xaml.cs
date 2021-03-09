@@ -75,7 +75,7 @@ namespace Click.Views.User.Food
 
         private void Reviews_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Reviews());
+            Navigation.PushModalAsync(new Reviews(brandLocal));
         }
     }
 }
