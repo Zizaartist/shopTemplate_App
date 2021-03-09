@@ -34,7 +34,7 @@ namespace Click.Views.User.Food
 
         private void Find_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new FindFood());
         }
 
         private void OrganisationCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)

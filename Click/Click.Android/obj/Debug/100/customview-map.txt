@@ -30,6 +30,7 @@ foreground;obj\Debug\100\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\100\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\lp\45\jl\res\layout\bottomtablayout.xml
 item;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\lp\45\jl\res\values\styles.xml
+item;obj\Debug\100\res\values\styles.xml
 LinearLayout;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\lp\45\jl\res\layout\bottomtablayout.xml
 paths;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\lp\44\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\lp\45\jl\res\values\attrs.xml

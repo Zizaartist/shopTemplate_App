@@ -44,6 +44,9 @@
     <EmbeddedResource Update="Views\User\Food\DescriptionOrganization.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\User\Food\FindFood.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\User\Food\FoodAssortment.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -70,6 +73,9 @@
   <ItemGroup>
     <Compile Update="Views\User\Flowers\DescriptionOrganizationFlowers.xaml.cs">
       <DependentUpon>DescriptionOrganizationFlowers.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\User\Flowers\FindFlowers.xaml.cs">
+      <DependentUpon>FindFlowers.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\User\Flowers\FlowersAssortment.xaml.cs">
       <DependentUpon>FlowersAssortment.xaml</DependentUpon>

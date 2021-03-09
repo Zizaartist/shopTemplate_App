@@ -1254,3 +1254,4 @@ C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\temp28.png
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\backblack.png
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\bonusicongray.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\grayfind.png

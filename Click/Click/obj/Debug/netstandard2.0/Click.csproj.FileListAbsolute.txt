@@ -54,3 +54,5 @@ C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Flowers\ReviewsFlowers.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Flowers\SubFlowersAssortment.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\BonusHistory.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Food\FindFood.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Flowers\FindFlowers.xaml.g.cs
