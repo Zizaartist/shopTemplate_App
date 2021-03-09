@@ -4,65 +4,70 @@
              x:Class="Click.Views.User.BonusHistory"
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
-        <CollectionView x:Name="BonusCollection"
-                        ItemsSource="{Binding Bonuss}"
+        <RefreshView x:Name="Refreshable"
+                            IsRefreshing="{Binding GetDataLock, Mode=OneWay}"
+                            Command="{Binding GetInitialData}">
+            <CollectionView x:Name="BonusCollection"
+                        ItemsSource="{Binding PointRegisters}"
                         SelectionMode="None">
-            <CollectionView.Header>
-                <Grid RowDefinitions="Auto,Auto">
-                    <Grid Style="{StaticResource HeaderGrid}"
+                <CollectionView.Header>
+                    <Grid RowDefinitions="Auto,Auto">
+                        <Grid Style="{StaticResource HeaderGrid}"
                           BackgroundColor="{StaticResource WhiteColor}">
-                        <ImageButton x:Name="Back"
+                            <ImageButton x:Name="Back"
                                      Clicked="Back_Clicked"
                                      Source="BackBlack.png"
                                      Style="{StaticResource BackButton}"/>
-                        <Label Text="Еда"
+                            <Label Text="Еда"
                                Style="{StaticResource HeaderBlackLabelBold}"
                                Margin="10,0,0,0"
                                Grid.Column="1"/>
-                        <Label Text="У Вас 0"
+                            <Label x:Name="Points"
+                                Text="{Binding Points, StringFormat='У Вас {0}'}"
                                Style="{StaticResource BlackLabelMedium}"
                                Margin="0,0,10,0"
                                Grid.Column="2"/>
-                        <ImageButton x:Name="Bonus"
+                            <ImageButton x:Name="Bonus"
                                      Style="{StaticResource BonusButton}"
                                      Source="BonusIconGray.png"
                                      Grid.Column="3"/>
-                    </Grid>
-                    <Label Style="{StaticResource GrayMediumLabelBold}"
+                        </Grid>
+                        <Label Style="{StaticResource GrayMediumLabelBold}"
                            Grid.Row="1"
                            Padding="20,0,20,0"
                            Text="История"/>
-                </Grid>
-            </CollectionView.Header>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="0,10,0,10">
-                        <Frame Style="{StaticResource ReviewsFrameList}"
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,10,0,10">
+                            <Frame Style="{StaticResource ReviewsFrameList}"
                                Padding="25,10,25,10"
                                CornerRadius="10">
-                            <Grid RowDefinitions="Auto"
+                                <Grid RowDefinitions="Auto"
                                   ColumnDefinitions="*,Auto">
-                                <Grid RowDefinitions="Auto,Auto">
-                                    <Label Style="{StaticResource SmallBlackLabel}"
+                                    <Grid RowDefinitions="Auto,Auto">
+                                        <Label Style="{StaticResource SmallBlackLabel}"
                                            Text="Начисление баллов за заказ"/>
-                                    <Label Style="{StaticResource GraySmallLabel}"
-                                           Text="{Binding Date}"
+                                        <Label Style="{StaticResource GraySmallLabel}"
+                                           Text="{Binding PointRegister.CreatedDate, StringFormat='{0:dd MMMM yyyy, HH:mm}'}"
                                            Grid.Row="1"/>
-                                </Grid>
-                                <Grid ColumnDefinitions="Auto,Auto"
+                                    </Grid>
+                                    <Grid ColumnDefinitions="Auto,Auto"
                                       Grid.Column="1">
-                                    <Label Style="{StaticResource MediumGreenLabel}"
-                                           Text="{Binding Ball}"/>
-                                    <ImageButton x:Name="Bonus"
+                                        <Label Style="{StaticResource MediumGreenLabel}"
+                                           Text="{Binding Value}"/>
+                                        <ImageButton x:Name="Bonus"
                                                  Source="BonusIconGray.png"
                                                  Style="{StaticResource BonusButton}"
                                                  Grid.Column="1"/>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

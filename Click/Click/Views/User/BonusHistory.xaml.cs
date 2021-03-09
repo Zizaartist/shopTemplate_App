@@ -16,7 +16,18 @@ namespace Click.Views.User
         public BonusHistory()
         {
             InitializeComponent();
-            BonusCollection.BindingContext = new BonusViewModel();
+
+            Points.BindingContext = UsersViewModel.Instance;
+
+            var pointRegisterVM = new PointRegisterViewModel();
+            Refreshable.BindingContext = pointRegisterVM;
+            Task.Run(() => pointRegisterVM.GetInitialData.Execute(null));
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Back_Clicked(object sender, EventArgs e)
