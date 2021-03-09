@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Click.Converters"
+             x:Class="Click.Views.User.Food.FindFood">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:RatingConverter x:Key="ratingConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <RefreshView x:Name="Refreshable"
+                            IsRefreshing="{Binding GetDataLock, Mode=OneWay}"
+                            Command="{Binding GetInitialData}">
+            <CollectionView x:Name="OrganisationCollection"
+                        ItemsSource="{Binding BrandInfos}"
+                        SelectionMode="Single"
+                        SelectionChanged="OrganisationCollection_SelectionChanged">
+                <CollectionView.Header>
+                    <Grid Style="{StaticResource HeaderGrid}">
+                        <ImageButton x:Name="Back"
+                                 Clicked="Back_Clicked"
+                                 Style="{StaticResource BackButton}"/>
+                        <Frame Style="{StaticResource FindFrame}"
+                           Grid.Column="1">
+                            <Grid ColumnDefinitions="Auto, *"
+                              RowDefinitions="Auto">
+                                <Image Source="GrayFind.png"
+                                   Style="{StaticResource GrayFindImage}"/>
+                                <Entry Style="{StaticResource EntryFind}"
+                                   x:Name="EntryFind"
+                                    Text="{Binding NameCriteria, Mode=TwoWay}"
+                                   Placeholder="Поиск"
+                                   Grid.Column="1"/>
+                            </Grid>
+                        </Frame>
+                        <Button Text="Искать"
+                            x:Name="Find"
+                            Command="{Binding GetInitialData}"
+                            Style="{StaticResource OrangeButton}"
+                            Grid.Column="2"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,10,0,0"
+                          RowDefinitions="Auto"
+                          Margin="0,0,0,10">
+                            <Frame Style="{StaticResource BannerFrame}">
+                                <Grid RowDefinitions="Auto,Auto,*">
+                                    <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto"
+                                      Padding="20,0,20,0">
+                                        <Grid Style="{StaticResource StarGridBackground}"
+                                          HorizontalOptions="Center">
+                                            <Grid Style="{StaticResource StarGrid}"
+                                                WidthRequest="{Binding Brand.Rating, Converter={StaticResource ratingConverter}, ConverterParameter={x:Reference Star}}"
+                                              x:Name="Star"/>
+                                            <Image Style="{StaticResource StarRating}"/>
+                                        </Grid>
+                                        <Image Source="BankCard.png"
+                                            IsVisible="{Binding BankPayment}"
+                                           Style="{StaticResource BankCard}"
+                                           Grid.Column="1"/>
+                                        <Image Source="Money.png"
+                                            IsVisible="{Binding CashPayment}"
+                                           Style="{StaticResource Money}"
+                                           Grid.Column="2"/>
+                                        <Image Source="FoodTime.png"
+                                           Style="{StaticResource FoodTime}"
+                                           Grid.Column="3"/>
+                                        <Label Text="{Binding Brand.DeliveryTime}"
+                                           Style="{StaticResource VerySmallOrangeLabel}"
+                                           Grid.Column="4"/>
+                                        <Image Source="Discount.png"
+                                            IsVisible="{Binding Brand.HasDiscounts}"
+                                           Grid.Column="5"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1"
+                                      ColumnDefinitions="Auto,*"
+                                      Padding="20,0,20,0">
+                                        <Label Text="{Binding Brand.BrandName}"
+                                           Style="{StaticResource BlackLabel}"/>
+                                        <Label Text="{Binding Tags}"
+                                           Style="{StaticResource SmallBlackLabel}"
+                                           HorizontalTextAlignment="End"
+                                           HorizontalOptions="End"
+                                           Grid.Column="1"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2"
+                                      VerticalOptions="End">
+                                        <Image Source="{Binding Banner}"
+                                           Style="{StaticResource BannerCompanyImage}"/>
+                                        <Frame Style="{StaticResource LogoFrame}">
+                                            <Image Source="{Binding Logo}"
+                                               Style="{StaticResource LogoImage}"/>
+                                        </Frame>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

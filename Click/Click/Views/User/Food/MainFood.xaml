@@ -136,12 +136,14 @@
                                                    Grid.Column="5"/>
                                     </Grid>
                                     <Grid Grid.Row="1"
-                                              ColumnDefinitions="Auto,Auto"
+                                              ColumnDefinitions="Auto,*"
                                               Padding="20,0,20,0">
                                         <Label Text="{Binding Brand.BrandName}"
                                                    Style="{StaticResource BlackLabel}"/>
                                         <Label Text="{Binding Tags}"
                                                    Style="{StaticResource SmallBlackLabel}"
+                                                   HorizontalTextAlignment="End"
+                                                   HorizontalOptions="End"
                                                    Grid.Column="1"/>
                                     </Grid>
                                     <Grid Grid.Row="2"

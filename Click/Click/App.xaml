@@ -185,6 +185,17 @@
             <Setter Property="Padding" Value="10"/>
             <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
         </Style>
+        <Style x:Key="FindFrame" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="WidthRequest" Value="260"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource GrayColorLight}"/>
+        </Style>
+        <!--Entries-->
         <!--#endregion-->
         <!--#region Entries-->
         <Style x:Key="EntryGray" TargetType="Entry">
@@ -198,6 +209,19 @@
             <Setter Property="HeightRequest" Value="50"/>
             <Setter Property="WidthRequest" Value="320"/>
         </Style>
+        <Style x:Key="EntryFind" TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="PlaceholderColor" Value="{DynamicResource GrayColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="WidthRequest" Value="210"/>
+        </Style>
+        <!--Buttons-->
         <!--#endregion-->
         <!--#region Buttons-->
         <Style x:Key="GreenButton" TargetType="Button">
@@ -307,6 +331,19 @@
         </Style>
         <!--#endregion-->
         <!--#region Images-->
+        <Style x:Key="OrangeButton" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="End"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="{DynamicResource OrangeColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="WidthRequest" Value="70"/>
+            <Setter Property="HeightRequest" Value="30"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="FontSize" Value="{DynamicResource MediumFont}"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <!--Images-->
         <Style x:Key="RegistrationImage" TargetType="Image">
             <Setter Property="WidthRequest" Value="290"/>
             <Setter Property="HeightRequest" Value="90"/>
@@ -441,6 +478,15 @@
         </Style>
         <!--#endregion-->
         <!--#region ImageButton-->
+        <Style x:Key="GrayFindImage" TargetType="Image">
+            <Setter Property="WidthRequest" Value="15"/>
+            <Setter Property="HeightRequest" Value="15"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Aspect" Value="AspectFit"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <!--ImageButton-->
         <Style x:Key="ChoiceButton" TargetType="ImageButton">
             <Setter Property="BackgroundColor" Value="Transparent"/>
             <Setter Property="WidthRequest" Value="90"/>

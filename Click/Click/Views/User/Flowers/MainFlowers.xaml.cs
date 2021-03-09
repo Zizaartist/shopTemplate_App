@@ -56,7 +56,7 @@ namespace Click.Views.User.Flowers
 
         private void Find_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new FindFlowers());
         }
 
         private void OrganisationCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)

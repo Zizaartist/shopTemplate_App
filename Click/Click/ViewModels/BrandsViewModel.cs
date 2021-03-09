@@ -169,6 +169,7 @@ namespace Click.ViewModels
             }
         }
 
+        //Без пагинации
         public async Task GetDataByName()
         {
             try
@@ -176,11 +177,9 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Отправляем список хэштегов, даже будучи пустым
-                var serializedObj = JsonConvert.SerializeObject(SelectedHashtags.Select(e => e.Hashtag.HashTagId).ToList());
-                StringContent data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(ApiStrings.API_HOST + "api/" +
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
                                                                         ApiStrings.API_BRANDS_GET_BY_NAME + (int)category +
-                                                                        "?name", data);
+                                                                        (!string.IsNullOrEmpty(NameCriteria) ? $"?name={nameCriteria}" : ""));
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
