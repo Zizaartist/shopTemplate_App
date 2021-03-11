@@ -72,6 +72,12 @@
     <EmbeddedResource Update="Views\User\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\User\Orders\OrdersMain.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\User\Orders\OrdersReview.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\User\Water\MainWater.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -99,5 +105,10 @@
     <Compile Update="Views\User\Flowers\SubFlowersAssortment.xaml.cs">
       <DependentUpon>SubFlowersAssortment.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\User\Basket\" />
+    <Folder Include="Views\User\Profile\" />
   </ItemGroup>
 </Project>

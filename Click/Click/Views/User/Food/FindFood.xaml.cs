@@ -36,7 +36,11 @@ namespace Click.Views.User.Food
                 var selectedBrand = OrganisationCollection.SelectedItem as BrandLocal;
                 OrganisationCollection.SelectedItem = null;
                 Navigation.PushModalAsync(new FoodAssortment(selectedBrand));
-            }
+        }
+
+        private void Find_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

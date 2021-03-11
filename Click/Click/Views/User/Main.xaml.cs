@@ -1,6 +1,7 @@
 ﻿using Click.ViewModels;
 using Click.Views.User.Flowers;
 using Click.Views.User.Food;
+using Click.Views.User.Orders;
 using Click.Views.User.Water;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,7 @@ namespace Click.Views.User
 
         private void Orders_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new OrdersMain());
         }
 
         private void Main_Clicked(object sender, EventArgs e)

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Orders.OrdersMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,Auto">
+            <CollectionView x:Name="OrderCollection"
+                            ItemsSource="{Binding Orders}"
+                            Margin="0,0,0,-10">
+                <CollectionView.Header>
+                    <Grid Style="{StaticResource HeaderGrid}"
+                              BackgroundColor="{StaticResource WhiteColor}">
+                        <Label Text="Мои заказы"
+                                   Style="{StaticResource HeaderBlackLabelBold}"
+                                   Margin="10,0,0,0"
+                                   Grid.Column="0"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto,Auto,Auto"
+                              Padding="10">
+                            <Frame Style="{StaticResource MainBannerFrame}">
+                                <Grid RowDefinitions="Auto,Auto,Auto">
+                                    <Image Source="{Binding Banner}"
+                                           Style="{StaticResource BannerImage}"/>
+                                    <Label Text="{Binding Title}"
+                                           Style="{StaticResource WhiteBoldLabel}"
+                                           Margin="20,15,20,0"
+                                           Grid.Row="1"/>
+                                    <Label Text="{Binding Description}"
+                                           Style="{StaticResource WhiteLabel}"
+                                           Margin="20,0,20,0"
+                                           Grid.Row="2"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*"
+                  Grid.Row="1"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="MainButton"
+                             Clicked="Main_Clicked"
+                             Source="HomeIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Row="1"
+                       Text="Главная"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             x:Name="OrdersButton"
+                             Clicked="Orders_Clicked"
+                             Source="OrdersIconSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             x:Name="BasketButton"
+                             Clicked="Basket_Clicked"
+                             Source="BasketIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Корзина"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="ProfileButton"
+                             Clicked="Profile_Clicked"
+                             Grid.Column="3"
+                             Source="ProfileIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Профиль"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
