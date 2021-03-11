@@ -19,8 +19,8 @@ namespace Click.ViewModels
 
         public PointRegisterViewModel()
         {
-            GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
-            GetMoreData = new GetDataCommand(async () => await GetRemoteData(), value => GetDataLock = value, () => GetDataLock);
+            GetInitialData = NewGetDataCommand(GetInitial);
+            GetMoreData = NewGetDataCommand(GetRemoteData);
         }
 
         #endregion
@@ -30,11 +30,11 @@ namespace Click.ViewModels
         public async Task GetInitial()
         {
             PointRegisters.Clear();
-            Page = 0;
+            NextPage = 0;
 
             try
             {
-                await GetMoreData.ExecuteAsSubtask();
+                await GetMoreData.ExecuteAsSubTask();
             }
             catch (NoConnectionException)
             {
@@ -56,7 +56,7 @@ namespace Click.ViewModels
 
                 //Получение всех продуктов по id меню
                 HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                        ApiStrings.API_POINT_REGISTERS_CONTROLLER + Page);
+                                                                        ApiStrings.API_POINT_REGISTERS_CONTROLLER + NextPage);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();

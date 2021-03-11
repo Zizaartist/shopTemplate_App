@@ -61,8 +61,9 @@ namespace Click.Views.User.Flowers
         {
             if (e.CurrentSelection.Any())
             {
+                var brandMenuLocal = CategoriesCollection.SelectedItem as BrandMenuLocal;
                 CategoriesCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new SubFlowersAssortment());
+                Navigation.PushModalAsync(new SubFlowersAssortment(brandMenuLocal));
             }
         }
 

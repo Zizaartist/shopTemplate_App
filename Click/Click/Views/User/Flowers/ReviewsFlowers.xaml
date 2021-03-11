@@ -5,111 +5,115 @@
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
         <Grid>
-            <CollectionView x:Name="ReviewsCollection"
+            <RefreshView x:Name="Refreshable"
+                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            Command="{Binding GetInitialData}">
+                <CollectionView x:Name="ReviewsCollection"
                             ItemsSource="{Binding Reviewss}"
                             SelectionMode="Single"
                             SelectionChanged="ReviewsCollection_SelectionChanged">
-                <CollectionView.Header>
-                    <Grid RowDefinitions="Auto,Auto,Auto,Auto">
-                        <Grid Style="{StaticResource HeaderGrid}"
+                    <CollectionView.Header>
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+                            <Grid Style="{StaticResource HeaderGrid}"
                               BackgroundColor="{StaticResource GreenColor}">
-                            <ImageButton x:Name="Back"
+                                <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
-                            <Label Text="Time Flowers"
+                                <Label Text="Time Flowers"
                                    Style="{StaticResource WhiteHeaderLabel}"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
-                            <Label Text="У Вас 0"
+                                <Label Text="У Вас 0"
                                    Style="{StaticResource WhiteMediumLabel}"
                                    Margin="0,0,10,0"
                                    Grid.Column="2"/>
-                            <ImageButton x:Name="Bonus"
+                                <ImageButton x:Name="Bonus"
                                          Clicked="Bonus_Clicked"
                                          Style="{StaticResource BonusButton}"
                                          Grid.Column="3"/>
-                        </Grid>
-                        <Grid Grid.Row="1" 
+                            </Grid>
+                            <Grid Grid.Row="1" 
                               ColumnDefinitions="Auto,Auto"
                               Padding="20,10,20,10">
-                            <Frame CornerRadius="15"
+                                <Frame CornerRadius="15"
                                    WidthRequest="70"
                                    HeightRequest="20"
                                    BackgroundColor="{StaticResource WhiteColor}"
                                    Padding="0">
-                                <Grid Style="{StaticResource StarGridBackground}"
+                                    <Grid Style="{StaticResource StarGridBackground}"
                                       HorizontalOptions="Center">
-                                    <Grid Style="{StaticResource StarGrid}"
+                                        <Grid Style="{StaticResource StarGrid}"
                                           x:Name="Star"/>
-                                    <Image Style="{StaticResource StarRating}"/>
-                                </Grid>
-                            </Frame>
-                            <Label Text="(562)"
+                                        <Image Style="{StaticResource StarRating}"/>
+                                    </Grid>
+                                </Frame>
+                                <Label Text="(562)"
                                    Style="{StaticResource GrayVerySmallLabel}"
                                    Grid.Column="1"/>
-                        </Grid>
-                        <Grid Grid.Row="2" ColumnDefinitions="*,*"
+                            </Grid>
+                            <Grid Grid.Row="2" ColumnDefinitions="*,*"
                               Padding="20,10,20,10">
-                            <Frame Style="{StaticResource FrameReviewsOne}">
-                                <Label Style="{StaticResource SmallBlackLabel}"
+                                <Frame Style="{StaticResource FrameReviewsOne}">
+                                    <Label Style="{StaticResource SmallBlackLabel}"
                                        Text="Рейтинг складывается из оценок клиентов, скорости доставки"
                                        HorizontalOptions="Center"/>
-                            </Frame>
-                            <Frame Grid.Column="1"
+                                </Frame>
+                                <Frame Grid.Column="1"
                                    Style="{StaticResource FrameReviewsTwo}">
-                                <Label Style="{StaticResource SmallBlackLabel}"
+                                    <Label Style="{StaticResource SmallBlackLabel}"
                                        HorizontalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Всего "/>
-                                            <Span Text="562"/>
-                                            <Span Text=" оценки"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </Frame>
-                        </Grid>
-                        <Label Style="{StaticResource HeaderBlackLabelBold}"
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Всего "/>
+                                                <Span Text="562"/>
+                                                <Span Text=" оценки"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Frame>
+                            </Grid>
+                            <Label Style="{StaticResource HeaderBlackLabelBold}"
                                Grid.Row="3"
                                Padding="20,0,20,0">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="562"/>
-                                    <Span Text=" отзыва"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </Grid>
-                </CollectionView.Header>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="20,10,20,10"
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="562"/>
+                                        <Span Text=" отзыва"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="20,10,20,10"
                               ColumnDefinitions="Auto, *">
-                            <Image Source="{Binding RatingImage}"
+                                <Image Source="{Binding RatingImage}"
                                    Style="{StaticResource RatingImage}"/>
-                            <Frame Grid.Column="1"
+                                <Frame Grid.Column="1"
                                    Style="{StaticResource ReviewsFrameList}">
-                                <Grid RowDefinitions="Auto,Auto,Auto">
-                                    <Label Text="{Binding Text}"
+                                    <Grid RowDefinitions="Auto,Auto,Auto">
+                                        <Label Text="{Binding Text}"
                                            Style="{StaticResource SmallBlackLabel}"
                                            HorizontalTextAlignment="Start"/>
-                                    <Label Text="{Binding Goods}"
+                                        <Label Text="{Binding Goods}"
                                            Style="{StaticResource GrayVerySmallLabel}"
                                            Grid.Row="1"/>
-                                    <Grid ColumnDefinitions="Auto,Auto"
+                                        <Grid ColumnDefinitions="Auto,Auto"
                                           Grid.Row="2">
-                                        <Label Text="{Binding Date}"
+                                            <Label Text="{Binding Date}"
                                                Style="{StaticResource GrayVerySmallLabel}"/>
-                                        <Label Text="{Binding Name}"
+                                            <Label Text="{Binding Name}"
                                                Style="{StaticResource VerySmallBlackLabelBold}"
                                                Grid.Column="1"/>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

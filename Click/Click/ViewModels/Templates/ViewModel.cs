@@ -1,5 +1,6 @@
 ﻿using Akavache;
 using Click.StaticValues;
+using MvvmHelpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +16,8 @@ using Xamarin.Essentials;
 namespace Click.ViewModels
 {
     //Создал чисто ради сокращения повторяемого кода
-    public class ViewModel : INotifyPropertyChanged
+    public abstract class ViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
         protected async Task<HttpClient> createUserClient() 
         {
             HttpClient client = HttpClientSingleton.Instance;
@@ -77,30 +71,5 @@ namespace Click.ViewModels
         {
             return !isConnected ? new NoConnectionException() : e;
         }
-
-        //protected async Task<bool> tryToGetFromCache<T>(T container, string cacheKey, CacheFunctions.BlobCaches cacheType)
-        //{
-        //    //Сбраcываем содержимое
-        //    container = default;
-
-        //    //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
-        //    T cachedObject = await new CacheFunctions().tryToGet<T>(cacheKey, cacheType);
-
-        //    //Если кэшированный объект найден - присваивание
-        //    if (cachedObject != null)
-        //    {
-        //        //Проверяем является ли тип наследуемым от ICollection
-        //        if (cachedObject.GetType().GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>)))
-        //        {
-        //            foreach ()
-        //            {
-        //            }
-        //        }
-        //        else 
-        //        {
-        //            container = cachedObject;
-        //        }
-        //    }
-        //}
     }
 }

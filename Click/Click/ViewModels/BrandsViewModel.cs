@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections.Specialized;
 using Click.Models.LocalModels;
+using MvvmHelpers;
 
 namespace Click.ViewModels
 {
@@ -67,25 +68,25 @@ namespace Click.ViewModels
                 SelectedHashtags.CollectionChanged += handler; //При любом изменении коллекции выбранных хэштегов запрашивать данные
             }
 
-            GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
+            GetInitialData = NewGetDataCommand(GetInitial);
             if (_nameSearchMode)
             {
-                GetMoreData = new GetDataCommand(async () => await GetDataByName(), value => GetDataLock = value, () => GetDataLock);
+                GetMoreData = NewGetDataCommand(GetDataByName);
             }
             else
             {
-                GetMoreData = new GetDataCommand(async () => await GetRemoteData(), value => GetDataLock = value, () => GetDataLock);
+                GetMoreData = NewGetDataCommand(GetRemoteData);
             }
         }
 
         public async Task GetInitial()
         {
             Brands.Clear();
-            Page = 0;
+            NextPage = 0;
 
             try
             {
-                await GetMoreData.ExecuteAsSubtask();
+                await GetMoreData.ExecuteAsSubTask();
             }
             catch (NoConnectionException)
             {
@@ -109,7 +110,7 @@ namespace Click.ViewModels
                 StringContent data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(ApiStrings.API_HOST + "api/" + 
                                                                         ApiStrings.API_BRANDS_GET_BY_FILTER + (int)category +
-                                                                        "/" + Page +
+                                                                        "/" + NextPage +
                                                                         "?openNow=" + (IsWorkingCriteria ? "true" : "false"), data);
                 if (response.IsSuccessStatusCode)
                 {
@@ -156,7 +157,7 @@ namespace Click.ViewModels
             {
                 try
                 {
-                    GetInitialData.Execute(null);
+                    await GetInitialData.ExecuteAsSubTask();
                 }
                 catch (NoConnectionException)
                 {

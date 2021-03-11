@@ -17,14 +17,11 @@ namespace Click.Views.User.Food
     {
         private static Category CATEGORY = Category.food;
 
-        private BrandsViewModel brandsVM;
-
         public FindFood()
         {
             InitializeComponent();
 
-            brandsVM = new BrandsViewModel(CATEGORY, true);
-            BindingContext = brandsVM;
+            BindingContext = new BrandsViewModel(CATEGORY, true);
         }
 
         private void Back_Clicked(object sender, EventArgs e)

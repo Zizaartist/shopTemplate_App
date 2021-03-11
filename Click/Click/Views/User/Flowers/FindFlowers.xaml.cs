@@ -17,14 +17,11 @@ namespace Click.Views.User.Flowers
     {
         private static Category CATEGORY = Category.flowers;
 
-        private BrandsViewModel brandsVM;
-
         public FindFlowers()
         {
             InitializeComponent();
 
-            brandsVM = new BrandsViewModel(CATEGORY, true);
-            BindingContext = brandsVM;
+            BindingContext = new BrandsViewModel(CATEGORY, true);
         }
 
         private void Back_Clicked(object sender, EventArgs e)

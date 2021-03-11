@@ -3,6 +3,7 @@ using ApiClick.Models;
 using Click.Models;
 using Click.Models.LocalModels;
 using Click.StaticValues;
+using MvvmHelpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Click.ViewModels
 {
     public class BrandMenuViewModel : CollectionViewModel
     {
-        public ObservableCollection<BrandMenuLocal> BrandMenus { get; } = new ObservableCollection<BrandMenuLocal>();
+        public ObservableRangeCollection<BrandMenuLocal> BrandMenus { get; } = new ObservableRangeCollection<BrandMenuLocal>();
 
         private Brand brand;
 
@@ -26,7 +27,7 @@ namespace Click.ViewModels
         {
             brand = _brand;
 
-            GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
+            GetInitialData = NewGetDataCommand(GetInitial);
         }
 
         public async Task GetInitial()
@@ -88,7 +89,7 @@ namespace Click.ViewModels
             {
                 try
                 {
-                    GetInitialData.Execute(null);
+                    await GetInitialData.ExecuteAsSubTask();
                 }
                 catch (NoConnectionException)
                 {

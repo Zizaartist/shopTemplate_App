@@ -50,18 +50,18 @@ namespace Click.ViewModels
         public MessagesViewModel(int? _brandId = null) 
         {
             brandId = _brandId;
-            GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
-            GetMoreData = new GetDataCommand(async () => await GetRemoteData(), value => GetDataLock = value, () => GetDataLock);
+            GetInitialData = NewGetDataCommand(GetInitial);
+            GetMoreData = NewGetDataCommand(GetRemoteData);
         }
 
         public async Task GetInitial() 
         {
             Messages.Clear();
-            Page = 0;
+            NextPage = 0;
 
             try
             {
-                await GetMoreData.ExecuteAsSubtask();
+                await GetMoreData.ExecuteAsSubTask();
             }
             catch (NoConnectionException)
             {
@@ -81,14 +81,14 @@ namespace Click.ViewModels
 
                 //Получение всех брендов по id категории
                 HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                     ApiStrings.API_MESSAGES_GET_BY_BRAND + brandId + "/" + Page);
+                                                                     ApiStrings.API_MESSAGES_GET_BY_BRAND + brandId + "/" + NextPage);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     List<Message> tempList = JsonConvert.DeserializeObject<List<Message>>(result);
                     if (tempList.Count != 0)
                     {
-                        Page++;
+                        NextPage++;
                     }
 
                     foreach (var item in tempList)

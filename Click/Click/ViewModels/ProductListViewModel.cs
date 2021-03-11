@@ -55,8 +55,8 @@ namespace Click.ViewModels
         {
             menu = _menu;
 
-            GetInitialData = new GetDataCommand(async () => await GetInitial(), value => GetDataLock = value, () => GetDataLock);
-            GetMoreData = new GetDataCommand(async () => await GetRemoteData(), value => GetDataLock = value, () => GetDataLock);
+            GetInitialData = NewGetDataCommand(GetInitial);
+            GetMoreData = NewGetDataCommand(GetRemoteData);
 
             ProductLists.CollectionChanged += (sender, e) => UpdateBindings();
         }
@@ -64,11 +64,11 @@ namespace Click.ViewModels
         public async Task GetInitial()
         {
             ProductLists.Clear();
-            Page = 0;
+            NextPage = 0;
 
             try
             {
-                await GetMoreData.ExecuteAsSubtask();
+                await GetMoreData.ExecuteAsSubTask();
             }
             catch (NoConnectionException)
             {
@@ -89,7 +89,7 @@ namespace Click.ViewModels
                 //Получение всех продуктов по id меню
                 HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
                                                                         ApiStrings.API_PRODUCTS_GET_BY_MENU + menu.BrandMenuId + 
-                                                                        "/" + Page);
+                                                                        "/" + NextPage);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
@@ -140,7 +140,7 @@ namespace Click.ViewModels
             {
                 try
                 {
-                    GetInitialData.Execute(null);
+                    await GetInitialData.ExecuteAsSubTask();
                 }
                 catch (NoConnectionException)
                 {
