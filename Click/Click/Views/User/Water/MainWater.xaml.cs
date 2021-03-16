@@ -24,12 +24,12 @@ namespace Click.Views.User.Water
 
         private void Bonus_Clicked(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Bootle_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new BootleBrand());
         }
 
         private void Vodovoz_Clicked(object sender, EventArgs e)

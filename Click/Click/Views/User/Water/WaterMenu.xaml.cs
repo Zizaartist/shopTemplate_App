@@ -19,12 +19,13 @@ namespace Click.Views.User.Water
 
         private void Back_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PopModalAsync();
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)
         {
 
         }
+
     }
 }

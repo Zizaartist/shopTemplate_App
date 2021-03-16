@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:Click.ViewModels" x:DataType="viewmodels:WaterCompanyViewModels"
+             x:Class="Click.Views.User.Water.BootleBrand">
+    <ContentPage.Content>
+        <CollectionView x:Name="BootleCollection"
+                        ItemsSource="{Binding WaterCompanies }"
+                        SelectionMode="None">
+            <CollectionView.Header>
+                 <Frame>
+                       <Grid RowDefinitions="Auto, *">
+                            <Grid BackgroundColor="#1D9BD5"
+                                  HeightRequest="64"
+                                  VerticalOptions="Center"
+                                  ColumnDefinitions="Auto,*,Auto,Auto"
+                                  RowDefinitions="*">
+                                  <ImageButton HeightRequest="25" 
+                                               WidthRequest="25"
+                                               BackgroundColor="Transparent"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center"
+                                               Margin="20,0,20,0"
+                                               Source="Back.png"
+                                               Aspect="AspectFit"
+                                               x:Name="Back"
+                                               Clicked="Back_Clicked"/>
+                                  <Label Text="Вода" 
+                                         TextColor="#FFFFFF" 
+                                         FontSize="20"
+                                         HorizontalOptions="Start" 
+                                         VerticalOptions="Center" 
+                                         Grid.Column="1"/>
+                                  <Label Text="У Вас 0" 
+                                         TextColor="#FFFFFF" 
+                                         FontSize="16"
+                                         HorizontalOptions="Center" 
+                                         VerticalOptions="Center" 
+                                         Grid.Column="2"/>
+                                  <ImageButton HeightRequest="25"
+                                               WidthRequest="25"
+                                               BackgroundColor="Transparent"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center"
+                                               Margin="20,0,20,0"
+                                               Source="BonusIcon.png"
+                                               Aspect="AspectFit"
+                                               Grid.Column="3"
+                                               x:Name="Bonus"
+                                               Clicked="Bonus_Clicked"/>
+                            </Grid>
+                       </Grid>
+                 </Frame>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="15,0,10,0"
+                          Margin="25">
+                    <Frame Padding="25,10,25,10"
+                           CornerRadius="10"
+                           Margin="0,5,0,5">
+                            <Grid RowDefinitions="Auto"
+                              ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding WaterCompanies}"/>
+                            </Grid>
+                    </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </ContentPage.Content>
+</ContentPage>
