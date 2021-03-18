@@ -1,70 +1,133 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:Click.ViewModels" x:DataType="viewmodels:WaterCompanyViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:Click.ViewModels" 
              x:Class="Click.Views.User.Water.BootleBrand">
     <ContentPage.Content>
         <CollectionView x:Name="BootleCollection"
                         ItemsSource="{Binding WaterCompanies }"
                         SelectionMode="None">
             <CollectionView.Header>
-                 <Frame>
-                       <Grid RowDefinitions="Auto, *">
-                            <Grid BackgroundColor="#1D9BD5"
-                                  HeightRequest="64"
-                                  VerticalOptions="Center"
-                                  ColumnDefinitions="Auto,*,Auto,Auto"
-                                  RowDefinitions="*">
-                                  <ImageButton HeightRequest="25" 
-                                               WidthRequest="25"
-                                               BackgroundColor="Transparent"
-                                               VerticalOptions="Center"
-                                               HorizontalOptions="Center"
-                                               Margin="20,0,20,0"
-                                               Source="Back.png"
-                                               Aspect="AspectFit"
-                                               x:Name="Back"
-                                               Clicked="Back_Clicked"/>
-                                  <Label Text="Вода" 
-                                         TextColor="#FFFFFF" 
-                                         FontSize="20"
-                                         HorizontalOptions="Start" 
-                                         VerticalOptions="Center" 
-                                         Grid.Column="1"/>
-                                  <Label Text="У Вас 0" 
-                                         TextColor="#FFFFFF" 
-                                         FontSize="16"
-                                         HorizontalOptions="Center" 
-                                         VerticalOptions="Center" 
-                                         Grid.Column="2"/>
-                                  <ImageButton HeightRequest="25"
-                                               WidthRequest="25"
-                                               BackgroundColor="Transparent"
-                                               VerticalOptions="Center"
-                                               HorizontalOptions="Center"
-                                               Margin="20,0,20,0"
-                                               Source="BonusIcon.png"
-                                               Aspect="AspectFit"
-                                               Grid.Column="3"
-                                               x:Name="Bonus"
-                                               Clicked="Bonus_Clicked"/>
-                            </Grid>
-                       </Grid>
-                 </Frame>
-            </CollectionView.Header>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="15,0,10,0"
-                          Margin="25">
-                    <Frame Padding="25,10,25,10"
-                           CornerRadius="10"
-                           Margin="0,5,0,5">
-                            <Grid RowDefinitions="Auto"
-                              ColumnDefinitions="*,Auto">
-                                <Label Text="{Binding WaterCompanies}"/>
-                            </Grid>
-                    </Frame>
+                <Grid RowDefinitions="Auto, Auto">
+                    <Grid BackgroundColor="#1D9BD5"
+                            HeightRequest="64"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="Auto,*,Auto,Auto"
+                            RowDefinitions="*">
+                        <ImageButton HeightRequest="25" 
+                                        WidthRequest="25"
+                                        BackgroundColor="Transparent"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Margin="20,0,20,0"
+                                        Source="Back.png"
+                                        Aspect="AspectFit"
+                                        x:Name="Back"
+                                        Clicked="Back_Clicked"/>
+                        <Label Text="Вода" 
+                                    TextColor="#FFFFFF" 
+                                    FontSize="20"
+                                    HorizontalOptions="Start" 
+                                    VerticalOptions="Center" 
+                                    Grid.Column="1"/>
+                        <Label Text="У Вас 0" 
+                                    TextColor="#FFFFFF" 
+                                    FontSize="16"
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="Center" 
+                                    Grid.Column="2"/>
+                        <ImageButton HeightRequest="25"
+                                        WidthRequest="25"
+                                        BackgroundColor="Transparent"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Margin="20,0,20,0"
+                                        Source="BonusIcon.png"
+                                        Aspect="AspectFit"
+                                        Grid.Column="3"
+                                        x:Name="Bonus"
+                                        Clicked="Bonus_Clicked"/>
                     </Grid>
-                </DataTemplate>
+                    <Grid ColumnDefinitions="Auto,*,Auto,Auto"
+                          Grid.Row="1">
+                        <Frame Padding="10,05,10,05">
+                            <Grid>
+                                <Image Source="rocket.png"
+                                                Grid.Column="0"
+                                                Grid.RowSpan="2"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                HeightRequest="58"
+                                                WidthRequest="58"/>
+                                <Label Text="Экспресс доставка"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                FontSize="Medium"
+                                                TextColor="#1D9BD5"
+                                                Grid.Column="1"
+                                                Grid.Row="0"/>
+                                <Label Text="в течении 30 мин"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                FontSize="Small"
+                                                TextColor="#525252"
+                                                Grid.Column="1"
+                                                Grid.Row="1"/>
+                                <Line X1="0"
+                                            Y1="0"
+                                            X2="0"
+                                            Y2="40"
+                                            Stroke="#525252"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Grid.Column="2"
+                                            Grid.RowSpan="2"/>
+                                <Label Text="150 р. обмен"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                FontSize="Small"
+                                                TextColor="#525252"
+                                                Grid.Column="3"
+                                                Grid.Row="0"/>
+                                <Label Text="600 р. с тарой"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                FontSize="Small"
+                                                TextColor="#525252"
+                                                Grid.Column="3"
+                                                Grid.Row="1"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </CollectionView.Header>
+            
+            <CollectionView.ItemTemplate>
+                 <DataTemplate>
+                      <Grid Padding="15,0,10,0"
+                           Margin="25">
+                           <Frame Padding="25,10,25,10"
+                                  CornerRadius="10"
+                                  Margin="0,5,0,5">
+                               
+                                <Grid RowDefinitions="Auto"
+                                      ColumnDefinitions="*,Auto">
+                               
+                                <Image Source="{Binding Images}"
+                                       Grid.Column="0"
+                                       Grid.RowSpan="2"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                                <Label Text="{Binding Name}"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"/>
+                                    
+                            </Grid>
+                           </Frame>
+                      </Grid>
+                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
