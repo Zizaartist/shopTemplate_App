@@ -1905,3 +1905,13 @@ C:\Users\efimp\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\stamp\_C
 C:\Users\efimp\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\stamp\_GenerateJavaStubs.stamp
 C:\Users\efimp\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\efimp\Documents\GitHub\Click\Click\Click.Android\obj\Debug\100\stamp\_ResolveLibraryProjectImports.stamp
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\wtemp1.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\wtemp2x.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\wtemp3.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\wtemp4.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\wtemp5.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\wtemp6.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\rocket.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\close.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\star.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\starwhite.png

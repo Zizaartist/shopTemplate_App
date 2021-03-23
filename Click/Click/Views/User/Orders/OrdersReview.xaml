@@ -1,12 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.User.Orders.OrdersReview">
+             x:Class="Click.Views.User.Orders.OrdersReview"
+             Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowDefinitions="Auto,*">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <Label Text="Отзыв"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="0"/>
+            </Grid>
+            <StackLayout Grid.Row="1"
+                         Padding="20,10,20,0"
+                         Spacing="15">
+                <ImageButton Source="Close.png"
+                             Style="{StaticResource SearchButton}"
+                             HorizontalOptions="End"
+                             x:Name="Close"
+                             Clicked="Close_Clicked"/>
+                <Image Source="{Binding Logo}"
+                       Style="{StaticResource LogoImage}"/>
+                <Label Style="{StaticResource VeryBigBlackLabel}"
+                       HorizontalOptions="Center"
+                       Text="{Binding Name}"/>
+                <StackLayout HorizontalOptions="Center"
+                             Orientation="Horizontal">
+                    <ImageButton Source="Star.png"
+                                 Style="{StaticResource SearchButton}"
+                                 x:Name="StarOne"
+                                 Clicked="StarOne_Clicked"/>
+                    <ImageButton Source="StarWhite.png"
+                                 Style="{StaticResource SearchButton}"
+                                 x:Name="StarTwo"
+                                 Clicked="StarTwo_Clicked"/>
+                    <ImageButton Source="StarWhite.png"
+                                 Style="{StaticResource SearchButton}"
+                                 x:Name="StarThree"
+                                 Clicked="StarThree_Clicked"/>
+                    <ImageButton Source="StarWhite.png"
+                                 Style="{StaticResource SearchButton}"
+                                 x:Name="StarFour"
+                                 Clicked="StarFour_Clicked"/>
+                    <ImageButton Source="StarWhite.png"
+                                 Style="{StaticResource SearchButton}"
+                                 x:Name="StarFive"
+                                 Clicked="StarFive_Clicked"/>
+                </StackLayout>
+                <Frame BackgroundColor="{StaticResource WhiteColor}"
+                       CornerRadius="10">
+                    <StackLayout>
+                        <Editor Placeholder="Написать комментарий..."
+                                Style="{StaticResource ReviewEditor}"/>
+                        <Button Style="{StaticResource GreenButton}"
+                                x:Name="Send"
+                                Clicked="Send_Clicked"
+                                HeightRequest="40"
+                                WidthRequest="355"
+                                Text="Отправить"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource WhiteColor}"
+                       CornerRadius="10"
+                       Padding="30,10,30,10">
+                    <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                        <Label Style="{StaticResource BigBlackLabelBold}"
+                               HorizontalOptions="Center"
+                               Text="Начислено"/>
+                        <Label Style="{StaticResource BigBlackLabelBold}"
+                               HorizontalOptions="Center"
+                               Text="123"
+                               Grid.Column="2"/>
+                        <Image Source="BonusIconGray.png"
+                               Style="{StaticResource BankCard}"
+                               Grid.Column="3"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*"
+                  Grid.Row="1"
+                  Margin="0,0,0,-1"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="MainButton"
+                             Clicked="MainButton_Clicked"
+                             Source="HomeIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Row="1"
+                       Text="Главная"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             x:Name="OrdersButton"
+                             Clicked="OrdersButton_Clicked"
+                             Source="OrdersIconSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             x:Name="BasketButton"
+                             Clicked="BasketButton_Clicked"
+                             Source="BasketIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Корзина"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="ProfileButton"
+                             Clicked="ProfileButton_Clicked"
+                             Grid.Column="3"
+                             Source="ProfileIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Профиль"/>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

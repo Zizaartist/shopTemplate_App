@@ -64,6 +64,8 @@
                             <DataTemplate>
                                 <Grid RowDefinitions="Auto">
                                     <Button Text="{Binding Tag}"
+                                            x:Name="Tag"
+                                            Clicked="Tag_Clicked"
                                             Style="{StaticResource TagButton}"/>
                                 </Grid>
                             </DataTemplate>

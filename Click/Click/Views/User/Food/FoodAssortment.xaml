@@ -10,7 +10,8 @@
                             SelectionMode="Single"
                             SelectionChanged="CategoriesCollection_SelectionChanged">
                 <CollectionView.Header>
-                    <Grid RowDefinitions="Auto,Auto,Auto">
+                    <Grid RowDefinitions="Auto,Auto,Auto"
+                          x:Name="HeaderGrid">
                         <Grid Style="{StaticResource HeaderGrid}">
                             <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
@@ -29,17 +30,17 @@
                         </Grid>
                         <Grid Grid.Row="1"
                               Margin="0,-8,0,0">
-                            <Image Source="temp14.png"
+                            <Image Source="{Binding Banner}"
                                    Style="{StaticResource BannerSubImage}"/>
                             <Frame Style="{StaticResource LogoFrame}">
-                                <Image Source="temp5.png"
+                                <Image Source="{Binding Logo}"
                                        Style="{StaticResource LogoImage}"/>
                             </Frame>
                         </Grid>
                         <Grid RowDefinitions="Auto,Auto"
                               Grid.Row="2"
                               Padding="15,10,15,15">
-                            <Label Text="Burger King"
+                            <Label Text="{Binding Name}"
                                    Style="{StaticResource VeryBigBlackLabel}"/>
                             <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto">
                                 <Frame CornerRadius="15"

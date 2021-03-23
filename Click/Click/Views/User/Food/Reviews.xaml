@@ -11,11 +11,12 @@
                             SelectionChanged="ReviewsCollection_SelectionChanged">
                 <CollectionView.Header>
                     <Grid RowDefinitions="Auto,Auto,Auto,Auto">
-                        <Grid Style="{StaticResource HeaderGrid}">
+                        <Grid Style="{StaticResource HeaderGrid}"
+                              x:Name="HeaderGrid">
                             <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
-                            <Label Text="Burger King"
+                            <Label Text="{Binding Name}"
                                    Style="{StaticResource WhiteHeaderLabel}"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>

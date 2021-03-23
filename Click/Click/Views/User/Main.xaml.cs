@@ -51,7 +51,7 @@ namespace Click.Views.User
 
         private void Orders_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new OrdersMain());
+            App.Current.MainPage = new OrdersMain();
         }
 
         private void Main_Clicked(object sender, EventArgs e)

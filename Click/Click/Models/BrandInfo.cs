@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Click.Models
 {
-    class BrandInfo
+    public partial class BrandInfo
     {
         public string Name { get; set; }
         public string Tags { get; set; }

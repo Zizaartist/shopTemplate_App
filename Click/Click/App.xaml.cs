@@ -1,5 +1,6 @@
 ﻿using Click.Views;
 using Click.Views.Registration;
+using Click.Views.User.Orders;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

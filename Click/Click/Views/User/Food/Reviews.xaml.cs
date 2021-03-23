@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,11 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Reviews : ContentPage
     {
-        public Reviews()
+        public Reviews(BrandInfo brandInfo)
         {
             InitializeComponent();
             ReviewsCollection.BindingContext = new ReviewsViewModel();
+            HeaderGrid.BindingContext = brandInfo;
         }
 
         private void Back_Clicked(object sender, EventArgs e)

@@ -94,3 +94,4 @@ C:\Users\efimp\Documents\GitHub\Click\Click\Click\bin\Debug\netstandard2.0\Click
 C:\Users\efimp\Documents\GitHub\Click\Click\Click\bin\Debug\netstandard2.0\ref\Click.dll
 C:\Users\efimp\Documents\GitHub\Click\Click\Click\bin\Debug\netstandard2.0\Click.pdb
 C:\Users\efimp\Documents\GitHub\Click\Click\Click\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\BootleBrand.xaml.g.cs

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Click.Models
 {
-    class FoodCategory
+    public partial class FoodCategory
     {
         public string Image { get; set; }
         public string Name { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Click.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,10 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DescriptionOrganization : ContentPage
     {
-        public DescriptionOrganization()
+        public DescriptionOrganization(BrandInfo brandInfo)
         {
             InitializeComponent();
+            BindingContext = brandInfo;
         }
 
         private void Back_Clicked(object sender, EventArgs e)

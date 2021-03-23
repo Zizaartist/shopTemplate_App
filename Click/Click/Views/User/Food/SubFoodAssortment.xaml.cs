@@ -16,10 +16,12 @@ namespace Click.Views.User.Food
     {
         GoodsFood getItemSelectedData;
         int Price;
-        public SubFoodAssortment()
+        public SubFoodAssortment(FoodCategory foodCategory, BrandInfo brandInfo)
         {
             InitializeComponent();
             FoodCollection.BindingContext = new GoodsFoodViewModel();
+            CategoryLabel.Text = foodCategory.Name;
+            BrandNameLabel.Text = brandInfo.Name;
         }
 
         private void FoodCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -18,6 +18,7 @@
                                          Style="{StaticResource BackButton}"/>
                             <Label Text="Burger King"
                                    Style="{StaticResource WhiteHeaderLabel}"
+                                   x:Name="BrandNameLabel"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
                             <Label Text="У Вас 0"
@@ -31,6 +32,7 @@
                         </Grid>
                         <Label Text="Бургеры с говядиной"
                                Style="{StaticResource BlackLabel}"
+                               x:Name="CategoryLabel"
                                Margin="20,0,0,0"
                                Grid.Row="1"/>
                     </Grid>

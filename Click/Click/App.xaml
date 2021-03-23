@@ -4,6 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Click.App">
     <Application.Resources>
+        <!--Editors-->
+        <Style x:Key="ReviewEditor" TargetType="Editor">
+            <Setter Property="PlaceholderColor" Value="{DynamicResource GrayText}"/>
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
+            <Setter Property="WidthRequest" Value="355"/>
+            <Setter Property="HeightRequest" Value="100"/>
+        </Style>
         <!--ContentPages-->
         <Style x:Key="WhiteContentPage" TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
@@ -624,6 +634,14 @@
             <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
             <Setter Property="FontSize" Value="{DynamicResource VerySmallFont}"/>
             <Setter Property="FontFamily" Value="NeoSansProBold"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="VerySmallBlackLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>
+            <Setter Property="FontSize" Value="{DynamicResource VerySmallFont}"/>
+            <Setter Property="FontFamily" Value="NeoSansPro"/>
             <Setter Property="VerticalOptions" Value="Center"/>
             <Setter Property="HorizontalOptions" Value="Start"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>

@@ -991,27 +991,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\efimp\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\efimp\\Documents\\GitHub\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
+      "projectUniqueName": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
       "projectName": "Click.iOS",
-      "projectPath": "C:\\Users\\efimp\\Documents\\GitHub\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
-      "packagesPath": "C:\\Users\\efimp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\efimp\\Documents\\GitHub\\Click\\Click\\Click.iOS\\obj\\",
+      "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
+      "packagesPath": "C:\\Users\\Syberia-13\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\efimp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Syberia-13\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -1025,8 +1022,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\efimp\\Documents\\GitHub\\Click\\Click\\Click\\Click.csproj": {
-              "projectPath": "C:\\Users\\efimp\\Documents\\GitHub\\Click\\Click\\Click\\Click.csproj"
+            "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj": {
+              "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj"
             }
           }
         }

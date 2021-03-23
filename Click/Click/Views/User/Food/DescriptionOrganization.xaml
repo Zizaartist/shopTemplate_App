@@ -13,17 +13,17 @@
                 </Grid>
                 <Grid Grid.Row="1"
                       Margin="0,-8,0,0">
-                    <Image Source="temp14.png"
+                    <Image Source="{Binding Banner}"
                            Style="{StaticResource BannerSubImage}"/>
                     <Frame Style="{StaticResource LogoFrame}">
-                        <Image Source="temp5.png"
+                        <Image Source="{Binding Logo}"
                                Style="{StaticResource LogoImage}"/>
                     </Frame>
                 </Grid>
                 <StackLayout Grid.Row="2"
                              Padding="20,0,20,0">
                     <Label Style="{StaticResource BigBlackLabelBold}"
-                           Text="Бургер Кинг"/>
+                           Text="{Binding Name}"/>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                            Text="Описание"/>
                     <Label Style="{StaticResource SmallBlackLabel}"

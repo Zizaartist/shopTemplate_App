@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,13 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FoodAssortment : ContentPage
     {
-        public FoodAssortment()
+        BrandInfo _brandInfo;
+        public FoodAssortment(BrandInfo brandInfo)
         {
             InitializeComponent();
+            HeaderGrid.BindingContext = brandInfo;
             CategoriesCollection.BindingContext = new FoodCategoryViewModel();
+            _brandInfo = brandInfo;
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)
@@ -34,18 +38,18 @@ namespace Click.Views.User.Food
             if (e.CurrentSelection.Any())
             {
                 CategoriesCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new SubFoodAssortment());
+                Navigation.PushModalAsync(new SubFoodAssortment(e.CurrentSelection.LastOrDefault() as FoodCategory, _brandInfo));
             }
         }
 
         private void About_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new DescriptionOrganization());
+            Navigation.PushModalAsync(new DescriptionOrganization(_brandInfo));
         }
 
         private void Reviews_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Reviews());
+            Navigation.PushModalAsync(new Reviews(_brandInfo));
         }
     }
 }
