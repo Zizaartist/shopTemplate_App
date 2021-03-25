@@ -1,4 +1,5 @@
 ﻿using Click.ViewModels;
+using Click.Views.User.Basket;
 using Click.Views.User.Flowers;
 using Click.Views.User.Food;
 using Click.Views.User.Orders;
@@ -46,7 +47,7 @@ namespace Click.Views.User
 
         private void Basket_Clicked(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new BasketMain();
         }
 
         private void Orders_Clicked(object sender, EventArgs e)

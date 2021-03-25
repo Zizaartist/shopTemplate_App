@@ -1,5 +1,6 @@
 ﻿using Click.Views;
 using Click.Views.Registration;
+using Click.Views.User.Basket;
 using Click.Views.User.Orders;
 using System;
 using Xamarin.Forms;
@@ -13,7 +14,7 @@ namespace Click
         public App()
         {
             InitializeComponent();
-            MainPage = new Preview();
+            MainPage = new BasketMain();
         }
 
         protected override void OnStart()

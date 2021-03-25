@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "aMjnzYz1aoLMRRIEAYehmE5JqaxPZqwKHGrPaeNnuOS0NusY5kTdOnRW7xTAEI0vmwFDbJUqefcCn8kX0zNeHw==",
+  "dgSpecHash": "5oJd6R3Nqie9oLVtOw3UG8nOMoJM8VwLziogWlAN2Pio9SfWCVLIohB8PWka4tXdJw68YJ6Kn/zsuGl6oG8zpg==",
   "success": true,
   "projectFilePath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.iOS\\Click.iOS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\Syberia-13\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Syberia-13\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
-    "C:\\Users\\Syberia-13\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
+    "C:\\Users\\Syberia-13\\.nuget\\packages\\xamarin.forms.pancakeview\\2.3.0.759\\xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512"
   ],
   "logs": []
 }

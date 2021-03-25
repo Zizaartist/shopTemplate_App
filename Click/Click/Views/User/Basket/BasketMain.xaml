@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:selectors="clr-namespace:Click.ViewModels.Selectors" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="Click.Views.User.Basket.BasketMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*, Auto">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <Label Text="Корзина"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="0"/>
+            </Grid>
+            <CollectionView x:Name="OrderCollection"
+                                ItemsSource="{Binding GoodsFoodsGroups}"
+                                SelectionMode="Single"
+                            IsGrouped="True"
+                                Margin="0,0,0,-10"
+                            Grid.Row="1">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="20,20,20,0">
+                            <pancakeview:PancakeView CornerRadius="20,20,0,0"
+                                                     BackgroundColor="White">
+                                <StackLayout>
+                                    <Image Style="{StaticResource LogoImage}"
+                                   Source="{Binding Logo}"
+                                   VerticalOptions="Start"/>
+                                    <Label Style="{StaticResource VeryBigBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="{Binding Name}"
+                                   Grid.Column="1"/>
+                                </StackLayout>
+                            </pancakeview:PancakeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="20,0,20,0">
+                            <Frame>
+                                <StackLayout>
+                                    <Image Style="{StaticResource LogoImage}"
+                                   Source="{Binding Image}"
+                                   VerticalOptions="Start"/>
+                                    <Label Style="{StaticResource VeryBigBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="{Binding Title}"
+                                   Grid.Column="1"/>
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.GroupFooterTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="20,0,20,20">
+                            <pancakeview:PancakeView CornerRadius="0,0,20,20"
+                                                     BackgroundColor="White">
+                                <StackLayout>
+                                    <Label Style="{StaticResource VerySmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   HorizontalOptions="Start"
+                                   Text="Условия доставки"/>
+                                    <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                   HorizontalTextAlignment="Start"
+                                   HorizontalOptions="Start"
+                                   Text="{Binding DeliveryConditions}"/>
+                                </StackLayout>
+                            </pancakeview:PancakeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupFooterTemplate>
+            </CollectionView>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*"
+                  Grid.Row="2"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="MainButton"
+                             Clicked="MainButton_Clicked"
+                             Source="HomeIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Row="1"
+                       Text="Главная"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             x:Name="OrdersButton"
+                             Clicked="OrdersButton_Clicked"
+                             Source="OrdersIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             x:Name="BasketButton"
+                             Clicked="BasketButton_Clicked"
+                             Source="BasketIconSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Корзина"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="ProfileButton"
+                             Clicked="ProfileButton_Clicked"
+                             Grid.Column="3"
+                             Source="ProfileIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Профиль"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
