@@ -5,7 +5,8 @@
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
         <ScrollView>
-            <Grid RowDefinitions="Auto,Auto,*">
+            <Grid RowDefinitions="Auto,Auto,*"
+                  x:Name="WrapperGrid">
                 <Grid Style="{StaticResource HeaderGrid}"
                       BackgroundColor="{StaticResource GreenColor}">
                     <ImageButton x:Name="Back"
@@ -14,17 +15,17 @@
                 </Grid>
                 <Grid Grid.Row="1"
                       Margin="0,-8,0,0">
-                    <Image Source="temp20.png"
+                    <Image Source="{Binding Banner}"
                            Style="{StaticResource BannerSubImage}"/>
                     <Frame Style="{StaticResource LogoFrame}">
-                        <Image Source="temp21.png"
+                        <Image Source="{Binding Logo}"
                                Style="{StaticResource LogoImage}"/>
                     </Frame>
                 </Grid>
                 <StackLayout Grid.Row="2"
                              Padding="20,0,20,0">
                     <Label Style="{StaticResource BigBlackLabelBold}"
-                           Text="Time Flowers"/>
+                           Text="{Binding Name}"/>
                     <Label Style="{StaticResource SmallBlackLabelBold}"
                            Text="Описание"/>
                     <Label Style="{StaticResource SmallBlackLabel}"

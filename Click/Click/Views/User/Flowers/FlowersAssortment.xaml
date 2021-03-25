@@ -10,7 +10,8 @@
                             SelectionMode="Single"
                             SelectionChanged="CategoriesCollection_SelectionChanged">
                 <CollectionView.Header>
-                    <Grid RowDefinitions="Auto,Auto,Auto">
+                    <Grid RowDefinitions="Auto,Auto,Auto"
+                          x:Name="WrapperGrid">
                         <Grid Style="{StaticResource HeaderGrid}"
                               BackgroundColor="{StaticResource GreenColor}">
                             <ImageButton x:Name="Back"
@@ -31,17 +32,18 @@
                         </Grid>
                         <Grid Grid.Row="1"
                               Margin="0,-8,0,0">
-                            <Image Source="temp20.png"
+                            <Image Source="{Binding Banner}"
                                    Style="{StaticResource BannerSubImage}"/>
                             <Frame Style="{StaticResource LogoFrame}">
-                                <Image Source="temp21.png"
+                                <Image Source="{Binding Logo}"
                                        Style="{StaticResource LogoImage}"/>
                             </Frame>
                         </Grid>
                         <Grid RowDefinitions="Auto,Auto"
                               Grid.Row="2"
                               Padding="15,10,15,15">
-                            <Label Text="Time Flowers"
+                            <Label Text="{Binding Name}"
+                                   HorizontalTextAlignment="Start"
                                    Style="{StaticResource VeryBigBlackLabel}"/>
                             <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto">
                                 <Frame CornerRadius="15"

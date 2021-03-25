@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Click.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,10 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DescriptionOrganizationFlowers : ContentPage
     {
-        public DescriptionOrganizationFlowers()
+        public DescriptionOrganizationFlowers(BrandInfo brandInfo)
         {
             InitializeComponent();
+            WrapperGrid.BindingContext = brandInfo;
         }
 
         private void Back_Clicked(object sender, EventArgs e)

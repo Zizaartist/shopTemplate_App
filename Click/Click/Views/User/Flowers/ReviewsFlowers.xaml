@@ -17,6 +17,7 @@
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
                             <Label Text="Time Flowers"
+                                   x:Name="NameLabel"
                                    Style="{StaticResource WhiteHeaderLabel}"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>

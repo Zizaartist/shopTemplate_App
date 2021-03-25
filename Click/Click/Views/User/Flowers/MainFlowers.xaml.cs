@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace Click.Views.User.Flowers
             if (e.CurrentSelection.Any())
             {
                 OrganisationCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new FlowersAssortment());
+                Navigation.PushModalAsync(new FlowersAssortment(e.CurrentSelection.LastOrDefault() as BrandInfo));
             }
         }
     }
