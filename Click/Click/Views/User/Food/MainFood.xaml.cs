@@ -50,7 +50,6 @@ namespace Click.Views.User.Food
         private void Tag_Clicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            
         }
     }
 }

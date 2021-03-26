@@ -66,6 +66,8 @@
                             <DataTemplate>
                                 <Grid RowDefinitions="Auto">
                                     <Button Text="{Binding Tag}"
+                                            x:Name="Tag"
+                                            Clicked="Tag_Clicked"
                                             Style="{StaticResource TagButtonGreen}"/>
                                 </Grid>
                             </DataTemplate>
@@ -75,7 +77,9 @@
                           ColumnDefinitions="Auto,*,Auto"
                           HeightRequest="30"
                           Padding="10,0,10,0">
-                        <Switch x:Name="Working"/>
+                        <Switch x:Name="Working"
+                                OnColor="{StaticResource GreenColor}"
+                                ThumbColor="{StaticResource WhiteColor}"/>
                         <Label Text="cейчас работают"
                                Style="{StaticResource GrayMediumLabel}"
                                Grid.Column="1"/>

@@ -17,7 +17,7 @@ namespace Click.Views.User.Basket
         public BasketMain()
         {
             InitializeComponent();
-            OrderCollection.BindingContext = new GoodsFoodViewModel();
+            OrderCollection.BindingContext = new BasketViewModel();
         }
 
         private void MainButton_Clicked(object sender, EventArgs e)
@@ -32,12 +32,17 @@ namespace Click.Views.User.Basket
 
         private void BasketButton_Clicked(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void Basket_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new BasketChoice());
         }
     }
 }

@@ -84,25 +84,5 @@ namespace Click.Views.User.Orders
             await DisplayAlert("Click", "Отзыв отправлен", "Понятно");
             Navigation.PopModalAsync();
         }
-
-        private void MainButton_Clicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new Main();
-        }
-
-        private void OrdersButton_Clicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new OrdersMain();
-        }
-
-        private void BasketButton_Clicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new BasketMain();
-        }
-
-        private void ProfileButton_Clicked(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

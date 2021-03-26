@@ -1,12 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.User.Basket.BasketChoice">
+             x:Class="Click.Views.User.Basket.BasketChoice"
+             Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowDefinitions="Auto,*,*,100">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}"
+                  ColumnDefinitions="Auto,*">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Source="BackBlack.png"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Способ получения заказа"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <Frame Style="{StaticResource BasketChoiceFrame}"
+                   Grid.Row="1">
+                <Grid VerticalOptions="Center"
+                      RowDefinitions="*,Auto,Auto,*">
+                    <Image Style="{StaticResource FoodListImage}"
+                           Source="Takeaway.png"
+                           Grid.Row="1"
+                           x:Name="TImage"/>
+                    <Label Style="{StaticResource BigBlackLabelBold}"
+                           HorizontalOptions="Center"
+                           Text="На вынос"
+                           Grid.Row="2"/>
+                    <Button Grid.RowSpan="4"
+                            BackgroundColor="Transparent"
+                            x:Name="Takeaway"
+                            Clicked="Takeaway_Clicked"/>
+                </Grid>
+            </Frame>
+            <Frame Style="{StaticResource BasketChoiceFrame}"
+                   Grid.Row="2">
+                <Grid VerticalOptions="Center"
+                      RowDefinitions="*,Auto,Auto,*">
+                    <Image Style="{StaticResource FoodListImage}"
+                           Source="Courier.png"
+                           Grid.Row="1"
+                           x:Name="CImage"/>
+                    <Label Style="{StaticResource BigBlackLabelBold}"
+                           HorizontalOptions="Center"
+                           Text="Курьером"
+                           Grid.Row="2"/>
+                    <Button Grid.RowSpan="4"
+                            BackgroundColor="Transparent"
+                            x:Name="Courier"
+                            Clicked="Courier_Clicked"/>
+                </Grid>
+            </Frame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

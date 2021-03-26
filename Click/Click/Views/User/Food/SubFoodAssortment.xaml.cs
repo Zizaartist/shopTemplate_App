@@ -1,5 +1,6 @@
 ﻿using Click.Models;
 using Click.ViewModels;
+using Click.Views.User.Basket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,7 @@ namespace Click.Views.User.Food
 
         private void Basket_Clicked(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new BasketMain();
         }
 
         private void Clear_Clicked(object sender, EventArgs e)

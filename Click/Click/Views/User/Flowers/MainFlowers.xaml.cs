@@ -46,5 +46,10 @@ namespace Click.Views.User.Flowers
                 Navigation.PushModalAsync(new FlowersAssortment(e.CurrentSelection.LastOrDefault() as BrandInfo));
             }
         }
+
+        private void Tag_Clicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+        }
     }
 }

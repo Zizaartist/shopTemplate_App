@@ -11,7 +11,6 @@ namespace Click.ViewModels
 {
     class GoodsFoodViewModel : BindableObject
     {
-        public ObservableCollection<Grouping<string, GoodsFood>> GoodsFoodsGroups { get; set; }
         private ObservableCollection<GoodsFood> goodsFoods;
         public ObservableCollection<GoodsFood> GoodsFoods
         {
@@ -91,8 +90,6 @@ namespace Click.ViewModels
                     Price = "456",
                 },
             };
-            var groups = GoodsFoods.GroupBy(p => p.Title).Select(g => new Grouping<string, GoodsFood>(g.Last().Title, g.Last().Image, g.Last().Description, g));
-            GoodsFoodsGroups = new ObservableCollection<Grouping<string, GoodsFood>>(groups);
         }
     }
 }

@@ -78,46 +78,6 @@
                     </Grid>
                 </Frame>
             </StackLayout>
-            <Grid Style="{StaticResource NavigationPanelGrid}"
-                  ColumnDefinitions="*,*,*,*"
-                  Grid.Row="1"
-                  Margin="0,0,0,-1"
-                  RowDefinitions="Auto,Auto">
-                <ImageButton Style="{StaticResource PanelImageButton}"
-                             x:Name="MainButton"
-                             Clicked="MainButton_Clicked"
-                             Source="HomeIcon.png"/>
-                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
-                       Grid.Row="1"
-                       Text="Главная"/>
-                <ImageButton Style="{StaticResource PanelImageButton}"
-                             Grid.Column="1"
-                             x:Name="OrdersButton"
-                             Clicked="OrdersButton_Clicked"
-                             Source="OrdersIconSelected.png"/>
-                <Label Style="{StaticResource WhiteVerySmallLabel}"
-                       Grid.Column="1"
-                       Grid.Row="1"
-                       Text="Заказы"/>
-                <ImageButton Style="{StaticResource PanelImageButton}"
-                             Grid.Column="2"
-                             x:Name="BasketButton"
-                             Clicked="BasketButton_Clicked"
-                             Source="BasketIcon.png"/>
-                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
-                       Grid.Column="2"
-                       Grid.Row="1"
-                       Text="Корзина"/>
-                <ImageButton Style="{StaticResource PanelImageButton}"
-                             x:Name="ProfileButton"
-                             Clicked="ProfileButton_Clicked"
-                             Grid.Column="3"
-                             Source="ProfileIcon.png"/>
-                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
-                       Grid.Column="3"
-                       Grid.Row="1"
-                       Text="Профиль"/>
-            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

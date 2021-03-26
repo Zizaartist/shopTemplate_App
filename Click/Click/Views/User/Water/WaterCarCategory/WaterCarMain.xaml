@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Water.WaterCarCategory.WaterCarMain">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="#1D9BD5"
+                  Style="{StaticResource HeaderGrid}">
+                <ImageButton Style="{StaticResource BackButton}"
+                             x:Name="Back"
+                             Clicked="Back_Clicked"/>
+                <Label Text="Вода" 
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+                <Label Text="У Вас 0"
+                               Style="{StaticResource WhiteMediumLabel}"
+                               Margin="0,0,10,0"
+                               Grid.Column="2"/>
+                <ImageButton x:Name="Bonus"
+                             Clicked="Bonus_Clicked"
+                             Style="{StaticResource BonusButton}"
+                             Grid.Column="3"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

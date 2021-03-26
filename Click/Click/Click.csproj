@@ -81,13 +81,13 @@
     <EmbeddedResource Update="Views\User\Orders\OrdersReview.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\BootleBrand.xaml">
+    <EmbeddedResource Update="Views\User\Water\BootleCategory\BootleMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\User\Water\MainWater.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\WaterMenu.xaml">
+    <EmbeddedResource Update="Views\User\Water\WaterCarCategory\WaterCarMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
