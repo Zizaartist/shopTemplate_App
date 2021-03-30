@@ -8,13 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Click.Views.User.Water.WaterMenu.xaml", "Views/User/Water/WaterMenu.xaml", typeof(global::Click.Views.User.Water.WaterMenu))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Click.Views.User.Water.BootleCategory.BootleInfo.xaml", "Views/User/Water/BootleCategory/BootleInfo.xaml", typeof(global::Click.Views.User.Water.BootleCategory.BootleInfo))]
 
-namespace Click.Views.User.Water {
+namespace Click.Views.User.Water.BootleCategory {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\User\\Water\\WaterMenu.xaml")]
-    public partial class WaterMenu : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\User\\Water\\BootleCategory\\BootleInfo.xaml")]
+    public partial class BootleInfo : global::Xamarin.Forms.ContentPage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.StackLayout WrapperStack;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ImageButton Back;
@@ -23,10 +26,15 @@ namespace Click.Views.User.Water {
         private global::Xamarin.Forms.ImageButton Bonus;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button Confirm;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(WaterMenu));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(BootleInfo));
+            WrapperStack = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "WrapperStack");
             Back = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "Back");
             Bonus = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "Bonus");
+            Confirm = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "Confirm");
         }
     }
 }

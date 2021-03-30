@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,18 @@ namespace Click.Views.User.Water.BootleCategory
             if (e.CurrentSelection.Any())
             {
                 WaterCompaniesCollection.SelectedItem = null;
+                Navigation.PushModalAsync(new BootleInfo(e.CurrentSelection.LastOrDefault() as WaterCompany));
             }
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new BonusHistory());
+        }
+
+        private void Express_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new BottleOrderFormExpress());
         }
     }
 }

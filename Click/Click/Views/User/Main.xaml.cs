@@ -3,6 +3,7 @@ using Click.Views.User.Basket;
 using Click.Views.User.Flowers;
 using Click.Views.User.Food;
 using Click.Views.User.Orders;
+using Click.Views.User.Profile;
 using Click.Views.User.Water;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace Click.Views.User
 
         private void Profile_Clicked(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new ProfileMain();
         }
 
         private void Basket_Clicked(object sender, EventArgs e)

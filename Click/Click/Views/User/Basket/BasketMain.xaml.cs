@@ -1,5 +1,6 @@
 ﻿using Click.ViewModels;
 using Click.Views.User.Orders;
+using Click.Views.User.Profile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Click.Views.User.Basket
 
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new ProfileMain();
         }
 
         private void Basket_Clicked(object sender, EventArgs e)

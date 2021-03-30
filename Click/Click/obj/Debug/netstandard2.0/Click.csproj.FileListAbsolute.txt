@@ -88,9 +88,7 @@ C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Main.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Orders\OrdersMain.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Orders\OrdersReview.xaml.g.cs
-C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\BootleBrand.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\MainWater.xaml.g.cs
-C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\WaterMenu.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Click.AssemblyInfoInputs.cache
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Click.AssemblyInfo.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Click.csproj.CoreCompileInputs.cache
@@ -101,3 +99,13 @@ C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Click.csprojAssemblyReference.cache
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\BootleCategory\BootleMain.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\WaterCarCategory\WaterCarMain.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\BootleCategory\BootleInfo.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\BootleCategory\BottleOrderForm.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\BootleCategory\BottleOrderFormExpress.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\BootleCategory\BottleExpressWaiting.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\WaterCarCategory\WaterCarForm.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\WaterCarCategory\WaterCarFormExpress.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Water\WaterCarCategory\WaterCarExpressWaiting.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Profile\AboutApplication.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Profile\EnterAdminCompany.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\User\Profile\ProfileMain.xaml.g.cs

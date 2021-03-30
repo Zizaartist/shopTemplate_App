@@ -19,7 +19,7 @@ namespace Click
         {
             InitializeComponent();
             InitializationPublicStyles();
-            MainPage = new MainWater();
+            MainPage = new Main();
         }
 
         void InitializationPublicStyles()

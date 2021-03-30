@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Water.BootleCategory.BootleInfo"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout x:Name="WrapperStack">
+            <Grid BackgroundColor="#1D9BD5"
+                  Style="{StaticResource HeaderGrid}">
+                <ImageButton Style="{StaticResource BackButton}"
+                             x:Name="Back"
+                             Clicked="Back_Clicked"/>
+                <Label Text="{Binding Name}" 
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+                <Label Text="У Вас 0"
+                       Style="{StaticResource WhiteMediumLabel}"
+                       Margin="0,0,10,0"
+                       Grid.Column="2"/>
+                <ImageButton x:Name="Bonus"
+                             Clicked="Bonus_Clicked"
+                             Style="{StaticResource BonusButton}"
+                             Grid.Column="3"/>
+            </Grid>
+            <Grid Padding="20,5,20,5">
+                <Frame Style="{StaticResource WaterCompanyFrame}"
+                       Padding="20,5,20,5">
+                    <StackLayout>
+                        <Frame Style="{StaticResource LogoFrame}"
+                               Margin="0"
+                               HorizontalOptions="Center">
+                            <Image Style="{StaticResource LogoImage}"
+                                   Source="{Binding Images}"/>
+                        </Frame>
+                        <Label Style="{StaticResource BigBlackLabelBold}"
+                               Text="{Binding Name}"
+                               HorizontalOptions="Center"/>
+                        <Grid ColumnDefinitions="Auto,*,Auto"
+                              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   Text="8 (914) 273-55-32"/>
+                            <Image Style="{StaticResource BankCard}"
+                                   Source="Phone.png"
+                                   Grid.Column="2"/>
+                            <Button HeightRequest="1"
+                                    BackgroundColor="{StaticResource GrayTextPanel}"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="3"/>
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   Text="326565"
+                                   Grid.Row="2"/>
+                            <Image Style="{StaticResource BankCard}"
+                                   Source="Phone.png"
+                                   Grid.Row="2"
+                                   Grid.Column="2"/>
+                            <Button HeightRequest="1"
+                                    BackgroundColor="{StaticResource GrayTextPanel}"
+                                    Grid.Row="3"
+                                    Grid.ColumnSpan="3"/>
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   Text="Вилюйский тракт, 5/1"
+                                   Grid.Row="4"/>
+                            <Image Style="{StaticResource BankCard}"
+                                   Source="Location.png"
+                                   Grid.Row="4"
+                                   Grid.Column="2"/>
+                            <Button HeightRequest="1"
+                                    BackgroundColor="{StaticResource GrayTextPanel}"
+                                    Grid.Row="5"
+                                    Grid.ColumnSpan="3"/>
+                        </Grid>
+                        <Label Style="{StaticResource SmallBlackLabel}"
+                               HorizontalTextAlignment="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Режим работы: &#10;"
+                                          FontFamily="{StaticResource NeoSansProBold}"/>
+                                    <Span Text="ПН 12:00 - 21:45 &#10;"/>
+                                    <Span Text="ПН 12:00 - 21:45 &#10;"/>
+                                    <Span Text="ВТ 10:00 - 21:45 &#10;"/>
+                                    <Span Text="СР 10:00 - 21:45 &#10;"/>
+                                    <Span Text="ЧТ 10:00 - 21:45 &#10;"/>
+                                    <Span Text="ПТ 10:00 - 21:45 &#10;"/>
+                                    <Span Text="СБ 10:00 - 21:45 &#10;"/>
+                                    <Span Text="ВС 10:00 - 21:45 &#10;"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="Center">
+                            <Image Style="{StaticResource BankCard}"
+                                   Source="Document.png"/>
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   TextColor="{StaticResource BlueColor}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Сертификат соответствия">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="licension"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <Button Style="{StaticResource GreenButton}"
+                                x:Name="Confirm"
+                                Clicked="Confirm_Clicked"
+                                Padding="0"
+                                Text="Заказать"
+                                WidthRequest="370"
+                                HeightRequest="40"
+                                CornerRadius="20"
+                                Margin="-10,10,-10,0"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

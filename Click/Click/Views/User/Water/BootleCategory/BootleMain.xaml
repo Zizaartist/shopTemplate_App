@@ -15,9 +15,9 @@
                        Margin="10,0,0,0"
                        Grid.Column="1"/>
                 <Label Text="У Вас 0"
-                               Style="{StaticResource WhiteMediumLabel}"
-                               Margin="0,0,10,0"
-                               Grid.Column="2"/>
+                       Style="{StaticResource WhiteMediumLabel}"
+                       Margin="0,0,10,0"
+                       Grid.Column="2"/>
                 <ImageButton x:Name="Bonus"
                              Clicked="Bonus_Clicked"
                              Style="{StaticResource BonusButton}"
@@ -30,23 +30,50 @@
                 <CollectionView.Header>
                     <Grid Padding="20,5,20,5">
                         <Frame Style="{StaticResource WaterCompanyFrame}"
-                           HeightRequest="60">
-                            <Grid>
-                                <StackLayout Spacing="0"
-                                         Orientation="Horizontal">
-                                    <Image Source="Rocket.png"
+                               HeightRequest="60"
+                               Padding="10,0,10,0">
+                            <Grid ColumnDefinitions="Auto,Auto,*,Auto">
+                                <Image Source="Rocket.png"
                                        Style="{StaticResource Restaurant}"/>
-                                    <StackLayout Spacing="0">
-                                        <Label Style="{StaticResource BlackLabel}"
-                                               TextColor="{StaticResource BlueColor}"
-                                               Text="Экспресс доставка"/>
-                                        <Label Style="{StaticResource GraySmallLabel}"
-                                               Text="в течении 30 мин"/>
-                                    </StackLayout>
-                                    <StackLayout Spacing="0">
-
-                                    </StackLayout>
+                                <StackLayout Spacing="0"
+                                             Grid.Column="1"
+                                             VerticalOptions="Center">
+                                    <Label Style="{StaticResource BlackLabel}"
+                                           TextColor="{StaticResource BlueColor}"
+                                           Text="Экспресс доставка"/>
+                                    <Label Style="{StaticResource GraySmallLabel}"
+                                           Text="в течении 30 мин"/>
                                 </StackLayout>
+                                <Button BackgroundColor="{StaticResource GrayColorLight}"
+                                        Margin="10"
+                                        WidthRequest="1"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="2"/>
+                                <Grid ColumnDefinitions="Auto,Auto"
+                                      RowDefinitions="Auto,Auto"
+                                      Grid.Column="3"
+                                      VerticalOptions="Center">
+                                    <Image Source="Money.png"
+                                           Style="{StaticResource Money}"
+                                           Grid.Column="0"
+                                           Grid.Row="0"/>
+                                    <Image Source="Money.png"
+                                           Style="{StaticResource Money}"
+                                           Grid.Column="0"
+                                           Grid.Row="1"/>
+                                    <Label Style="{StaticResource GraySmallLabel}"
+                                           Text="150 р. обмен"
+                                           Grid.Column="1"
+                                           Grid.Row="0"/>
+                                    <Label Style="{StaticResource GraySmallLabel}"
+                                           Text="600 р. с тарой"
+                                           Grid.Column="1"
+                                           Grid.Row="1"/>
+                                </Grid>
+                                <Button BackgroundColor="Transparent"
+                                        Grid.ColumnSpan="4"
+                                        x:Name="Express"
+                                        Clicked="Express_Clicked"/>
                             </Grid>
                         </Frame>
                     </Grid>
@@ -55,14 +82,17 @@
                     <DataTemplate>
                         <Grid Padding="20,5,20,5">
                             <Frame Style="{StaticResource WaterCompanyFrame}"
-                               HeightRequest="90">
-                                <Grid ColumnDefinitions="Auto,Auto,*">
+                                   HeightRequest="90"
+                                   Padding="0,5,10,5">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
                                     <Frame Style="{StaticResource LogoFrame}">
                                         <Image Style="{StaticResource LogoImage}"
                                                Source="{Binding Images}"/>
                                     </Frame>
-                                    <StackLayout Grid.Column="1">
-                                        <Label Style="{StaticResource GraySmallLabel}"
+                                    <StackLayout Grid.Column="1"
+                                                 Spacing="0"
+                                                 VerticalOptions="Center">
+                                        <Label Style="{StaticResource BigBlackLabelBold}"
                                                Text="{Binding Name}"/>
                                         <StackLayout Orientation="Horizontal">
                                             <Grid Style="{StaticResource StarGridBackground}"
@@ -81,14 +111,25 @@
                                             </Label>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Style="{StaticResource GraySmallLabel}"
-                                                   Text="работает"/>
+                                            <Image Source="GreenPoint.png"
+                                                   WidthRequest="6"
+                                                   HeightRequest="6"
+                                                   Style="{StaticResource Money}"/>
+                                            <Label Style="{StaticResource SmallBlackLabel}"
+                                                   Text="Работает"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Style="{StaticResource GraySmallLabel}"
+                                            <Image Source="Money.png"
+                                                   Style="{StaticResource Money}"/>
+                                            <Label Style="{StaticResource SmallBlackLabel}"
                                                    Text="100 руб. обмен"/>
                                         </StackLayout>
                                     </StackLayout>
+                                    <Image Source="Next.png"
+                                           Style="{StaticResource BankCard}"
+                                           WidthRequest="24"
+                                           HeightRequest="24"
+                                           Grid.Column="2"/>
                                 </Grid>
                             </Frame>
                         </Grid>

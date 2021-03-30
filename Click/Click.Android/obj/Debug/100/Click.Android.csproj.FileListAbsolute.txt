@@ -1925,3 +1925,10 @@ C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\bootleselected.png
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\watercarselected.png
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\rocket.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\greenpoint.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\next.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\location.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\phone.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\document.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\temp29.png
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click.Android\obj\Debug\100\res\drawable\checkmark.png

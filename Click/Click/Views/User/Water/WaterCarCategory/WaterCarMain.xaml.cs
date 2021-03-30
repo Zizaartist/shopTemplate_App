@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Click.Models;
+using Click.ViewModels;
+using Click.Views.User.Water.BootleCategory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +18,7 @@ namespace Click.Views.User.Water.WaterCarCategory
         public WaterCarMain()
         {
             InitializeComponent();
+            WaterCompaniesCollection.BindingContext = new WaterCompanyViewModels();
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -25,6 +29,23 @@ namespace Click.Views.User.Water.WaterCarCategory
         private void Bonus_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new BonusHistory());
+        }
+        private void Express_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new WaterCarFormExpress());
+        }
+        private void WaterCompaniesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.Any())
+            {
+                WaterCompaniesCollection.SelectedItem = null;
+                Navigation.PushModalAsync(new WaterCarForm());
+            }
+        }
+
+        private void Confirm_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

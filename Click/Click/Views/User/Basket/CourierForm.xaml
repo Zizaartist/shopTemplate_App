@@ -32,7 +32,7 @@
                                Placeholder="Например Ленина"
                                HeightRequest="40"/>
                         <Grid>
-                            <StackLayout>
+                            <StackLayout Spacing="0">
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Дом"/>
                                 <Entry Style="{StaticResource EntryGray}"
@@ -43,7 +43,8 @@
                                        Placeholder="Например 5"
                                        HeightRequest="40"/>
                             </StackLayout>
-                            <StackLayout Grid.Column="1">
+                            <StackLayout Grid.Column="1"
+                                         Spacing="0">
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Подъезд"/>
                                 <Entry Style="{StaticResource EntryGray}"

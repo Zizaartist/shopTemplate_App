@@ -235,7 +235,7 @@
             <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="WidthRequest" Value="370"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
-            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Padding" Value="0"/>
             <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
         </Style>
         <Style x:Key="WaterChoiceFrame" TargetType="Frame">
@@ -863,5 +863,8 @@
         <x:Double x:Key="ButtonFont">18</x:Double>
         <x:Double x:Key="HeaderFont">20</x:Double>
         <x:Double x:Key="VeryBigFont">22</x:Double>
+        <!--FontsFamily-->
+        <x:String x:Key="NeoSansPro">NeoSansPro</x:String>
+        <x:String x:Key="NeoSansProBold">NeoSansProBold</x:String>
     </Application.Resources>
 </Application>

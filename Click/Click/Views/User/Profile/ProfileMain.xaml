@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Profile.ProfileMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*,Auto">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <Label Text="Профиль"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="0"/>
+            </Grid>
+            <StackLayout Grid.Row="1"
+                         Padding="20,0,20,0"
+                         Spacing="10">
+                <Label Text="Мои данные"
+                       Style="{StaticResource SmallBlackLabelBold}"
+                       Margin="0,0,0,20"/>
+                <Label Text="+ 7 (999) 999-99-99"
+                       Style="{StaticResource SmallBlackLabel}"
+                       HorizontalOptions="End"/>
+                <Button BackgroundColor="{StaticResource GrayColor}"
+                        HeightRequest="1"/>
+                <Grid>
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                           Text="О приложении"/>
+                    <Image Grid.Column="1"
+                           Source="Next.png"
+                           Style="{StaticResource FoodTime}"
+                           HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            Clicked="AboutCompany"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GrayColor}"
+                        HeightRequest="1"/>
+                <Grid>
+                    <Label Text="Мои данные"
+                           Style="{StaticResource SmallBlackLabel}"/>
+                    <Switch OnColor="{StaticResource BlackColor}"
+                            ThumbColor="{StaticResource WhiteColor}"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GrayColor}"
+                        HeightRequest="1"/>
+                <Button Style="{StaticResource GreenButton}"
+                        Text="Войти как исполнитель"
+                        x:Name="EnterAdminCompany"
+                        Clicked="EnterAdminCompany_Clicked"
+                        Margin="0,20,0,0"/>
+            </StackLayout>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*"
+                  Grid.Row="2"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="MainButton"
+                             Clicked="MainButton_Clicked"
+                             Source="HomeIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Row="1"
+                       Text="Главная"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             x:Name="OrdersButton"
+                             Clicked="OrdersButton_Clicked"
+                             Source="OrdersIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             x:Name="BasketButton"
+                             Clicked="BasketButton_Clicked"
+                             Source="BasketIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Корзина"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="ProfileButton"
+                             Grid.Column="3"
+                             Source="ProfileIconSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Профиль"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
