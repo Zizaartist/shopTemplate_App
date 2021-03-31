@@ -1,12 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.User.Profile.EnterAdminCompany">
+             x:Class="Click.Views.User.Profile.EnterAdminCompany"
+             Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowDefinitions="Auto,*">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <ImageButton Source="BackBlack.png"
+                             Style="{StaticResource BackButton}"
+                             x:Name="Back"
+                             Clicked="Back_Clicked"/>
+                <Label Text="Вход"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Padding="20,0,20,0">
+                <Grid VerticalOptions="Center"
+                      HorizontalOptions="Center"
+                      RowDefinitions="Auto,Auto,Auto,Auto"
+                      Margin="0,0,0,50">
+                    <Frame Style="{StaticResource FindFrame}"
+                           HeightRequest="50"
+                           WidthRequest="320"
+                           Margin="10">
+                        <Entry Style="{StaticResource EntryFind}"
+                               FontSize="{StaticResource SmallFont}"
+                               x:Name="Login"
+                               Placeholder="Логин"
+                               HeightRequest="50"
+                               WidthRequest="320"/>
+                    </Frame>
+                    <Frame Style="{StaticResource FindFrame}"
+                           HeightRequest="50"
+                           WidthRequest="320"
+                           Grid.Row="1"
+                           Margin="10">
+                        <Entry Style="{StaticResource EntryFind}"
+                               FontSize="{StaticResource SmallFont}"
+                               x:Name="Password"
+                               Placeholder="Пароль"
+                               HeightRequest="50"
+                               WidthRequest="320"/>
+                    </Frame>
+                    <Button Style="{StaticResource GreenButton}"
+                            Text="Войти"
+                            x:Name="Enter"
+                            Clicked="Enter_Clicked"
+                            Grid.Row="2"
+                            Margin="10"/>
+                    <Button Style="{StaticResource GreenButton}"
+                            Text="Забыли пароль"
+                            x:Name="ForgotPassword"
+                            Clicked="ForgotPassword_Clicked"
+                            TextColor="{StaticResource BlackColor}"
+                            BackgroundColor="Transparent"
+                            FontFamily="{StaticResource NeoSansPro}"
+                            Grid.Row="3"
+                            Margin="10"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
