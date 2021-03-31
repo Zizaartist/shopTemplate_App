@@ -45,7 +45,9 @@
                            HorizontalOptions="End"/>
                     <Button Grid.ColumnSpan="2"
                             BackgroundColor="Transparent"
-                            HeightRequest="15"/>
+                            HeightRequest="15"
+                            x:Name="RateApp"
+                            Clicked="RateApp_Clicked"/>
                 </Grid>
                 <Button BackgroundColor="{StaticResource GrayColor}"
                         HeightRequest="1"/>
@@ -58,7 +60,9 @@
                            HorizontalOptions="End"/>
                     <Button Grid.ColumnSpan="2"
                             BackgroundColor="Transparent"
-                            HeightRequest="15"/>
+                            HeightRequest="15"
+                            x:Name="Review"
+                            Clicked="Review_Clicked"/>
                 </Grid>
                 <Button BackgroundColor="{StaticResource GrayColor}"
                         HeightRequest="1"/>
@@ -70,15 +74,20 @@
                    Grid.Row="1"/>
             <Button BackgroundColor="Gray"
                     Opacity="0.8"
-                    Grid.RowSpan="2"/>
+                    Grid.RowSpan="2"
+                    x:Name="Background"
+                    Clicked="Close_Clicked"
+                    IsVisible="false"/>
             <Grid Padding="30,0,30,0"
-                  Grid.RowSpan="2">
+                  Grid.RowSpan="2"
+                  x:Name="FrameAlert"
+                  IsVisible="false">
                 <Frame Style="{StaticResource WaterCompanyFrame}"
                        VerticalOptions="Center"
                        HeightRequest="270"
                        CornerRadius="25"
                        Padding="20">
-                    <Grid RowDefinitions="Auto,Auto,Auto"
+                    <Grid RowDefinitions="*,*,*,*"
                           ColumnDefinitions="*">
                         <ImageButton Source="Close.png"
                                      Style="{StaticResource SearchButton}"
@@ -98,23 +107,68 @@
                                          Style="{StaticResource SearchButton}"
                                          x:Name="StarOne"
                                          Clicked="StarOne_Clicked"/>
-                            <ImageButton Source="StarWhite.png"
+                            <ImageButton Source="StarGray.png"
                                          Style="{StaticResource SearchButton}"
                                          x:Name="StarTwo"
                                          Clicked="StarTwo_Clicked"/>
-                            <ImageButton Source="StarWhite.png"
+                            <ImageButton Source="StarGray.png"
                                          Style="{StaticResource SearchButton}"
                                          x:Name="StarThree"
                                          Clicked="StarThree_Clicked"/>
-                            <ImageButton Source="StarWhite.png"
+                            <ImageButton Source="StarGray.png"
                                          Style="{StaticResource SearchButton}"
                                          x:Name="StarFour"
                                          Clicked="StarFour_Clicked"/>
-                            <ImageButton Source="StarWhite.png"
+                            <ImageButton Source="StarGray.png"
                                          Style="{StaticResource SearchButton}"
                                          x:Name="StarFive"
                                          Clicked="StarFive_Clicked"/>
                         </StackLayout>
+                        <Button Style="{StaticResource GreenButton}"
+                                Text="Подтвердить"
+                                Grid.Row="3"
+                                x:Name="Rate"
+                                Clicked="Rate_Clicked"/>
+                    </Grid>
+                </Frame>
+            </Grid>
+            <Grid Padding="30,0,30,0"
+                  Grid.RowSpan="2"
+                  x:Name="FrameReview"
+                  IsVisible="false">
+                <Frame Style="{StaticResource WaterCompanyFrame}"
+                       VerticalOptions="Center"
+                       HeightRequest="270"
+                       CornerRadius="25"
+                       Padding="20">
+                    <Grid RowDefinitions="Auto,Auto,*,Auto"
+                          ColumnDefinitions="*">
+                        <ImageButton Source="Close.png"
+                                     Style="{StaticResource SearchButton}"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="Start"
+                                     Clicked="Close_Clicked"/>
+                        <Label Style="{StaticResource BlackLabel}"
+                               HorizontalOptions="Start"
+                               HorizontalTextAlignment="Start"
+                               Grid.Row="1"
+                               Text="Сообщить об ошибке"/>
+                        <Frame CornerRadius="10"
+                               Padding="0"
+                               Grid.Row="2"
+                               Margin="0,10,0,10">
+                            <Entry BackgroundColor="{StaticResource GrayColorLight}"
+                                   Placeholder="Введите текст"
+                                   FontSize="{StaticResource ButtonFont}"
+                                   FontFamily="{StaticResource NeoSansPro}"
+                                   VerticalTextAlignment="Start"/>
+                        </Frame>
+                        
+                        <Button Style="{StaticResource GreenButton}"
+                                Text="Отправить"
+                                Grid.Row="3"
+                                x:Name="Send"
+                                Clicked="Send_Clicked"/>
                     </Grid>
                 </Frame>
             </Grid>

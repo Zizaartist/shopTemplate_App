@@ -16,5 +16,20 @@ namespace Click.Views.User.Profile
         {
             InitializeComponent();
         }
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
+        private void ForgotPassword_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Enter_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
