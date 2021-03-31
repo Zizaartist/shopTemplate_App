@@ -845,6 +845,7 @@
         <Color x:Key="WhiteColor">#FEFFFF</Color>
         <Color x:Key="BackgroundColor">#E2E2E2</Color>
         <Color x:Key="GrayText">#525252</Color>
+        <Color x:Key="GraySimple">#C4C4C4</Color>
         <Color x:Key="GrayTextPanel">#9E9E9E</Color>
         <Color x:Key="GrayColor">#686868</Color>
         <Color x:Key="GrayColorLight">#EFEFEF</Color>

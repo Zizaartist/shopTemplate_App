@@ -38,7 +38,7 @@
                 <Button BackgroundColor="{StaticResource GrayColor}"
                         HeightRequest="1"/>
                 <Grid>
-                    <Label Text="Мои данные"
+                    <Label Text="Получать уведомления"
                            Style="{StaticResource SmallBlackLabel}"/>
                     <Switch OnColor="{StaticResource BlackColor}"
                             ThumbColor="{StaticResource WhiteColor}"/>

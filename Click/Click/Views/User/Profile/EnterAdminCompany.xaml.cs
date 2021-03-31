@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Click.Views.AdminCompany.Orders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace Click.Views.User.Profile
 
         private void Enter_Clicked(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new OrdersMain();
         }
     }
 }

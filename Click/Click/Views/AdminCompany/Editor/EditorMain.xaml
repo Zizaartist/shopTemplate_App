@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Editor.EditorMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <Label Text="Редактирование"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="0"/>
+            </Grid>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*,*"
+                  Grid.Row="1"
+                  Margin="0,0,0,-5"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="OrdersButton"
+                             Clicked="OrdersButton_Clicked"
+                             Source="COrders.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             x:Name="HistoryButton"
+                             Clicked="HistoryButton_Clicked"
+                             Source="CHistory.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="История"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             x:Name="ReportsButton"
+                             Clicked="ReportsButton_Clicked"
+                             Source="CReports.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Отчеты"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="EditorButton"
+                             Clicked="EditorButton_Clicked"
+                             Grid.Column="3"
+                             Source="CEditorSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Редактор"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="ProfileButton"
+                             Clicked="ProfileButton_Clicked"
+                             Grid.Column="4"
+                             Source="CProfile.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="4"
+                       Grid.Row="1"
+                       Text="Профиль"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
