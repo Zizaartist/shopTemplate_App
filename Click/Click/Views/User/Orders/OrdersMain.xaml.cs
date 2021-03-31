@@ -1,4 +1,5 @@
 ﻿using Click.Models;
+using Click.Models.LocalModels;
 using Click.ViewModels;
 using Click.Views.User.Basket;
 using Click.Views.User.Profile;
@@ -46,9 +47,9 @@ namespace Click.Views.User.Orders
             if (e.CurrentSelection.Any())
             {
                 OrderCollection.SelectedItem = null;
-                if ((e.CurrentSelection.LastOrDefault() as Order).Delivered == false)
+                if ((e.CurrentSelection.LastOrDefault() as OrderLocal).Delivered == false)
                 {
-                    Navigation.PushModalAsync(new OrdersReview(e.CurrentSelection.LastOrDefault() as Order));
+                    Navigation.PushModalAsync(new OrdersReview(e.CurrentSelection.LastOrDefault() as OrderLocal));
                 }
             }
         }

@@ -36,6 +36,7 @@ namespace Click.Views.User.Flowers
                 var selectedBrand = OrganisationCollection.SelectedItem as BrandLocal;
                 OrganisationCollection.SelectedItem = null;
                 Navigation.PushModalAsync(new FlowersAssortment(selectedBrand));
+            }
         }
 
         private void Find_Clicked(object sender, EventArgs e)

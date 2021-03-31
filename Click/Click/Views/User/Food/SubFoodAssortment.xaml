@@ -25,7 +25,6 @@
                                          Style="{StaticResource BackButton}"/>
                                 <Label x:Name="BrandName"
                                    Style="{StaticResource WhiteHeaderLabel}"
-                                   x:Name="BrandNameLabel"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
                                 <Label x:Name="Points"

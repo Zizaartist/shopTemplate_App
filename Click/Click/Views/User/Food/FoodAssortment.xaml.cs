@@ -46,7 +46,7 @@ namespace Click.Views.User.Food
         {
             Task.Run(() => UsersViewModel.Instance.GetPoints());
             base.OnAppearing();
-            _brandInfo = brandInfo;
+            //wtf was that?
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)

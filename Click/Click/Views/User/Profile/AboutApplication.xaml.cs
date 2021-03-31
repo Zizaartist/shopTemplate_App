@@ -21,5 +21,35 @@ namespace Click.Views.User.Profile
         {
             Navigation.PopModalAsync();
         }
+
+        private void Close_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StarOne_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StarTwo_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StarThree_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StarFour_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StarFive_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

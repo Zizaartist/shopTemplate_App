@@ -30,7 +30,7 @@ namespace Click.Views.User.Flowers
 
             //brandMenu-related
             MinimalPrice.Text = (_brandMenuLocal.BrandMenu.Brand.MinimalPrice ?? default).ToString();
-            BrandName.Text = _brandMenuLocal.BrandMenu.Brand.BrandName;
+            NameLabel.Text = _brandMenuLocal.BrandMenu.Brand.BrandName;
         }
 
         protected override void OnAppearing()

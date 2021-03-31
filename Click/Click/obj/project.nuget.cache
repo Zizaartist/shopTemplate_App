@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4mAWqnnu5gdCGEM6v1WfnWb5Q8cPVeDVga2YQKAs8oxcep5ff+ALZZN63MbQcWYD+CNMiEbkbAmfNSy9t7ZPhg==",
+  "dgSpecHash": "NSGNs+rwLX64yPQbc6pRpv4HlsNzZ8G7VAV/HOQ8oEPard6/zQ15HlZq0zWTNmkkUCuXEBrobDzrLRa3C53Bpg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click\\Click.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Syberia-7\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\Syberia-7\\.nuget\\packages\\refractored.mvvmhelpers\\1.6.2\\refractored.mvvmhelpers.1.6.2.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\splat\\10.0.1\\splat.10.0.1.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
@@ -57,6 +58,7 @@
     "C:\\Users\\Syberia-7\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\Syberia-7\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
     "C:\\Users\\Syberia-7\\.nuget\\packages\\xamarin.forms.pancakeview\\2.3.0.759\\xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512"

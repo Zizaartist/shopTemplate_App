@@ -1,4 +1,6 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
+using Click.Models.LocalModels;
 using Click.Views.User.Basket;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,7 @@ namespace Click.Views.User.Orders
     {
         static ImageButton[] imageButtons = new ImageButton[5];
         int Rating;
-        public OrdersReview(Order order)
+        public OrdersReview(OrderLocal order)
         {
             InitializeComponent();
             BindingContext = order;

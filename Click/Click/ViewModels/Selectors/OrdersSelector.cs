@@ -4,6 +4,9 @@ using System.Text;
 using Xamarin.Forms;
 using Click.ViewModels;
 using Click.Models;
+using ApiClick.Models;
+using Click.Models.LocalModels;
+using ApiClick.Models.EnumModels;
 
 namespace Click.ViewModels.Selectors
 {
@@ -22,16 +25,18 @@ namespace Click.ViewModels.Selectors
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            Order order = item as Order;
+            OrderLocal order = item as OrderLocal;
             if(order.Name == "")
             {
                 return Header;
             }
-            switch (order.Delivered)
+            if (order.Delivered)
             {
-                case true: return DeliveredOrder;
-                case false: return WaitingOrder;
-                default: return null;
+                return DeliveredOrder;
+            }
+            else 
+            {
+                return WaitingOrder;
             }
         }
     }
