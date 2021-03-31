@@ -20,10 +20,11 @@
                             ItemsSource="{Binding BrandMenus}"
                             SelectionMode="Single"
                             SelectionChanged="CategoriesCollection_SelectionChanged">
-                    <CollectionView.Header>
-                        <Grid RowDefinitions="Auto,Auto,Auto">
-                            <Grid Style="{StaticResource HeaderGrid}">
-                                <ImageButton x:Name="Back"
+                <CollectionView.Header>
+                    <Grid RowDefinitions="Auto,Auto,Auto"
+                          x:Name="HeaderGrid">
+                        <Grid Style="{StaticResource HeaderGrid}">
+                            <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
                                 <Image Style="{StaticResource Restaurant}"

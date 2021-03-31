@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,11 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReviewsFlowers : ContentPage
     {
-        public ReviewsFlowers()
+        public ReviewsFlowers(BrandInfo brandInfo)
         {
             InitializeComponent();
-           //ReviewsCollection.BindingContext = new ReviewsViewModel();
+            ReviewsCollection.BindingContext = new ReviewsViewModel();
+            NameLabel.Text = brandInfo.Name;
         }
 
         private void Back_Clicked(object sender, EventArgs e)

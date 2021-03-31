@@ -1,12 +1,152 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:selectors="clr-namespace:Click.ViewModels.Selectors"
              x:Class="Click.Views.User.Orders.OrdersMain"
              Style="{StaticResource GrayContentPage}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="WaitingOrderTemplate">
+                <StackLayout Padding="20,5,20,5">
+                    <Frame CornerRadius="10"
+                           Padding="10,10,10,0">
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto"
+                              RowDefinitions="Auto,Auto">
+                            <Image Style="{StaticResource LogoImage}"
+                                   Source="{Binding Logo}"
+                                   VerticalOptions="Start"/>
+                            <StackLayout Grid.Column="1"
+                                         Margin="10,0,0,0"
+                                         Spacing="5">
+                                <Label Style="{StaticResource VeryBigBlackLabel}"
+                                       HorizontalTextAlignment="Start"
+                                       Text="{Binding Name}"/>
+                                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                       HorizontalTextAlignment="Start"
+                                       HorizontalOptions="Start"
+                                       Text="{Binding DateTime}"/>
+                                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                       HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Адрес доставки: "/>
+                                            <Span Text="{Binding Adress}"
+                                                  TextColor="{StaticResource BlackColor}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource BlackLabel}"
+                                       HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Price}"/>
+                                            <Span Text=" Р"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <Line Y2="35"
+                                  BackgroundColor="{StaticResource GrayColorLight}"
+                                  WidthRequest="1"
+                                  HorizontalOptions="Center"
+                                  Grid.Column="2"/>
+                            <StackLayout VerticalOptions="Center"
+                                         Grid.Column="3">
+                                <Label Style="{StaticResource VerySmallBlackLabel}"
+                                       HorizontalOptions="Center"
+                                       Text="Статус"/>
+                                <Label Style="{StaticResource VerySmallGreenLabel}"
+                                       Text="Доставлено"/>
+                            </StackLayout>
+                            <Button Grid.Row="1"
+                                    Grid.ColumnSpan="4"
+                                    Style="{StaticResource GreenButton}"
+                                    FontSize="{StaticResource SmallFont}"
+                                    Padding="-10"
+                                    Text="Да, я получил заказ"
+                                    WidthRequest="370"
+                                    HeightRequest="30"
+                                    CornerRadius="10"
+                                    Margin="-10,0,-10,0"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="HeaderTemplate">
+                <StackLayout Padding="20,0,20,0">
+                    <Label Style="{StaticResource BigBlackLabelBold}"
+                           HorizontalTextAlignment="Start"
+                           Text="История"/>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="DeliveredOrderTemplate">
+                <StackLayout Padding="20,5,20,5">
+                    <Frame CornerRadius="10"
+                           Padding="10,10,10,10">
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                            <Image Style="{StaticResource LogoImage}"
+                                   Source="{Binding Logo}"
+                                   VerticalOptions="Start"/>
+                            <StackLayout Grid.Column="1"
+                                         Margin="10,0,0,0"
+                                         Spacing="5">
+                                <Label Style="{StaticResource VeryBigBlackLabel}"
+                                       HorizontalTextAlignment="Start"
+                                       Text="{Binding Name}"/>
+                                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                       HorizontalTextAlignment="Start"
+                                       HorizontalOptions="Start"
+                                       Text="{Binding DateTime}"/>
+                                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                       HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Адрес доставки: "/>
+                                            <Span Text="{Binding Adress}"
+                                                  TextColor="{StaticResource BlackColor}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource BlackLabel}"
+                                       HorizontalTextAlignment="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Price}"/>
+                                            <Span Text=" Р"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <Line Y2="35"
+                                  BackgroundColor="{StaticResource GrayColorLight}"
+                                  WidthRequest="1"
+                                  HorizontalOptions="Center"
+                                  Grid.Column="2"/>
+                            <StackLayout VerticalOptions="Center"
+                                         Grid.Column="3">
+                                <Label Style="{StaticResource VerySmallBlackLabel}"
+                                       HorizontalOptions="Center"
+                                       Text="Статус"/>
+                                <Label Style="{StaticResource VerySmallBlackLabelBold}"
+                                       Text="Доставлено"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            <selectors:OrdersSelector x:Key="ordersSelector"
+                                      WaitingOrder="{StaticResource WaitingOrderTemplate}"
+                                      Header="{StaticResource HeaderTemplate}"
+                                      DeliveredOrder="{StaticResource DeliveredOrderTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="*,Auto">
             <CollectionView x:Name="OrderCollection"
                             ItemsSource="{Binding Orders}"
+                            ItemTemplate="{StaticResource ordersSelector}"
+                            SelectionMode="Single"
+                            SelectionChanged="OrderCollection_SelectionChanged"
                             Margin="0,0,0,-10">
                 <CollectionView.Header>
                     <Grid Style="{StaticResource HeaderGrid}"
@@ -17,27 +157,6 @@
                                    Grid.Column="0"/>
                     </Grid>
                 </CollectionView.Header>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid RowDefinitions="Auto,Auto,Auto"
-                              Padding="10">
-                            <Frame Style="{StaticResource MainBannerFrame}">
-                                <Grid RowDefinitions="Auto,Auto,Auto">
-                                    <Image Source="{Binding Banner}"
-                                           Style="{StaticResource BannerImage}"/>
-                                    <Label Text="{Binding Title}"
-                                           Style="{StaticResource WhiteBoldLabel}"
-                                           Margin="20,15,20,0"
-                                           Grid.Row="1"/>
-                                    <Label Text="{Binding Description}"
-                                           Style="{StaticResource WhiteLabel}"
-                                           Margin="20,0,20,0"
-                                           Grid.Row="2"/>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
             </CollectionView>
             <Grid Style="{StaticResource NavigationPanelGrid}"
                   ColumnDefinitions="*,*,*,*"

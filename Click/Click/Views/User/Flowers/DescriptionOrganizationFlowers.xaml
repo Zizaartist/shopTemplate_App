@@ -5,7 +5,8 @@
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
         <ScrollView>
-            <Grid RowDefinitions="Auto,Auto,*">
+            <Grid RowDefinitions="Auto,Auto,*"
+                  x:Name="WrapperGrid">
                 <Grid Style="{StaticResource HeaderGrid}"
                       BackgroundColor="{StaticResource GreenColor}">
                     <ImageButton x:Name="Back"

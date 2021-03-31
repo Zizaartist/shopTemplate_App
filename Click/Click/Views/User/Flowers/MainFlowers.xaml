@@ -92,7 +92,9 @@
                           HeightRequest="30"
                           Padding="10,0,10,0">
                             <Switch x:Name="Working"
-                            IsToggled="{Binding IsWorkingCriteria, Mode=TwoWay}"/>
+                                OnColor="{StaticResource GreenColor}"
+                                ThumbColor="{StaticResource WhiteColor}"
+                                IsToggled="{Binding IsWorkingCriteria, Mode=TwoWay}"/>
                             <Label Text="cейчас работают"
                                Style="{StaticResource GrayMediumLabel}"
                                Grid.Column="1"/>
@@ -135,8 +137,8 @@
                                         <Image Source="Discount.png"
                                             IsVisible="{Binding Brand.HasDiscounts}"
                                            Grid.Column="5"/>
-                                </Grid>
-                                <Grid Grid.Row="1"
+                                    </Grid>
+                                    <Grid Grid.Row="1"
                                       ColumnDefinitions="Auto,*"
                                       Padding="20,0,20,0">
                                         <Label Text="{Binding Brand.BrandName}"

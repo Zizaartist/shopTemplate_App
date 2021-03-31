@@ -24,7 +24,8 @@
                                 <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
-                                <Label x:Name="BrandName"
+                                <Label Text="Burger King"
+                                   x:Name="NameLabel"
                                    Style="{StaticResource WhiteHeaderLabel}"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
@@ -39,6 +40,7 @@
                                          Grid.Column="3"/>
                             </Grid>
                             <Label Text="{Binding BrandMenu.BrandMenuName}"
+                               x:Name="CategoryLabel"
                                Style="{StaticResource BlackLabel}"
                                Margin="20,0,0,0"
                                Grid.Row="1"/>

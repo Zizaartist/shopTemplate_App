@@ -7,5 +7,6 @@ namespace Click.Models
     class TagFood
     {
         public string Tag { get; set; }
+        public bool Tagged { get; set; }
     }
 }

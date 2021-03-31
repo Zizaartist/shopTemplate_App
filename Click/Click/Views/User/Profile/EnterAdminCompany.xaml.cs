@@ -7,24 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Click.Views.User.Water
+namespace Click.Views.User.Profile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WaterMenu : ContentPage
+    public partial class EnterAdminCompany : ContentPage
     {
-        public WaterMenu()
+        public EnterAdminCompany()
         {
             InitializeComponent();
-        }
-
-        private void Back_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Bonus_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

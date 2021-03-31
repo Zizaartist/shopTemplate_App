@@ -25,6 +25,7 @@
                                          Style="{StaticResource BackButton}"/>
                                 <Label x:Name="BrandName"
                                    Style="{StaticResource WhiteHeaderLabel}"
+                                   x:Name="BrandNameLabel"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
                                 <Label x:Name="Points"
@@ -39,6 +40,7 @@
                             </Grid>
                             <Label Text="{Binding BrandMenu.BrandMenuName}"
                                Style="{StaticResource BlackLabel}"
+                               x:Name="CategoryLabel"
                                Margin="20,0,0,0"
                                Grid.Row="1"/>
                         </Grid>

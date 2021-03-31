@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Profile.AboutApplication"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <ImageButton Source="BackBlack.png"
+                             Style="{StaticResource BackButton}"
+                             x:Name="Back"
+                             Clicked="Back_Clicked"/>
+                <Label Text="О приложении"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <StackLayout Grid.Row="1"
+                         Padding="20,0,20,0"
+                         Spacing="10">
+                <Image Source="ClickPreview.png"
+                       WidthRequest="200"
+                       HeightRequest="60"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Aspect="AspectFit"/>
+                <Label Style="{StaticResource SmallBlackLabel}"
+                       Margin="0,0,0,20">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Версия "/>
+                            <Span Text="1.1"/>
+                            <Span Text=" от "/>
+                            <Span Text="06.03.2021"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Grid RowDefinitions="Auto">
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                           Text="Оценить приложение"/>
+                    <Image Grid.Column="1"
+                           Source="Next.png"
+                           Style="{StaticResource FoodTime}"
+                           HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GrayColor}"
+                        HeightRequest="1"/>
+                <Grid>
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                           Text="Сообщить об ошибке"/>
+                    <Image Grid.Column="1"
+                           Source="Next.png"
+                           Style="{StaticResource FoodTime}"
+                           HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GrayColor}"
+                        HeightRequest="1"/>
+            </StackLayout>
+            <Label Style="{StaticResource SmallBlackLabel}"
+                   Text="2021-2022 ООО 'Click'"
+                   VerticalOptions="End"
+                   Margin="20,0,20,0"
+                   Grid.Row="1"/>
+            <Button BackgroundColor="Gray"
+                    Opacity="0.8"
+                    Grid.RowSpan="2"/>
+            <Grid Padding="30,0,30,0"
+                  Grid.RowSpan="2">
+                <Frame Style="{StaticResource WaterCompanyFrame}"
+                       VerticalOptions="Center"
+                       HeightRequest="270"
+                       CornerRadius="25"
+                       Padding="20">
+                    <Grid RowDefinitions="Auto,Auto,Auto"
+                          ColumnDefinitions="*">
+                        <ImageButton Source="Close.png"
+                                     Style="{StaticResource SearchButton}"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="Start"
+                                     x:Name="Close"
+                                     Clicked="Close_Clicked"/>
+                        <Label Style="{StaticResource BlackLabelMedium}"
+                               HorizontalOptions="Center"
+                               WidthRequest="220"
+                               Grid.Row="1"
+                               Text="Нравится приложение Click? Оцените его! Спасибо, Ваше мнение важно для нас."/>
+                        <StackLayout HorizontalOptions="Center"
+                                     Orientation="Horizontal"
+                                     Grid.Row="2">
+                            <ImageButton Source="Star.png"
+                                         Style="{StaticResource SearchButton}"
+                                         x:Name="StarOne"
+                                         Clicked="StarOne_Clicked"/>
+                            <ImageButton Source="StarWhite.png"
+                                         Style="{StaticResource SearchButton}"
+                                         x:Name="StarTwo"
+                                         Clicked="StarTwo_Clicked"/>
+                            <ImageButton Source="StarWhite.png"
+                                         Style="{StaticResource SearchButton}"
+                                         x:Name="StarThree"
+                                         Clicked="StarThree_Clicked"/>
+                            <ImageButton Source="StarWhite.png"
+                                         Style="{StaticResource SearchButton}"
+                                         x:Name="StarFour"
+                                         Clicked="StarFour_Clicked"/>
+                            <ImageButton Source="StarWhite.png"
+                                         Style="{StaticResource SearchButton}"
+                                         x:Name="StarFive"
+                                         Clicked="StarFive_Clicked"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

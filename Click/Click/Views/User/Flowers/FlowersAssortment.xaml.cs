@@ -74,7 +74,7 @@ namespace Click.Views.User.Flowers
 
         private void Reviews_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new ReviewsFlowers());
+            Navigation.PushModalAsync(new ReviewsFlowers(_brandInfo));
         }
     }
 }

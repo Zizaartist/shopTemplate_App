@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click.Android\\Click.Android.csproj": {}
+    "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.Android\\Click.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click.Android\\Click.Android.csproj": {
+    "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.Android\\Click.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click.Android\\Click.Android.csproj",
+        "projectUniqueName": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.Android\\Click.Android.csproj",
         "projectName": "Click.Android",
-        "projectPath": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click.Android\\Click.Android.csproj",
-        "packagesPath": "C:\\Users\\Syberia-7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click.Android\\obj\\",
+        "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.Android\\Click.Android.csproj",
+        "packagesPath": "C:\\Users\\Syberia-13\\.nuget\\packages\\",
+        "outputPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Syberia-7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Syberia-13\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid10.0": {
             "projectReferences": {
-              "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click\\Click.csproj": {
-                "projectPath": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click\\Click.csproj"
+              "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj": {
+                "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj"
               }
             }
           }
@@ -46,36 +46,32 @@
               "target": "Package",
               "version": "[1.6.1, )"
             },
-            "Xamarin.Essentials": {
-              "target": "Package",
-              "version": "[1.6.1, )"
-            },
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2012, )"
             },
-            "Xamarin.Forms": {
+            "Xamarin.Forms.PancakeView": {
               "target": "Package",
-              "version": "[5.0.0.2012, )"
+              "version": "[2.3.0.759, )"
             }
           }
         }
       }
     },
-    "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click\\Click.csproj": {
+    "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click\\Click.csproj",
+        "projectUniqueName": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj",
         "projectName": "Click",
-        "projectPath": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click\\Click.csproj",
-        "packagesPath": "C:\\Users\\Syberia-7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Syberia-7\\source\\repos\\ClickNewest\\Click\\Click\\obj\\",
+        "projectPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\Click.csproj",
+        "packagesPath": "C:\\Users\\Syberia-13\\.nuget\\packages\\",
+        "outputPath": "C:\\Work\\Mobile App\\IT Studio Syberia\\Click\\Click frontend\\Click 0.1\\Click\\Click\\Click\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Syberia-7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Syberia-13\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -108,10 +104,6 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
-            "System.ComponentModel.Annotations": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"
@@ -120,9 +112,9 @@
               "target": "Package",
               "version": "[5.0.0.2012, )"
             },
-            "akavache": {
+            "Xamarin.Forms.PancakeView": {
               "target": "Package",
-              "version": "[7.2.1, )"
+              "version": "[2.3.0.759, )"
             }
           },
           "imports": [
@@ -135,7 +127,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

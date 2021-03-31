@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Click.Views.User.Water.BootleCategory;
+using Click.Views.User.Water.WaterCarCategory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,17 +26,37 @@ namespace Click.Views.User.Water
 
         private void Bonus_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new BonusHistory());
         }
-
+        bool bootle, vodovoz;
         private void Bootle_Clicked(object sender, EventArgs e)
         {
-
+            BootleImage.Source = "BootleSelected.png";
+            if (bootle == false)
+            {
+                bootle = true;
+                WaterCarImage.Source = "WaterCar.png";
+                vodovoz = false;
+            }
+            else
+            {
+                Navigation.PushModalAsync(new BootleMain());
+            }
         }
 
         private void Vodovoz_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new WaterMenu());
+            WaterCarImage.Source = "WaterCarSelected.png";
+            if (vodovoz == false)
+            {
+                vodovoz = true;
+                BootleImage.Source = "Bootle.png";
+                bootle = false;
+            }
+            else
+            {
+                Navigation.PushModalAsync(new WaterCarMain());
+            }
         }
     }
 }

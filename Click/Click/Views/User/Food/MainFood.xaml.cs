@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,11 @@ namespace Click.Views.User.Food
                 OrganisationCollection.SelectedItem = null;
                 Navigation.PushModalAsync(new FoodAssortment(selectedBrand));
             }
+        }
+
+        private void Tag_Clicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
         }
     }
 }

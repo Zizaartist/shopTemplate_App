@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:selectors="clr-namespace:Click.ViewModels.Selectors" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:help="clr-namespace:Click.ViewModels.Help"
+             x:Class="Click.Views.User.Basket.BasketMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*, Auto">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <Label Text="Корзина"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="0"/>
+            </Grid>
+            <CollectionView x:Name="OrderCollection"
+                            ItemsSource="{Binding GoodsFoodsGroups}"
+                            SelectionMode="None"
+                            IsGrouped="True"
+                            Margin="0,0,0,-10"
+                            Grid.Row="1">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="20,10,20,0">
+                            <pancakeview:PancakeView CornerRadius="20,20,0,0"
+                                                     BackgroundColor="White"
+                                                     Padding="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Style="{StaticResource LogoImage}"
+                                           Source="{Binding Logo}"
+                                           VerticalOptions="Start"/>
+                                    <Label Style="{StaticResource VeryBigBlackLabel}"
+                                           HorizontalTextAlignment="Start"
+                                           Text="{Binding Name}"
+                                           Grid.Column="1"/>
+                                </StackLayout>
+                            </pancakeview:PancakeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="20,0,20,0">
+                            <Frame Padding="10">
+                                <Grid RowDefinitions="Auto"
+                                      ColumnDefinitions="Auto,Auto">
+                                    <Frame Style="{StaticResource FrameImageFoodList}">
+                                        <Image Style="{StaticResource FoodListImage}"
+                                               Source="{Binding Image}"/>
+                                    </Frame>
+                                    <Grid Grid.Column="1" 
+                                          RowDefinitions="Auto,Auto,Auto"
+                                          Margin="10,0,0,0">
+                                        <Label Text="{Binding Title}"
+                                               Style="{StaticResource BlackLabel}"
+                                               HorizontalTextAlignment="Start"
+                                               Margin="0,0,0,5"/>
+                                        <Label Style="{StaticResource SmallBlackLabelBold}"
+                                               Text="Количество:"
+                                               Grid.Row="1"
+                                               Margin="0,0,0,5"/>
+                                        <!--Менять изображения на PlusSelected, MinusSelected-->
+                                        <Grid Grid.Row="2"
+                                              RowDefinitions="Auto"
+                                              HorizontalOptions="Start"
+                                              ColumnDefinitions="Auto,Auto,Auto,Auto">
+                                            <ImageButton Source="Minus.png"
+                                                         Style="{StaticResource MinusPlus}"
+                                                         Margin="0,0,5,0"/>
+                                            <Label Style="{StaticResource SmallBlackLabelBold}"
+                                                   Text="{Binding QuantityGoods}"
+                                                   Grid.Column="1"
+                                                   Margin="0,0,5,0"/>
+                                            <ImageButton Source="Plus.png"
+                                                         Style="{StaticResource MinusPlus}"
+                                                         Grid.Column="2"
+                                                         Margin="0,0,5,0"/>
+                                            <Label Style="{StaticResource SmallBlackLabelBold}"
+                                                   Grid.Column="3"
+                                                   Margin="0,0,5,0">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Price}"/>
+                                                        <Span Text=" р"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.GroupFooterTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="20,0,20,10">
+                            <pancakeview:PancakeView CornerRadius="0,0,20,20"
+                                                     BackgroundColor="White"
+                                                     Padding="10,0,10,10">
+                                <StackLayout>
+                                    <Label Style="{StaticResource VerySmallBlackLabelBold}"
+                                           HorizontalTextAlignment="Start"
+                                           HorizontalOptions="Start"
+                                           Text="Условия доставки"/>
+                                    <Label Style="{StaticResource VerySmallBlackLabel}"
+                                           HorizontalTextAlignment="Start"
+                                           HorizontalOptions="Start"
+                                           Text="{Binding DeliveryConditions}"/>
+                                    <Frame Style="{StaticResource FrameFoodButton}">
+                                        <Grid ColumnDefinitions="Auto,*,Auto">
+                                            <Label Style="{StaticResource WhiteButtonLabelBold}"
+                                                   Text="Оформить заказ на"/>
+                                            <Label Style="{StaticResource WhiteButtonLabelBold}"
+                                                   Grid.Column="2">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="319"/>
+                                                        <Span Text=" р"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Button x:Name="Basket"
+                                                    Clicked="Basket_Clicked"
+                                                    BackgroundColor="Transparent"
+                                                    Grid.ColumnSpan="3"/>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </pancakeview:PancakeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupFooterTemplate>
+            </CollectionView>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*"
+                  Grid.Row="2"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="MainButton"
+                             Clicked="MainButton_Clicked"
+                             Source="HomeIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Row="1"
+                       Text="Главная"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             x:Name="OrdersButton"
+                             Clicked="OrdersButton_Clicked"
+                             Source="OrdersIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             x:Name="BasketButton"
+                             Clicked="BasketButton_Clicked"
+                             Source="BasketIconSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Корзина"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="ProfileButton"
+                             Clicked="ProfileButton_Clicked"
+                             Grid.Column="3"
+                             Source="ProfileIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Профиль"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

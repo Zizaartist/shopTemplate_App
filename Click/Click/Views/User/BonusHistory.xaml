@@ -18,7 +18,7 @@
                                      Clicked="Back_Clicked"
                                      Source="BackBlack.png"
                                      Style="{StaticResource BackButton}"/>
-                            <Label Text="Еда"
+                        <Label Text="Мои бонусы"
                                Style="{StaticResource HeaderBlackLabelBold}"
                                Margin="10,0,0,0"
                                Grid.Column="1"/>

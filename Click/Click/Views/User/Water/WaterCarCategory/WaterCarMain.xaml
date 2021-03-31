@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.User.Water.WaterCarCategory.WaterCarMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="#1D9BD5"
+                  Style="{StaticResource HeaderGrid}">
+                <ImageButton Style="{StaticResource BackButton}"
+                             x:Name="Back"
+                             Clicked="Back_Clicked"/>
+                <Label Text="Вода" 
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+                <Label Text="У Вас 0"
+                               Style="{StaticResource WhiteMediumLabel}"
+                               Margin="0,0,10,0"
+                               Grid.Column="2"/>
+                <ImageButton x:Name="Bonus"
+                             Clicked="Bonus_Clicked"
+                             Style="{StaticResource BonusButton}"
+                             Grid.Column="3"/>
+            </Grid>
+            <CollectionView x:Name="WaterCompaniesCollection"
+                            ItemsSource="{Binding WaterCompanies}"
+                            SelectionMode="Single"
+                            SelectionChanged="WaterCompaniesCollection_SelectionChanged">
+                <CollectionView.Header>
+                    <Grid Padding="20,5,20,5">
+                        <Frame Style="{StaticResource WaterCompanyFrame}"
+                               HeightRequest="60"
+                               Padding="10,0,10,0">
+                            <Grid ColumnDefinitions="Auto,*">
+                                <Image Source="Rocket.png"
+                                       Style="{StaticResource Restaurant}"/>
+                                <Label Style="{StaticResource BlackLabel}"
+                                       TextColor="{StaticResource BlueColor}"
+                                       Text="Экспресс доставка"
+                                       Grid.Column="1"/>
+                                <Button BackgroundColor="Transparent"
+                                        Grid.ColumnSpan="2"
+                                        x:Name="Express"
+                                        Clicked="Express_Clicked"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="20,5,20,5">
+                            <Frame Style="{StaticResource WaterCompanyFrame}"
+                                   Padding="0,5,10,10">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                    <StackLayout Spacing="0"
+                                                 Margin="10,0,10,0"
+                                                 VerticalOptions="Start">
+                                        <Frame Style="{StaticResource LogoFrame}"
+                                               Margin="0"
+                                               HorizontalOptions="Center">
+                                            <Image Style="{StaticResource LogoImage}"
+                                                   Source="{Binding Images}"/>
+                                        </Frame>
+                                        <Grid Style="{StaticResource StarGridBackground}"
+                                              HorizontalOptions="Center">
+                                            <Grid Style="{StaticResource StarGrid}"
+                                                  x:Name="Star"/>
+                                            <Image Style="{StaticResource StarRating}"/>
+                                        </Grid>
+                                        <Label Style="{StaticResource GraySmallLabel}"
+                                               HorizontalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="4.8"/>
+                                                    <Span Text="(562)"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1"
+                                                 Spacing="0"
+                                                 VerticalOptions="Start">
+                                        <Label Style="{StaticResource BigBlackLabelBold}"
+                                               Text="{Binding Name}"
+                                               Margin="0,0,0,10"/>
+                                        <Label Style="{StaticResource SmallBlackLabel}"
+                                               Text="8 (999) 999-99-99"/>
+                                        <Label Style="{StaticResource SmallBlackLabel}"
+                                               Text="9:00-18:00"/>
+                                    </StackLayout>
+                                    <Label Style="{StaticResource BigBlackLabelBold}"
+                                           VerticalOptions="Start"
+                                           HorizontalOptions="End"
+                                           Grid.Column="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="900"/>
+                                                <Span Text=" рублей"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Button Style="{StaticResource GreenButton}"
+                                            Text="Заказать"
+                                            FontSize="{StaticResource SmallFont}"
+                                            FontFamily="{StaticResource NeoSansPro}"
+                                            x:Name="Confirm"
+                                            Clicked="Confirm_Clicked"
+                                            VerticalOptions="End"
+                                            HorizontalOptions="End"
+                                            Padding="-10"
+                                            WidthRequest="136"
+                                            HeightRequest="27"
+                                            Grid.Column="2"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

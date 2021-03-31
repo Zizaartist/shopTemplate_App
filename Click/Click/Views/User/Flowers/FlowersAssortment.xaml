@@ -21,7 +21,8 @@
                             SelectionMode="Single"
                             SelectionChanged="CategoriesCollection_SelectionChanged">
                     <CollectionView.Header>
-                        <Grid RowDefinitions="Auto,Auto,Auto">
+                        <Grid RowDefinitions="Auto,Auto,Auto"
+                          x:Name="WrapperGrid">
                             <Grid Style="{StaticResource HeaderGrid}"
                               BackgroundColor="{StaticResource GreenColor}">
                                 <ImageButton x:Name="Back"
@@ -54,6 +55,7 @@
                               Grid.Row="2"
                               Padding="15,10,15,15">
                                 <Label x:Name="BrandName"
+                                   HorizontalTextAlignment="Start"
                                    Style="{StaticResource VeryBigBlackLabel}"/>
                                 <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto">
                                     <Frame CornerRadius="15"
