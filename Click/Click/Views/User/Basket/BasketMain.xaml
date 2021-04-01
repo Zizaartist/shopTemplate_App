@@ -23,7 +23,7 @@
                     <DataTemplate>
                         <StackLayout Padding="20,10,20,0">
                             <pancakeview:PancakeView CornerRadius="20,20,0,0"
-                                                     BackgroundColor="White"
+                                                     BackgroundColor="{StaticResource WhiteColor}"
                                                      Padding="10">
                                 <StackLayout Orientation="Horizontal">
                                     <Image Style="{StaticResource LogoImage}"
@@ -96,7 +96,7 @@
                     <DataTemplate>
                         <StackLayout Padding="20,0,20,10">
                             <pancakeview:PancakeView CornerRadius="0,0,20,20"
-                                                     BackgroundColor="White"
+                                                     BackgroundColor="{StaticResource WhiteColor}"
                                                      Padding="10,0,10,10">
                                 <StackLayout>
                                     <Label Style="{StaticResource VerySmallBlackLabelBold}"

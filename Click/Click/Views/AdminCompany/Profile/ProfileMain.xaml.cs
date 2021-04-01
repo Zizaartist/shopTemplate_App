@@ -54,7 +54,7 @@ namespace Click.Views.AdminCompany.Profile
         }
         private void Edit(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new ProfileEdit());
         }
         private void About(object sender, EventArgs e)
         {

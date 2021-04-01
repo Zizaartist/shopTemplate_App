@@ -26,7 +26,6 @@
                            Style="{StaticResource SmallBlackLabel}"
                            HorizontalOptions="End"/>
                 </Grid>
-                
                 <Button BackgroundColor="{StaticResource GrayColor}"
                         HeightRequest="1"/>
                 <Grid ColumnDefinitions="*,Auto">

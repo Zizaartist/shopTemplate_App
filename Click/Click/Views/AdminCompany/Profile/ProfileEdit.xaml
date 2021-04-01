@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Profile.ProfileEdit"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Source="BackBlack.png"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Профиль"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <StackLayout Padding="20,0,20,0"
+                         Spacing="10">
+                <Grid ColumnDefinitions="Auto,Auto">
+                    <Frame Style="{StaticResource LogoFrame}"
+                           WidthRequest="80"
+                           HeightRequest="80"
+                           Margin="0">
+                        <Image Style="{StaticResource LogoImage}"
+                               Source="temp5.png"
+                               WidthRequest="80"
+                               HeightRequest="80"/>
+                    </Frame>
+                    <Label Text="Burger King"
+                           Style="{StaticResource HeaderBlackLabelBold}"
+                           Grid.Column="1"
+                           Margin="20"/>
+                </Grid>
+                <Label Text="Мои данные"
+                       Style="{StaticResource SmallBlackLabelBold}"
+                       Margin="0,0,0,20"/>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                           Text="Документация"/>
+                    <Image Grid.Column="1"
+                           Source="Next.png"
+                           Style="{StaticResource FoodTime}"
+                           HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            x:Name="Documentation"
+                            Clicked="Documentation_Clicked"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GraySimple}"
+                        HeightRequest="1"
+                        VerticalOptions="Center"/>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                           Text="Выйти из аккаунта"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            x:Name="ExitProfile"
+                            Clicked="ExitProfile_Clicked"
+                            HeightRequest="15"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

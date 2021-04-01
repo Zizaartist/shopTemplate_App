@@ -1,4 +1,5 @@
-﻿using Click.Views.AdminCompany.Editor;
+﻿using Click.ViewModels;
+using Click.Views.AdminCompany.Editor;
 using Click.Views.AdminCompany.History;
 using Click.Views.AdminCompany.Profile;
 using Click.Views.AdminCompany.Reports;
@@ -19,6 +20,7 @@ namespace Click.Views.AdminCompany.Orders
         public OrdersMain()
         {
             InitializeComponent();
+            OrderCollection.BindingContext = new OrderHistoryViewModel();
         }
 
         private void OrdersButton_Clicked(object sender, EventArgs e)
@@ -44,6 +46,20 @@ namespace Click.Views.AdminCompany.Orders
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new ProfileMain();
+        }
+
+        private void MyOrders_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new SubOrdersMain());
+        }
+
+        private void OrderCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.Any())
+            {
+                OrderCollection.SelectedItem = null;
+                Navigation.PushModalAsync(new AboutOrder());
+            }
         }
     }
 }

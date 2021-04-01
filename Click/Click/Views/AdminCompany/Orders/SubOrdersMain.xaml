@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Orders.SubOrdersMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Source="BackBlack.png"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Мои заказы"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <CollectionView x:Name="OrderCollection"
+                            SelectionChanged="OrderCollection_SelectionChanged"
+                            ItemsSource="{Binding Orders}"
+                            SelectionMode="Single"
+                            Margin="0,0,0,-10"
+                            Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="20,5,20,5">
+                            <Frame CornerRadius="10"
+                                   Padding="10,10,10,0">
+                                <Grid ColumnDefinitions="Auto,*,Auto,Auto"
+                                      RowDefinitions="Auto,Auto">
+                                    <Image Style="{StaticResource LogoImage}"
+                                           Source="{Binding Logo}"
+                                           VerticalOptions="Start"/>
+                                    <StackLayout Grid.Column="1"
+                                                 Margin="10,0,0,0"
+                                                 Spacing="5">
+                                        <Label Style="{StaticResource VeryBigBlackLabel}"
+                                               HorizontalTextAlignment="Start"
+                                               Text="{Binding Name}"/>
+                                        <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                               HorizontalTextAlignment="Start"
+                                               HorizontalOptions="Start"
+                                               Text="{Binding DateTime}"/>
+                                        <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                               HorizontalTextAlignment="Start"
+                                               HorizontalOptions="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Адрес доставки: "/>
+                                                    <Span Text="{Binding Adress}"
+                                                          TextColor="{StaticResource BlackColor}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                               HorizontalTextAlignment="Start"
+                                               HorizontalOptions="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Имя заказчика: "/>
+                                                    <Span Text="Binding NameOwner"
+                                                          TextColor="{StaticResource BlackColor}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                               HorizontalTextAlignment="Start"
+                                               HorizontalOptions="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Способ оплаты: "/>
+                                                    <Span Text="Binding Payment"
+                                                          TextColor="{StaticResource BlackColor}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                                               HorizontalTextAlignment="Start"
+                                               HorizontalOptions="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Номер телефона: "/>
+                                                    <Span Text="Binding Number"
+                                                          TextColor="{StaticResource BlackColor}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{StaticResource BlackLabel}"
+                                               HorizontalTextAlignment="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Price}"/>
+                                                    <Span Text=" Р"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <Line Y2="35"
+                                          BackgroundColor="{StaticResource GrayColorLight}"
+                                          WidthRequest="1"
+                                          HorizontalOptions="Center"
+                                          Grid.Column="2"/>
+                                    <Picker Grid.Column="3"
+                                            Title="Статус"
+                                            WidthRequest="80"
+                                            HeightRequest="40"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            FontSize="{StaticResource SmallFont}"
+                                            FontFamily="{StaticResource NeoSansProBold}"
+                                            SelectedIndexChanged="Picker_SelectedIndexChanged">
+                                        <Picker.Items>
+                                            <x:String>Принят</x:String>
+                                            <x:String>В пути</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                    <Button Grid.Row="1"
+                                            Grid.ColumnSpan="4"
+                                            Style="{StaticResource GreenButton}"
+                                            FontSize="{StaticResource SmallFont}"
+                                            Padding="-10"
+                                            Text="Заказ доставлен"
+                                            WidthRequest="370"
+                                            HeightRequest="30"
+                                            CornerRadius="10"
+                                            Margin="-10,0,-10,0"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

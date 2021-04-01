@@ -33,7 +33,7 @@ namespace Click.Views.AdminCompany.Editor
 
         private void EditorButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new EditProfileDocumentation());
+            
         }
 
         private void ProfileButton_Clicked(object sender, EventArgs e)
