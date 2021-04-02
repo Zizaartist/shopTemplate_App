@@ -29,12 +29,7 @@ namespace Click.ViewModels
         public string NameCriteria 
         {
             get => nameCriteria;
-            set 
-            {
-                if (nameCriteria == value) return;
-                nameCriteria = value;
-                OnPropertyChanged();
-            }
+            set { SetProperty(ref nameCriteria, value); }
         }
 
         private bool isWorkingCriteria;

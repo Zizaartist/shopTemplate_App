@@ -18,7 +18,10 @@ namespace Click.Views.User.Basket
         public BasketMain()
         {
             InitializeComponent();
-            OrderCollection.BindingContext = new BasketViewModel();
+
+            var basketVM = new BasketViewModel();
+            OrderCollection.BindingContext = basketVM;
+            Task.Run(() => basketVM.GetData());
         }
 
         private void MainButton_Clicked(object sender, EventArgs e)

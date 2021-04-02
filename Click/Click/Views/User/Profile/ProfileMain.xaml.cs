@@ -1,4 +1,5 @@
-﻿using Click.Views.User.Basket;
+﻿using Akavache;
+using Click.Views.User.Basket;
 using Click.Views.User.Orders;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,12 @@ namespace Click.Views.User.Profile
         private void EnterAdminCompany_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new EnterAdminCompany());
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            BlobCache.LocalMachine.InvalidateAll();
+            BlobCache.UserAccount.InvalidateAll();
         }
     }
 }

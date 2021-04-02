@@ -24,6 +24,8 @@ namespace Click.ViewModels
 
         public ObservableCollection<ProductLocal> ProductLists { get; } = new ObservableCollection<ProductLocal>();
 
+        public ObservableCollection<ProductLocal> SelectedProducts { get; } = new ObservableCollection<ProductLocal>();
+
         public ProductLocal SelectedProduct { get; set; }
         public ProductLocal ProductSetter
         {
@@ -41,17 +43,21 @@ namespace Click.ViewModels
 
         public int AddToCartCount { get => ProductLists.Sum(e => e.Count); }
 
-        public bool AddToCartNotEmpty { get => AddToCartCount > 0; }
+        public bool AddToCartNotEmpty { get => SelectedProducts.Any(); }
 
         public decimal SumTotal { get => ProductLists.Sum(e => e.SumPrice); }
 
         private BrandMenu menu;
 
+        public Command AddToBasket { get; }
+        public Command AddToSelected { get; }
+        public Command RemoveFromSelected { get; }
+
         #endregion
 
         #region methods
 
-        public ProductListViewModel(BrandMenu _menu)
+        public ProductListViewModel(BrandMenu _menu, Command _addToBasket = null)
         {
             menu = _menu;
 
@@ -59,6 +65,22 @@ namespace Click.ViewModels
             GetMoreData = NewGetDataCommand(GetRemoteData);
 
             ProductLists.CollectionChanged += (sender, e) => UpdateBindings();
+            SelectedProducts.CollectionChanged += (sender, e) => 
+            {
+                OnPropertyChanged("AddToCartNotEmpty");
+                if (!AddToCartNotEmpty)
+                {
+                    foreach (var product in ProductLists)
+                    {
+                        product.Count = 0;
+                    }
+                }
+            };
+
+            AddToBasket = _addToBasket;
+
+            AddToSelected = new Command((param) => SelectedProducts.Add(param as ProductLocal));
+            RemoveFromSelected = new Command((param) => SelectedProducts.Remove(param as ProductLocal));
         }
 
         public async Task GetInitial()
@@ -98,7 +120,7 @@ namespace Click.ViewModels
 
                     foreach (var item in tempList)
                     {
-                        ProductLists.Add(new ProductLocal(item, UpdateBindings));
+                        ProductLists.Add(new ProductLocal(item, UpdateBindings, AddToSelected, RemoveFromSelected));
                     }
 
                     await BlobCache.LocalMachine.InsertObject(Caches.PRODUCTS_CACHE.key + "_" +
@@ -132,7 +154,7 @@ namespace Click.ViewModels
             {
                 foreach (Product product in cachedProducts)
                 {
-                    ProductLists.Add(new ProductLocal(product, UpdateBindings) { Product = product });
+                    ProductLists.Add(new ProductLocal(product, UpdateBindings, AddToSelected, RemoveFromSelected));
                 }
             }
             //В случае если он пуст

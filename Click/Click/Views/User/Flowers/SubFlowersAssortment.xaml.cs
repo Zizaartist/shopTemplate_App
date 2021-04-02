@@ -20,8 +20,11 @@ namespace Click.Views.User.Flowers
         {
             InitializeComponent();
 
+            var basketVM = new BasketViewModel();
+            Task.Run(() => basketVM.GetData());
+
             //Загружаем продукцию
-            var productVM = new ProductListViewModel(_brandMenuLocal.BrandMenu);
+            var productVM = new ProductListViewModel(_brandMenuLocal.BrandMenu, basketVM.AddToBasket);
             BindingContext = productVM;
             Task.Run(() => productVM.GetCachedData());
 

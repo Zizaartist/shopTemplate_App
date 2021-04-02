@@ -127,7 +127,8 @@
                                 </Label.FormattedText>
                             </Label>
                             <Button x:Name="Basket"
-                                    Clicked="Basket_Clicked"
+                                    Command="{Binding AddToBasket}"
+                                    CommandParameter="{Binding SelectedProducts}"
                                     BackgroundColor="Transparent"
                                     Grid.ColumnSpan="3"/>
                         </Grid>
