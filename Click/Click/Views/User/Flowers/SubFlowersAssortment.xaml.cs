@@ -32,7 +32,7 @@ namespace Click.Views.User.Flowers
             Points.BindingContext = UsersViewModel.Instance;
 
             //brandMenu-related
-            MinimalPrice.Text = (_brandMenuLocal.BrandMenu.Brand.MinimalPrice ?? default).ToString();
+            MinimalPrice.Text = _brandMenuLocal.BrandMenu.Brand.MinimalPrice.ToString();
             NameLabel.Text = _brandMenuLocal.BrandMenu.Brand.BrandName;
         }
 

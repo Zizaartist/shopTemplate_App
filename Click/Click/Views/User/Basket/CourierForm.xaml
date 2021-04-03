@@ -25,10 +25,12 @@
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Имя"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Name, Mode=TwoWay}"
                                Placeholder="Например Иван"/>
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Улица"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Street, Mode=TwoWay}"
                                Placeholder="Например Ленина"
                                HeightRequest="40"/>
                         <Grid>
@@ -36,10 +38,12 @@
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Дом"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                        Text="{Binding House, Mode=TwoWay}"
                                        Placeholder="Например 10/1"/>
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Этаж"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                        Text="{Binding Floor, Mode=TwoWay}"
                                        Placeholder="Например 5"
                                        HeightRequest="40"/>
                             </StackLayout>
@@ -48,16 +52,19 @@
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Подъезд"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                        Text="{Binding Entrance, Mode=TwoWay}"
                                        Placeholder="Например 5"/>
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Квартира"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                        Text="{Binding Apartment, Mode=TwoWay}"
                                        Placeholder="Например 89"
                                        HeightRequest="40"/>
                             </StackLayout>
                         </Grid>
                         <Entry Style="{StaticResource EntryGray}"
                                Placeholder="Комментарий к заказу"
+                               Text="{Binding Commentary, Mode=TwoWay}"
                                HeightRequest="40"/>
                         <StackLayout Orientation="Horizontal"
                                      VerticalOptions="Center"
@@ -68,15 +75,15 @@
                             <Button Style="{StaticResource PaymentSelected}"
                                     Text="Наличными"
                                     x:Name="Cash"
-                                    Clicked="Cash_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                             <Button Style="{StaticResource Payment}"
                                     Text="Картой онлайн"
                                     x:Name="CardOnline"
-                                    Clicked="CardOnline_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                             <Button Style="{StaticResource Payment}"
                                     Text="Картой курьеру"
                                     x:Name="Card"
-                                    Clicked="Card_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                         </StackLayout>
                         <Grid>
                             <Label Style="{StaticResource BlackLabel}"
@@ -85,14 +92,13 @@
                                     VerticalOptions="Center"
                                     HorizontalOptions="End"
                                     x:Name="BonusSwitch"
-                                    Toggled="BonusSwitch_Toggled"
-                                    IsToggled="false"
+                                    IsToggled="{Binding UsePoints, Mode=TwoWay}"
                                     OnColor="{StaticResource GreenColor}"
                                     ThumbColor="{StaticResource BackgroundColor}"/>
                         </Grid>
                         <Label Style="{StaticResource SmallBlackLabel}"
                                HorizontalTextAlignment="Start"
-                               Text="Максимальный лимит использования бонусов до 30% от суммы заказа"/>
+                               Text="{Binding Percentage, StringFormat='Максимальный лимит использования бонусов до {0}% от суммы заказа'}"/>
                         <StackLayout Spacing="3">
                             <Label Style="{StaticResource BlackLabel}"
                                    HorizontalTextAlignment="End"
@@ -108,7 +114,7 @@
                                        IsVisible="{Binding Source={x:Reference BonusSwitch}, Path=IsToggled}">
                                     <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="10907"
+                                        <Span Text="{Binding InitialSum}"
                                               x:Name="PayLabel"/>
                                         <Span Text=" Р"/>
                                     </FormattedString>
@@ -125,7 +131,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="- "/>
-                                            <Span Text="500"
+                                            <Span Text="{Binding Saving}"
                                                   x:Name="BonusLabel"/>
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -141,7 +147,7 @@
                                    HorizontalOptions="End">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Source={x:Reference PayLabel}, Path=Text}"
+                                        <Span Text="{Binding TotalSum}"
                                               x:Name="SumLabel"/>
                                         <Span Text=" Р"/>
                                     </FormattedString>
@@ -156,6 +162,7 @@
                                 WidthRequest="370"
                                 HeightRequest="40"
                                 CornerRadius="20"
+                                IsEnabled="{Binding ValidDelivery}"
                                 Margin="-20,10,-20,0"/>
                     </StackLayout>
                 </Frame>

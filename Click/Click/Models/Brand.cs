@@ -7,6 +7,7 @@ using System.Linq;
 using ApiClick.Models.ArrayModels;
 using ApiClick.Models.EnumModels;
 using ApiClick.StaticValues;
+using System.Diagnostics;
 
 namespace ApiClick.Models
 {
@@ -24,7 +25,9 @@ namespace ApiClick.Models
         //Not nullable
         [Key]
         public int BrandId { get; set; }
+        [Required]
         public Category Category { get; set; }
+        [Required]
         public int UserId { get; set; }
         [Required, MaxLength(ModelLengths.LENGTH_SMALL)]
         public string BrandName { get; set; }
@@ -37,6 +40,8 @@ namespace ApiClick.Models
         public bool Available { get; set; }
         [Required]
         public bool HasDiscounts { get; set; } //Изменяется при каждом изменении параметра скидки у product
+        [Required]
+        public int PointsPercentage { get; set; }
         //Документация
         [Required, MaxLength(ModelLengths.LENGTH_MEDIUM)]
         public string OfficialName { get; set; }
@@ -48,6 +53,10 @@ namespace ApiClick.Models
         public string LegalAddress { get; set; }
         [Required, MaxLength(ModelLengths.LENGTH_MEDIUM)]
         public string Executor { get; set; }
+        [Required]
+        public Decimal DeliveryPrice { get; set; }
+        [Required]
+        public Decimal MinimalPrice { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
 
@@ -63,7 +72,6 @@ namespace ApiClick.Models
         public float? Rating { get; set; } //null if no reviews
         [MaxLength(ModelLengths.LENGTH_MAX)]
         public string Rules { get; set; }
-        public Decimal? MinimalPrice { get; set; }
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
@@ -82,7 +90,9 @@ namespace ApiClick.Models
         [NotMapped]
         public virtual ICollection<ScheduleListElement> ScheduleListElements { get; set; }
 
+        [NotMapped]
         public ICollection<PaymentMethod> PaymentMethods;
+        [NotMapped]
         public ICollection<Hashtag> Hashtags;
     }
 }

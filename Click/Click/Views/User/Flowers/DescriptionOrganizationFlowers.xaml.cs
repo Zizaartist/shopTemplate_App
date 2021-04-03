@@ -23,7 +23,7 @@ namespace Click.Views.User.Flowers
             Description.Text = _brandLocal.Brand.Description;
             DeliveryTerms.Text = _brandLocal.Brand.Rules;
             Contact.Text = _brandLocal.Brand.Contact;
-            MinimalPrice.Text = (_brandLocal.Brand.MinimalPrice ?? default).ToString();
+            MinimalPrice.Text = _brandLocal.Brand.MinimalPrice.ToString();
             Banner.Source = _brandLocal.Banner;
             Logo.Source = _brandLocal.Logo;
 

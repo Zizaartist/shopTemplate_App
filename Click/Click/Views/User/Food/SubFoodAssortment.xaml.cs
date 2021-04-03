@@ -32,7 +32,7 @@ namespace Click.Views.User.Food
             Points.BindingContext = UsersViewModel.Instance;
 
             //brandMenu-related
-            MinimalPrice.Text = (_brandMenuLocal.BrandMenu.Brand.MinimalPrice ?? default).ToString();
+            MinimalPrice.Text = _brandMenuLocal.BrandMenu.Brand.MinimalPrice.ToString();
             BrandName.Text = _brandMenuLocal.BrandMenu.Brand.BrandName;
         }
 

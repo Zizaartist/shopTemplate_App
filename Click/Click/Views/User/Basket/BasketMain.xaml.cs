@@ -1,4 +1,6 @@
-﻿using Click.ViewModels;
+﻿using Click.Models.LocalModels;
+using Click.ViewModels;
+using Click.ViewModels.Help;
 using Click.Views.User.Orders;
 using Click.Views.User.Profile;
 using System;
@@ -46,7 +48,8 @@ namespace Click.Views.User.Basket
 
         private void Basket_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new BasketChoice());
+            Button button = sender as Button;
+            Navigation.PushModalAsync(new BasketChoice(button.BindingContext as Grouping<string, OrderDetailLocal>));
         }
     }
 }

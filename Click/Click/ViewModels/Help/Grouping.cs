@@ -1,4 +1,5 @@
-﻿using Click.Models.LocalModels;
+﻿using ApiClick.Models;
+using Click.Models.LocalModels;
 using Click.StaticValues;
 using MvvmHelpers;
 using System;
@@ -16,20 +17,24 @@ namespace Click.ViewModels.Help
         public K Name { get; private set; }
         public UriImageSource Logo { get; set; }
         public string DeliveryConditions { get; set; }
-        private Command selfDestructCommand;
-        //public Command RefreshSum { get; private set; }
         public decimal Sum { get => Items.Sum(item => item.SumPrice); }
 
-        public Grouping(K name, string logo, string deliveryCondition, IEnumerable<T> items, Command _selfDestructCommand)
+        public Brand Brand;
+
+        private Command selfDestructCommand;
+        //public Command RefreshSum { get; private set; }
+
+        public Grouping(K name, Brand brand, IEnumerable<T> items, Command _selfDestructCommand)
         {
             Name = name;
-            Logo = logo != null ? new UriImageSource
+            Brand = brand;
+            Logo = brand.ImgLogo != null ? new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + logo),
+                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + brand.ImgLogo.Path),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
             } : null;
-            DeliveryConditions = deliveryCondition;
+            DeliveryConditions = brand.Rules;
             selfDestructCommand = _selfDestructCommand;
 
             //RefreshSum = new Command(() => );

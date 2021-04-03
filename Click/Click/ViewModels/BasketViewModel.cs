@@ -98,7 +98,7 @@ namespace Click.ViewModels
                 var temp = new List<OrderDetailLocal>();
                 cachedShopcart.ForEach(detail => temp.Add(new OrderDetailLocal(detail, SaveChangesCommand, OrderDetailSelfDestruct)));
                 groupedDetails = temp.GroupBy(p => p.Brand.BrandName)
-                                            .Select(g => new Help.Grouping<string, OrderDetailLocal>(g.Last().Brand.BrandName, g.Last().Brand.ImgLogo.Path, g.Last().Brand.Rules, g, GroupSelfDestruct));
+                                            .Select(g => new Help.Grouping<string, OrderDetailLocal>(g.Last().Brand.BrandName, g.Last().Brand, g, GroupSelfDestruct));
 
                 GoodsFoodsGroups.AddRange(groupedDetails);
             }
@@ -130,8 +130,7 @@ namespace Click.ViewModels
                     {
                         //Новая группа
                         GoodsFoodsGroups.Add(new Help.Grouping<string, OrderDetailLocal>(detail.Brand.BrandName, 
-                                                                                    detail.Brand.ImgLogo.Path, 
-                                                                                    detail.Brand.Rules, 
+                                                                                    detail.Brand, 
                                                                                     new List<OrderDetailLocal> { detail },
                                                                                     GroupSelfDestruct));
                     }
