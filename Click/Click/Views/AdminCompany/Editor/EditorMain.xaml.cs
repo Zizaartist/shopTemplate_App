@@ -1,4 +1,5 @@
-﻿using Click.Views.AdminCompany.History;
+﻿using Click.Views.AdminCompany.Editor.FoodFlowers;
+using Click.Views.AdminCompany.History;
 using Click.Views.AdminCompany.Orders;
 using Click.Views.AdminCompany.Profile;
 using Click.Views.AdminCompany.Reports;
@@ -44,6 +45,16 @@ namespace Click.Views.AdminCompany.Editor
         private void OrdersButton_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new OrdersMain();
+        }
+
+        private void Information_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new EditMain());
+        }
+
+        private void Menu_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new EditMenu());
         }
     }
 }

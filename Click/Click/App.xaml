@@ -21,6 +21,28 @@
         <Style x:Key="GrayContentPage" TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
         </Style>
+
+
+
+        <Style x:Key="PickerFrame" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
+            <Setter Property="Padding" Value="0,-5,0,-5"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+        <Style x:Key="DefaultTimePicker" TargetType="TimePicker">
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="TextColor" Value="{DynamicResource GrayColor}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource NeoSansPro}"/>
+            <Setter Property="Margin" Value="0,-5,0,-5"/>
+        </Style>
+        <Style x:Key="DefaultPicker" TargetType="Picker">
+            <Setter Property="FontSize" Value="{DynamicResource SmallFont}"/>
+            <Setter Property="TextColor" Value="{DynamicResource GrayColor}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource NeoSansPro}"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="Margin" Value="0,-5,0,-5"/>
+        </Style>
         <!--Grids-->
         <Style x:Key="WrapperGrid" TargetType="Grid">
             <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>

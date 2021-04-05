@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Click.Models
@@ -15,5 +16,8 @@ namespace Click.Models
         public string Banner { get; set; }
         public string Logo { get; set; }
         public string DeliveryTime { get; set; }
+        public string Contacts { get; set; }
+        public string MinPrice { get; set; }
+        public string ConditionDelivery { get; set; }
     }
 }

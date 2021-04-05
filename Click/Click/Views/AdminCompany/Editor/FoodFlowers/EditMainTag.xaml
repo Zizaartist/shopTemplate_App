@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Editor.FoodFlowers.EditMainTag"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Style="{StaticResource HeaderGrid}"
+                  x:Name="Header">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Изменить теги"
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <CollectionView x:Name="TagCollection"
+                                    ItemsSource="{Binding TagFoods}"
+                                    SelectionMode="None"
+                                    HeightRequest="45"
+                                    Grid.Row="2">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <Grid RowDefinitions="Auto">
+                        <Button Text="Добавить тег"
+                                Style="{StaticResource TagButton}"
+                                x:Name="AddTag"
+                                Clicked="AddTag_Clicked"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto">
+                            <Button Text="{Binding Tag}"
+                                    x:Name="Tag"
+                                    Clicked="Tag_Clicked"
+                                    Style="{StaticResource TagButton}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Сохранить"
+                    Style="{StaticResource GreenButton}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
