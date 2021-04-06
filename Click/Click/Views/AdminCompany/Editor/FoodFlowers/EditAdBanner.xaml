@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Editor.FoodFlowers.EditAdBanner"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Style="{StaticResource HeaderGrid}"
+                  x:Name="Header">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Изменить баннер"
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <CollectionView x:Name="AdFoodCollection"
+                            ItemsSource="{Binding AdBannerFoods}"
+                            SelectionMode="None"
+                            Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Frame Style="{StaticResource FoodBannerFrame}">
+                                <Grid RowDefinitions="Auto, Auto">
+                                    <Image Source="{Binding Banner}"
+                                           Style="{StaticResource BannerFoodImage}"/>
+                                    <Label Text="{Binding Text}"
+                                           Style="{StaticResource WhiteBoldLabel}"
+                                           HorizontalOptions="Center"
+                                           Grid.Row="1"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

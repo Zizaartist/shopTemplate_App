@@ -143,5 +143,10 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
                 brandInfo.Discount = "";
             }
         }
+
+        private void AdBannerEdit_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new EditAdBanner());
+        }
     }
 }

@@ -30,6 +30,9 @@
     <EmbeddedResource Update="Views\AdminCompany\Editor\EditorMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditAdBanner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
