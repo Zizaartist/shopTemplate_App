@@ -29,6 +29,7 @@
                 </Grid>
                 <Button BackgroundColor="{StaticResource GraySimple}"
                         HeightRequest="1"/>
+                <!--скрывать, если организация - вода-->
                 <Grid>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            Text="Меню"/>

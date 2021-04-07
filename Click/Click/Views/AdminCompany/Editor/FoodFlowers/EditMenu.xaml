@@ -1,12 +1,101 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.AdminCompany.Editor.FoodFlowers.EditMenu">
+             x:Class="Click.Views.AdminCompany.Editor.FoodFlowers.EditMenu"
+             Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid Style="{StaticResource HeaderGrid}"
+                  x:Name="Header">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Меню"
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <Button Style="{StaticResource GreenButton}"
+                    Text="Добавить категорию"/>
+            <Grid RowDefinitions="Auto,Auto"
+                  ColumnDefinitions="*,*">
+                <Frame Style="{StaticResource PickerFrame}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       BackgroundColor="{StaticResource GraySimple}">
+                    <Picker Style="{StaticResource DefaultPicker}"
+                            Title="Выберите категорию">
+                    </Picker>
+                </Frame>
+                <Grid Margin="5"
+                      Grid.Column="1"
+                      x:Name="CategoryWrapper">
+                    <Frame Style="{StaticResource CategoryFrame}">
+                        <Grid RowDefinitions="Auto,Auto">
+                            <Image Source="{Binding Image}"
+                                       Style="{StaticResource CategoryImage}"/>
+                            <Label Text="{Binding Name}"
+                                       Style="{StaticResource BlackLabelMedium}"
+                                       HorizontalOptions="Center"
+                                       Grid.Row="1"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+                <StackLayout Grid.Row="1"
+                             Grid.ColumnSpan="2">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Style="{StaticResource SmallBlackLabel}"
+                               Text="Изменить фото категории"
+                               HorizontalTextAlignment="Start"/>
+                        <Image Grid.Column="1"
+                               Source="PlusButton.png"
+                               Style="{StaticResource BankCard}"
+                               HorizontalOptions="End"/>
+                        <Button Grid.ColumnSpan="2"
+                                BackgroundColor="Transparent"
+                                x:Name="CategoryPhotoAdd"
+                                Clicked="CategoryPhotoAdd_Clicked"
+                                HeightRequest="15"/>
+                    </Grid>
+                    <Button BackgroundColor="{StaticResource GraySimple}"
+                            HeightRequest="1"/>
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Style="{StaticResource SmallBlackLabel}"
+                               Text="Изменить имя категории"
+                               HorizontalTextAlignment="Start"/>
+                        <Image Grid.Column="1"
+                               Source="PlusButton.png"
+                               Style="{StaticResource BankCard}"
+                               HorizontalOptions="End"/>
+                        <Button Grid.ColumnSpan="2"
+                                BackgroundColor="Transparent"
+                                x:Name="NameCategoryEntry"
+                                Clicked="NameCategoryEntry_Clicked"
+                                HeightRequest="15"/>
+                    </Grid>
+                    <Button BackgroundColor="{StaticResource GraySimple}"
+                            HeightRequest="1"/>
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Style="{StaticResource SmallBlackLabel}"
+                               Text="Добавить блюда"
+                               HorizontalTextAlignment="Start"/>
+                        <Image Grid.Column="1"
+                               Source="PlusButton.png"
+                               Style="{StaticResource BankCard}"
+                               HorizontalOptions="End"/>
+                        <Button Grid.ColumnSpan="2"
+                                BackgroundColor="Transparent"
+                                x:Name="AddFoodCategory"
+                                Clicked="AddFoodCategory_Clicked"
+                                HeightRequest="15"/>
+                    </Grid>
+                    <Button BackgroundColor="{StaticResource GraySimple}"
+                            HeightRequest="1"/>
+                    <Button Style="{StaticResource GreenButton}"
+                            Margin="10"
+                            Text="Сохранить"/>
+                </StackLayout>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

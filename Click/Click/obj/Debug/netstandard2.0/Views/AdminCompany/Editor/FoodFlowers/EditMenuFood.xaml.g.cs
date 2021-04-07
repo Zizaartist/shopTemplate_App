@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Click.Views.AdminCompany.Editor.FoodFlowers.EditMenu.xaml", "Views/AdminCompany/Editor/FoodFlowers/EditMenu.xaml", typeof(global::Click.Views.AdminCompany.Editor.FoodFlowers.EditMenu))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Click.Views.AdminCompany.Editor.FoodFlowers.EditMenuFood.xaml", "Views/AdminCompany/Editor/FoodFlowers/EditMenuFood.xaml", typeof(global::Click.Views.AdminCompany.Editor.FoodFlowers.EditMenuFood))]
 
 namespace Click.Views.AdminCompany.Editor.FoodFlowers {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\AdminCompany\\Editor\\FoodFlowers\\EditMenu.xaml")]
-    public partial class EditMenu : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\AdminCompany\\Editor\\FoodFlowers\\EditMenuFood.xaml")]
+    public partial class EditMenuFood : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Grid Header;
@@ -23,26 +23,30 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers {
         private global::Xamarin.Forms.ImageButton Back;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Grid CategoryWrapper;
+        private global::Xamarin.Forms.Grid FoodWrapper;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button CategoryPhotoAdd;
+        private global::Xamarin.Forms.Button ElementPhotoAdd;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button NameCategoryEntry;
+        private global::Xamarin.Forms.Button NameElementEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button AddFoodCategory;
+        private global::Xamarin.Forms.Button DescriptionElementEntry;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button PriceElementEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditMenu));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditMenuFood));
             Header = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "Header");
             Back = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "Back");
-            CategoryWrapper = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "CategoryWrapper");
-            CategoryPhotoAdd = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "CategoryPhotoAdd");
-            NameCategoryEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "NameCategoryEntry");
-            AddFoodCategory = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "AddFoodCategory");
+            FoodWrapper = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "FoodWrapper");
+            ElementPhotoAdd = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ElementPhotoAdd");
+            NameElementEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "NameElementEntry");
+            DescriptionElementEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "DescriptionElementEntry");
+            PriceElementEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "PriceElementEntry");
         }
     }
 }

@@ -125,3 +125,7 @@ C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\AdminCompany\Editor\FoodFlowers\EditMainTimeWork.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\AdminCompany\Editor\FoodFlowers\EditAdBanner.xaml.g.cs
 C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\AdminCompany\Editor\FoodFlowers\EditAdBannerAdd.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\AdminCompany\Editor\FoodFlowers\EditMenuFood.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\AdminCompany\Editor\Water\BootleEdit.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\AdminCompany\Editor\Water\TimeWorkEdit.xaml.g.cs
+C:\Work\Mobile App\IT Studio Syberia\Click\Click frontend\Click 0.1\Click\Click\Click\obj\Debug\netstandard2.0\Views\AdminCompany\Editor\Water\WaterCarEdit.xaml.g.cs

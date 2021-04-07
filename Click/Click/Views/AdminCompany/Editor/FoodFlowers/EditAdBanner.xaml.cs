@@ -22,7 +22,7 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
 
         private void Back_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PopModalAsync();
         }
 
         private void AddBanner_Clicked(object sender, EventArgs e)

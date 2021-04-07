@@ -48,6 +48,18 @@
     <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMenuFood.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminCompany\Editor\Water\BootleEdit.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminCompany\Editor\Water\TimeWorkEdit.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminCompany\Editor\Water\WaterCarEdit.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AdminCompany\History\HistoryMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -189,9 +201,5 @@
     <Compile Update="Views\User\Flowers\SubFlowersAssortment.xaml.cs">
       <DependentUpon>SubFlowersAssortment.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\AdminCompany\Editor\Water\" />
   </ItemGroup>
 </Project>

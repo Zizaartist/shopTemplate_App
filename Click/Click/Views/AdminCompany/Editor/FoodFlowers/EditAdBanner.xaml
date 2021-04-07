@@ -35,7 +35,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10">
-                            <Frame Style="{StaticResource FoodBannerFrame}">
+                            <Frame Style="{StaticResource FoodBannerFrame}"
+                                   x:Name="Banner">
                                 <Grid RowDefinitions="Auto, Auto">
                                     <Image Source="{Binding Banner}"
                                            Style="{StaticResource BannerFoodImage}"/>

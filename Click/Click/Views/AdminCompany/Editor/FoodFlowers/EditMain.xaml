@@ -3,9 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Click.Views.AdminCompany.Editor.FoodFlowers.EditMain"
              Style="{StaticResource GrayContentPage}">
-    <ContentPage.Resources>
-        <Color x:Key="Styless"></Color>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Grid Style="{StaticResource HeaderGrid}"

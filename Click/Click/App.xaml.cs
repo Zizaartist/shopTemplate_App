@@ -1,4 +1,6 @@
 ﻿using Click.Views;
+using Click.Views.AdminCompany.Editor;
+using Click.Views.AdminCompany.Editor.Water;
 using Click.Views.AdminCompany.Orders;
 using Click.Views.Registration;
 using Click.Views.User;
@@ -19,7 +21,7 @@ namespace Click
         {
             InitializeComponent();
             InitializationPublicStyles();
-            MainPage = new OrdersMain();
+            MainPage = new EditorMain();
         }
 
         void InitializationPublicStyles()

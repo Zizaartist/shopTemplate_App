@@ -49,7 +49,7 @@ namespace Click.Views.AdminCompany.Editor
 
         private void Information_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new EditMain());
+            Navigation.PushModalAsync(new EditMain()); //организация вода - переход на bootledit, водовоз - watercaredit, еда\цветы - editmain
         }
 
         private void Menu_Clicked(object sender, EventArgs e)
