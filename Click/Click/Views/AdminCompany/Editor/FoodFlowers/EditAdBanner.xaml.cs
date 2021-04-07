@@ -1,4 +1,5 @@
-﻿using Click.ViewModels;
+﻿using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,21 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
         private void Back_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddBanner_Clicked(object sender, EventArgs e)
+        {
+            AdBannerFood blank = new AdBannerFood();
+            Navigation.PushModalAsync(new EditAdBannerAdd(blank));
+        }
+
+        private void AdFoodCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.Any())
+            {
+                AdFoodCollection.SelectedItem = null;
+                Navigation.PushModalAsync(new EditAdBannerAdd(e.CurrentSelection.Last() as AdBannerFood));
+            }
         }
     }
 }

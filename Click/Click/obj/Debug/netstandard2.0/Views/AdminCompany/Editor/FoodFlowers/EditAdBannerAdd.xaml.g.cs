@@ -8,13 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Click.Views.AdminCompany.Editor.FoodFlowers.EditAdBanner.xaml", "Views/AdminCompany/Editor/FoodFlowers/EditAdBanner.xaml", typeof(global::Click.Views.AdminCompany.Editor.FoodFlowers.EditAdBanner))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Click.Views.AdminCompany.Editor.FoodFlowers.EditAdBannerAdd.xaml", "Views/AdminCompany/Editor/FoodFlowers/EditAdBannerAdd.xaml", typeof(global::Click.Views.AdminCompany.Editor.FoodFlowers.EditAdBannerAdd))]
 
 namespace Click.Views.AdminCompany.Editor.FoodFlowers {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\AdminCompany\\Editor\\FoodFlowers\\EditAdBanner.xaml")]
-    public partial class EditAdBanner : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\AdminCompany\\Editor\\FoodFlowers\\EditAdBannerAdd.xaml")]
+    public partial class EditAdBannerAdd : global::Xamarin.Forms.ContentPage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.StackLayout Wrapper;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Grid Header;
@@ -23,18 +26,19 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers {
         private global::Xamarin.Forms.ImageButton Back;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.CollectionView AdFoodCollection;
+        private global::Xamarin.Forms.Button EditPhoto;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Button AddBanner;
+        private global::Xamarin.Forms.Button DescriptionEntry;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditAdBanner));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditAdBannerAdd));
+            Wrapper = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "Wrapper");
             Header = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "Header");
             Back = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "Back");
-            AdFoodCollection = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.CollectionView>(this, "AdFoodCollection");
-            AddBanner = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "AddBanner");
+            EditPhoto = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "EditPhoto");
+            DescriptionEntry = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "DescriptionEntry");
         }
     }
 }
