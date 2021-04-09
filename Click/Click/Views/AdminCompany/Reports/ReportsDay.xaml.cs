@@ -1,4 +1,4 @@
-﻿using Click.Views.AdminCompany.Orders;
+﻿using Click.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +8,20 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Click.Views.User.Profile
+namespace Click.Views.AdminCompany.Reports
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EnterAdminCompany : ContentPage
+    public partial class ReportsDay : ContentPage
     {
-        public EnterAdminCompany()
+        public ReportsDay(Report report)
         {
             InitializeComponent();
+            Wrapper.BindingContext = report;
         }
 
         private void Back_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
-        }
-
-        private void ForgotPassword_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Enter_Clicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new OrdersMain();
         }
     }
 }

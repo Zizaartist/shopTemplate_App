@@ -1,5 +1,4 @@
-﻿using Click.Views.AdminCompany.Orders;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Click.Views.User.Profile
+namespace Click.Views.AdminCompany.Profile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EnterAdminCompany : ContentPage
+    public partial class ProfileEdit : ContentPage
     {
-        public EnterAdminCompany()
+        public ProfileEdit()
         {
             InitializeComponent();
         }
@@ -23,14 +22,14 @@ namespace Click.Views.User.Profile
             Navigation.PopModalAsync();
         }
 
-        private void ForgotPassword_Clicked(object sender, EventArgs e)
+        private void Documentation_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new ProfileDocumentation());
         }
 
-        private void Enter_Clicked(object sender, EventArgs e)
+        private void ExitProfile_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new OrdersMain();
+
         }
     }
 }

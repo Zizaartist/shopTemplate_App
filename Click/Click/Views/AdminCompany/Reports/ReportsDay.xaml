@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Reports.ReportsDay"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout x:Name="Wrapper">
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Source="BackBlack.png"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Отчеты"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                  Grid.Row="1"
+                  Padding="20,0,20,0">
+                <Label Text="Общее количество заказов"
+                       Style="{StaticResource SmallBlackLabelBold}"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       Margin="0,0,0,20">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding WeekDay}"/>
+                            <Span Text=", "/>
+                            <Span Text="{Binding Date}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="1">
+                    <Frame Style="{StaticResource LogoFrame}"
+                           Grid.Row="1"
+                           Margin="0,0,10,0">
+                        <Image Style="{StaticResource LogoImage}"
+                               Source="{Binding OwnerImage}"/>
+                    </Frame>
+                    <Label Text="{Binding OwnerName}"
+                           Style="{StaticResource BlackLabel}"
+                           HorizontalOptions="Start"
+                           HorizontalTextAlignment="Start"
+                           VerticalOptions="Start"/>
+                </StackLayout>
+                <Label Text="Заказов за день"
+                       Style="{StaticResource SmallBlackLabel}"
+                       Grid.Row="2"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"/>
+                <Label Text="Общая сумма заказов"
+                       Style="{StaticResource SmallBlackLabel}"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       Grid.Row="3"/>
+                <Label Text="{Binding OrdersOnDay}"
+                       Style="{StaticResource SmallBlackLabelBold}"
+                       Grid.Row="2"
+                       HorizontalOptions="End"
+                       HorizontalTextAlignment="End"
+                       Grid.Column="1"/>
+                <Label Style="{StaticResource SmallBlackLabelBold}"
+                       Grid.Row="3"
+                       HorizontalOptions="End"
+                       HorizontalTextAlignment="End"
+                       Grid.Column="1">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding SumOnDay}"/>
+                            <Span Text=" руб."/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button BackgroundColor="{StaticResource GraySimple}"
+                        Grid.Row="4"
+                        HeightRequest="1"
+                        VerticalOptions="Center"
+                        Grid.ColumnSpan="2"/>
+                <Label Text="Товар дня"
+                       Style="{StaticResource BlackLabel}"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       Grid.Row="5"/>
+                <Label Text="{Binding GoodsOfDayName}"
+                       Style="{StaticResource BlackLabel}"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="6"/>
+                <Frame Style="{StaticResource LogoFrame}"
+                       CornerRadius="10"
+                       Grid.Row="6"
+                       Grid.Column="1"
+                       HorizontalOptions="End"
+                       Margin="0,0,10,0">
+                    <Image Style="{StaticResource LogoImage}"
+                           Source="{Binding GoodsOfDayImage}"/>
+                </Frame>
+                <Label Text="Заказов за день"
+                       Style="{StaticResource SmallBlackLabel}"
+                       Grid.Row="7"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"/>
+                <Label Text="Общая сумма заказов"
+                       Style="{StaticResource SmallBlackLabel}"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       Grid.Row="8"/>
+                <Label Text="{Binding GoodsOfDayOrders}"
+                       Style="{StaticResource SmallBlackLabelBold}"
+                       Grid.Row="7"
+                       HorizontalOptions="End"
+                       HorizontalTextAlignment="End"
+                       Grid.Column="1"/>
+                <Label Style="{StaticResource SmallBlackLabelBold}"
+                       Grid.Row="8"
+                       HorizontalOptions="End"
+                       HorizontalTextAlignment="End"
+                       Grid.Column="1">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding GoodsOfDaySum}"/>
+                            <Span Text=" руб."/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button BackgroundColor="{StaticResource GraySimple}"
+                        Grid.Row="9"
+                        HeightRequest="1"
+                        VerticalOptions="Center"
+                        Grid.ColumnSpan="2"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

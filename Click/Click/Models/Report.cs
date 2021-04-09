@@ -1,29 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace ApiClick.Models
+namespace Click.Models
 {
     public class Report
     {
-        //required
-
-        [Key]
-        public int ReportId { get; set; }
-        public int OrderCount { get; set; }
-        public Decimal Sum { get; set; }
-        public int BrandId { get; set; }
-        public DateTime CreatedDate { get; set; }
-
-        //non-required
-        public int? ProductOfDayId { get; set; }
-
-        [ForeignKey("ProductOfDayId")]
-        public Product ProductOfDay { get; set; }
-        [ForeignKey("BrandId")]
-        public Product Brand { get; set; }
+        public string GoodsOfDayName { get; set; }
+        public string GoodsOfDayImage { get; set; }
+        public string GoodsOfDayOrders { get; set; }
+        public string GoodsOfDaySum { get; set; }
+        public string OrdersOnDay { get; set; }
+        public string SumOnDay { get; set; }
+        public string Date { get; set; }
+        public string WeekDay { get; set; }
+        public string OwnerName { get; set; }
+        public string OwnerImage { get; set; }
     }
 }

@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Editor.FoodFlowers.EditMain"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Style="{StaticResource HeaderGrid}"
+                  x:Name="Header">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Основная информация"
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <ScrollView>
+                <StackLayout>
+                    <Grid Padding="0,0,0,0"
+                          RowDefinitions="Auto"
+                          Margin="0,0,0,10">
+                        <Frame Style="{StaticResource BannerFrame}">
+                            <Grid RowDefinitions="Auto,Auto,*">
+                                <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto,Auto"
+                                      Padding="20,0,20,0">
+                                    <Grid Style="{StaticResource StarGridBackground}"
+                                          HorizontalOptions="Center">
+                                        <Grid Style="{StaticResource StarGrid}"
+                                              x:Name="Star"/>
+                                        <Image Style="{StaticResource StarRating}"/>
+                                    </Grid>
+                                    <Image Source="{Binding BankPayment}"
+                                           Style="{StaticResource BankCard}"
+                                           Grid.Column="1"/>
+                                    <Image Source="{Binding CashPayment}"
+                                           Style="{StaticResource Money}"
+                                           Grid.Column="2"/>
+                                    <Image Source="FoodTime.png"
+                                           x:Name="FoodTime"
+                                           Style="{StaticResource FoodTime}"
+                                           Grid.Column="3"/>
+                                    <Label Text="{Binding DeliveryTime}"
+                                           x:Name="DeliveryTime"
+                                           Style="{StaticResource VerySmallOrangeLabel}"
+                                           Grid.Column="4"/>
+                                    <Image Source="{Binding Discount}"
+                                           Grid.Column="5"/>
+                                </Grid>
+                                <Grid Grid.Row="1"
+                                      ColumnDefinitions="Auto,*"
+                                      Padding="20,0,20,0">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource BlackLabel}"/>
+                                    <Label Text="{Binding Tags}"
+                                           Style="{StaticResource SmallBlackLabel}"
+                                           HorizontalTextAlignment="End"
+                                           HorizontalOptions="End"
+                                           Grid.Column="1"/>
+                                </Grid>
+                                <Grid Grid.Row="2"
+                                      VerticalOptions="End">
+                                    <Image Source="{Binding Banner}"
+                                           Style="{StaticResource BannerCompanyImage}"
+                                           BackgroundColor="{StaticResource GrayColorLight}"/>  
+                                    <Frame Style="{StaticResource LogoFrame}">
+                                        <Image Source="{Binding Logo}"
+                                               Style="{StaticResource LogoImage}"/>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                    <StackLayout Padding="20,0,20,0">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить название"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="NameEntry"
+                                    Clicked="NameEntry_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить описание"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="DescriptionEntry"
+                                    Clicked="DescriptionEntry_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить логотип"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="LogoGallery"
+                                    Clicked="LogoGallery_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить баннер"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="BannerGallery"
+                                    Clicked="BannerGallery_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить рекламный баннер"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="AdBannerEdit"
+                                    Clicked="AdBannerEdit_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить режим работы"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="WorkTime"
+                                    Clicked="WorkTime_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить теги"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="TagsEdit"
+                                    Clicked="TagsEdit_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить условия доставки"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="ConditionDeliveryEntry"
+                                    Clicked="ConditionDeliveryEntry_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Изменить контакты"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="ContactsEntry"
+                                    Clicked="ContactsEntry_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   Text="Изменить мин. стоимость заказа"
+                                   HorizontalTextAlignment="Start"/>
+                            <Image Grid.Column="1"
+                                   Source="PlusButton.png"
+                                   Style="{StaticResource BankCard}"
+                                   HorizontalOptions="End"/>
+                            <Button Grid.ColumnSpan="2"
+                                    BackgroundColor="Transparent"
+                                    x:Name="MinPriceEntry"
+                                    Clicked="MinPriceEntry_Clicked"
+                                    HeightRequest="15"/>
+                        </Grid>
+                        <Button BackgroundColor="{StaticResource GraySimple}"
+                                HeightRequest="1"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   Text="Возможна оплата наличными"
+                                   HorizontalTextAlignment="Start"/>
+                            <Switch Grid.Column="1"
+                                    OnColor="{StaticResource GreenColor}"
+                                    x:Name="CashPayment"
+                                    Toggled="CashPayment_Toggled"
+                                    ThumbColor="{StaticResource WhiteColor}"
+                                    HorizontalOptions="End"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   Text="Возможна оплата картой"
+                                   HorizontalTextAlignment="Start"/>
+                            <Switch Grid.Column="1"
+                                    OnColor="{StaticResource GreenColor}"
+                                    x:Name="CardPayment"
+                                    Toggled="CardPayment_Toggled"
+                                    ThumbColor="{StaticResource WhiteColor}"
+                                    HorizontalOptions="End"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Style="{StaticResource SmallBlackLabel}"
+                                   Text="Скидки"
+                                   HorizontalTextAlignment="Start"/>
+                            <Switch Grid.Column="1"
+                                    OnColor="{StaticResource GreenColor}"
+                                    x:Name="Discount"
+                                    Toggled="Discount_Toggled"
+                                    ThumbColor="{StaticResource WhiteColor}"
+                                    HorizontalOptions="End"/>
+                        </Grid>
+                        <Button Style="{StaticResource GreenButton}"
+                                Text="Сохранить"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

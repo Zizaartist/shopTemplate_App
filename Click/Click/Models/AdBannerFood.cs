@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Click.Models
 {
-    class AdBannerFood
+    public class AdBannerFood
     {
         public string Banner { get; set; }
         public string Text { get; set; }
