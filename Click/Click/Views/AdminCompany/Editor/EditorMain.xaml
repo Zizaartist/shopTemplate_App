@@ -16,6 +16,7 @@
                          Padding="20,0,20,0">
                 <Grid>
                     <Label Style="{StaticResource SmallBlackLabel}"
+                           HorizontalTextAlignment="Start"
                            Text="Основная информация"/>
                     <Image Grid.Column="1"
                            Source="Next.png"
@@ -32,6 +33,7 @@
                 <!--скрывать, если организация - вода-->
                 <Grid>
                     <Label Style="{StaticResource SmallBlackLabel}"
+                           HorizontalTextAlignment="Start"
                            Text="Меню"/>
                     <Image Grid.Column="1"
                            Source="Next.png"

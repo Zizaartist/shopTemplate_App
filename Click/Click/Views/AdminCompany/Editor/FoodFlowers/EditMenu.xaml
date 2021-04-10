@@ -16,9 +16,11 @@
                        Grid.Column="1"/>
             </Grid>
             <Button Style="{StaticResource GreenButton}"
-                    Text="Добавить категорию"/>
+                    Text="Добавить категорию"
+                    Margin="10"/>
             <Grid RowDefinitions="Auto,Auto"
-                  ColumnDefinitions="*,*">
+                  ColumnDefinitions="*,*"
+                  Padding="20,0,20,0">
                 <Frame Style="{StaticResource PickerFrame}"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
@@ -91,11 +93,11 @@
                     </Grid>
                     <Button BackgroundColor="{StaticResource GraySimple}"
                             HeightRequest="1"/>
-                    <Button Style="{StaticResource GreenButton}"
-                            Margin="10"
-                            Text="Сохранить"/>
                 </StackLayout>
             </Grid>
+            <Button Style="{StaticResource GreenButton}"
+                    Margin="10"
+                    Text="Сохранить"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

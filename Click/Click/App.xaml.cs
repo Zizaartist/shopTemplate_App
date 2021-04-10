@@ -21,7 +21,7 @@ namespace Click
         {
             InitializeComponent();
             InitializationPublicStyles();
-            MainPage = new EditorMain();
+            MainPage = new Preview();
         }
 
         void InitializationPublicStyles()

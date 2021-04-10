@@ -118,11 +118,13 @@
                                     </Picker>
                                     <Button Grid.Row="1"
                                             Grid.ColumnSpan="4"
-                                            Style="{StaticResource GreenButton}"
+                                            BackgroundColor="{StaticResource GreenColor}"
+                                            TextColor="{StaticResource WhiteColor}"
+                                            FontFamily="{StaticResource NeoSansPro}"
+                                            TextTransform="None"
                                             FontSize="{StaticResource SmallFont}"
                                             Padding="-10"
                                             Text="Заказ доставлен"
-                                            WidthRequest="370"
                                             HeightRequest="30"
                                             CornerRadius="10"
                                             Margin="-10,0,-10,0"/>

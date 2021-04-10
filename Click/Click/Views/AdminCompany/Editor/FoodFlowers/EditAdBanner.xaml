@@ -34,7 +34,7 @@
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="10">
+                        <Grid Padding="10,5,10,5">
                             <Frame Style="{StaticResource FoodBannerFrame}"
                                    x:Name="Banner">
                                 <Grid RowDefinitions="Auto, Auto">

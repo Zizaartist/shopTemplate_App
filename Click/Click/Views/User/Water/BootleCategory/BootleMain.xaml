@@ -30,7 +30,6 @@
                 <CollectionView.Header>
                     <Grid Padding="20,5,20,5">
                         <Frame Style="{StaticResource WaterCompanyFrame}"
-                               HeightRequest="60"
                                Padding="10,0,10,0">
                             <Grid ColumnDefinitions="Auto,Auto,*,Auto">
                                 <Image Source="Rocket.png"
@@ -40,6 +39,7 @@
                                              VerticalOptions="Center">
                                     <Label Style="{StaticResource BlackLabel}"
                                            TextColor="{StaticResource BlueColor}"
+                                           HorizontalTextAlignment="Start"
                                            Text="Экспресс доставка"/>
                                     <Label Style="{StaticResource GraySmallLabel}"
                                            Text="в течении 30 мин"/>

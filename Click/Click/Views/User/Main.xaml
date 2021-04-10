@@ -4,7 +4,7 @@
              x:Class="Click.Views.User.Main"
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto,*,Auto">
+        <Grid RowDefinitions="*,Auto,Auto">
             <CollectionView x:Name="AdCollection"
                             ItemsSource="{Binding AdBanners}"
                             SelectionMode="None"

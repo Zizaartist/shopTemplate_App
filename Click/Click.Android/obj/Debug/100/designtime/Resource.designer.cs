@@ -16213,13 +16213,208 @@ namespace Click.Droid
 		{
 			
 			// aapt resource value: 0x7F0C0000
-			public const int icon = 2131492864;
+			public const int Back = 2131492864;
 			
 			// aapt resource value: 0x7F0C0001
-			public const int icon_round = 2131492865;
+			public const int BackBlack = 2131492865;
 			
 			// aapt resource value: 0x7F0C0002
-			public const int launcher_foreground = 2131492866;
+			public const int BankCard = 2131492866;
+			
+			// aapt resource value: 0x7F0C0003
+			public const int BasketIcon = 2131492867;
+			
+			// aapt resource value: 0x7F0C0004
+			public const int BasketIconSelected = 2131492868;
+			
+			// aapt resource value: 0x7F0C0005
+			public const int BonusIcon = 2131492869;
+			
+			// aapt resource value: 0x7F0C0006
+			public const int BonusIconGray = 2131492870;
+			
+			// aapt resource value: 0x7F0C0007
+			public const int Bootle = 2131492871;
+			
+			// aapt resource value: 0x7F0C0008
+			public const int BootleSelected = 2131492872;
+			
+			// aapt resource value: 0x7F0C0009
+			public const int CEditor = 2131492873;
+			
+			// aapt resource value: 0x7F0C000A
+			public const int CEditorSelected = 2131492874;
+			
+			// aapt resource value: 0x7F0C000B
+			public const int CheckMark = 2131492875;
+			
+			// aapt resource value: 0x7F0C000C
+			public const int CHistory = 2131492876;
+			
+			// aapt resource value: 0x7F0C000D
+			public const int CHistorySelected = 2131492877;
+			
+			// aapt resource value: 0x7F0C000E
+			public const int ClickPreview = 2131492878;
+			
+			// aapt resource value: 0x7F0C000F
+			public const int Close = 2131492879;
+			
+			// aapt resource value: 0x7F0C0010
+			public const int COrders = 2131492880;
+			
+			// aapt resource value: 0x7F0C0011
+			public const int COrdersSelected = 2131492881;
+			
+			// aapt resource value: 0x7F0C0012
+			public const int Courier = 2131492882;
+			
+			// aapt resource value: 0x7F0C0013
+			public const int CourierSelected = 2131492883;
+			
+			// aapt resource value: 0x7F0C0014
+			public const int CProfile = 2131492884;
+			
+			// aapt resource value: 0x7F0C0015
+			public const int CProfileSelected = 2131492885;
+			
+			// aapt resource value: 0x7F0C0016
+			public const int CReports = 2131492886;
+			
+			// aapt resource value: 0x7F0C0017
+			public const int CReportsSelected = 2131492887;
+			
+			// aapt resource value: 0x7F0C0018
+			public const int Discount = 2131492888;
+			
+			// aapt resource value: 0x7F0C0019
+			public const int Document = 2131492889;
+			
+			// aapt resource value: 0x7F0C001A
+			public const int Find = 2131492890;
+			
+			// aapt resource value: 0x7F0C001B
+			public const int FindGreen = 2131492891;
+			
+			// aapt resource value: 0x7F0C001C
+			public const int Flowers = 2131492892;
+			
+			// aapt resource value: 0x7F0C001D
+			public const int FlowersTime = 2131492893;
+			
+			// aapt resource value: 0x7F0C001E
+			public const int Food = 2131492894;
+			
+			// aapt resource value: 0x7F0C001F
+			public const int FoodTime = 2131492895;
+			
+			// aapt resource value: 0x7F0C0020
+			public const int GrayFind = 2131492896;
+			
+			// aapt resource value: 0x7F0C0021
+			public const int GreenPoint = 2131492897;
+			
+			// aapt resource value: 0x7F0C0022
+			public const int HomeIcon = 2131492898;
+			
+			// aapt resource value: 0x7F0C0023
+			public const int HomeIconSelected = 2131492899;
+			
+			// aapt resource value: 0x7F0C0024
+			public const int icon = 2131492900;
+			
+			// aapt resource value: 0x7F0C0025
+			public const int icon_round = 2131492901;
+			
+			// aapt resource value: 0x7F0C0026
+			public const int launcher_foreground = 2131492902;
+			
+			// aapt resource value: 0x7F0C0027
+			public const int Location = 2131492903;
+			
+			// aapt resource value: 0x7F0C0028
+			public const int Minus = 2131492904;
+			
+			// aapt resource value: 0x7F0C0029
+			public const int MinusSelected = 2131492905;
+			
+			// aapt resource value: 0x7F0C002A
+			public const int Money = 2131492906;
+			
+			// aapt resource value: 0x7F0C002B
+			public const int Next = 2131492907;
+			
+			// aapt resource value: 0x7F0C002C
+			public const int OrdersIcon = 2131492908;
+			
+			// aapt resource value: 0x7F0C002D
+			public const int OrdersIconSelected = 2131492909;
+			
+			// aapt resource value: 0x7F0C002E
+			public const int Phone = 2131492910;
+			
+			// aapt resource value: 0x7F0C002F
+			public const int Plus = 2131492911;
+			
+			// aapt resource value: 0x7F0C0030
+			public const int PlusButton = 2131492912;
+			
+			// aapt resource value: 0x7F0C0031
+			public const int PlusSelected = 2131492913;
+			
+			// aapt resource value: 0x7F0C0032
+			public const int ProfileIcon = 2131492914;
+			
+			// aapt resource value: 0x7F0C0033
+			public const int ProfileIconSelected = 2131492915;
+			
+			// aapt resource value: 0x7F0C0034
+			public const int Restaurant = 2131492916;
+			
+			// aapt resource value: 0x7F0C0035
+			public const int Rocket = 2131492917;
+			
+			// aapt resource value: 0x7F0C0036
+			public const int SmileRatingFive = 2131492918;
+			
+			// aapt resource value: 0x7F0C0037
+			public const int SmileRatingFour = 2131492919;
+			
+			// aapt resource value: 0x7F0C0038
+			public const int SmileRatingOne = 2131492920;
+			
+			// aapt resource value: 0x7F0C0039
+			public const int SmileRatingThree = 2131492921;
+			
+			// aapt resource value: 0x7F0C003A
+			public const int SmileRatingTwo = 2131492922;
+			
+			// aapt resource value: 0x7F0C003B
+			public const int Star = 2131492923;
+			
+			// aapt resource value: 0x7F0C003C
+			public const int StarGray = 2131492924;
+			
+			// aapt resource value: 0x7F0C003D
+			public const int StarRating = 2131492925;
+			
+			// aapt resource value: 0x7F0C003E
+			public const int StarWhite = 2131492926;
+			
+			// aapt resource value: 0x7F0C003F
+			public const int Takeaway = 2131492927;
+			
+			// aapt resource value: 0x7F0C0040
+			public const int TakeawaySelected = 2131492928;
+			
+			// aapt resource value: 0x7F0C0041
+			public const int Water = 2131492929;
+			
+			// aapt resource value: 0x7F0C0042
+			public const int WaterCar = 2131492930;
+			
+			// aapt resource value: 0x7F0C0043
+			public const int WaterCarSelected = 2131492931;
 			
 			static Mipmap()
 			{
