@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Click.Converters"
-             x:Class="Click.Views.User.Food.Reviews"
+             x:Class="Click.Views.User.Food.Messages"
              Style="{StaticResource GrayContentPage}">
 
     <ContentPage.Resources>
@@ -15,10 +15,10 @@
             <RefreshView x:Name="Refreshable"
                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                             Command="{Binding GetInitialData}">
-                <CollectionView x:Name="ReviewsCollection"
+                <CollectionView x:Name="MessagesCollection"
                             ItemsSource="{Binding Messages}"
                             SelectionMode="Single"
-                            SelectionChanged="ReviewsCollection_SelectionChanged">
+                            SelectionChanged="MessagesCollection_SelectionChanged">
                     <CollectionView.Header>
                         <Grid RowDefinitions="Auto,Auto,Auto,Auto">
                             <Grid Style="{StaticResource HeaderGrid}">
@@ -55,25 +55,25 @@
                                         <Image Style="{StaticResource StarRating}"/>
                                     </Grid>
                                 </Frame>
-                                <Label Text="{Binding AllReviewsCount, StringFormat='({0})'}"
+                                <Label Text="{Binding AllMessagesCount, StringFormat='({0})'}"
                                    Style="{StaticResource GrayVerySmallLabel}"
                                    Grid.Column="1"/>
                             </Grid>
                             <Grid Grid.Row="2" ColumnDefinitions="*,*"
                               Padding="20,10,20,10">
-                                <Frame Style="{StaticResource FrameReviewsOne}">
+                                <Frame Style="{StaticResource FrameMessagesOne}">
                                     <Label Style="{StaticResource SmallBlackLabel}"
                                        Text="Рейтинг складывается из оценок клиентов, скорости доставки"
                                        HorizontalOptions="Center"/>
                                 </Frame>
                                 <Frame Grid.Column="1"
-                                   Style="{StaticResource FrameReviewsTwo}">
+                                   Style="{StaticResource FrameMessagesTwo}">
                                     <Label Style="{StaticResource SmallBlackLabel}"
                                        HorizontalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="Всего "/>
-                                                <Span Text="{Binding AllReviewsCount}"/>
+                                                <Span Text="{Binding AllMessagesCount}"/>
                                                 <Span Text=" оценки"/>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -85,7 +85,7 @@
                                Padding="20,0,20,0">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding TextReviewsCount}"/>
+                                        <Span Text="{Binding TextMessagesCount}"/>
                                         <Span Text=" отзыва"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -99,9 +99,9 @@
                                 <Image Source="{Binding Emote}"
                                    Style="{StaticResource RatingImage}"/>
                                 <Frame Grid.Column="1"
-                                   Style="{StaticResource ReviewsFrameList}">
+                                   Style="{StaticResource MessagesFrameList}">
                                     <Grid RowDefinitions="Auto,Auto,Auto">
-                                        <Label Text="{Binding Message.Text}"
+                                        <Label Text="{Binding Review.Text}"
                                            Style="{StaticResource SmallBlackLabel}"
                                            HorizontalTextAlignment="Start"/>
                                         <Label Text="{Binding OrderedProducts}"
@@ -109,9 +109,9 @@
                                            Grid.Row="1"/>
                                         <Grid ColumnDefinitions="Auto,Auto"
                                           Grid.Row="2">
-                                            <Label Text="{Binding Message.CreatedDate, StringFormat='{0:dd MMMM в HH:mm}'}"
+                                            <Label Text="{Binding Review.CreatedDate, StringFormat='{0:dd MMMM в HH:mm}'}"
                                                Style="{StaticResource GrayVerySmallLabel}"/>
-                                            <Label Text="{Binding Message.User.Name}"
+                                            <Label Text="{Binding Review.User.Name}"
                                                Style="{StaticResource VerySmallBlackLabelBold}"
                                                Grid.Column="1"/>
                                         </Grid>

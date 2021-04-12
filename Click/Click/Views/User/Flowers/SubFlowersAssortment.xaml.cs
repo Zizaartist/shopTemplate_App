@@ -16,21 +16,21 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubFlowersAssortment : ContentPage
     {
-        public SubFlowersAssortment(BrandMenuLocal _brandMenuLocal)
+        public SubFlowersAssortment(CategoryLocal _categoryLocal)
         {
             InitializeComponent();
 
             //Загружаем продукцию
-            var productVM = new ProductListViewModel(_brandMenuLocal.BrandMenu);
+            var productVM = new ProductsViewModel(_categoryLocal.Category);
             BindingContext = productVM;
             Task.Run(() => productVM.GetCachedData());
 
             //Баллы достаточно просто сбайндить
             Points.BindingContext = UsersViewModel.Instance;
 
-            //brandMenu-related
-            MinimalPrice.Text = (_brandMenuLocal.BrandMenu.Brand.MinimalPrice ?? default).ToString();
-            BrandName.Text = _brandMenuLocal.BrandMenu.Brand.BrandName;
+            //category-related
+            MinimalPrice.Text = _categoryLocal.Category.Brand.MinimalPrice.ToString();
+            NameLabel.Text = _categoryLocal.Category.Brand.BrandName;
         }
 
         protected override void OnAppearing()

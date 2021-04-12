@@ -24,12 +24,12 @@ namespace Click.Views.User.Food
             brandLocal = _brandLocal;
 
             //Загружаем меню
-            var brandMenuVM = new BrandMenuViewModel(_brandLocal.Brand);
-            Refreshable.BindingContext = brandMenuVM;
-            Task.Run(() => brandMenuVM.GetCachedData());
+            var categoryVM = new CategoryViewModel(_brandLocal.Brand);
+            Refreshable.BindingContext = categoryVM;
+            Task.Run(() => categoryVM.GetCachedData());
 
             //Получаем количество отзывов
-            var messagesVM = new MessagesViewModel(_brandLocal.Brand.BrandId);
+            var messagesVM = new ReviewsViewModel(_brandLocal.Brand.BrandId);
             ReviewCount.BindingContext = messagesVM;
             Task.Run(() => messagesVM.GetReviewCount());
 
@@ -46,7 +46,6 @@ namespace Click.Views.User.Food
         {
             Task.Run(() => UsersViewModel.Instance.GetPoints());
             base.OnAppearing();
-            _brandInfo = brandInfo;
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)
@@ -63,9 +62,9 @@ namespace Click.Views.User.Food
         {
             if (e.CurrentSelection.Any())
             {
-                var brandMenu = CategoriesCollection.SelectedItem as BrandMenuLocal;
+                var category = CategoriesCollection.SelectedItem as CategoryLocal;
                 CategoriesCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new SubFoodAssortment(brandMenu));
+                Navigation.PushModalAsync(new SubFoodAssortment(category));
             }
         }
 
@@ -74,9 +73,9 @@ namespace Click.Views.User.Food
             Navigation.PushModalAsync(new DescriptionOrganization(brandLocal));
         }
 
-        private void Reviews_Clicked(object sender, EventArgs e)
+        private void Messages_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Reviews(brandLocal));
+            Navigation.PushModalAsync(new Messages(brandLocal));
         }
     }
 }

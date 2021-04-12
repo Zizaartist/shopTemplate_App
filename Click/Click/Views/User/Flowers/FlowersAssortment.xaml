@@ -17,7 +17,7 @@
                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                             Command="{Binding GetInitialData}">
                 <CollectionView x:Name="CategoriesCollection"
-                            ItemsSource="{Binding BrandMenus}"
+                            ItemsSource="{Binding Categorys}"
                             SelectionMode="Single"
                             SelectionChanged="CategoriesCollection_SelectionChanged">
                     <CollectionView.Header>
@@ -72,15 +72,15 @@
                                         </Grid>
                                     </Frame>
                                     <Label x:Name="ReviewCount"
-                                        Text="{Binding AllReviewsCount}"
+                                        Text="{Binding AllMessagesCount}"
                                        Style="{StaticResource GrayVerySmallLabel}"
                                        Grid.Column="1"/>
                                 </Grid>
                                 <Grid Grid.Column="1"
                                   Grid.RowSpan="2">
                                     <Button Text="Отзывы"
-                                        x:Name="Reviews"
-                                        Clicked="Reviews_Clicked"
+                                        x:Name="Messages"
+                                        Clicked="Messages_Clicked"
                                         Style="{StaticResource WhiteSmallButton}"/>
                                     <Button Text="Подробнее"
                                         x:Name="About"
@@ -102,7 +102,7 @@
                                     <Grid RowDefinitions="Auto,Auto">
                                         <Image Source="{Binding Image}"
                                        Style="{StaticResource CategoryImage}"/>
-                                        <Label Text="{Binding BrandMenu.BrandMenuName}"
+                                        <Label Text="{Binding Category.CategoryName}"
                                        Style="{StaticResource BlackLabelMedium}"
                                        HorizontalOptions="Center"
                                        Grid.Row="1"/>

@@ -1,4 +1,6 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +15,18 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditMenu : ContentPage
     {
-        FoodCategory foodCategory = new FoodCategory();
+        Category foodCategory = new Category();
         public EditMenu()
         {
             InitializeComponent();
             newfoodcategory();
+
             CategoryWrapper.BindingContext = foodCategory;
         }
         void newfoodcategory()
         {
             //need delete
-            foodCategory.Name = "Бургеры с говядиной";
+            //foodCategory.Name = "Бургеры с говядиной";
             foodCategory.Image = "temp8.png";
         }
         private void Back_Clicked(object sender, EventArgs e)
@@ -39,7 +42,7 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
         async private void NameCategoryEntry_Clicked(object sender, EventArgs e)
         {
             string result = await DisplayPromptAsync("Click", "Введите имя категории");
-            foodCategory.Name = result;
+            //foodCategory.Name = result;
         }
 
         private void AddCategoryForm_Clicked(object sender, EventArgs e)

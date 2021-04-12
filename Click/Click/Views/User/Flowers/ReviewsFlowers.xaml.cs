@@ -1,4 +1,5 @@
 ﻿using Click.Models;
+using Click.Models.LocalModels;
 using Click.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,14 @@ using Xamarin.Forms.Xaml;
 namespace Click.Views.User.Flowers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ReviewsFlowers : ContentPage
+    public partial class MessagesFlowers : ContentPage
     {
-        public ReviewsFlowers(BrandInfo brandInfo)
+        public MessagesFlowers(BrandLocal _brandLocal)
         {
             InitializeComponent();
-            ReviewsCollection.BindingContext = new ReviewsViewModel();
-            NameLabel.Text = brandInfo.Name;
+
+            MessagesCollection.BindingContext = new ReviewsViewModel();
+            NameLabel.Text = _brandLocal.Brand.BrandName;
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace Click.Views.User.Flowers
             Navigation.PushModalAsync(new BonusHistory());
         }
 
-        private void ReviewsCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MessagesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

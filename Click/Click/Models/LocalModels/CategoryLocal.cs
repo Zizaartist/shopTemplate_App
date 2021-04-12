@@ -7,20 +7,21 @@ using Xamarin.Forms;
 
 namespace Click.Models.LocalModels
 {
-    public class BrandMenuLocal
+    public class CategoryLocal
     {
-        public BrandMenuLocal(BrandMenu _brandMenu) 
+        public CategoryLocal(Category _category) 
         {
-            BrandMenu = _brandMenu;
-            Image = new UriImageSource
+            Category = _category;
+
+            Image = Category.Image != null ? new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + BrandMenu.Image.Path),
+                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + Category.Image),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
-            };
+            } : null;
         }
 
-        public BrandMenu BrandMenu { get; private set; }
+        public Category Category { get; private set; }
         public UriImageSource Image { get; private set; }
     }
 }

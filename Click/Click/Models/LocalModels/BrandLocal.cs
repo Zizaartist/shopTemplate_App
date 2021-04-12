@@ -3,6 +3,7 @@ using ApiClick.Models.EnumModels;
 using Click.StaticValues;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -13,24 +14,27 @@ namespace Click.Models.LocalModels
         public BrandLocal(Brand _brand)
         {
             Brand = _brand;
-            foreach (Hashtag _tag in Brand.Hashtags)
+            foreach (BrandHashtag _tag in Brand.BrandHashtags)
             {
-                Tags += $"{_tag.HashTagName} ";
+                Tags += $"{_tag.Hashtag?.HashTagName} ";
             }
-            if (Brand.PaymentMethods.Contains(PaymentMethod.cash)) CashPayment = true;
-            if (Brand.PaymentMethods.Contains(PaymentMethod.card)) BankPayment = true;
-            Banner = new UriImageSource
+
+            if (Brand.BrandPaymentMethods.Any(bpm => bpm.PaymentMethod == PaymentMethod.cash)) CashPayment = true;
+            if (Brand.BrandPaymentMethods.Any(bpm => bpm.PaymentMethod == PaymentMethod.card)) BankPayment = true;
+
+            Banner = Brand.BrandInfo.Banner != null ? new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + Brand.ImgBanner.Path),
+                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + Brand.BrandInfo.Banner),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
-            }; 
-            Logo = new UriImageSource
+            } : null; 
+
+            Logo = Brand.BrandInfo.Logo != null ? new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + Brand.ImgLogo.Path),
+                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + Brand.BrandInfo.Logo),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
-            };
+            } : null;
         }
 
         public Brand Brand { get; private set; }

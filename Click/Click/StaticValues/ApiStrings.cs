@@ -7,63 +7,206 @@ namespace Click.StaticValues
     public static class ApiStrings
     {
         #if LOCALTESTING
-            public const string API_HOST = "https://10.0.2.2:44358/";
+            public const string HOST = "https://10.0.2.2:44358/";
         #else
-            public const string API_HOST = "https://clickapidebug.azurewebsites.net/";
-        #endif
+            public const string HOST = "https://clickapidebug.azurewebsites.net/";
+#endif
 
-        public const string API_USERS_CONTROLLER = "Users/";
-        public const string API_USERS_AUTH = "PhoneCheck/";
-        public const string API_ADMINS_AUTH = "AdminCheck/";
-        public const string API_POINTS = "GetMyPoints/";
-        public const string API_USERS_MY_DATA = "GetMyData/";
-        public const string API_USERS_PHONE_CHANGE = "ChangeNumber/";
-        public const string API_VERIFY_NUMBER = "PhoneIsRegistered/";
+        //Account
 
-        public const string API_BRANDS_CONTROLLER = "Brands/";
-        public const string API_BRANDS_GET_BY_CATEGORY = "GetBrandsByCategory/";
-        public const string API_BRANDS_GET_MY_BRANDS = "GetMyBrands/";
-        public const string API_BRANDS_GET_BY_FILTER = "GetBrandsByFilter/"; //{category}/{_page}
-        public const string API_BRANDS_GET_BY_NAME = "GetBrandsByName/"; //{category}?name=blah
+        /// <summary>
+        /// POST: api/Account/UserToken/?phone=79991745473
+        /// </summary>
+        public const string ACCOUNT_USERS_TOKEN = "api/Account/UserToken/";
+        /// <summary>
+        /// POST: api/Account/AdminToken/?login=Zizi&password=zaza
+        /// </summary>
+        public const string ACCOUNT_ADMINS_TOKEN = "api/Account/AdminToken/"; 
+        /// <summary>
+        /// POST: api/Account/SmsCheck/?phone=79991745473
+        /// </summary>
+        public const string ACCOUNT_SMS_CHECK = "api/Account/SmsCheck/"; 
+        /// <summary>
+        /// POST: api/Account/CodeCheck/?code=3344&phone=79991745473
+        /// </summary>
+        public const string ACCOUNT_CODE_CHECK = "api/Account/CodeCheck/"; 
+        /// <summary>
+        /// POST: api/Account/PhoneCheck/?phone=79991745473
+        /// </summary>
+        public const string ACCOUNT_PHONE_CHECK = "api/Account/PhoneCheck/"; 
+        /// <summary>
+        /// POST: api/Account/PhoneIsRegistered/?phone=79991745473
+        /// </summary>
+        public const string ACCOUNT_VERIFY_NUMBER = "api/Account/PhoneIsRegistered/";
 
-        public const string API_MENU_CONTROLLER = "BrandsMenu/";
-        public const string API_MENU_GET_BY_BRAND = "GetMenusByBrand/";
-        public const string API_MENU_GET_MY_MENUS = "GetMyMenus/"; 
+        //AdBanner
 
-        public const string API_PRODUCTS_CONTROLLER = "Products/";
-        public const string API_PRODUCTS_GET_BY_MENU = "GetProductsByMenu/"; //{id}/{_page}
-        public const string API_PRODUCTS_GET_MY_PRODUCTS = "GetMyProducts/";
-        public const string API_PRODUCTS_VODA_BY_CATEGORY = "GetVodaProductsByCategory/";
+        /// <summary>
+        /// POST, PUT: api/AdBanner/ DELETE: api/AdBanner/{id} 
+        /// </summary>
+        public const string ADBANNER_CONTROLLER = "api/AdBanner/";
+        /// <summary>
+        /// GET: api/AdBanner/{_kind}
+        /// </summary>
+        public const string ADBANNER_GET = "api/AdBanner/";
 
-        public const string API_USERTOKEN_CONTROLLER = "UserToken/";
-        public const string API_ADMINTOKEN_CONTROLLER = "AdminToken/";
+        //Brands
 
-        public const string API_MESSAGES_CONTROLLER = "Messages/";
-        public const string API_MESSAGES_GET_BY_BRAND = "BrandReviews/"; //{id}/{_page}
-        public const string API_MESSAGES_GET_COUNT = "BrandReviewCount/"; //{id}
+        /// <summary>
+        /// GET: api/Brands/{id} PUT: api/Brands
+        /// </summary>
+        public const string BRANDS_CONTROLLER = "api/Brands/";
+        /// <summary>
+        /// POST: api/Brands/GetByFilter/{_kind}/{_page}?openNow=true
+        /// </summary>
+        public const string BRANDS_GET_BY_FILTER = "api/Brands/GetByFilter/";
+        /// <summary>
+        /// GET: api/Brands/GetBrandsByName/{_kind}?name=blahbla
+        /// </summary>
+        public const string BRANDS_GET_BY_NAME = "api/Brands/GetBrandsByName/";
+        /// <summary>
+        /// GET: api/Brands/GetWaterBrands/{_kind}
+        /// </summary>
+        public const string BRANDS_GET_WATER = "api/Brands/GetWaterBrands/";
+        /// <summary>
+        /// GET: api/Brands/GetMyBrand
+        /// </summary>
+        public const string BRANDS_GET_MY_BRAND = "api/Brands/GetMyBrand/";
+        /// <summary>
+        /// GET, PUT: api/Brands/BrandDoc
+        /// </summary>
+        public const string BRANDS_BRAND_DOC = "api/Brands/BrandDoc/";
 
-        public const string API_ORDERS_CONTROLLER = "Orders/";
-        public const string API_ORDERS_GET_ORDERS = "GetMyOrders/";
-        public const string API_ORDERS_GET_TASKS = "GetMyTasks/";
-        public const string API_ORDERS_GET_HISTORY = "GetMyHistory/";
-        public const string API_ORDERS_POST_VODA = "PostVodaOrders/";
-        public const string API_ORDERS_PUT_VODA = "PutVodaOrders/";
-        public const string API_ORDERS_GET_BY_CATEGORY = "GetOrdersByCategory/";
-        public const string API_REQUESTS_GET_BY_ORDER = "GetRequestsByOrder/";
-        public const string API_REQUESTS_SELECT_BRAND = "SelectVodaBrand/";
-        public const string API_ORDERS_GET_OPEN = "GetOpenVodaOrders/";
-        public const string API_REQUESTS_POST = "PostVodaRequest/";
+        //Categories
 
-        public const string API_IMAGES_FOLDER = "Images/";
-        public const string API_IMAGES_CONTROLLER = "PostImage/";
+        /// <summary>
+        /// PUT, POST: api/Categories/ DELETE: api/Categories/{id}
+        /// </summary>
+        public const string CATEGORIES_CONTROLLER = "api/Categories/";
+        /// <summary>
+        /// GET: api/Categories/ByBrand/{id}
+        /// </summary>
+        public const string CATEGORIES_GET_BY_BRAND = "api/Categories/GetMenusByBrand/";
 
-        public const string API_ADBANNER_CONTROLLER = "AdBanner/";
+        //Hashtags
 
-        public const string API_POINT_REGISTERS_CONTROLLER = "PointRegisters/";
+        /// <summary>
+        ///  GET: api/Hashtags/{kind}
+        /// </summary>
+        public const string HASHTAGS_CONTROLLER = "api/Hashtags/"; 
 
-        public const string API_HASHTAGS_GET = "GetHashtagsByCategory/";
-        public const string API_CATEGORY_CONTROLLER = "Category/";
-        public const string API_PAYMENTMETHODS_CONTROLLER = "PaymentMethods/";
-        public const string API_BANKNOTE_CONTROLLER = "Banknote/";
+        //Images
+
+        public const string IMAGES_FOLDER = "Images/";
+        /// <summary>
+        /// POST: api/Images/
+        /// </summary>
+        public const string IMAGES_CONTROLLER = "api/Images/";
+
+        //Orders
+
+        /// <summary>
+        /// POST: api/Orders/ DELETE: api/Orders/{id}
+        /// </summary>
+        public const string ORDERS_CONTROLLER = "api/Orders/";
+        /// <summary>
+        /// GET: api/Orders/GetMyOrders
+        /// </summary>
+        public const string ORDERS_GET_ORDERS = "api/Orders/GetMyOrders/";
+        /// <summary>
+        /// GET: api/Orders/GetMyRegularTasks
+        /// </summary>
+        public const string ORDERS_GET_REGULAR_TASKS = "api/Orders/GetMyRegularTasks/";
+        /// <summary>
+        /// GET: api/Orders/GetMyWaterTasks
+        /// </summary>
+        public const string ORDERS_GET_WATER_TASKS = "api/Orders/GetMyWaterTasks/";
+        /// <summary>
+        /// GET: api/Orders/GetMyHistory
+        /// </summary>
+        public const string ORDERS_GET_HISTORY = "api/Orders/GetMyHistory/";
+        /// <summary>
+        /// PUT: api/Orders/ChangeStatus/{id}?_status={status}
+        /// </summary>
+        public const string ORDERS_CHANGE_STATUS = "api/Orders/ChangeStatus/";
+        /// <summary>
+        /// POST: api/Orders/PostWaterOrder/
+        /// </summary>
+        public const string ORDERS_POST_WATER = "api/Orders/PostWaterOrder/";
+        /// <summary>
+        /// GET: api/Orders/{id}
+        /// </summary>
+        public const string ORDERS_GET_REQUESTS_BY_ORDER = "api/Orders/GetRequestsByOrder/";
+        /// <summary>
+        /// POST: api/Orders/SelectWaterBrand/{id}
+        /// </summary>
+        public const string ORDERS_SELECT_WATER_BRAND = "api/Orders/SelectWaterBrand/";
+        /// <summary>
+        /// POST: api/Orders/PostWaterRequest
+        /// </summary>
+        public const string ORDERS_POST_WATER_REQUEST = "api/Orders/PostWaterRequest/";
+
+        //PointRegisters
+
+        /// <summary>
+        /// GET: api/PointRegisters/
+        /// </summary>
+        public const string POINT_REGISTERS_CONTROLLER = "api/PointRegisters/";
+
+        //Products
+
+        /// <summary>
+        /// PUT, POST: api/Products/ DELETE: api/Products/{id}
+        /// </summary>
+        public const string PRODUCTS_CONTROLLER = "api/Products/";
+        /// <summary>
+        /// GET: api/Products/ByMenu/{id}/{_page}
+        /// </summary>
+        public const string PRODUCTS_GET_BY_MENU = "api/Products/ByMenu/";
+
+        //Reports
+
+        /// <summary>
+        /// GET: api/Reports/{datePeriod}
+        /// </summary>
+        public const string REPORTS_CONTROLLER = "api/Reports/";
+        /// <summary>
+        /// GET: api/Reports/AllTimeStats
+        /// </summary>
+        public const string REPORTS_STATS = "api/Reports/AllTimeStats";
+
+        //Reviews
+
+        /// <summary>
+        /// POST: api/Reviews/
+        /// </summary>
+        public const string REVIEWS_CONTROLLER = "api/Reviews/";
+        /// <summary>
+        /// GET: api/Reviews/ByBrand/{id}/{_page}
+        /// </summary>
+        public const string REVIEWS_GET_BY_BRAND = "api/Reviews/ByBrand";
+        /// <summary>
+        /// GET: api/Reviews/BrandReviewCount/{id}
+        /// </summary>
+        public const string REVIEWS_GET_COUNT = "api/Reviews/BrandReviewCount/";
+
+        //Users
+
+        /// <summary>
+        /// PUT: api/Users/ POST: api/Users/?code=3366
+        /// </summary>
+        public const string USERS_CONTROLLER = "api/Users/";
+        /// <summary>
+        /// GET: api/Users/GetMyPoints/
+        /// </summary>
+        public const string USERS_POINTS = "api/Users/GetMyPoints/";
+        /// <summary>
+        /// GET: api/Users/GetMyData/
+        /// </summary>
+        public const string USERS_MY_DATA = "api/Users/GetMyData/";
+        /// <summary>
+        /// PUT: api/Users/ChangeNumber/?newPhoneNumber=88005553535&code=3344
+        /// </summary>
+        public const string USERS_PHONE_CHANGE = "api/Users/ChangeNumber/";
     }
 }

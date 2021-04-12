@@ -1,63 +1,60 @@
 ﻿using ApiClick.Models.EnumModels;
-using ApiClick.Models.RegisterModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using ApiClick.StaticValues;
-using ApiClick.Models.ArrayModels;
+using System.Linq;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace ApiClick.Models
 {
-    /// <summary>
-    /// Модель, содержащая данные заказа
-    /// </summary>
     public partial class Order
     {
-        public Order() 
+        public Order()
         {
-            OrderDetails = new List<OrderDetail>();
+            OrderDetails = new HashSet<OrderDetail>();
+            PointRegisters = new HashSet<PointRegister>();
         }
 
-        //Not nullable
-        [Key]
         public int OrderId { get; set; }
-        public int UserId { get; set; }
-        public Category Category { get; set; }
+        public int OrdererId { get; set; }
+        public Kind Kind { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public bool PointsUsed { get; set; }
-        [MaxLength(ModelLengths.LENGTH_SMALL)]
-        public string Phone { get; set; }
-        public bool Delivery { get; set; }
-
-        //Nullable
-        /// <summary>
-        /// Хранит id владельца бренда просто для логгирования
-        /// </summary>
-        public int? BrandOwnerId { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MAX)]
-        public string Commentary { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MEDIUM)]
-        public string Street { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MIN)]
-        public string House { get; set; }
-        public int? Padik { get; set; }
-        public int? Etash { get; set; }
-        public int? Kv { get; set; }
-        public int? PointRegisterId { get; set; }
-        public Banknote? Banknote { get; set; }
+        public bool? PointsUsed { get; set; }
+        public decimal? DeliveryPrice { get; set; }
         public DateTime CreatedDate { get; set; }
+        public int? BrandId { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual User User { get; set; }
-        [ForeignKey("BrandOwnerId")]
-        public virtual User BrandOwner { get; set; }
-        [ForeignKey("PointRegisterId")]
-        public virtual PointRegister PointRegister { get; set; }
+        
+        public virtual OrderInfo OrderInfo { get; set; }
+        public virtual WaterOrder WaterOrder { get; set; }
+        public Brand Brand { get; set; }
+        
+        public User Orderer { get; set; }
+        
+        public Review Review { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        //Registers, related to this order
-        [NotMapped]
+        
         public virtual ICollection<PointRegister> PointRegisters { get; set; }
+
+        [NotMapped]
+        public bool? Delivery { get; set; } //Получаем от клиента
+        [NotMapped]
+        
+        public PointRegister PointRegister
+        {
+            get 
+            {
+                return PointRegisters?.FirstOrDefault(pr => pr.SenderId == OrdererId);
+            }
+        }
+        [NotMapped]
+        public decimal Sum { get; set; }
+        [NotMapped]
+        public string OrdererName { get; set; }
     }
 }

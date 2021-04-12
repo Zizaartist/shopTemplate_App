@@ -15,7 +15,7 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FindFood : ContentPage
     {
-        private static Category CATEGORY = Category.food;
+        private static Kind CATEGORY = Kind.food;
 
         public FindFood()
         {
@@ -36,6 +36,7 @@ namespace Click.Views.User.Food
                 var selectedBrand = OrganisationCollection.SelectedItem as BrandLocal;
                 OrganisationCollection.SelectedItem = null;
                 Navigation.PushModalAsync(new FoodAssortment(selectedBrand));
+            }
         }
 
         private void Find_Clicked(object sender, EventArgs e)

@@ -1,28 +1,22 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace ApiClick.Models
 {
-    public class WaterRequest
+    public partial class WaterRequest
     {
-        [Key]
         public int WaterRequestId { get; set; }
-        public int OrderId { get; set; }
-        public int BrandId { get; set; }
+        public int WaterOrderId { get; set; }
+        
+        public int WaterBrandId { get; set; }
 
-        [ForeignKey("OrderId")]
-        public virtual Order Order { get; set; }
-        [ForeignKey("BrandId")]
-        public virtual Brand Brand { get; set; }
-
-        /// <summary>
-        /// Cодержат предлагаемые цены на соответствующие товары
-        /// </summary>
-        [InverseProperty("Request")]
-        public virtual ICollection<RequestDetail> Suggestions { get; set; }
+        public WaterBrand WaterBrand { get; set; }
+        
+        public WaterOrder WaterOrder { get; set; }
     }
 }

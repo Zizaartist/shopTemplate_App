@@ -1,4 +1,5 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
 using Click.Views.User.Basket;
 using System;
 using System.Collections.Generic;
@@ -82,7 +83,7 @@ namespace Click.Views.User.Orders
          async private void Send_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Click", "Отзыв отправлен", "Понятно");
-            Navigation.PopModalAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }

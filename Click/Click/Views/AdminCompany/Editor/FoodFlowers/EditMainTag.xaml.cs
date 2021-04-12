@@ -17,7 +17,7 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
         public EditMainTag()
         {
             InitializeComponent();
-            TagCollection.BindingContext = new TagFoodViewModel();
+            //TagCollection.BindingContext = new TagFoodViewModel();
         }
 
         private void Back_Clicked(object sender, EventArgs e)

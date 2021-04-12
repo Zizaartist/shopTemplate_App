@@ -1,36 +1,36 @@
-﻿using ApiClick.Models.EnumModels;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using ApiClick.StaticValues;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace ApiClick.Models
 {
-    /// <summary>
-    /// Модель, содержащая данные о продукте, который является частью меню
-    /// </summary>
-    public class Product
+    public partial class Product
     {
-        //Not nullable
-        [Key]
-        public int ProductId { get; set; }
-        [Required]
-        public Decimal Price { get; set; }
-        [Required, MaxLength(ModelLengths.LENGTH_SMALL)]
-        public string ProductName { get; set; }
+        public Product()
+        {
+            OrderDetails = new HashSet<OrderDetail>();
+            Reports = new HashSet<Report>();
+        }
 
-        //Nullable
-        public int? BrandMenuId { get; set; }
+        public int ProductId { get; set; }
+        public decimal Price { get; set; }
+        public string ProductName { get; set; }
+        public int CategoryId { get; set; }
         public int? PriceDiscount { get; set; }
-        public int? ImgId { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MAX)]
+        public string Image { get; set; }
         public string Description { get; set; }
+        
         public DateTime CreatedDate { get; set; }
 
-        [ForeignKey("BrandMenuId")]
-        public virtual BrandMenu BrandMenu { get; set; }
-        [ForeignKey("ImgId")]
-        public virtual Image Image { get; set; }
+        
+        public Category Category { get; set; }
+        
+        public ICollection<Report> Reports { get; set; }
+        
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.User.Flowers.ReviewsFlowers"
+             x:Class="Click.Views.User.Flowers.MessagesFlowers"
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
         <Grid>
             <RefreshView x:Name="Refreshable"
                             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                             Command="{Binding GetInitialData}">
-                <CollectionView x:Name="ReviewsCollection"
-                            ItemsSource="{Binding Reviewss}"
+                <CollectionView x:Name="MessagesCollection"
+                            ItemsSource="{Binding Messagess}"
                             SelectionMode="Single"
-                            SelectionChanged="ReviewsCollection_SelectionChanged">
+                            SelectionChanged="MessagesCollection_SelectionChanged">
                     <CollectionView.Header>
                         <Grid RowDefinitions="Auto,Auto,Auto,Auto">
                             <Grid Style="{StaticResource HeaderGrid}"
@@ -54,13 +54,13 @@
                             </Grid>
                             <Grid Grid.Row="2" ColumnDefinitions="*,*"
                               Padding="20,10,20,10">
-                                <Frame Style="{StaticResource FrameReviewsOne}">
+                                <Frame Style="{StaticResource FrameMessagesOne}">
                                     <Label Style="{StaticResource SmallBlackLabel}"
                                        Text="Рейтинг складывается из оценок клиентов, скорости доставки"
                                        HorizontalOptions="Center"/>
                                 </Frame>
                                 <Frame Grid.Column="1"
-                                   Style="{StaticResource FrameReviewsTwo}">
+                                   Style="{StaticResource FrameMessagesTwo}">
                                     <Label Style="{StaticResource SmallBlackLabel}"
                                        HorizontalOptions="Center">
                                         <Label.FormattedText>
@@ -92,7 +92,7 @@
                                 <Image Source="{Binding RatingImage}"
                                    Style="{StaticResource RatingImage}"/>
                                 <Frame Grid.Column="1"
-                                   Style="{StaticResource ReviewsFrameList}">
+                                   Style="{StaticResource MessagesFrameList}">
                                     <Grid RowDefinitions="Auto,Auto,Auto">
                                         <Label Text="{Binding Text}"
                                            Style="{StaticResource SmallBlackLabel}"

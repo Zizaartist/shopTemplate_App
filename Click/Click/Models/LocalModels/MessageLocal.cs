@@ -6,19 +6,22 @@ using Xamarin.Forms;
 
 namespace Click.Models.LocalModels
 {
-    public class MessageLocal
+    public class ReviewLocal
     {
-        public MessageLocal(Message _message) 
+        public ReviewLocal(Review _message) 
         {
-            Message = _message;
+            Review = _message;
 
-            Message.OrderedProducts.ForEach(e => OrderedProducts += $", {e.ProductName}");
+            foreach (var product in Review.Products) 
+            {
+                OrderedProducts += $", {product}";
+            }
             if (!string.IsNullOrEmpty(OrderedProducts)) OrderedProducts.Substring(2);
 
-            Emote = EmoteDictionary[Message.Rating];
+            Emote = EmoteDictionary[Review.Rating];
         }
 
-        public Message Message { get; private set; }
+        public Review Review { get; private set; }
         public string OrderedProducts { get; private set; } = "";
         public string Emote { get; private set; }
 

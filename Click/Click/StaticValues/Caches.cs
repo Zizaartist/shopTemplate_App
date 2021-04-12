@@ -36,9 +36,9 @@ namespace Click.StaticValues
 
         //LocalMachine
         /// <summary>
-        /// Кэш для хранения категорий
+        /// Кэш для хранения типов продукции
         /// </summary>
-        public static readonly Cache CATEGORIES_CACHE = new Cache("Categories");
+        public static readonly Cache KINDS_CACHE = new Cache("Categories");
         /// <summary>
         /// Кэш для хранения хэштегов
         /// </summary>
@@ -56,9 +56,9 @@ namespace Click.StaticValues
         /// </summary>
         public static readonly Cache BRANDS_CACHE = new Cache("Brands", TimeSpan.FromDays(1));
         /// <summary>
-        /// Кэш для хранения меню внутри бренда
+        /// Кэш для хранения категорий внутри бренда
         /// </summary>
-        public static readonly Cache MENUS_CACHE = new Cache("Menus", TimeSpan.FromDays(1));
+        public static readonly Cache CATEGORIES_CACHE = new Cache("Menus", TimeSpan.FromDays(1));
         /// <summary>
         /// Кэш для хранения продуктов внутри меню
         /// </summary>

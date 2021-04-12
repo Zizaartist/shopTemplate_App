@@ -12,13 +12,13 @@ using Xamarin.Forms.Xaml;
 namespace Click.Views.User.Food
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Reviews : ContentPage
+    public partial class Messages : ContentPage
     {
-        public Reviews(BrandLocal _brandLocal)
+        public Messages(BrandLocal _brandLocal)
         {
             InitializeComponent();
 
-            var messagesVM = new MessagesViewModel(_brandLocal.Brand.BrandId);
+            var messagesVM = new ReviewsViewModel(_brandLocal.Brand.BrandId);
             BindingContext = messagesVM;
             Task.Run(() => messagesVM.GetInitialData.Execute(null));
             Task.Run(() => messagesVM.GetReviewCount());
@@ -45,7 +45,7 @@ namespace Click.Views.User.Food
             Navigation.PushModalAsync(new BonusHistory());
         }
 
-        private void ReviewsCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MessagesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

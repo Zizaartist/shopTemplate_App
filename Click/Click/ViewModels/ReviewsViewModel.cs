@@ -13,11 +13,11 @@ using Xamarin.Forms;
 
 namespace Click.ViewModels
 {
-    public class MessagesViewModel : CollectionViewModel
+    public class ReviewsViewModel : CollectionViewModel
     {
         #region properties
 
-        public ObservableCollection<MessageLocal> Messages { get; } = new ObservableCollection<MessageLocal>();
+        public ObservableCollection<ReviewLocal> Reviews { get; } = new ObservableCollection<ReviewLocal>();
 
         private int allReviewsCount;
         public int AllReviewsCount 
@@ -47,7 +47,7 @@ namespace Click.ViewModels
 
         #endregion
 
-        public MessagesViewModel(int? _brandId = null) 
+        public ReviewsViewModel(int? _brandId = null) 
         {
             brandId = _brandId;
             GetInitialData = NewGetDataCommand(GetInitial);
@@ -56,7 +56,7 @@ namespace Click.ViewModels
 
         public async Task GetInitial() 
         {
-            Messages.Clear();
+            Reviews.Clear();
             NextPage = 0;
 
             try
@@ -80,12 +80,12 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Получение всех брендов по id категории
-                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                     ApiStrings.API_MESSAGES_GET_BY_BRAND + brandId + "/" + NextPage);
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                     ApiStrings.REVIEWS_GET_BY_BRAND + brandId + "/" + NextPage);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    List<Message> tempList = JsonConvert.DeserializeObject<List<Message>>(result);
+                    List<Review> tempList = JsonConvert.DeserializeObject<List<Review>>(result);
                     if (tempList.Count != 0)
                     {
                         NextPage++;
@@ -93,7 +93,7 @@ namespace Click.ViewModels
 
                     foreach (var item in tempList)
                     {
-                        Messages.Add(new MessageLocal(item));
+                        Reviews.Add(new ReviewLocal(item));
                     }
                 }
             }
@@ -114,8 +114,8 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Получение всех брендов по id категории
-                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                     ApiStrings.API_MESSAGES_GET_COUNT + brandId);
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                     ApiStrings.REVIEWS_GET_COUNT + brandId);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
@@ -135,14 +135,14 @@ namespace Click.ViewModels
             }
         }
 
-        public async Task<HttpResponseMessage> PostReview(Message _review) 
+        public async Task<HttpResponseMessage> PostReview(Review _review) 
         {
             try
             {
                 HttpClient client = await createUserClient();
                 var serializedObj = JsonConvert.SerializeObject(_review);
                 var data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
-                return await client.PostAsync(ApiStrings.API_HOST + "api/" + ApiStrings.API_MESSAGES_CONTROLLER, data);
+                return await client.PostAsync(ApiStrings.HOST + ApiStrings.REVIEWS_CONTROLLER, data);
             }
             catch (NoConnectionException)
             {

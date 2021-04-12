@@ -4,6 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using Click.ViewModels;
 using Click.Models;
+using ApiClick.Models;
 
 namespace Click.ViewModels.Selectors
 {
@@ -23,16 +24,17 @@ namespace Click.ViewModels.Selectors
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
             Order order = item as Order;
-            if(order.Name == "")
-            {
-                return Header;
-            }
-            switch (order.Delivered)
-            {
-                case true: return DeliveredOrder;
-                case false: return WaitingOrder;
-                default: return null;
-            }
+            return Header;
+            //if(order.Name == "")
+            //{
+            //    return Header;
+            //}
+            //switch (order.Delivered)
+            //{
+            //    case true: return DeliveredOrder;
+            //    case false: return WaitingOrder;
+            //    default: return null;
+            //}
         }
     }
 }

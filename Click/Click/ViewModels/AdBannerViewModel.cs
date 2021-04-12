@@ -1,4 +1,5 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,15 +15,15 @@ namespace Click.ViewModels
         {
             new AdBanner()
             {
-                Banner = "temp1.png",
-                Title = "Акции до 15 февраля!",
-                Description = "Бизнес-ланчи за полцены!",
+                //Banner = "temp1.png",
+                //Title = "Акции до 15 февраля!",
+                //Description = "Бизнес-ланчи за полцены!",
             },
             new AdBanner()
             {
-                Banner = "temp2.png",
-                Title = "Акции до 15 февраля!",
-                Description = "Бизнес-ланчи за полцены!",
+                //Banner = "temp2.png",
+                //Title = "Акции до 15 февраля!",
+                //Description = "Бизнес-ланчи за полцены!",
             },
         };
     }

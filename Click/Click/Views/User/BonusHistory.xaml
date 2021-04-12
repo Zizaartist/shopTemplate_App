@@ -41,7 +41,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="0,10,0,10">
-                            <Frame Style="{StaticResource ReviewsFrameList}"
+                            <Frame Style="{StaticResource MessagesFrameList}"
                                Padding="25,10,25,10"
                                CornerRadius="10">
                                 <Grid RowDefinitions="Auto"

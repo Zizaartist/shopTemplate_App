@@ -51,11 +51,11 @@ namespace Click.Views.AdminCompany.Reports
 
         private void ReportCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.CurrentSelection.Any())
-            {
-                ReportCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new ReportsDay(e.CurrentSelection.Last() as Report));
-            }
+            //if (e.CurrentSelection.Any())
+            //{
+            //    ReportCollection.SelectedItem = null;
+            //    Navigation.PushModalAsync(new ReportsDay(e.CurrentSelection.Last() as Report));
+            //}
         }
     }
 }

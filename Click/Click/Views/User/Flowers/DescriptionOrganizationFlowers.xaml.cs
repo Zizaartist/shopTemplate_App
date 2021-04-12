@@ -20,10 +20,10 @@ namespace Click.Views.User.Flowers
             InitializeComponent();
 
             BrandName.Text = _brandLocal.Brand.BrandName;
-            Description.Text = _brandLocal.Brand.Description;
-            DeliveryTerms.Text = _brandLocal.Brand.Rules;
-            Contact.Text = _brandLocal.Brand.Contact;
-            MinimalPrice.Text = (_brandLocal.Brand.MinimalPrice ?? default).ToString();
+            Description.Text = _brandLocal.Brand.BrandInfo.Description;
+            DeliveryTerms.Text = _brandLocal.Brand.BrandInfo.DeliveryTerms;
+            Contact.Text = _brandLocal.Brand.BrandInfo.Contact;
+            MinimalPrice.Text = _brandLocal.Brand.MinimalPrice.ToString();
             Banner.Source = _brandLocal.Banner;
             Logo.Source = _brandLocal.Logo;
 
@@ -34,7 +34,7 @@ namespace Click.Views.User.Flowers
             //Добавляем все доступные методы оплаты
             foreach (PaymentMethod paymentMethod in Enum.GetValues(typeof(PaymentMethod)))
             {
-                if (_brandLocal.Brand.PaymentMethods.Contains(paymentMethod))
+                if (_brandLocal.Brand.BrandPaymentMethods.Any(bpm => bpm.PaymentMethod == paymentMethod))
                 {
                     paymentMethods += $", {PaymentMethodDictionaries.GetStringFromPaymentMethod[paymentMethod]}";
                 }

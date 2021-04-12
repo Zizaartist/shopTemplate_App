@@ -1,4 +1,5 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,14 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditMain : ContentPage
     {
-        BrandInfo brandInfo = new BrandInfo();
+        Brand brand = new Brand();
         public EditMain()
         {
             InitializeComponent();
             brandinfo();
             string type = "food";
             stylesset(type);
-            BindingContext = brandInfo;
+            BindingContext = brand;
         }
         void stylesset(string type)
         {
@@ -44,30 +45,30 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
         }
         void brandinfo()
         {
-            brandInfo = new BrandInfo()
-            {
-                Name = "Burger King",
-                Tags = "бургеры фастфуд",
-                Rating = "4.5",
-                BankPayment = "BankCard.png",
-                CashPayment = "Money.png",
-                Discount = "Discount.png",
-                Banner = "temp4.png",
-                Logo = "temp5.png",
-                DeliveryTime = "40 мин - 1ч 40 мин",
-            };
+            //brand = new Brand()
+            //{
+            //    BrandInfo.Name = "Burger King",
+            //    Tags = "бургеры фастфуд",
+            //    Rating = "4.5",
+            //    BankPayment = "BankCard.png",
+            //    CashPayment = "Money.png",
+            //    Discount = "Discount.png",
+            //    Banner = "temp4.png",
+            //    Logo = "temp5.png",
+            //    DeliveryTime = "40 мин - 1ч 40 мин",
+            //};
         }
 
         async private void NameEntry_Clicked(object sender, EventArgs e)
         {
             string result = await DisplayPromptAsync("Click", "Введите название организации");
-            brandInfo.Name = result;
+            brand.BrandName = result;
         }
 
         async private void DescriptionEntry_Clicked(object sender, EventArgs e)
         {
             string result = await DisplayPromptAsync("Click", "Введите описание организации");
-            brandInfo.Name = result;
+            brand.BrandName = result;
         }
 
         private void LogoGallery_Clicked(object sender, EventArgs e)
@@ -93,30 +94,37 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
         async private void ConditionDeliveryEntry_Clicked(object sender, EventArgs e)
         {
             string result = await DisplayPromptAsync("Click", "Введите условия доставки");
-            brandInfo.ConditionDelivery = result;
+            brand.BrandInfo.DeliveryTerms = result;
         }
 
         async private void ContactsEntry_Clicked(object sender, EventArgs e)
         {
             string result = await DisplayPromptAsync("Click", "Введите контакты организации");
-            brandInfo.Contacts = result;
+            brand.BrandInfo.Contact = result;
         }
 
         async private void MinPriceEntry_Clicked(object sender, EventArgs e)
         {
-            string result = await DisplayPromptAsync("Click", "Введите мин. стоимость заказа");
-            brandInfo.MinPrice = result;
+            try
+            {
+                decimal result = Decimal.Parse(await DisplayPromptAsync("Click", "Введите мин. стоимость заказа"));
+                brand.MinimalPrice = result;
+            }
+            catch (Exception _ex) 
+            {
+                //а хули мне с ним делать?
+            }
         }
 
         private void CashPayment_Toggled(object sender, ToggledEventArgs e)
         {
             if (CashPayment.IsToggled)
             {
-                brandInfo.CashPayment = "Money.png";
+                //brand.CashPayment = "Money.png";
             }
             else
             {
-                brandInfo.CashPayment = "";
+                //brand.CashPayment = "";
             }
         }
 
@@ -124,11 +132,11 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
         {
             if (CardPayment.IsToggled)
             {
-                brandInfo.BankPayment = "BankCard.png";
+                //brand.BankPayment = "BankCard.png";
             }
             else
             {
-                brandInfo.BankPayment = "";
+                //brand.BankPayment = "";
             }
         }
 
@@ -136,11 +144,11 @@ namespace Click.Views.AdminCompany.Editor.FoodFlowers
         {
             if (Discount.IsToggled)
             {
-                brandInfo.Discount = "Discount.png";
+                //brand.Discount = "Discount.png";
             }
             else
             {
-                brandInfo.Discount = "";
+                //brand.Discount = "";
             }
         }
 

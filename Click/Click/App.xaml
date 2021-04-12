@@ -193,7 +193,7 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property="BackgroundColor" Value="{DynamicResource GreenColor}"/>
         </Style>
-        <Style x:Key="FrameReviewsOne" TargetType="Frame">
+        <Style x:Key="FrameMessagesOne" TargetType="Frame">
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="WidthRequest" Value="195"/>
             <Setter Property="HeightRequest" Value="70"/>
@@ -202,7 +202,7 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
         </Style>
-        <Style x:Key="FrameReviewsTwo" TargetType="Frame">
+        <Style x:Key="FrameMessagesTwo" TargetType="Frame">
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="WidthRequest" Value="160"/>
             <Setter Property="HeightRequest" Value="70"/>
@@ -211,7 +211,7 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property="BackgroundColor" Value="{DynamicResource WhiteColor}"/>
         </Style>
-        <Style x:Key="ReviewsFrameList" TargetType="Frame">
+        <Style x:Key="MessagesFrameList" TargetType="Frame">
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="WidthRequest" Value="320"/>
             <Setter Property="VerticalOptions" Value="Center"/>

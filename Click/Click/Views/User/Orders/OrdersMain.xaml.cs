@@ -1,4 +1,5 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
 using Click.ViewModels;
 using Click.Views.User.Basket;
 using Click.Views.User.Profile;
@@ -43,14 +44,14 @@ namespace Click.Views.User.Orders
 
         private void OrderCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.CurrentSelection.Any())
-            {
-                OrderCollection.SelectedItem = null;
-                if ((e.CurrentSelection.LastOrDefault() as Order).Delivered == false)
-                {
-                    Navigation.PushModalAsync(new OrdersReview(e.CurrentSelection.LastOrDefault() as Order));
-                }
-            }
+            //if (e.CurrentSelection.Any())
+            //{
+            //    OrderCollection.SelectedItem = null;
+            //    if ((e.CurrentSelection.LastOrDefault() as Order).Delivered == false)
+            //    {
+            //        Navigation.PushModalAsync(new OrdersReview(e.CurrentSelection.LastOrDefault() as Order));
+            //    }
+            //}
         }
     }
 }

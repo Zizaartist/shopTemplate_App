@@ -18,7 +18,7 @@ using Click.Models.LocalModels;
 
 namespace Click.ViewModels
 {
-    public class ProductListViewModel : CollectionViewModel
+    public class ProductsViewModel : CollectionViewModel
     {
         #region properties
 
@@ -45,13 +45,13 @@ namespace Click.ViewModels
 
         public decimal SumTotal { get => ProductLists.Sum(e => e.SumPrice); }
 
-        private BrandMenu menu;
+        private Category menu;
 
         #endregion
 
         #region methods
 
-        public ProductListViewModel(BrandMenu _menu)
+        public ProductsViewModel(Category _menu)
         {
             menu = _menu;
 
@@ -87,14 +87,14 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Получение всех продуктов по id меню
-                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                        ApiStrings.API_PRODUCTS_GET_BY_MENU + menu.BrandMenuId + 
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                        ApiStrings.PRODUCTS_GET_BY_MENU + menu.CategoryId + 
                                                                         "/" + NextPage);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     List<Product> tempList = JsonConvert.DeserializeObject<List<Product>>(result);
-                    tempList.ForEach(e => e.BrandMenu = menu);
+                    tempList.ForEach(e => e.Category = menu);
 
                     foreach (var item in tempList)
                     {
@@ -102,9 +102,9 @@ namespace Click.ViewModels
                     }
 
                     await BlobCache.LocalMachine.InsertObject(Caches.PRODUCTS_CACHE.key + "_" +
-                                                                menu.Brand.Category.ToString() + "_" +
+                                                                menu.Brand.Kind.ToString() + "_" +
                                                                 menu.Brand.BrandId.ToString() + "_" +
-                                                                menu.BrandMenuId.ToString(), ProductLists.Select(e => e.Product), Caches.PRODUCTS_CACHE.lifeTime);
+                                                                menu.CategoryId.ToString(), ProductLists.Select(e => e.Product), Caches.PRODUCTS_CACHE.lifeTime);
                 }
             }
             catch (NoConnectionException)
@@ -121,9 +121,9 @@ namespace Click.ViewModels
         {
             //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
             List<Product> cachedProducts = await new CacheFunctions().tryToGet<List<Product>>(Caches.PRODUCTS_CACHE.key + "_" +
-                                                                                                    menu.Brand.Category.ToString() + "_" +
+                                                                                                    menu.Brand.Kind.ToString() + "_" +
                                                                                                     menu.Brand.BrandId.ToString() + "_" +
-                                                                                                    menu.BrandMenuId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
+                                                                                                    menu.CategoryId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
             ProductLists.Clear();
 
