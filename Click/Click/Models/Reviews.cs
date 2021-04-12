@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Click.Models
 {
-    class Reviews
+    class Messages
     {
         public string Name { get; set; }
         public string Text { get; set; }

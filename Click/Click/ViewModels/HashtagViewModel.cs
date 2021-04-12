@@ -34,7 +34,7 @@ namespace Click.ViewModels
             Erase = new Command<HashtagLocal>(async (_hashtag) => await EraseTags());
         }
 
-        public async Task GetData(Category _category)
+        public async Task GetData(Kind _kind)
         {
             Hashtags.Clear();
 
@@ -42,7 +42,7 @@ namespace Click.ViewModels
 
             //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
             List<Hashtag> cachedHashtags = await new CacheFunctions().tryToGet<List<Hashtag>>(Caches.HASHTAGS_CACHE.key + "_" +
-                                                                                                    _category.ToString(), CacheFunctions.BlobCaches.LocalMachine);
+                                                                                                    _kind.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
             //В случае если кэш не пуст
             if (cachedHashtags != null)
@@ -60,14 +60,14 @@ namespace Click.ViewModels
                     HttpClient client = await createUserClient();
 
                     //Получение всех хэштегов по id категории
-                    HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                         ApiStrings.API_HASHTAGS_GET + (int)_category);
+                    HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                         ApiStrings.HASHTAGS_CONTROLLER + (int)_kind);
                     if (response.IsSuccessStatusCode)
                     {
                         string result = await response.Content.ReadAsStringAsync();
                         List<Hashtag> tempList = JsonConvert.DeserializeObject<List<Hashtag>>(result);
                         await BlobCache.LocalMachine.InsertObject(Caches.HASHTAGS_CACHE.key + "_" +
-                                                                    _category.ToString(), tempList);
+                                                                    _kind.ToString(), tempList);
                         foreach (var item in tempList)
                         {
                             Hashtags.Add(new HashtagLocal(item, OnClick));

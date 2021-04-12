@@ -1,4 +1,5 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
 using Click.Models.LocalModels;
 using Click.ViewModels;
 using Click.Views.User.Basket;

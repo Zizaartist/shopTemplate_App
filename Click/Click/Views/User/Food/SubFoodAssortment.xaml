@@ -37,7 +37,7 @@
                                          Style="{StaticResource BonusButton}"
                                          Grid.Column="3"/>
                             </Grid>
-                            <Label Text="{Binding BrandMenu.BrandMenuName}"
+                            <Label Text="{Binding Category.CategoryName}"
                                Style="{StaticResource BlackLabel}"
                                x:Name="CategoryLabel"
                                Margin="20,0,0,0"

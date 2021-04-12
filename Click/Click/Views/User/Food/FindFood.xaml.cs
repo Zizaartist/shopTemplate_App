@@ -15,7 +15,7 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FindFood : ContentPage
     {
-        private static Category CATEGORY = Category.food;
+        private static Kind CATEGORY = Kind.food;
 
         public FindFood()
         {

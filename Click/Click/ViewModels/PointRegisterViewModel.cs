@@ -55,8 +55,8 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Получение всех продуктов по id меню
-                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                        ApiStrings.API_POINT_REGISTERS_CONTROLLER + NextPage);
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                        ApiStrings.POINT_REGISTERS_CONTROLLER + NextPage);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();

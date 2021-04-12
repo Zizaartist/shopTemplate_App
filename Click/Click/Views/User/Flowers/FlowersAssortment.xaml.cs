@@ -23,12 +23,12 @@ namespace Click.Views.User.Flowers
             brandLocal = _brandLocal;
 
             //Загружаем меню
-            var brandMenuVM = new BrandMenuViewModel(_brandLocal.Brand);
-            Refreshable.BindingContext = brandMenuVM;
-            Task.Run(() => brandMenuVM.GetCachedData());
+            var categoryVM = new CategoryViewModel(_brandLocal.Brand);
+            Refreshable.BindingContext = categoryVM;
+            Task.Run(() => categoryVM.GetCachedData());
 
             //Получаем количество отзывов
-            var messagesVM = new MessagesViewModel(_brandLocal.Brand.BrandId);
+            var messagesVM = new ReviewsViewModel(_brandLocal.Brand.BrandId);
             ReviewCount.BindingContext = messagesVM;
             Task.Run(() => messagesVM.GetReviewCount());
 
@@ -61,9 +61,9 @@ namespace Click.Views.User.Flowers
         {
             if (e.CurrentSelection.Any())
             {
-                var brandMenuLocal = CategoriesCollection.SelectedItem as BrandMenuLocal;
+                var categoryLocal = CategoriesCollection.SelectedItem as CategoryLocal;
                 CategoriesCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new SubFlowersAssortment(brandMenuLocal));
+                Navigation.PushModalAsync(new SubFlowersAssortment(categoryLocal));
             }
         }
 
@@ -72,9 +72,9 @@ namespace Click.Views.User.Flowers
             Navigation.PushModalAsync(new DescriptionOrganizationFlowers(brandLocal));
         }
 
-        private void Reviews_Clicked(object sender, EventArgs e)
+        private void Messages_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new ReviewsFlowers(brandLocal));
+            Navigation.PushModalAsync(new MessagesFlowers(brandLocal));
         }
     }
 }

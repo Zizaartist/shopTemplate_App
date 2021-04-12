@@ -1,9 +1,11 @@
 ﻿using Click.Views;
+using Click.Views.AdminCompany.Editor;
+using Click.Views.AdminCompany.Editor.Water;
+using Click.Views.AdminCompany.Orders;
 using Click.Views.Registration;
 using Click.Views.User;
 using Click.Views.User.Basket;
 using Click.Views.User.Food;
-using Click.Views.User.Orders;
 using Click.Views.User.Water;
 using System;
 using Xamarin.Forms;

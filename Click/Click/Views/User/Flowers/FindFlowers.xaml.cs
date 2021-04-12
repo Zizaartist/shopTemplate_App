@@ -15,13 +15,13 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FindFlowers : ContentPage
     {
-        private static Category CATEGORY = Category.flowers;
+        private static Kind Kind = Kind.flowers;
 
         public FindFlowers()
         {
             InitializeComponent();
 
-            BindingContext = new BrandsViewModel(CATEGORY, true);
+            BindingContext = new BrandsViewModel(Kind, true);
         }
 
         private void Back_Clicked(object sender, EventArgs e)

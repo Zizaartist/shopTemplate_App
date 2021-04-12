@@ -32,8 +32,8 @@ namespace Click.ViewModels
                 }
 
                 var phone = await BlobCache.Secure.GetObject<string>(Caches.PHONE_CACHE.key);
-                return await client.PostAsync(ApiStrings.API_HOST + "api/" +
-                                                ApiStrings.API_USERS_AUTH +
+                return await client.PostAsync(ApiStrings.HOST +
+                                                ApiStrings.ACCOUNT_PHONE_CHECK +
                                                 "?phone=" + phone ?? "", null);
             }
             catch (Exception e)
@@ -52,33 +52,9 @@ namespace Click.ViewModels
             try
             {
                 HttpClient client = HttpClientSingleton.Instance;
-                return await client.PostAsync(ApiStrings.API_HOST + "api/" +
-                                                ApiStrings.API_USERS_AUTH +
+                return await client.PostAsync(ApiStrings.HOST +
+                                                ApiStrings.ACCOUNT_PHONE_CHECK +
                                                 "?phone=" + _phone ?? "", null);
-            }
-            catch (Exception e)
-            {
-                throw CheckIfConnectionException(e);
-            }
-        }
-
-
-        /// <summary>
-        /// Производит проверку на валидность текущего токена администратора
-        /// </summary>
-        /// <returns>Ответ API, содержащий код ошибки</returns>
-        public async Task<HttpResponseMessage> validateAdmin()
-        {
-            try
-            {
-                HttpClient client = HttpClientSingleton.Instance;
-                if (await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key) != null)
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key));
-                }
-
-                return await client.PostAsync(ApiStrings.API_HOST + "api/" +
-                                                ApiStrings.API_ADMINS_AUTH, null);
             }
             catch (Exception e)
             {
@@ -96,8 +72,8 @@ namespace Click.ViewModels
             {
                 HttpClient client = HttpClientSingleton.Instance;
 
-                return await client.PostAsync(ApiStrings.API_HOST + "api/" +
-                                                ApiStrings.API_USERTOKEN_CONTROLLER +
+                return await client.PostAsync(ApiStrings.HOST +
+                                                ApiStrings.ACCOUNT_USERS_TOKEN +
                                                 "?phone=" + await BlobCache.Secure.GetObject<string>(Caches.PHONE_CACHE.key), null);
             }
             catch (Exception e)
@@ -116,8 +92,8 @@ namespace Click.ViewModels
             {
                 HttpClient client = HttpClientSingleton.Instance;
 
-                return await client.PostAsync(ApiStrings.API_HOST + "api/" +
-                                                ApiStrings.API_ADMINTOKEN_CONTROLLER +
+                return await client.PostAsync(ApiStrings.HOST +
+                                                ApiStrings.ACCOUNT_ADMINS_TOKEN +
                                                 "?phone=" + await BlobCache.Secure.GetObject<string>(Caches.PHONE_CACHE.key) +
                                                 "&login=" + login +
                                                 "&password=" + password, null);

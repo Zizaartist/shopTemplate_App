@@ -47,13 +47,13 @@ namespace Click.ViewModels
 
         public ObservableCollection<HashtagLocal> SelectedHashtags;
 
-        private Category category;
+        private Kind kind;
 
         #endregion
 
-        public BrandsViewModel(Category _category, bool _nameSearchMode, ObservableCollection<HashtagLocal> _selectedHashtags = null)
+        public BrandsViewModel(Kind _kind, bool _nameSearchMode, ObservableCollection<HashtagLocal> _selectedHashtags = null)
         {
-            category = _category;
+            kind = _kind;
 
             if (_selectedHashtags != null)
             {
@@ -103,8 +103,8 @@ namespace Click.ViewModels
                 //Отправляем список хэштегов, даже будучи пустым
                 var serializedObj = JsonConvert.SerializeObject(SelectedHashtags.Select(e => e.Hashtag.HashTagId).ToList());
                 StringContent data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(ApiStrings.API_HOST + "api/" + 
-                                                                        ApiStrings.API_BRANDS_GET_BY_FILTER + (int)category +
+                HttpResponseMessage response = await client.PostAsync(ApiStrings.HOST + 
+                                                                        ApiStrings.BRANDS_GET_BY_FILTER + (int)kind +
                                                                         "/" + NextPage +
                                                                         "?openNow=" + (IsWorkingCriteria ? "true" : "false"), data);
                 if (response.IsSuccessStatusCode)
@@ -118,7 +118,7 @@ namespace Click.ViewModels
                     }
 
                     await BlobCache.LocalMachine.InsertObject(Caches.BRANDS_CACHE.key + "_" +
-                                                              category.ToString(), Brands.Select(e => e.Brand), Caches.BRANDS_CACHE.lifeTime);
+                                                              kind.ToString(), Brands.Select(e => e.Brand), Caches.BRANDS_CACHE.lifeTime);
                 }
             }
             catch (NoConnectionException)
@@ -135,7 +135,7 @@ namespace Click.ViewModels
         {
             //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
             List<Brand> cachedBrands = await new CacheFunctions().tryToGet<List<Brand>>(Caches.BRANDS_CACHE.key + "_" +
-                                                                                            category.ToString(), CacheFunctions.BlobCaches.LocalMachine);
+                                                                                            kind.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
             Brands.Clear();
 
@@ -173,8 +173,8 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Отправляем список хэштегов, даже будучи пустым
-                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                        ApiStrings.API_BRANDS_GET_BY_NAME + (int)category +
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                        ApiStrings.BRANDS_GET_BY_NAME + (int)kind +
                                                                         (!string.IsNullOrEmpty(NameCriteria) ? $"?name={nameCriteria}" : ""));
                 if (response.IsSuccessStatusCode)
                 {

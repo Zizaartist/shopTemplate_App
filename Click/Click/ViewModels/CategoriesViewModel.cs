@@ -17,13 +17,13 @@ using Xamarin.Forms;
 
 namespace Click.ViewModels
 {
-    public class BrandMenuViewModel : CollectionViewModel
+    public class CategoryViewModel : CollectionViewModel
     {
-        public ObservableRangeCollection<BrandMenuLocal> BrandMenus { get; } = new ObservableRangeCollection<BrandMenuLocal>();
+        public ObservableRangeCollection<CategoryLocal> Categorys { get; } = new ObservableRangeCollection<CategoryLocal>();
 
         private Brand brand;
 
-        public BrandMenuViewModel(Brand _brand)
+        public CategoryViewModel(Brand _brand)
         {
             brand = _brand;
 
@@ -37,24 +37,24 @@ namespace Click.ViewModels
                 HttpClient client = await createUserClient();
 
                 //Получение всех меню по id бренда
-                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                        ApiStrings.API_MENU_GET_BY_BRAND + brand.BrandId);
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                        ApiStrings.CATEGORIES_GET_BY_BRAND + brand.BrandId);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    List<BrandMenu> tempList = JsonConvert.DeserializeObject<List<BrandMenu>>(result);
+                    List<Category> tempList = JsonConvert.DeserializeObject<List<Category>>(result);
                     tempList.ForEach(e => e.Brand = brand);
 
-                    BrandMenus.Clear();
+                    Categorys.Clear();
 
                     foreach (var item in tempList)
                     {
-                        BrandMenus.Add(new BrandMenuLocal(item));
+                        Categorys.Add(new CategoryLocal(item));
                     }
 
-                    await BlobCache.LocalMachine.InsertObject(Caches.MENUS_CACHE.key + "_" +
-                                                                brand.Category.ToString() + "_" +
-                                                                brand.BrandId.ToString(), tempList, Caches.MENUS_CACHE.lifeTime);
+                    await BlobCache.LocalMachine.InsertObject(Caches.CATEGORIES_CACHE.key + "_" +
+                                                                brand.Kind.ToString() + "_" +
+                                                                brand.BrandId.ToString(), tempList, Caches.CATEGORIES_CACHE.lifeTime);
                 }
             }
             catch (NoConnectionException)
@@ -70,18 +70,18 @@ namespace Click.ViewModels
         public async Task GetCachedData() 
         {
             //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
-            List<BrandMenu> cachedMenus = await new CacheFunctions().tryToGet<List<BrandMenu>>(Caches.MENUS_CACHE.key + "_" +
-                                                                            brand.Category.ToString() + "_" +
+            List<Category> cachedMenus = await new CacheFunctions().tryToGet<List<Category>>(Caches.CATEGORIES_CACHE.key + "_" +
+                                                                            brand.Kind.ToString() + "_" +
                                                                             brand.BrandId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
-            BrandMenus.Clear();
+            Categorys.Clear();
 
             //В случае если кэш не пуст
             if (cachedMenus != null)
             {
-                foreach (BrandMenu menu in cachedMenus)
+                foreach (Category menu in cachedMenus)
                 {
-                    BrandMenus.Add(new BrandMenuLocal(menu));
+                    Categorys.Add(new CategoryLocal(menu));
                 }
             }
             //В случае если он пуст

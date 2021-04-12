@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Profile.ProfileDocumentation"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Style="{StaticResource HeaderGrid}"
+                  BackgroundColor="{StaticResource WhiteColor}">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Source="BackBlack.png"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Документация"
+                       Style="{StaticResource HeaderBlackLabelBold}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <StackLayout Padding="20,0,20,0">
+                <Frame Style="{StaticResource CourierFrame}">
+                    <StackLayout>
+                        <Label Text="Название организации"
+                               Style="{StaticResource SmallBlackLabelBold}"
+                               Margin="0,0,0,0"/>
+                        <Entry Placeholder="Введите название организации"
+                               FontFamily="{StaticResource NeoSansPro}"
+                               FontSize="{StaticResource MediumFont}"/>
+                        <Label Text="ОГРН"
+                               Style="{StaticResource SmallBlackLabelBold}"
+                               Margin="0,0,0,0"/>
+                        <Entry Placeholder="Введите ОГРН"
+                               FontFamily="{StaticResource NeoSansPro}"
+                               FontSize="{StaticResource MediumFont}"/>
+                        <Label Text="ИНН/КПП"
+                               Style="{StaticResource SmallBlackLabelBold}"
+                               Margin="0,0,0,0"/>
+                        <Entry Placeholder="Введите ИНН/КПП"
+                               FontFamily="{StaticResource NeoSansPro}"
+                               FontSize="{StaticResource MediumFont}"/>
+                        <Label Text="Юридический адрес"
+                               Style="{StaticResource SmallBlackLabelBold}"
+                               Margin="0,0,0,0"/>
+                        <Entry Placeholder="Введите адрес"
+                               FontFamily="{StaticResource NeoSansPro}"
+                               FontSize="{StaticResource MediumFont}"/>
+                        <Label Text="Руководитель"
+                               Style="{StaticResource SmallBlackLabelBold}"
+                               Margin="0,0,0,0"/>
+                        <Entry Placeholder="Введите ФИО"
+                               FontFamily="{StaticResource NeoSansPro}"
+                               FontSize="{StaticResource MediumFont}"/>
+                        <Label Text="Основной вид деятельности"
+                               Style="{StaticResource SmallBlackLabelBold}"
+                               Margin="0,0,0,0"/>
+                        <Entry Placeholder="Введите описание"
+                               FontFamily="{StaticResource NeoSansPro}"
+                               FontSize="{StaticResource MediumFont}"/>
+                    </StackLayout>
+                </Frame>
+                <Button Style="{StaticResource GreenButton}"
+                        Text="Сохранить изменения"
+                        x:Name="SaveChanges"
+                        Clicked="SaveChanges_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

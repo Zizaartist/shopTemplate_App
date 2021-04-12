@@ -74,7 +74,7 @@ namespace Click.Models.LocalModels
             refreshAllData = _refreshAllData;
             Image = new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + Product.Image.Path),
+                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + Product.Image),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
             };

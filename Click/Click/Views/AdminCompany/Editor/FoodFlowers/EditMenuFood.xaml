@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Click.Views.AdminCompany.Editor.FoodFlowers.EditMenuFood"
+             Style="{StaticResource GrayContentPage}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Style="{StaticResource HeaderGrid}"
+                  x:Name="Header">
+                <ImageButton x:Name="Back"
+                             Clicked="Back_Clicked"
+                             Style="{StaticResource BackButton}"/>
+                <Label Text="Добавить элемент"
+                       Style="{StaticResource WhiteHeaderLabel}"
+                       Margin="10,0,0,0"
+                       Grid.Column="1"/>
+            </Grid>
+            <Button Style="{StaticResource GreenButton}"
+                    Text="Добавить элемент"/>
+            <Frame Style="{StaticResource PickerFrame}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   BackgroundColor="{StaticResource GraySimple}"
+                   Margin="20,10,20,0">
+                    <Picker Style="{StaticResource DefaultPicker}"
+                            Title="Выберите элемент">
+                    </Picker>
+            </Frame>
+            <Grid Padding="20,10,20,10"
+                    x:Name="FoodWrapper">
+                <Frame Style="{StaticResource FrameFoodList}">
+                    <Grid RowDefinitions="Auto"
+                            ColumnDefinitions="Auto,Auto">
+                        <Frame Style="{StaticResource FrameImageFoodList}">
+                            <Image Style="{StaticResource FoodListImage}"
+                                    Source="{Binding Image}"/>
+                        </Frame>
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto">
+                            <Label Text="{Binding Title}"
+                                    Style="{StaticResource BlackLabel}"/>
+                            <Label Text="{Binding Description}"
+                                    Style="{StaticResource SmallBlackLabel}"
+                                    Grid.Row="1"/>
+                            <!--Менять изображения на PlusSelected, MinusSelected-->
+                            <Grid Grid.Row="2"
+                                            RowDefinitions="Auto"
+                                            HorizontalOptions="End"
+                                            ColumnDefinitions="Auto,Auto,Auto">
+                                <ImageButton Source="Minus.png"
+                                                Style="{StaticResource MinusPlus}"/>
+                                <Label Style="{StaticResource SmallBlackLabelBold}"
+                                                Grid.Column="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Price}"/>
+                                            <Span Text=" р"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <ImageButton Source="Plus.png"
+                                                        Style="{StaticResource MinusPlus}"
+                                                        Grid.Column="2"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Frame>
+            </Grid>
+            <StackLayout Padding="20,0,20,0">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                            Text="Изменить фото блюда"
+                            HorizontalTextAlignment="Start"/>
+                    <Image Grid.Column="1"
+                            Source="PlusButton.png"
+                            Style="{StaticResource BankCard}"
+                            HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            x:Name="ElementPhotoAdd"
+                            Clicked="ElementPhotoAdd_Clicked"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GraySimple}"
+                        HeightRequest="1"/>
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                            Text="Изменить название"
+                            HorizontalTextAlignment="Start"/>
+                    <Image Grid.Column="1"
+                            Source="PlusButton.png"
+                            Style="{StaticResource BankCard}"
+                            HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            x:Name="NameElementEntry"
+                            Clicked="NameElementEntry_Clicked"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GraySimple}"
+                        HeightRequest="1"/>
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                            Text="Изменить описание"
+                            HorizontalTextAlignment="Start"/>
+                    <Image Grid.Column="1"
+                            Source="PlusButton.png"
+                            Style="{StaticResource BankCard}"
+                            HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            x:Name="DescriptionElementEntry"
+                            Clicked="DescriptionElementEntry_Clicked"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button BackgroundColor="{StaticResource GraySimple}"
+                        HeightRequest="1"/>
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Style="{StaticResource SmallBlackLabel}"
+                            Text="Изменить цену"
+                            HorizontalTextAlignment="Start"/>
+                    <Image Grid.Column="1"
+                            Source="PlusButton.png"
+                            Style="{StaticResource BankCard}"
+                            HorizontalOptions="End"/>
+                    <Button Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            x:Name="PriceElementEntry"
+                            Clicked="PriceElementEntry_Clicked"
+                            HeightRequest="15"/>
+                </Grid>
+                <Button Style="{StaticResource GreenButton}"
+                        Margin="10"
+                        Text="Сохранить"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

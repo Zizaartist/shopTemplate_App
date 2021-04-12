@@ -15,7 +15,7 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainFlowers : ContentPage
     {
-        private static Category CATEGORY = Category.flowers;
+        private static Kind CATEGORY = Kind.flowers;
 
         public MainFlowers()
         {

@@ -71,8 +71,8 @@ namespace Click.ViewModels
             {
                 HttpClient client = await createUserClient();
 
-                var response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                     ApiStrings.API_POINTS);
+                var response = await client.GetAsync(ApiStrings.HOST +
+                                                                     ApiStrings.USERS_POINTS);
                 string result = await response.Content.ReadAsStringAsync();
                 Points = JsonConvert.DeserializeObject<decimal>(result);
             }
@@ -91,7 +91,7 @@ namespace Click.ViewModels
             try
             {
                 var client = await createUserClient();
-                return await client.PutAsync(ApiStrings.API_HOST + "api/" + ApiStrings.API_USERS_PHONE_CHANGE + "?newPhoneNumber=" + newNumber + "&code=" + code, null);
+                return await client.PutAsync(ApiStrings.HOST + ApiStrings.USERS_PHONE_CHANGE + "?newPhoneNumber=" + newNumber + "&code=" + code, null);
             }
             catch (NoConnectionException)
             {
@@ -123,8 +123,8 @@ namespace Click.ViewModels
                     HttpClient client = await createUserClient();
 
                     //Получение данных юзера по токену
-                    HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                         ApiStrings.API_USERS_MY_DATA);
+                    HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                         ApiStrings.USERS_MY_DATA);
                     if (response.IsSuccessStatusCode)
                     {
                         string result = await response.Content.ReadAsStringAsync();

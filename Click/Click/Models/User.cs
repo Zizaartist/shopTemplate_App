@@ -1,63 +1,55 @@
-﻿using System;
+﻿using ApiClick.Models.EnumModels;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.CompilerServices;
-using ApiClick.Models.EnumModels;
-using ApiClick.StaticValues;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace ApiClick.Models
 {
-    /// <summary>
-    /// Модель, содержащая пользовательские данные
-    /// </summary>
-    [Serializable]
+    //Вообще ничего не возвращать кроме UserInfo
     public partial class User
     {
-        public User() 
+        public User()
         {
-            Brands = new List<Brand>();
-            Messages = new List<Message>();
-            Orders = new List<Order>();
+            ErrorReports = new HashSet<ErrorReport>();
+            Orders = new HashSet<Order>();
+            PointRegisterReceivers = new HashSet<PointRegister>();
+            PointRegisterSenders = new HashSet<PointRegister>();
+            Reviews = new HashSet<Review>();
         }
 
-        //Not nullable
-        [Key]
-        public int UserId { get; set; } 
-        [Required, MaxLength(ModelLengths.LENGTH_SMALL)]
-        public string Phone { get; set; }
+        
+        public int UserId { get; set; }
+        
         public UserRole UserRole { get; set; }
+        
+        public string Phone { get; set; }
+        
         public decimal Points { get; set; }
+        
         public bool NotificationsEnabled { get; set; }
-
-        //Nullable
-        [MaxLength(ModelLengths.LENGTH_MEDIUM)]
+        
         public string NotificationRegistration { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MIN)]
+        
         public string DeviceType { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MEDIUM)]
-        public string Login { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MEDIUM)]
-        public string Password { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MEDIUM)]
-        public string Name { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MEDIUM)]
-        public string Street { get; set; }
-        [MaxLength(ModelLengths.LENGTH_MIN)]
-        public string House { get; set; }
-        public int? Padik { get; set; }
-        public int? Etash { get; set; }
-        public int? Kv { get; set; }
+        
         public DateTime CreatedDate { get; set; }
 
-        //Теневые свойства
-        [NotMapped]
-        public virtual ICollection<Brand> Brands { get; set; }
-        [NotMapped]
-        public virtual ICollection<Message> Messages { get; set; }
-        [NotMapped]
-        public virtual ICollection<Order> Orders { get; set; }
-        [NotMapped]
-        public ICollection<Image> UploadedImages { get; set; }
+        public virtual UserInfo UserInfo { get; set; }
+        
+        public Executor Executor { get; set; }
+        
+        public ICollection<ErrorReport> ErrorReports { get; set; }
+        
+        public ICollection<Order> Orders { get; set; }
+        
+        public ICollection<PointRegister> PointRegisterReceivers { get; set; }
+        
+        public ICollection<PointRegister> PointRegisterSenders { get; set; }
+        
+        public ICollection<Review> Reviews { get; set; }
     }
 }
