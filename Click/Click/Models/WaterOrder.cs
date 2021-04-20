@@ -16,12 +16,12 @@ namespace ApiClick.Models
         }
 
         public int WaterOrderId { get; set; }
-        
+        [JsonIgnore]
         public int OrderId { get; set; }
         public int Amount { get; set; }
         public decimal? Price { get; set; }
         public bool? Container { get; set; }
-        public string DeliveryDate { get; set; }
+        public DateTime? DeliveryDate { get; set; }
         public bool Express { get; set; }
 
         public Order Order { get; set; }

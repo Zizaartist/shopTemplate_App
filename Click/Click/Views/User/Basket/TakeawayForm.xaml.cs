@@ -1,5 +1,6 @@
 ﻿using ApiClick.Models.EnumModels;
 using Click.Models.LocalModels;
+using Click.StaticValues;
 using Click.ViewModels;
 using Click.ViewModels.Help;
 using System;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,9 +19,10 @@ namespace Click.Views.User.Basket
     {
         private App styleAccessor;
         private OrderViewModel orderVM;
+        private BasketViewModel basketVM;
         private Dictionary<PaymentMethod, Button> PaymentMethodButtons;
 
-        public TakeawayForm(Grouping<string, OrderDetailLocal> _orderDetails)
+        public TakeawayForm(Grouping<string, OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
         {
             InitializeComponent();
 
@@ -33,7 +35,9 @@ namespace Click.Views.User.Basket
                 { PaymentMethod.online, CardOnline }
             };
 
-            orderVM = new OrderViewModel(_orderDetails);
+            basketVM = _basketVM;
+
+            orderVM = new OrderViewModel(_orderDetails, false);
             BindingContext = orderVM;
             orderVM.Autofill(UsersViewModel.Instance.User);
 
@@ -72,8 +76,18 @@ namespace Click.Views.User.Basket
             bool result = await DisplayAlert("Click", "Вы действительно хотите осуществить заказ", "Да", "Нет");
             if (result)
             {
-                await DisplayAlert("Click", "Заказ осуществлен, ожидайте", "Понятно");
-                App.Current.MainPage = new Main();
+                var response = await orderVM.PostOrder();
+                if (response.IsSuccessStatusCode)
+                {
+                    await basketVM.RemoveOrder(orderVM.brandId);
+                    await DisplayAlert("Click", "Заказ осуществлен, ожидайте", "Понятно");
+
+                    await Navigation.PopModalAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Ошибка", AlertMessages.UNEXPECTED_ERROR, "Понятно");
+                }
             }
         }
     }

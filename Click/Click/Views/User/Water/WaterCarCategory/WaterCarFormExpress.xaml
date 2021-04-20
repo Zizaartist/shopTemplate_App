@@ -31,25 +31,32 @@
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Имя"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Name, Mode=TwoWay}"
                                Placeholder="Например Иван"/>
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Улица"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Street, Mode=TwoWay}"
                                Placeholder="Например Ленина"
                                HeightRequest="40"/>
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Дом"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding House, Mode=TwoWay}"
                                Placeholder="Например 10/1"
                                HeightRequest="40"/>
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Кубометр (м3)"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Amount, Mode=TwoWay}"
+                               Keyboard="Numeric"
                                Placeholder="Напишите сколько нужно м3 воды"
                                HeightRequest="40"/>
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Телефон"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Keyboard="Telephone"
+                               Text="{Binding Phone, Mode=TwoWay}"
                                Placeholder="Например 8 (xxx) xxx-xx-xx"
                                HeightRequest="40"/>
                         <Label Style="{StaticResource BlackLabel}"
@@ -63,18 +70,19 @@
                             <Button Style="{StaticResource PaymentSelected}"
                                     Text="Наличными"
                                     x:Name="Cash"
-                                    Clicked="Cash_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                             <Button Style="{StaticResource Payment}"
                                     Text="Картой онлайн"
                                     x:Name="CardOnline"
-                                    Clicked="CardOnline_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                             <Button Style="{StaticResource Payment}"
                                     Text="Картой курьеру"
                                     x:Name="Card"
-                                    Clicked="Card_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                         </StackLayout>
                         <Button Style="{StaticResource GreenButton}"
                                 x:Name="Confirm"
+                                IsEnabled="{Binding ValidExpress}"
                                 Clicked="Confirm_Clicked"
                                 Padding="0"
                                 Text="Заказать"

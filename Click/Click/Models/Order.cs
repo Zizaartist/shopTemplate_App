@@ -33,18 +33,18 @@ namespace ApiClick.Models
         public virtual OrderInfo OrderInfo { get; set; }
         public virtual WaterOrder WaterOrder { get; set; }
         public Brand Brand { get; set; }
-        
+        [JsonIgnore]
         public User Orderer { get; set; }
-        
+        [JsonIgnore]
         public Review Review { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        
+        [JsonIgnore]
         public virtual ICollection<PointRegister> PointRegisters { get; set; }
 
         [NotMapped]
-        public bool? Delivery { get; set; } //Получаем от клиента
+        public bool Delivery { get; set; } //Получаем от клиента
         [NotMapped]
-        
+        [JsonIgnore]
         public PointRegister PointRegister
         {
             get 

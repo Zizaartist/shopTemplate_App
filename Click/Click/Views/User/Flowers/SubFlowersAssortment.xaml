@@ -8,7 +8,7 @@
             <!--при появлении BasketPanel, у этой CollectionView надо выставить значение Margin="0,0,0,100" и обратно по нулям при исчезновении-->
 
             <RefreshView x:Name="Refreshable"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
                 <CollectionView x:Name="FoodCollection"
                             ItemsSource="{Binding ProductLists}"

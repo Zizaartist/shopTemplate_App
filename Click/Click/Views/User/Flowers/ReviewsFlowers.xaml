@@ -1,17 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.User.Flowers.MessagesFlowers"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Click.Converters"
+             x:Class="Click.Views.User.Flowers.ReviewsFlowers"
              Style="{StaticResource GrayContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:RatingConverter x:Key="ratingConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid>
             <RefreshView x:Name="Refreshable"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
                 <CollectionView x:Name="MessagesCollection"
-                            ItemsSource="{Binding Messagess}"
+                            ItemsSource="{Binding Reviews}"
                             SelectionMode="Single"
-                            SelectionChanged="MessagesCollection_SelectionChanged">
+                            SelectionChanged="ReviewsCollection_SelectionChanged"
+                            RemainingItemsThresholdReachedCommand="{Binding GetMoreData}"
+                            RemainingItemsThreshold="{Binding ItemTreshold}">
                     <CollectionView.Header>
                         <Grid RowDefinitions="Auto,Auto,Auto,Auto">
                             <Grid Style="{StaticResource HeaderGrid}"
@@ -19,12 +29,12 @@
                                 <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
-                            <Label Text="Time Flowers"
-                                   x:Name="NameLabel"
+                            <Label x:Name="Name"
                                    Style="{StaticResource WhiteHeaderLabel}"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
-                                <Label Text="У Вас 0"
+                                <Label x:Name="Points"
+                                    Text="{Binding Points, StringFormat='У Вас {0}'}"
                                    Style="{StaticResource WhiteMediumLabel}"
                                    Margin="0,0,10,0"
                                    Grid.Column="2"/>
@@ -44,11 +54,12 @@
                                     <Grid Style="{StaticResource StarGridBackground}"
                                       HorizontalOptions="Center">
                                         <Grid Style="{StaticResource StarGrid}"
+                                            WidthRequest="{Binding Brand.Rating, Converter={StaticResource ratingConverter}}"
                                           x:Name="Star"/>
                                         <Image Style="{StaticResource StarRating}"/>
                                     </Grid>
                                 </Frame>
-                                <Label Text="(562)"
+                                <Label x:Name="ReviewCount"
                                    Style="{StaticResource GrayVerySmallLabel}"
                                    Grid.Column="1"/>
                             </Grid>
@@ -66,7 +77,7 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="Всего "/>
-                                                <Span Text="562"/>
+                                                <Span Text="{Binding AllReviewsCount}"/>
                                                 <Span Text=" оценки"/>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -78,7 +89,7 @@
                                Padding="20,0,20,0">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="562"/>
+                                        <Span Text="{Binding TextReviewsCount}"/>
                                         <Span Text=" отзыва"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -89,22 +100,22 @@
                         <DataTemplate>
                             <Grid Padding="20,10,20,10"
                               ColumnDefinitions="Auto, *">
-                                <Image Source="{Binding RatingImage}"
+                                <Image Source="{Binding Emote}"
                                    Style="{StaticResource RatingImage}"/>
                                 <Frame Grid.Column="1"
                                    Style="{StaticResource MessagesFrameList}">
                                     <Grid RowDefinitions="Auto,Auto,Auto">
-                                        <Label Text="{Binding Text}"
+                                        <Label Text="{Binding Review.Text}"
                                            Style="{StaticResource SmallBlackLabel}"
                                            HorizontalTextAlignment="Start"/>
-                                        <Label Text="{Binding Goods}"
+                                        <Label Text="{Binding OrderedProducts}"
                                            Style="{StaticResource GrayVerySmallLabel}"
                                            Grid.Row="1"/>
                                         <Grid ColumnDefinitions="Auto,Auto"
                                           Grid.Row="2">
-                                            <Label Text="{Binding Date}"
+                                            <Label Text="{Binding Review.CreatedDate, StringFormat='{0:dd MMMM в HH:mm}'}"
                                                Style="{StaticResource GrayVerySmallLabel}"/>
-                                            <Label Text="{Binding Name}"
+                                            <Label Text="{Binding Review.Sender.UserInfo.Name}"
                                                Style="{StaticResource VerySmallBlackLabelBold}"
                                                Grid.Column="1"/>
                                         </Grid>

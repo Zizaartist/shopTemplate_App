@@ -17,7 +17,7 @@ using h = Click.ViewModels.Help;
 
 namespace Click.ViewModels
 {
-    class BasketViewModel : ViewModel
+    public class BasketViewModel : ViewModel
     {
         #region properties
 
@@ -168,6 +168,16 @@ namespace Click.ViewModels
                 }
             }
 
+            await SaveChangesToCache();
+        }
+
+        /// <summary>
+        /// Удаляет заказ из корзины
+        /// </summary>
+        public async Task RemoveOrder(int _brandId) 
+        {
+            var groupToRemove = GoodsFoodsGroups.First(gfg => gfg.Brand.BrandId == _brandId);
+            GoodsFoodsGroups.Remove(groupToRemove);
             await SaveChangesToCache();
         }
 

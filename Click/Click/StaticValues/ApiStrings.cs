@@ -35,9 +35,9 @@ namespace Click.StaticValues
         /// </summary>
         public const string ACCOUNT_PHONE_CHECK = "api/Account/PhoneCheck/"; 
         /// <summary>
-        /// POST: api/Account/PhoneIsRegistered/?phone=79991745473
+        /// POST: api/Account/GetValidPhone/?phone=79991745473
         /// </summary>
-        public const string ACCOUNT_VERIFY_NUMBER = "api/Account/PhoneIsRegistered/";
+        public const string ACCOUNT_VALID_PHONE = "api/Account/GetValidPhone/";
 
         //AdBanner
 
@@ -61,9 +61,9 @@ namespace Click.StaticValues
         /// </summary>
         public const string BRANDS_GET_BY_FILTER = "api/Brands/GetByFilter/";
         /// <summary>
-        /// GET: api/Brands/GetBrandsByName/{_kind}?name=blahbla
+        /// GET: api/Brands/GetByName/{_kind}?name=blahbla
         /// </summary>
-        public const string BRANDS_GET_BY_NAME = "api/Brands/GetBrandsByName/";
+        public const string BRANDS_GET_BY_NAME = "api/Brands/GetByName/";
         /// <summary>
         /// GET: api/Brands/GetWaterBrands/{_kind}
         /// </summary>
@@ -86,7 +86,7 @@ namespace Click.StaticValues
         /// <summary>
         /// GET: api/Categories/ByBrand/{id}
         /// </summary>
-        public const string CATEGORIES_GET_BY_BRAND = "api/Categories/GetMenusByBrand/";
+        public const string CATEGORIES_GET_BY_BRAND = "api/Categories/ByBrand/";
 
         //Hashtags
 
@@ -110,7 +110,7 @@ namespace Click.StaticValues
         /// </summary>
         public const string ORDERS_CONTROLLER = "api/Orders/";
         /// <summary>
-        /// GET: api/Orders/GetMyOrders
+        /// GET: api/Orders/GetMyOrders/{_page}
         /// </summary>
         public const string ORDERS_GET_ORDERS = "api/Orders/GetMyOrders/";
         /// <summary>
@@ -126,9 +126,13 @@ namespace Click.StaticValues
         /// </summary>
         public const string ORDERS_GET_HISTORY = "api/Orders/GetMyHistory/";
         /// <summary>
-        /// PUT: api/Orders/ChangeStatus/{id}?_status={status}
+        /// PUT: api/Orders/ChangeStatus/{id}/{_status}
         /// </summary>
         public const string ORDERS_CHANGE_STATUS = "api/Orders/ChangeStatus/";
+        /// <summary>
+        /// PUT: api/Orders/ClaimPoints/{id}
+        /// </summary>
+        public const string ORDERS_CLAIM_POINTS = "api/Orders/ClaimPoints/";
         /// <summary>
         /// POST: api/Orders/PostWaterOrder/
         /// </summary>
@@ -160,20 +164,20 @@ namespace Click.StaticValues
         /// </summary>
         public const string PRODUCTS_CONTROLLER = "api/Products/";
         /// <summary>
-        /// GET: api/Products/ByMenu/{id}/{_page}
+        /// GET: api/Products/ByCategory/{id}/{_page}
         /// </summary>
-        public const string PRODUCTS_GET_BY_MENU = "api/Products/ByMenu/";
+        public const string PRODUCTS_GET_BY_MENU = "api/Products/ByCategory/";
 
         //Reports
 
         /// <summary>
-        /// GET: api/Reports/{datePeriod}
+        /// GET: api/Reports/{datePeriod}/{_page}
         /// </summary>
         public const string REPORTS_CONTROLLER = "api/Reports/";
         /// <summary>
         /// GET: api/Reports/AllTimeStats
         /// </summary>
-        public const string REPORTS_STATS = "api/Reports/AllTimeStats";
+        public const string REPORTS_STATS = "api/Reports/AllTimeStats/";
 
         //Reviews
 
@@ -184,7 +188,7 @@ namespace Click.StaticValues
         /// <summary>
         /// GET: api/Reviews/ByBrand/{id}/{_page}
         /// </summary>
-        public const string REVIEWS_GET_BY_BRAND = "api/Reviews/ByBrand";
+        public const string REVIEWS_GET_BY_BRAND = "api/Reviews/ByBrand/";
         /// <summary>
         /// GET: api/Reviews/BrandReviewCount/{id}
         /// </summary>

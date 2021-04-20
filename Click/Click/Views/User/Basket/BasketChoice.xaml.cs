@@ -1,4 +1,5 @@
 ﻿using Click.Models.LocalModels;
+using Click.ViewModels;
 using Click.ViewModels.Help;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,14 @@ namespace Click.Views.User.Basket
     public partial class BasketChoice : ContentPage
     {
         private Grouping<string, OrderDetailLocal> orderDetails;
+        private readonly BasketViewModel basketVM;
 
-        public BasketChoice(Grouping<string, OrderDetailLocal> _orderDetails)
+        public BasketChoice(Grouping<string, OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
         {
             InitializeComponent();
 
             orderDetails = _orderDetails;
+            basketVM = _basketVM;
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -39,7 +42,7 @@ namespace Click.Views.User.Basket
             }
             else
             {
-                Navigation.PushModalAsync(new TakeawayForm(orderDetails));
+                Navigation.PushModalAsync(new TakeawayForm(orderDetails, basketVM));
             }
         }
 
@@ -54,7 +57,7 @@ namespace Click.Views.User.Basket
             }
             else
             {
-                Navigation.PushModalAsync(new CourierForm(orderDetails));
+                Navigation.PushModalAsync(new CourierForm(orderDetails, basketVM));
             }
         }
     }

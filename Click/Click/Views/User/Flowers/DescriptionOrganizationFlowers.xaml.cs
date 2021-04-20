@@ -1,12 +1,14 @@
-﻿using ApiClick.Models.ArrayModels;
+﻿using ApiClick.Models;
+using ApiClick.Models.ArrayModels;
 using ApiClick.Models.EnumModels;
 using Click.Models.LocalModels;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,10 +17,23 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DescriptionOrganizationFlowers : ContentPage
     {
-        public DescriptionOrganizationFlowers(BrandLocal _brandLocal)
+        public DescriptionOrganizationFlowers(int _brandId)
         {
             InitializeComponent();
 
+            Task.Run(async () =>
+            {
+                var brand = await new BrandsViewModel(Kind.food, false).GetSpecificData(_brandId);
+                var localized = new BrandLocal(brand);
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    ApplyData(localized);
+                });
+            });
+        }
+
+        private void ApplyData(BrandLocal _brandLocal)
+        {
             BrandName.Text = _brandLocal.Brand.BrandName;
             Description.Text = _brandLocal.Brand.BrandInfo.Description;
             DeliveryTerms.Text = _brandLocal.Brand.BrandInfo.DeliveryTerms;

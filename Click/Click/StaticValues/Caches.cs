@@ -56,6 +56,10 @@ namespace Click.StaticValues
         /// </summary>
         public static readonly Cache BRANDS_CACHE = new Cache("Brands", TimeSpan.FromDays(1));
         /// <summary>
+        /// Кэш для хранения заказов пользователя
+        /// </summary>
+        public static readonly Cache ORDERS_CACHE = new Cache("Orders", TimeSpan.FromDays(1));
+        /// <summary>
         /// Кэш для хранения категорий внутри бренда
         /// </summary>
         public static readonly Cache CATEGORIES_CACHE = new Cache("Menus", TimeSpan.FromDays(1));

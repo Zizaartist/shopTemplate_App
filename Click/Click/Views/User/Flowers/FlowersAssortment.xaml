@@ -14,10 +14,10 @@
     <ContentPage.Content>
         <Grid>
             <RefreshView x:Name="Refreshable"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
                 <CollectionView x:Name="CategoriesCollection"
-                            ItemsSource="{Binding Categorys}"
+                            ItemsSource="{Binding Categories}"
                             SelectionMode="Single"
                             SelectionChanged="CategoriesCollection_SelectionChanged">
                     <CollectionView.Header>

@@ -1,6 +1,7 @@
 ﻿using Akavache;
 using Click.StaticValues;
 using MvvmHelpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace Click.ViewModels
             HttpClient client = HttpClientSingleton.Instance;
             try
             { 
-                await new TokenFunctions().checkAndRefreshToken();
+                //await new TokenFunctions().checkAndRefreshToken();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key));
                 return client;
             }
@@ -46,6 +47,10 @@ namespace Click.ViewModels
                 throw;
             }
         }
+
+        protected string SerializeIgnoreNull(object _value) => JsonConvert.SerializeObject(_value,
+            Formatting.Indented,
+            new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
         public bool isConnected 
         {

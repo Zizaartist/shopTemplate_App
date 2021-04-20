@@ -104,11 +104,13 @@
                                     <Label Style="{StaticResource VerySmallBlackLabelBold}"
                                            HorizontalTextAlignment="Start"
                                            HorizontalOptions="Start"
-                                           Text="{Binding DeliveryConditions}"/>
+                                           IsVisible="{Binding HasDeliveryTerms}"
+                                           Text="Условия доставки"/>
                                     <Label Style="{StaticResource VerySmallBlackLabel}"
                                            HorizontalTextAlignment="Start"
                                            HorizontalOptions="Start"
-                                           Text="{Binding DeliveryConditions}"/>
+                                           IsVisible="{Binding HasDeliveryTerms}"
+                                           Text="{Binding DeliveryTerms}"/>
                                     <Frame Style="{StaticResource FrameFoodButton}">
                                         <Grid ColumnDefinitions="Auto,*,Auto">
                                             <Label Style="{StaticResource WhiteButtonLabelBold}"

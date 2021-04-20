@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Click.Converters"
              x:Class="Click.Views.User.Water.WaterCarCategory.WaterCarMain"
              Style="{StaticResource GrayContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:RatingConverter x:Key="ratingConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout>
             <Grid BackgroundColor="#1D9BD5"
@@ -14,7 +21,8 @@
                        Style="{StaticResource WhiteHeaderLabel}"
                        Margin="10,0,0,0"
                        Grid.Column="1"/>
-                <Label Text="У Вас 0"
+                <Label x:Name="Points"
+                            Text="{Binding Points, StringFormat='У Вас {0}'}"
                                Style="{StaticResource WhiteMediumLabel}"
                                Margin="0,0,10,0"
                                Grid.Column="2"/>
@@ -24,7 +32,7 @@
                              Grid.Column="3"/>
             </Grid>
             <CollectionView x:Name="WaterCompaniesCollection"
-                            ItemsSource="{Binding WaterCompanies}"
+                            ItemsSource="{Binding WaterBrands}"
                             SelectionMode="Single"
                             SelectionChanged="WaterCompaniesCollection_SelectionChanged">
                 <CollectionView.Header>
@@ -60,11 +68,12 @@
                                                Margin="0"
                                                HorizontalOptions="Center">
                                             <Image Style="{StaticResource LogoImage}"
-                                                   Source="{Binding Images}"/>
+                                                   Source="{Binding Logo}"/>
                                         </Frame>
                                         <Grid Style="{StaticResource StarGridBackground}"
                                               HorizontalOptions="Center">
                                             <Grid Style="{StaticResource StarGrid}"
+                                                    WidthRequest="{Binding Brand.Rating, Converter={StaticResource ratingConverter}, ConverterParameter={x:Reference Star}}"
                                                   x:Name="Star"/>
                                             <Image Style="{StaticResource StarRating}"/>
                                         </Grid>
@@ -72,8 +81,8 @@
                                                HorizontalOptions="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="4.8"/>
-                                                    <Span Text="(562)"/>
+                                                    <Span Text="{Binding Brand.Rating}"/>
+                                                    <Span Text="{Binding Brand.ReviewCount, StringFormat='({0})'}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -82,10 +91,10 @@
                                                  Spacing="0"
                                                  VerticalOptions="Start">
                                         <Label Style="{StaticResource BigBlackLabelBold}"
-                                               Text="{Binding Name}"
+                                               Text="{Binding Brand.BrandName}"
                                                Margin="0,0,0,10"/>
                                         <Label Style="{StaticResource SmallBlackLabel}"
-                                               Text="8 (999) 999-99-99"/>
+                                               Text="{Binding Brand.BrandInfo.Contact}"/>
                                         <Label Style="{StaticResource SmallBlackLabel}"
                                                Text="9:00-18:00"/>
                                     </StackLayout>
@@ -95,7 +104,7 @@
                                            Grid.Column="2">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="900"/>
+                                                <Span Text="{Binding Brand.WaterBrand.WaterPrice}"/>
                                                 <Span Text=" рублей"/>
                                             </FormattedString>
                                         </Label.FormattedText>

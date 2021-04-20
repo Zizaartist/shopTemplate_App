@@ -16,6 +16,7 @@ using Xamarin.Forms;
 using System.Collections.Specialized;
 using Click.Models.LocalModels;
 using MvvmHelpers;
+using System.Diagnostics;
 
 namespace Click.ViewModels
 {
@@ -23,7 +24,7 @@ namespace Click.ViewModels
     {
         #region properties
 
-        public ObservableCollection<BrandLocal> Brands { get; } = new ObservableCollection<BrandLocal>();
+        public ObservableRangeCollection<BrandLocal> Brands { get; } = new ObservableRangeCollection<BrandLocal>();
 
         private string nameCriteria;
         public string NameCriteria 
@@ -41,7 +42,7 @@ namespace Click.ViewModels
                 if (isWorkingCriteria == value) return;
                 isWorkingCriteria = value;
                 OnPropertyChanged();
-                GetInitialData.Execute(null);
+                Task.Run(async () => await GetInitialData.ExecuteAsync());
             }
         }
 
@@ -59,18 +60,20 @@ namespace Click.ViewModels
             {
                 SelectedHashtags = _selectedHashtags;
 
-                NotifyCollectionChangedEventHandler handler = (object sender, NotifyCollectionChangedEventArgs e) => GetInitialData.Execute(null);
-                SelectedHashtags.CollectionChanged += handler; //При любом изменении коллекции выбранных хэштегов запрашивать данные
+                SelectedHashtags.CollectionChanged += (sender, e) =>
+                {
+                    Task.Run(async () => await GetInitialData.ExecuteAsync());
+                }; //При любом изменении коллекции выбранных хэштегов запрашивать данные
             }
 
-            GetInitialData = NewGetDataCommand(GetInitial);
+            GetInitialData = NewAsyncCommand(GetInitial);
             if (_nameSearchMode)
             {
-                GetMoreData = NewGetDataCommand(GetDataByName);
+                GetMoreData = NewAsyncCommand(GetDataByName);
             }
             else
             {
-                GetMoreData = NewGetDataCommand(GetRemoteData);
+                GetMoreData = NewAsyncCommand(GetRemoteData);
             }
         }
 
@@ -81,7 +84,7 @@ namespace Click.ViewModels
 
             try
             {
-                await GetMoreData.ExecuteAsSubTask();
+                await GetMoreData.ExecuteAsync();
             }
             catch (NoConnectionException)
             {
@@ -96,6 +99,8 @@ namespace Click.ViewModels
         //Загружает бренды при смене критерия поиска
         public async Task GetRemoteData()
         {
+            await Task.Delay(2000);
+            if (IsLastPageReached) return;
             try
             {
                 HttpClient client = await createUserClient();
@@ -103,22 +108,34 @@ namespace Click.ViewModels
                 //Отправляем список хэштегов, даже будучи пустым
                 var serializedObj = JsonConvert.SerializeObject(SelectedHashtags.Select(e => e.Hashtag.HashTagId).ToList());
                 StringContent data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(ApiStrings.HOST + 
+                HttpResponseMessage response = await client.PostAsync(ApiStrings.HOST +
                                                                         ApiStrings.BRANDS_GET_BY_FILTER + (int)kind +
                                                                         "/" + NextPage +
                                                                         "?openNow=" + (IsWorkingCriteria ? "true" : "false"), data);
+
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     List<Brand> tempList = JsonConvert.DeserializeObject<List<Brand>>(result);
 
-                    foreach (var item in tempList)
+                    if (tempList.Count != 0)
                     {
-                        Brands.Add(new BrandLocal(item));
+                        NextPage++;
                     }
 
+                    var localizedList = new List<BrandLocal>();
+                    foreach (var item in tempList)
+                    {
+                        localizedList.Add(new BrandLocal(item));
+                    }
+                    Brands.AddRange(localizedList);
+
                     await BlobCache.LocalMachine.InsertObject(Caches.BRANDS_CACHE.key + "_" +
-                                                              kind.ToString(), Brands.Select(e => e.Brand), Caches.BRANDS_CACHE.lifeTime);
+                                                              kind.ToString(), (NextPage, Brands.Select(e => e.Brand)), Caches.BRANDS_CACHE.lifeTime);
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    NextPage = -1; //last page reached
                 }
             }
             catch (NoConnectionException)
@@ -129,30 +146,38 @@ namespace Click.ViewModels
             {
                 throw CheckIfConnectionException(e);
             }
+            finally 
+            {
+                IsWorking = false;
+            }
         }
 
         public async Task GetCachedData()
         {
             //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
-            List<Brand> cachedBrands = await new CacheFunctions().tryToGet<List<Brand>>(Caches.BRANDS_CACHE.key + "_" +
+            (int, List<Brand>) cachedBrands = await new CacheFunctions().tryToGet<(int, List<Brand>)>(Caches.BRANDS_CACHE.key + "_" +
                                                                                             kind.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
             Brands.Clear();
 
             //В случае если кэш не пуст
-            if (cachedBrands != null)
+            if (cachedBrands != default)
             {
-                foreach (Brand brand in cachedBrands)
+                var localizedList = new List<BrandLocal>();
+                foreach (Brand brand in cachedBrands.Item2)
                 {
-                    Brands.Add(new BrandLocal(brand));
+                    localizedList.Add(new BrandLocal(brand));
                 }
+                Brands.AddRange(localizedList);
+
+                NextPage = cachedBrands.Item1;
             }
             //В случае если он пуст
             else
             {
                 try
                 {
-                    await GetInitialData.ExecuteAsSubTask();
+                    await GetInitialData.ExecuteAsync();
                 }
                 catch (NoConnectionException)
                 {
@@ -181,11 +206,41 @@ namespace Click.ViewModels
                     string result = await response.Content.ReadAsStringAsync();
                     List<Brand> tempList = JsonConvert.DeserializeObject<List<Brand>>(result);
 
+                    var localizedList = new List<BrandLocal>();
                     foreach (var item in tempList)
                     {
-                        Brands.Add(new BrandLocal(item));
+                        localizedList.Add(new BrandLocal(item));
                     }
+                    Brands.AddRange(localizedList);
                 }
+            }
+            catch (NoConnectionException)
+            {
+                throw;
+            }
+            catch (Exception e)
+            {
+                throw CheckIfConnectionException(e);
+            }
+        }
+
+        public async Task<Brand> GetSpecificData(int _brandId)
+        {
+            try
+            {
+                HttpClient client = await createUserClient();
+
+                //Отправляем список хэштегов, даже будучи пустым
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                        ApiStrings.BRANDS_CONTROLLER + _brandId);
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    Brand temp = JsonConvert.DeserializeObject<Brand>(result);
+
+                    return temp;
+                }
+                return null;
             }
             catch (NoConnectionException)
             {

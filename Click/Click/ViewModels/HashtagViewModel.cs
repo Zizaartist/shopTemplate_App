@@ -87,6 +87,7 @@ namespace Click.ViewModels
 
         public async Task ToggleTag(HashtagLocal _hashtag) 
         {
+            _hashtag.Toggle();
             if (SelectedHashtags.Contains(_hashtag))
             {
                 SelectedHashtags.Remove(_hashtag);
@@ -99,6 +100,10 @@ namespace Click.ViewModels
 
         public async Task EraseTags() 
         {
+            foreach (var tag in Hashtags) 
+            {
+                tag.Reset();
+            }
             SelectedHashtags.Clear();
         }
     }

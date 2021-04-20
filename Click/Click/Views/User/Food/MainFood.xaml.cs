@@ -16,6 +16,7 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainFood : ContentPage
     {
+        private readonly App styleAccessor = new App();
         private static Kind CATEGORY = Kind.food;
 
         public MainFood()
@@ -69,11 +70,6 @@ namespace Click.Views.User.Food
                 OrganisationCollection.SelectedItem = null;
                 Navigation.PushModalAsync(new FoodAssortment(selectedBrand));
             }
-        }
-
-        private void Tag_Clicked(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
         }
     }
 }

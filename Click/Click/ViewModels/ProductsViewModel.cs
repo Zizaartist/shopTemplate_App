@@ -15,6 +15,7 @@ using Xamarin.Forms;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Click.Models.LocalModels;
+using MvvmHelpers;
 
 namespace Click.ViewModels
 {
@@ -22,7 +23,7 @@ namespace Click.ViewModels
     {
         #region properties
 
-        public ObservableCollection<ProductLocal> ProductLists { get; } = new ObservableCollection<ProductLocal>();
+        public ObservableRangeCollection<ProductLocal> ProductLists { get; } = new ObservableRangeCollection<ProductLocal>();
 
         public ObservableCollection<ProductLocal> SelectedProducts { get; } = new ObservableCollection<ProductLocal>();
 
@@ -47,7 +48,7 @@ namespace Click.ViewModels
 
         public decimal SumTotal { get => ProductLists.Sum(e => e.SumPrice); }
 
-        private BrandMenu menu;
+        private Category menu;
 
         public Command AddToBasket { get; }
         public Command AddToSelected { get; }
@@ -57,12 +58,12 @@ namespace Click.ViewModels
 
         #region methods
 
-        public ProductListViewModel(BrandMenu _menu, Command _addToBasket = null)
+        public ProductListViewModel(Category _menu, Command _addToBasket = null)
         {
             menu = _menu;
 
-            GetInitialData = NewGetDataCommand(GetInitial);
-            GetMoreData = NewGetDataCommand(GetRemoteData);
+            GetInitialData = NewAsyncCommand(GetInitial);
+            GetMoreData = NewAsyncCommand(GetRemoteData);
 
             ProductLists.CollectionChanged += (sender, e) => UpdateBindings();
             SelectedProducts.CollectionChanged += (sender, e) => 
@@ -90,7 +91,7 @@ namespace Click.ViewModels
 
             try
             {
-                await GetMoreData.ExecuteAsSubTask();
+                await GetMoreData.ExecuteAsync();
             }
             catch (NoConnectionException)
             {
@@ -104,19 +105,26 @@ namespace Click.ViewModels
 
         public async Task GetRemoteData()
         {
+            if (IsLastPageReached) return;
             try
             {
                 HttpClient client = await createUserClient();
 
                 //Получение всех продуктов по id меню
-                HttpResponseMessage response = await client.GetAsync(ApiStrings.API_HOST + "api/" +
-                                                                        ApiStrings.API_PRODUCTS_GET_BY_MENU + menu.BrandMenuId + 
+                HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
+                                                                        ApiStrings.PRODUCTS_GET_BY_MENU + menu.CategoryId +
                                                                         "/" + NextPage);
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
                     List<Product> tempList = JsonConvert.DeserializeObject<List<Product>>(result);
-                    tempList.ForEach(e => e.BrandMenu = menu);
+
+                    if (tempList.Count != 0)
+                    {
+                        NextPage++;
+                    }
+
+                    tempList.ForEach(e => e.Category = menu);
 
                     foreach (var item in tempList)
                     {
@@ -124,9 +132,13 @@ namespace Click.ViewModels
                     }
 
                     await BlobCache.LocalMachine.InsertObject(Caches.PRODUCTS_CACHE.key + "_" +
-                                                                menu.Brand.Category.ToString() + "_" +
+                                                                menu.Brand.Kind.ToString() + "_" +
                                                                 menu.Brand.BrandId.ToString() + "_" +
-                                                                menu.BrandMenuId.ToString(), ProductLists.Select(e => e.Product), Caches.PRODUCTS_CACHE.lifeTime);
+                                                                menu.CategoryId.ToString(), (NextPage, ProductLists.Select(e => e.Product)), Caches.PRODUCTS_CACHE.lifeTime);
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    NextPage = -1;
                 }
             }
             catch (NoConnectionException)
@@ -137,32 +149,40 @@ namespace Click.ViewModels
             {
                 throw CheckIfConnectionException(e);
             }
+            finally 
+            {
+                IsWorking = false;
+            }
         }
 
         public async Task GetCachedData()
         {
             //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
-            List<Product> cachedProducts = await new CacheFunctions().tryToGet<List<Product>>(Caches.PRODUCTS_CACHE.key + "_" +
-                                                                                                    menu.Brand.Category.ToString() + "_" +
+            (int, List<Product>) cachedProducts = await new CacheFunctions().tryToGet<(int, List<Product>)>(Caches.PRODUCTS_CACHE.key + "_" +
+                                                                                                    menu.Brand.Kind.ToString() + "_" +
                                                                                                     menu.Brand.BrandId.ToString() + "_" +
-                                                                                                    menu.BrandMenuId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
+                                                                                                    menu.CategoryId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
             ProductLists.Clear();
 
             //В случае если кэш не пуст
-            if (cachedProducts != null)
+            if (cachedProducts != default)
             {
-                foreach (Product product in cachedProducts)
+                var localizedList = new List<ProductLocal>();
+                foreach (Product product in cachedProducts.Item2)
                 {
-                    ProductLists.Add(new ProductLocal(product, UpdateBindings, AddToSelected, RemoveFromSelected));
+                    localizedList.Add(new ProductLocal(product, UpdateBindings, AddToSelected, RemoveFromSelected));
                 }
+                ProductLists.AddRange(localizedList);
+
+                NextPage = cachedProducts.Item1;
             }
             //В случае если он пуст
             else
             {
                 try
                 {
-                    await GetInitialData.ExecuteAsSubTask();
+                    await GetInitialData.ExecuteAsync();
                 }
                 catch (NoConnectionException)
                 {

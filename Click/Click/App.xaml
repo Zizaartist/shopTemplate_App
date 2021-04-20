@@ -277,7 +277,7 @@
         <!--Entries-->
         <!--#endregion-->
         <!--#region Entries-->
-        <Style x:Key="EntryGray" TargetType="Entry">
+        <Style x:Key="EntryGray" TargetType="Entry" x:Name="EntryGray">
             <Setter Property="BackgroundColor" Value="Transparent"/>
             <Setter Property="PlaceholderColor" Value="{DynamicResource GrayColor}"/>
             <Setter Property="TextColor" Value="{DynamicResource BlackColor}"/>

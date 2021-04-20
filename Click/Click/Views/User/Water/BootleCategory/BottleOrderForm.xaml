@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Click.ViewModels.Templates"
              x:Class="Click.Views.User.Water.BootleCategory.BottleOrderForm"
              Style="{StaticResource GrayContentPage}">
+    
     <ContentPage.Content>
         <StackLayout>
             <Grid BackgroundColor="#1D9BD5"
@@ -31,10 +33,12 @@
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Имя"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Name, Mode=TwoWay}"
                                Placeholder="Например Иван"/>
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Улица"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Street, Mode=TwoWay}"
                                Placeholder="Например Ленина"
                                HeightRequest="40"/>
                         <Grid>
@@ -42,10 +46,12 @@
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Дом"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                       Text="{Binding House, Mode=TwoWay}"
                                        Placeholder="Например 10/1"/>
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Этаж"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                       Text="{Binding Floor, Mode=TwoWay}"
                                        Placeholder="Например 5"
                                        HeightRequest="40"/>
                             </StackLayout>
@@ -54,10 +60,12 @@
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Подъезд"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                       Text="{Binding Entrance, Mode=TwoWay}"
                                        Placeholder="Например 5"/>
                                 <Label Style="{StaticResource BlackLabel}"
                                        Text="Квартира"/>
                                 <Entry Style="{StaticResource EntryGray}"
+                                       Text="{Binding Apartment, Mode=TwoWay}"
                                        Placeholder="Например 89"
                                        HeightRequest="40"/>
                             </StackLayout>
@@ -65,13 +73,14 @@
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Количество бутылок*"/>
                         <Entry Style="{StaticResource EntryGray}"
+                               Text="{Binding Amount, Mode=TwoWay}"
                                Placeholder="Напишите сколько нужно бутылок воды"
                                HeightRequest="40"/>
                         <Label Style="{StaticResource BlackLabel}"
                                Text="Время доставки"/>
-                        <Entry Style="{StaticResource EntryGray}"
-                               Placeholder="Например ДД/ММ 00:00"
-                               HeightRequest="40"/>
+                        <StackLayout>
+                            <local:DateTimePicker DateAndTime="{Binding DeliveryDateTime, Mode=OneWayToSource}"/>
+                        </StackLayout>
                         <Grid ColumnDefinitions="Auto,*,Auto">
                             <Label Style="{StaticResource BlackLabel}"
                                    Text="Приобрести тару(ы)"/>
@@ -84,8 +93,7 @@
                                     VerticalOptions="Center"
                                     HorizontalOptions="End"
                                     x:Name="BottleSwitch"
-                                    Toggled="BottleSwitch_Toggled"
-                                    IsToggled="false"
+                                    IsToggled="{Binding Container, Mode=TwoWay}"
                                     Grid.Column="2"
                                     OnColor="{StaticResource GreenColor}"
                                     ThumbColor="{StaticResource BackgroundColor}"/>
@@ -101,88 +109,19 @@
                             <Button Style="{StaticResource PaymentSelected}"
                                     Text="Наличными"
                                     x:Name="Cash"
-                                    Clicked="Cash_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                             <Button Style="{StaticResource Payment}"
                                     Text="Картой онлайн"
                                     x:Name="CardOnline"
-                                    Clicked="CardOnline_Clicked"/>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                             <Button Style="{StaticResource Payment}"
                                     Text="Картой курьеру"
                                     x:Name="Card"
-                                    Clicked="Card_Clicked"/>
-                        </StackLayout>
-                        <Grid>
-                            <Label Style="{StaticResource BlackLabel}"
-                                   Text="Использовать бонусы"/>
-                            <Switch BackgroundColor="AliceBlue"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End"
-                                    x:Name="BonusSwitch"
-                                    Toggled="BonusSwitch_Toggled"
-                                    IsToggled="false"
-                                    OnColor="{StaticResource GreenColor}"
-                                    ThumbColor="{StaticResource BackgroundColor}"/>
-                        </Grid>
-                        <Label Style="{StaticResource SmallBlackLabel}"
-                               HorizontalTextAlignment="Start"
-                               Text="Максимальный лимит использования бонусов до 30% от суммы заказа"/>
-                        <StackLayout Spacing="3">
-                            <Label Style="{StaticResource BlackLabel}"
-                                   HorizontalTextAlignment="End"
-                                   HorizontalOptions="End"
-                                   Text="Итого к оплате"/>
-                            <Button HeightRequest="1"
-                                    BackgroundColor="Black"
-                                    HorizontalOptions="End"
-                                    IsVisible="{Binding Source={x:Reference BonusSwitch}, Path=IsToggled}"/>
-                            <Label Style="{StaticResource SmallBlackLabelBold}"
-                                       HorizontalTextAlignment="End"
-                                       HorizontalOptions="End"
-                                       IsVisible="{Binding Source={x:Reference BonusSwitch}, Path=IsToggled}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="10907"
-                                              x:Name="PayLabel"/>
-                                        <Span Text=" Р"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <StackLayout HorizontalOptions="End"
-                                         Orientation="Horizontal"
-                                         x:Name="BonusStack"
-                                         IsVisible="{Binding Source={x:Reference BonusSwitch}, Path=IsToggled}">
-                                <Label Style="{StaticResource SmallBlackLabelBold}"
-                                       TextColor="{StaticResource GreenColor}"
-                                       HorizontalTextAlignment="End"
-                                       HorizontalOptions="End">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="- "/>
-                                            <Span Text="500"
-                                                  x:Name="BonusLabel"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Image Style="{StaticResource FoodTime}"
-                                       Source="BonusIconGray.png"/>
-                            </StackLayout>
-                            <Button HeightRequest="1"
-                                    BackgroundColor="Black"
-                                    HorizontalOptions="End"/>
-                            <Label Style="{StaticResource BlackLabel}"
-                                   HorizontalTextAlignment="End"
-                                   HorizontalOptions="End">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{Binding Source={x:Reference PayLabel}, Path=Text}"
-                                              x:Name="SumLabel"/>
-                                        <Span Text=" Р"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                                    Clicked="ChangePaymentMethod_Clicked"/>
                         </StackLayout>
                         <Button Style="{StaticResource GreenButton}"
                                 x:Name="Confirm"
+                                IsEnabled="{Binding ValidNormal}"
                                 Clicked="Confirm_Clicked"
                                 Padding="0"
                                 Text="Заказать"

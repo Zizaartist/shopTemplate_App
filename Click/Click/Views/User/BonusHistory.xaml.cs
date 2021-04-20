@@ -21,7 +21,7 @@ namespace Click.Views.User
 
             var pointRegisterVM = new PointRegisterViewModel();
             Refreshable.BindingContext = pointRegisterVM;
-            Task.Run(() => pointRegisterVM.GetInitialData.Execute(null));
+            Task.Run(async () => await pointRegisterVM.GetInitialData.ExecuteAsync());
         }
 
         protected override void OnAppearing()

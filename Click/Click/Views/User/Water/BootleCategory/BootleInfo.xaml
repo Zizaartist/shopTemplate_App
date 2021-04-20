@@ -10,11 +10,12 @@
                 <ImageButton Style="{StaticResource BackButton}"
                              x:Name="Back"
                              Clicked="Back_Clicked"/>
-                <Label Text="{Binding Name}" 
+                <Label x:Name="BrandName"
                        Style="{StaticResource WhiteHeaderLabel}"
                        Margin="10,0,0,0"
                        Grid.Column="1"/>
-                <Label Text="У Вас 0"
+                <Label x:Name="Points"
+                        Text="{Binding Points, StringFormat='У Вас {0}'}"
                        Style="{StaticResource WhiteMediumLabel}"
                        Margin="0,0,10,0"
                        Grid.Column="2"/>
@@ -31,15 +32,15 @@
                                Margin="0"
                                HorizontalOptions="Center">
                             <Image Style="{StaticResource LogoImage}"
-                                   Source="{Binding Images}"/>
+                                   x:Name="Logo"/>
                         </Frame>
                         <Label Style="{StaticResource BigBlackLabelBold}"
-                               Text="{Binding Name}"
+                               x:Name="BrandName2"
                                HorizontalOptions="Center"/>
                         <Grid ColumnDefinitions="Auto,*,Auto"
                               RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
                             <Label Style="{StaticResource SmallBlackLabel}"
-                                   Text="8 (914) 273-55-32"/>
+                                   x:Name="Contact"/>
                             <Image Style="{StaticResource BankCard}"
                                    Source="Phone.png"
                                    Grid.Column="2"/>
@@ -48,7 +49,7 @@
                                     Grid.Row="1"
                                     Grid.ColumnSpan="3"/>
                             <Label Style="{StaticResource SmallBlackLabel}"
-                                   Text="326565"
+                                   x:Name="Contact2"
                                    Grid.Row="2"/>
                             <Image Style="{StaticResource BankCard}"
                                    Source="Phone.png"
@@ -59,7 +60,7 @@
                                     Grid.Row="3"
                                     Grid.ColumnSpan="3"/>
                             <Label Style="{StaticResource SmallBlackLabel}"
-                                   Text="Вилюйский тракт, 5/1"
+                                   x:Name="Address"
                                    Grid.Row="4"/>
                             <Image Style="{StaticResource BankCard}"
                                    Source="Location.png"
@@ -73,21 +74,11 @@
                         <Label Style="{StaticResource SmallBlackLabel}"
                                HorizontalTextAlignment="Start">
                             <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Режим работы: &#10;"
-                                          FontFamily="{StaticResource NeoSansProBold}"/>
-                                    <Span Text="ПН 12:00 - 21:45 &#10;"/>
-                                    <Span Text="ПН 12:00 - 21:45 &#10;"/>
-                                    <Span Text="ВТ 10:00 - 21:45 &#10;"/>
-                                    <Span Text="СР 10:00 - 21:45 &#10;"/>
-                                    <Span Text="ЧТ 10:00 - 21:45 &#10;"/>
-                                    <Span Text="ПТ 10:00 - 21:45 &#10;"/>
-                                    <Span Text="СБ 10:00 - 21:45 &#10;"/>
-                                    <Span Text="ВС 10:00 - 21:45 &#10;"/>
-                                </FormattedString>
+                                <FormattedString x:Name="Schedule"/>
                             </Label.FormattedText>
                         </Label>
                         <StackLayout Orientation="Horizontal"
+                                     IsVisible="{Binding HasCertificate}"
                                      HorizontalOptions="Center">
                             <Image Style="{StaticResource BankCard}"
                                    Source="Document.png"/>

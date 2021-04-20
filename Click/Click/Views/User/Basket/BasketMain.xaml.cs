@@ -17,11 +17,13 @@ namespace Click.Views.User.Basket
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BasketMain : ContentPage
     {
+        private readonly BasketViewModel basketVM;
+
         public BasketMain()
         {
             InitializeComponent();
 
-            var basketVM = new BasketViewModel();
+            basketVM = new BasketViewModel();
             OrderCollection.BindingContext = basketVM;
             Task.Run(() => basketVM.GetData());
         }
@@ -49,7 +51,7 @@ namespace Click.Views.User.Basket
         private void Basket_Clicked(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            Navigation.PushModalAsync(new BasketChoice(button.BindingContext as Grouping<string, OrderDetailLocal>));
+            Navigation.PushModalAsync(new BasketChoice(button.BindingContext as Grouping<string, OrderDetailLocal>, basketVM));
         }
     }
 }

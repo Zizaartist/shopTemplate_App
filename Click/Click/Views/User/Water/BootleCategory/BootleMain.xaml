@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Click.Converters"
              x:Class="Click.Views.User.Water.BootleCategory.BootleMain"
              Style="{StaticResource GrayContentPage}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:RatingConverter x:Key="ratingConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout>
             <Grid BackgroundColor="#1D9BD5"
@@ -14,7 +21,8 @@
                        Style="{StaticResource WhiteHeaderLabel}"
                        Margin="10,0,0,0"
                        Grid.Column="1"/>
-                <Label Text="У Вас 0"
+                <Label x:Name="Points"
+                        Text="{Binding Points, StringFormat='У Вас {0}'}"
                        Style="{StaticResource WhiteMediumLabel}"
                        Margin="0,0,10,0"
                        Grid.Column="2"/>
@@ -24,7 +32,7 @@
                              Grid.Column="3"/>
             </Grid>
             <CollectionView x:Name="WaterCompaniesCollection"
-                            ItemsSource="{Binding WaterCompanies}"
+                            ItemsSource="{Binding WaterBrands}"
                             SelectionMode="Single"
                             SelectionChanged="WaterCompaniesCollection_SelectionChanged">
                 <CollectionView.Header>
@@ -87,25 +95,26 @@
                                 <Grid ColumnDefinitions="Auto,*,Auto">
                                     <Frame Style="{StaticResource LogoFrame}">
                                         <Image Style="{StaticResource LogoImage}"
-                                               Source="{Binding Images}"/>
+                                               Source="{Binding Logo}"/>
                                     </Frame>
                                     <StackLayout Grid.Column="1"
                                                  Spacing="0"
                                                  VerticalOptions="Center">
                                         <Label Style="{StaticResource BigBlackLabelBold}"
-                                               Text="{Binding Name}"/>
+                                               Text="{Binding Brand.BrandName}"/>
                                         <StackLayout Orientation="Horizontal">
                                             <Grid Style="{StaticResource StarGridBackground}"
                                                   HorizontalOptions="Center">
                                                 <Grid Style="{StaticResource StarGrid}"
+                                                    WidthRequest="{Binding Brand.Rating, Converter={StaticResource ratingConverter}, ConverterParameter={x:Reference Star}}"
                                                       x:Name="Star"/>
                                                 <Image Style="{StaticResource StarRating}"/>
                                             </Grid>
                                             <Label Style="{StaticResource GraySmallLabel}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="4.8"/>
-                                                        <Span Text="(562)"/>
+                                                        <Span Text="{Binding Brand.Rating}"/>
+                                                        <Span Text="{Binding Brand.ReviewCount, StringFormat='({0})'}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -114,15 +123,17 @@
                                             <Image Source="GreenPoint.png"
                                                    WidthRequest="6"
                                                    HeightRequest="6"
+                                                   IsVisible="{Binding Brand.Available}"
                                                    Style="{StaticResource Money}"/>
                                             <Label Style="{StaticResource SmallBlackLabel}"
+                                                   IsVisible="{Binding Brand.Available}"
                                                    Text="Работает"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <Image Source="Money.png"
                                                    Style="{StaticResource Money}"/>
                                             <Label Style="{StaticResource SmallBlackLabel}"
-                                                   Text="100 руб. обмен"/>
+                                                   Text="{Binding Brand.WaterBrand.WaterPrice, StringFormat='{0} р. обмен'}"/>
                                         </StackLayout>
                                     </StackLayout>
                                     <Image Source="Next.png"

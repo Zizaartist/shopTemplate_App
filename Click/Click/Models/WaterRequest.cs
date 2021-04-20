@@ -12,11 +12,11 @@ namespace ApiClick.Models
     {
         public int WaterRequestId { get; set; }
         public int WaterOrderId { get; set; }
-        
+        [JsonIgnore]
         public int WaterBrandId { get; set; }
 
         public WaterBrand WaterBrand { get; set; }
-        
+        [JsonIgnore]
         public WaterOrder WaterOrder { get; set; }
     }
 }

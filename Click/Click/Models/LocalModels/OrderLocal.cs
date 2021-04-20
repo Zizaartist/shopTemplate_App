@@ -15,34 +15,36 @@ namespace Click.Models.LocalModels
         {
             Order = _order;
 
-            Logo = Order.BrandOwner.Brands.First().ImgLogo != null ? new UriImageSource
+            Name = Order.Brand?.BrandName;
+
+            Logo = Order.Brand?.BrandInfo.Logo != null ? new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + Order.BrandOwner.Brands.First().ImgLogo.Path),
+                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + Order.Brand.BrandInfo.Logo),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
             } : null;
 
             var temp = new List<string>();
-            if (Order.Street != null) temp.Add(Order.Street);
-            if (Order.Kv != null) temp.Add($"кв. {Order.Kv}");
-            if (Order.Padik != null) temp.Add($"подъезд {Order.Padik}");
-            if (Order.Etash != null) temp.Add($"этаж {Order.Etash}");
+            if (Order.OrderInfo.Street != null) temp.Add(Order.OrderInfo.Street);
+            if (Order.OrderInfo.Apartment != null) temp.Add($"кв. {Order.OrderInfo.Apartment}");
+            if (Order.OrderInfo.Entrance != null) temp.Add($"подъезд {Order.OrderInfo.Entrance}");
+            if (Order.OrderInfo.Floor != null) temp.Add($"этаж {Order.OrderInfo.Floor}");
             var addressParts = temp.ToArray();
             Address = string.Join(", ", addressParts);
 
-            Sum = Order.OrderDetails.Sum(det => det.Price * det.Count);
-
-            Delivered = Order.OrderStatus >= OrderStatus.delivered;
+            Delivered = Order.OrderStatus == OrderStatus.delivered;
 
             Status = OrderStatusDictionaries.GetStringFromOrderStatus[Order.OrderStatus];
+
+            if (Order.DeliveryPrice == null) TakeoutDelivery = "Самовывоз";
         }
 
         public Order Order { get; private set; }
         public string Name { get; private set; }
         public UriImageSource Logo { get; private set; }
         public string Address { get; private set; }
-        public decimal Sum { get; private set; }
         public bool Delivered { get; private set; }
         public string Status { get; private set; }
+        public string TakeoutDelivery { get; private set; } = "Адрес доставки: "; //Определяет текст лейбла
     }
 }

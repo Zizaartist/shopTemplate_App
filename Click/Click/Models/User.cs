@@ -21,35 +21,34 @@ namespace ApiClick.Models
             Reviews = new HashSet<Review>();
         }
 
-        
+        [JsonIgnore]
         public int UserId { get; set; }
-        
+        [JsonIgnore]
         public UserRole UserRole { get; set; }
-        
         public string Phone { get; set; }
-        
+        [JsonIgnore]
         public decimal Points { get; set; }
-        
+        [JsonIgnore]
         public bool NotificationsEnabled { get; set; }
-        
+        [JsonIgnore]
         public string NotificationRegistration { get; set; }
-        
+        [JsonIgnore]
         public string DeviceType { get; set; }
-        
+        [JsonIgnore]
         public DateTime CreatedDate { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
-        
+        [JsonIgnore]
         public Executor Executor { get; set; }
-        
+        [JsonIgnore]
         public ICollection<ErrorReport> ErrorReports { get; set; }
-        
+        [JsonIgnore]
         public ICollection<Order> Orders { get; set; }
-        
+        [JsonIgnore]
         public ICollection<PointRegister> PointRegisterReceivers { get; set; }
-        
+        [JsonIgnore]
         public ICollection<PointRegister> PointRegisterSenders { get; set; }
-        
+        [JsonIgnore]
         public ICollection<Review> Reviews { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -30,24 +30,36 @@ namespace Click.Views.Registration
         {
             InitializeComponent();
 
+            Task.Run(async () =>
+            {
+                switch (await Authorize())
+                {
+                    case AuthResult.success:
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            App.Current.MainPage = new NavigationPage(new Main());
+                        });
+                        break;
+                    case AuthResult.registration:
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            App.Current.MainPage = new NavigationPage(new Number());
+                        });
+                        break;
+                    case AuthResult.error:
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, "Понятно");
+                        });
+                        //Выход из приложения
+                        break;
+                }
+            });
             Task.Run(() => NewPage());
         }
 
         protected async override void OnAppearing()
         {
-            switch (await Authorize())
-            {
-                case AuthResult.success:
-                    App.Current.MainPage = new NavigationPage(new Main());
-                    break;
-                case AuthResult.registration:
-                    App.Current.MainPage = new NavigationPage(new Number());
-                    break;
-                case AuthResult.error:
-                    bool result = await DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, null, "Понятно");
-                    //Выход из приложения
-                    break;
-            }
 
             base.OnAppearing();
         }

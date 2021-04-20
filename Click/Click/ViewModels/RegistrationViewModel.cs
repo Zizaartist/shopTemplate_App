@@ -102,7 +102,7 @@ namespace Click.ViewModels
             {
                 CodeIsValid = false;
                 var client = HttpClientSingleton.Instance;
-                var response = await client.PostAsync(ApiStrings.HOST + "/api/SmsCheck/" + "?phone=" + Phone, null);
+                var response = await client.PostAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_SMS_CHECK + "?phone=" + Phone, null);
                 return response;
             }
             catch (Exception e)
@@ -116,7 +116,7 @@ namespace Click.ViewModels
             try
             {
                 var client = HttpClientSingleton.Instance;
-                var response = await client.PostAsync(ApiStrings.HOST + "/api/CodeCheck/" + "?code=" + Code + "&phone=" + Phone, null);
+                var response = await client.PostAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_CODE_CHECK + "?code=" + Code + "&phone=" + Phone, null);
                 return response;
             }
             catch (Exception e)
@@ -134,7 +134,7 @@ namespace Click.ViewModels
                 {
                     Phone = Phone
                 };
-                var json = JsonConvert.SerializeObject(user);
+                var json = SerializeIgnoreNull(user);
                 var data = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await client.PostAsync(ApiStrings.HOST + ApiStrings.USERS_CONTROLLER + "?code=" + Code, data);
@@ -153,7 +153,7 @@ namespace Click.ViewModels
             {
                 HttpClient client = HttpClientSingleton.Instance;
 
-                HttpResponseMessage msg = await client.PostAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_VERIFY_NUMBER + "?phone=" + Phone, null);
+                HttpResponseMessage msg = await client.PostAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_VALID_PHONE + "?phone=" + Phone, null);
                 CorrectPhone = await msg.Content.ReadAsStringAsync();
                 return msg;
             }

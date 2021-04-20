@@ -19,39 +19,54 @@ namespace Click.ViewModels
 
         public ObservableCollection<ReviewLocal> Reviews { get; } = new ObservableCollection<ReviewLocal>();
 
+        private string text;
+        public string Text 
+        {
+            get => text;
+            set { SetProperty(ref text, value); }
+        }
+
+        private int rating;
+        public int Rating 
+        {
+            get => rating;
+            set 
+            {
+                SetProperty(ref rating, value);
+                OnPropertyChanged("IsReviewValid");
+            }
+        }
+
+        public bool IsReviewValid { get => Rating > 0 && Rating <= 5; }
+
         private int allReviewsCount;
         public int AllReviewsCount 
         {
             get => allReviewsCount;
-            set 
-            {
-                if (allReviewsCount == value) return;
-                allReviewsCount = value;
-                OnPropertyChanged();
-            }
+            set { SetProperty(ref allReviewsCount, value); }
         }
 
         private int textReviewsCount;
         public int TextReviewsCount
         {
             get => textReviewsCount;
-            set
-            {
-                if (textReviewsCount == value) return;
-                textReviewsCount = value;
-                OnPropertyChanged();
-            }
+            set { SetProperty(ref textReviewsCount, value); }
         }
 
+        public Command ChangeRating { get; }
+
         private int? brandId;
+        private int? orderId;
 
         #endregion
 
-        public ReviewsViewModel(int? _brandId = null) 
+        public ReviewsViewModel(int? _brandId = null, int? _orderId = null) 
         {
             brandId = _brandId;
-            GetInitialData = NewGetDataCommand(GetInitial);
-            GetMoreData = NewGetDataCommand(GetRemoteData);
+            orderId = _orderId;
+            GetInitialData = NewAsyncCommand(GetInitial);
+            GetMoreData = NewAsyncCommand(GetRemoteData);
+            ChangeRating = new Command((param) => Rating = int.Parse(param as string));
         }
 
         public async Task GetInitial() 
@@ -61,7 +76,7 @@ namespace Click.ViewModels
 
             try
             {
-                await GetMoreData.ExecuteAsSubTask();
+                await GetMoreData.ExecuteAsync();
             }
             catch (NoConnectionException)
             {
@@ -96,6 +111,10 @@ namespace Click.ViewModels
                         Reviews.Add(new ReviewLocal(item));
                     }
                 }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound) 
+                {
+                    NextPage = -1;
+                }
             }
             catch (NoConnectionException)
             {
@@ -104,6 +123,10 @@ namespace Click.ViewModels
             catch (Exception e)
             {
                 throw CheckIfConnectionException(e);
+            }
+            finally 
+            {
+                IsWorking = false;
             }
         }
 
@@ -135,13 +158,22 @@ namespace Click.ViewModels
             }
         }
 
-        public async Task<HttpResponseMessage> PostReview(Review _review) 
+        public async Task<HttpResponseMessage> PostReview() 
         {
             try
             {
                 HttpClient client = await createUserClient();
-                var serializedObj = JsonConvert.SerializeObject(_review);
+
+                var newReview = new Review() 
+                {
+                    OrderId = orderId,
+                    Rating = Rating,
+                    Text = Text
+                };
+
+                var serializedObj = SerializeIgnoreNull(newReview);
                 var data = new StringContent(serializedObj, Encoding.UTF8, "application/json");
+
                 return await client.PostAsync(ApiStrings.HOST + ApiStrings.REVIEWS_CONTROLLER, data);
             }
             catch (NoConnectionException)

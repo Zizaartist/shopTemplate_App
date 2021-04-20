@@ -18,9 +18,12 @@ namespace Click.Views.User.Food
         {
             InitializeComponent();
 
+            Name.Text = _brandLocal.Brand.BrandName;
+            ReviewCount.Text = $"({_brandLocal.Brand.ReviewCount})";
+
             var messagesVM = new ReviewsViewModel(_brandLocal.Brand.BrandId);
             BindingContext = messagesVM;
-            Task.Run(() => messagesVM.GetInitialData.Execute(null));
+            Task.Run(async () => await messagesVM.GetInitialData.ExecuteAsync());
             Task.Run(() => messagesVM.GetReviewCount());
 
             Points.BindingContext = UsersViewModel.Instance;

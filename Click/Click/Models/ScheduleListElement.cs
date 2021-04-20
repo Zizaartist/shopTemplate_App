@@ -11,9 +11,9 @@ namespace ApiClick.Models
 {
     public partial class ScheduleListElement
     {
-        
+        [JsonIgnore]
         public int ScheduleListElementId { get; set; }
-        
+        [JsonIgnore]
         public int BrandId { get; set; }
         public DayOfWeek DayOfWeek { get; set; }
         [System.Text.Json.Serialization.JsonConverterAttribute(typeof(TimeSpanConverter))]
@@ -21,7 +21,7 @@ namespace ApiClick.Models
         [System.Text.Json.Serialization.JsonConverterAttribute(typeof(TimeSpanConverter))]
         public TimeSpan CloseTime { get; set; }
 
-        
+        [JsonIgnore]
         public Brand Brand { get; set; }
     }
 }

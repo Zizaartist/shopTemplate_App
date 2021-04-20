@@ -1,12 +1,14 @@
-﻿using ApiClick.Models.ArrayModels;
+﻿using ApiClick.Models;
+using ApiClick.Models.ArrayModels;
 using ApiClick.Models.EnumModels;
 using Click.Models.LocalModels;
+using Click.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,9 +17,23 @@ namespace Click.Views.User.Food
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DescriptionOrganization : ContentPage
     {
-        public DescriptionOrganization(BrandLocal _brandLocal)
+        public DescriptionOrganization(int _brandId)
         {
             InitializeComponent();
+
+            Task.Run(async () =>
+            {
+                var brand = await new BrandsViewModel(Kind.food, false).GetSpecificData(_brandId);
+                var localized = new BrandLocal(brand);
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    ApplyData(localized);
+                });
+            });
+        }
+
+        private void ApplyData(BrandLocal _brandLocal)
+        {
 
             BrandName.Text = _brandLocal.Brand.BrandName;
             Description.Text = _brandLocal.Brand.BrandInfo.Description;
@@ -32,7 +48,7 @@ namespace Click.Views.User.Food
             string paymentMethods = "";
 
             //Добавляем все доступные методы оплаты
-            foreach (PaymentMethod paymentMethod in Enum.GetValues(typeof(PaymentMethod))) 
+            foreach (PaymentMethod paymentMethod in Enum.GetValues(typeof(PaymentMethod)))
             {
                 if (_brandLocal.Brand.BrandPaymentMethods.Any(bpm => bpm.PaymentMethod == paymentMethod))
                 {
@@ -47,7 +63,7 @@ namespace Click.Views.User.Food
 
             #region schedule
 
-            foreach (DayOfWeek dayOfWeek in DayOfWeekDictionaries.CorrectlyOrderedDays) 
+            foreach (DayOfWeek dayOfWeek in DayOfWeekDictionaries.CorrectlyOrderedDays)
             {
                 var found = _brandLocal.Brand.ScheduleListElements.FirstOrDefault(e => e.DayOfWeek == dayOfWeek);
                 string addedText;
@@ -55,7 +71,7 @@ namespace Click.Views.User.Food
                 {
                     addedText = $"{found.OpenTime.ToString(@"hh\:mm")} - {found.CloseTime.ToString(@"hh\:mm")}";
                 }
-                else 
+                else
                 {
                     addedText = $"Выходной";
                 }

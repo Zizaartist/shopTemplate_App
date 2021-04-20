@@ -1,9 +1,11 @@
 ﻿using ApiClick.Models;
 using Click.Models;
 using Click.Models.LocalModels;
+using Click.StaticValues;
 using Click.ViewModels;
 using Click.Views.User.Basket;
 using Click.Views.User.Profile;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +20,15 @@ namespace Click.Views.User.Orders
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrdersMain : ContentPage
     {
+        private readonly OrderHistoryViewModel ordersVM;
+
         public OrdersMain()
         {
             InitializeComponent();
-            OrderCollection.BindingContext = new OrderHistoryViewModel();
+
+            ordersVM = new OrderHistoryViewModel();
+            BindingContext = ordersVM;
+            Task.Run(() => ordersVM.GetCachedData());
         }
         private void Profile_Clicked(object sender, EventArgs e)
         {
@@ -43,14 +50,28 @@ namespace Click.Views.User.Orders
             App.Current.MainPage = new Main();
         }
 
-        private void OrderCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void OrderCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection.Any())
             {
                 OrderCollection.SelectedItem = null;
-                if ((e.CurrentSelection.LastOrDefault() as OrderLocal).Delivered == false)
+                if ((e.CurrentSelection.LastOrDefault() as OrderLocal).Delivered == true)
                 {
-                    Navigation.PushModalAsync(new OrdersReview(e.CurrentSelection.LastOrDefault() as OrderLocal));
+                    var selection = e.CurrentSelection.LastOrDefault() as OrderLocal;
+                    var response = await ordersVM.ClaimPoints(selection.Order.OrderId);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string result = await response.Content.ReadAsStringAsync();
+                        decimal points = JsonConvert.DeserializeObject<decimal>(result);
+
+                        //провоцируем перезапись кэша, fire&forget
+                        Task.Run(async () => await ordersVM.GetInitial());
+                        await Navigation.PushModalAsync(new OrdersReview(selection, points));
+                    }
+                    else 
+                    {
+                        await DisplayAlert("Ошибка", AlertMessages.ERROR_CAN_NOT_CLAIM_POINTS, "Ok");
+                    }
                 }
             }
         }

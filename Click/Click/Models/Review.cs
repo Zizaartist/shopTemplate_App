@@ -17,9 +17,9 @@ namespace ApiClick.Models
             Products = new HashSet<string>();
         }
 
-        
+        [JsonIgnore]
         public int ReviewId { get; set; }
-        
+        [JsonIgnore]
         public int? SenderId { get; set; }
         public int BrandId { get; set; }
         public int? OrderId { get; set; }
@@ -28,9 +28,9 @@ namespace ApiClick.Models
         public DateTime CreatedDate { get; set; }
 
         public virtual User Sender { get; set; }
-        
+        [JsonIgnore]
         public virtual Order Order { get; set; }
-        
+        [JsonIgnore]
         public Brand Brand { get; set; }
 
         [NotMapped]

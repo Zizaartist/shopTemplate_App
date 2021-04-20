@@ -14,7 +14,8 @@
                        Style="{StaticResource WhiteHeaderLabel}"
                        Margin="10,0,0,0"
                        Grid.Column="1"/>
-                <Label Text="У Вас 0"
+                <Label x:Name="Points"
+                            Text="{Binding Points, StringFormat='У Вас {0}'}"
                                Style="{StaticResource WhiteMediumLabel}"
                                Margin="0,0,10,0"
                                Grid.Column="2"/>

@@ -38,6 +38,7 @@ namespace Click.Views.Registration
                     if (alreadyRegistered)
                     {
                         await BlobCache.Secure.InsertObject<string>(Caches.PHONE_CACHE.key, registrationVM.CorrectPhone);
+                        await new TokenFunctions().requestUserToken();
                         App.Current.MainPage = new NavigationPage(new Main());
                     }
                     else
@@ -45,6 +46,7 @@ namespace Click.Views.Registration
                         if ((await registrationVM.Registration()).IsSuccessStatusCode)
                         {
                             await BlobCache.Secure.InsertObject<string>(Caches.PHONE_CACHE.key, registrationVM.CorrectPhone);
+                            await new TokenFunctions().requestUserToken();
                             App.Current.MainPage = new NavigationPage(new Main());
                         }
                         else

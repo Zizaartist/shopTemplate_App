@@ -1,4 +1,5 @@
-﻿using Click.Views.User.Water.BootleCategory;
+﻿using Click.ViewModels;
+using Click.Views.User.Water.BootleCategory;
 using Click.Views.User.Water.WaterCarCategory;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,15 @@ namespace Click.Views.User.Water
         public MainWater()
         {
             InitializeComponent();
+
+            //Баллы достаточно просто сбайндить
+            Points.BindingContext = UsersViewModel.Instance;
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Back_Clicked(object sender, EventArgs e)

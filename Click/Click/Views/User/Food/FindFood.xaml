@@ -13,7 +13,7 @@
     
     <ContentPage.Content>
         <RefreshView x:Name="Refreshable"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
         <CollectionView x:Name="OrganisationCollection"
                         ItemsSource="{Binding Brands}"

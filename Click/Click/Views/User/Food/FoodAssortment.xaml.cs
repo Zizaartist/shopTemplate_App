@@ -28,10 +28,7 @@ namespace Click.Views.User.Food
             Refreshable.BindingContext = categoryVM;
             Task.Run(() => categoryVM.GetCachedData());
 
-            //Получаем количество отзывов
-            var messagesVM = new ReviewsViewModel(_brandLocal.Brand.BrandId);
-            ReviewCount.BindingContext = messagesVM;
-            Task.Run(() => messagesVM.GetReviewCount());
+            ReviewCount.Text = _brandLocal.Brand.ReviewCount.ToString();
 
             Points.BindingContext = UsersViewModel.Instance;
 
@@ -70,7 +67,7 @@ namespace Click.Views.User.Food
 
         private void About_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new DescriptionOrganization(brandLocal));
+            Navigation.PushModalAsync(new DescriptionOrganization(brandLocal.Brand.BrandId));
         }
 
         private void Messages_Clicked(object sender, EventArgs e)

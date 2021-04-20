@@ -1,4 +1,6 @@
-﻿using Click.Models;
+﻿using ApiClick.Models;
+using Click.Models;
+using Click.Models.LocalModels;
 using Click.ViewModels;
 using Click.Views.User.Water.BootleCategory;
 using System;
@@ -15,10 +17,24 @@ namespace Click.Views.User.Water.WaterCarCategory
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WaterCarMain : ContentPage
     {
+        private static Kind KIND = Kind.water;
+
         public WaterCarMain()
         {
             InitializeComponent();
-            WaterCompaniesCollection.BindingContext = new WaterCompanyViewModels();
+
+            //Баллы достаточно просто сбайндить
+            Points.BindingContext = UsersViewModel.Instance;
+
+            var waterVM = new WaterBrandViewModel(KIND);
+            WaterCompaniesCollection.BindingContext = waterVM;
+            Task.Run(() => waterVM.GetCachedData());
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -38,8 +54,9 @@ namespace Click.Views.User.Water.WaterCarCategory
         {
             if (e.CurrentSelection.Any())
             {
+                var selectedWaterBrand = WaterCompaniesCollection.SelectedItem as WaterBrandLocal;
                 WaterCompaniesCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new WaterCarForm());
+                Navigation.PushModalAsync(new WaterCarForm(selectedWaterBrand));
             }
         }
 

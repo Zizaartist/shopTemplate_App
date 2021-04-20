@@ -18,7 +18,24 @@ namespace Click
 {
     public partial class App : Application
     {
-        public Style tagGreen, tagGreenSelected, tagOrange, tagOrangeSelected, payment, paymentSelected;
+        private static object syncRoot = new Object();
+        private static App instance;
+        public static App Instance
+        {
+            get
+            {
+                lock (syncRoot)
+                {
+                    return instance;
+                }
+            }
+            set
+            {
+                instance = value;
+            }
+        }
+
+        public Style tagGreen, tagGreenSelected, tagOrange, tagOrangeSelected, payment, paymentSelected, entryGray;
         public App()
         {
             InitializeComponent();
@@ -38,6 +55,7 @@ namespace Click
             tagOrangeSelected = TagButtonOrangeSelected;
             payment = Payment;
             paymentSelected = PaymentSelected;
+            entryGray = EntryGray;
         }
 
         protected override void OnStart()

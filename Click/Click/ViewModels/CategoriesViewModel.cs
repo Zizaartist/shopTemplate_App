@@ -19,7 +19,7 @@ namespace Click.ViewModels
 {
     public class CategoryViewModel : CollectionViewModel
     {
-        public ObservableRangeCollection<CategoryLocal> Categorys { get; } = new ObservableRangeCollection<CategoryLocal>();
+        public ObservableRangeCollection<CategoryLocal> Categories { get; } = new ObservableRangeCollection<CategoryLocal>();
 
         private Brand brand;
 
@@ -27,7 +27,7 @@ namespace Click.ViewModels
         {
             brand = _brand;
 
-            GetInitialData = NewGetDataCommand(GetInitial);
+            GetInitialData = NewAsyncCommand(GetInitial);
         }
 
         public async Task GetInitial()
@@ -45,12 +45,14 @@ namespace Click.ViewModels
                     List<Category> tempList = JsonConvert.DeserializeObject<List<Category>>(result);
                     tempList.ForEach(e => e.Brand = brand);
 
-                    Categorys.Clear();
+                    Categories.Clear();
 
+                    var localizedList = new List<CategoryLocal>();
                     foreach (var item in tempList)
                     {
-                        Categorys.Add(new CategoryLocal(item));
+                        localizedList.Add(new CategoryLocal(item));
                     }
+                    Categories.AddRange(localizedList);
 
                     await BlobCache.LocalMachine.InsertObject(Caches.CATEGORIES_CACHE.key + "_" +
                                                                 brand.Kind.ToString() + "_" +
@@ -65,6 +67,10 @@ namespace Click.ViewModels
             {
                 throw CheckIfConnectionException(e);
             }
+            finally 
+            {
+                IsWorking = false;
+            }
         }
 
         public async Task GetCachedData() 
@@ -74,22 +80,24 @@ namespace Click.ViewModels
                                                                             brand.Kind.ToString() + "_" +
                                                                             brand.BrandId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
-            Categorys.Clear();
+            Categories.Clear();
 
             //В случае если кэш не пуст
             if (cachedMenus != null)
             {
-                foreach (Category menu in cachedMenus)
+                var localizedList = new List<CategoryLocal>();
+                foreach (var item in cachedMenus)
                 {
-                    Categorys.Add(new CategoryLocal(menu));
+                    localizedList.Add(new CategoryLocal(item));
                 }
+                Categories.AddRange(localizedList);
             }
             //В случае если он пуст
             else
             {
                 try
                 {
-                    await GetInitialData.ExecuteAsSubTask();
+                    await GetInitialData.ExecuteAsync();
                 }
                 catch (NoConnectionException)
                 {

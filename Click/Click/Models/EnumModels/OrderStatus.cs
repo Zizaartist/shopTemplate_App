@@ -36,14 +36,5 @@ namespace ApiClick.Models.EnumModels
             { OrderStatus.delivered, "Доставлено" },
             { OrderStatus.completed, "Доставлено" }
         };
-
-        public static Dictionary<string, OrderStatus> GetOrderStatusFromString = new Dictionary<string, OrderStatus>()
-        {
-            { "Отправлено", OrderStatus.sent },
-            { "Принято", OrderStatus.received },
-            { "В пути", OrderStatus.onWay },
-            { "Доставлено", OrderStatus.delivered },
-            { "Доставлено", OrderStatus.completed }
-        };
     }
 }

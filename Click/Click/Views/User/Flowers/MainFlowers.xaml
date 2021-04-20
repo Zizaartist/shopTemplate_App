@@ -13,7 +13,7 @@
 
     <ContentPage.Content>
         <RefreshView x:Name="Refreshable"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
             <CollectionView x:Name="OrganisationCollection"
                         ItemsSource="{Binding Brands}"
@@ -122,16 +122,18 @@
                                               x:Name="Star"/>
                                             <Image Style="{StaticResource StarRating}"/>
                                         </Grid>
-                                        <Image Source="{Binding BankPayment}"
+                                        <Image Source="BankCard.png"
+                                            IsVisible="{Binding BankPayment}"
                                            Style="{StaticResource BankCard}"
                                            Grid.Column="1"/>
-                                        <Image Source="{Binding CashPayment}"
+                                        <Image Source="Money.png"
+                                            IsVisible="{Binding CashPayment}"
                                            Style="{StaticResource Money}"
                                            Grid.Column="2"/>
                                         <Image Source="FlowersTime.png"
                                            Style="{StaticResource FoodTime}"
                                            Grid.Column="3"/>
-                                        <Label Text="{Binding Brand.DeliveryTime}"
+                                        <Label Text="{Binding Brand.BrandInfo.DeliveryTime}"
                                            Style="{StaticResource VerySmallGreenLabel}"
                                            Grid.Column="4"/>
                                         <Image Source="Discount.png"

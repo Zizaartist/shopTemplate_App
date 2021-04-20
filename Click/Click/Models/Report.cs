@@ -10,9 +10,9 @@ namespace ApiClick.Models
 {
     public partial class Report
     {
-        
+        [JsonIgnore]
         public int ReportId { get; set; }
-        
+        [JsonIgnore]
         public int BrandId { get; set; }
         public int OrderCount { get; set; }
         public decimal Sum { get; set; }
@@ -22,7 +22,7 @@ namespace ApiClick.Models
         public decimal? ProductOfDaySum { get; set; }
 
         public virtual Product ProductOfDay { get; set; }
-        
+        [JsonIgnore]
         public Brand Brand { get; set; }
     }
 }

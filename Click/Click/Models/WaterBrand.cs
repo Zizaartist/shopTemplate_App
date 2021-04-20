@@ -15,16 +15,16 @@ namespace ApiClick.Models
             WaterRequests = new HashSet<WaterRequest>();
         }
 
-        
+        [JsonIgnore]
         public int WaterBrandId { get; set; }
-        
+        [JsonIgnore]
         public int BrandId { get; set; }
         public decimal WaterPrice { get; set; }
         public decimal? ContainerPrice { get; set; }
         public string Certificate { get; set; }
 
         public Brand Brand { get; set; }
-        
+        [JsonIgnore]
         public virtual ICollection<WaterRequest> WaterRequests { get; set; }
     }
 }

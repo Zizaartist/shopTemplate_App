@@ -13,6 +13,7 @@ namespace Click.ViewModels.Selectors
     class OrdersSelector : DataTemplateSelector
     {
         public DataTemplate WaitingOrder { get; set; }
+        public DataTemplate OldOrder { get; set; }
         public DataTemplate Header { get; set; }
         public DataTemplate DeliveredOrder { get; set; }
 
@@ -21,16 +22,17 @@ namespace Click.ViewModels.Selectors
             WaitingOrder = new DataTemplate(typeof(Cell));
             Header = new DataTemplate(typeof(Cell));
             DeliveredOrder = new DataTemplate(typeof(Cell));
+            OldOrder = new DataTemplate(typeof(Cell));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
             OrderLocal order = item as OrderLocal;
-            if(order.Name == "")
+            if(order == null)
             {
                 return Header;
             }
-            if (order.Delivered)
+            if (order.Order.OrderStatus == OrderStatus.completed)
             {
                 return DeliveredOrder;
             }

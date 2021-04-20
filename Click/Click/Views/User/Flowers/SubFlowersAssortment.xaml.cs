@@ -16,7 +16,7 @@ namespace Click.Views.User.Flowers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubFlowersAssortment : ContentPage
     {
-        public SubFlowersAssortment(BrandMenuLocal _brandMenuLocal)
+        public SubFlowersAssortment(CategoryLocal _categoryLocal)
         {
             InitializeComponent();
 
@@ -24,16 +24,16 @@ namespace Click.Views.User.Flowers
             Task.Run(() => basketVM.GetData());
 
             //Загружаем продукцию
-            var productVM = new ProductListViewModel(_brandMenuLocal.BrandMenu, basketVM.AddToBasket);
+            var productVM = new ProductListViewModel(_categoryLocal.Category, basketVM.AddToBasket);
             BindingContext = productVM;
             Task.Run(() => productVM.GetCachedData());
 
             //Баллы достаточно просто сбайндить
             Points.BindingContext = UsersViewModel.Instance;
 
-            //brandMenu-related
-            MinimalPrice.Text = _brandMenuLocal.BrandMenu.Brand.MinimalPrice.ToString();
-            NameLabel.Text = _brandMenuLocal.BrandMenu.Brand.BrandName;
+            //category-related
+            MinimalPrice.Text = _categoryLocal.Category.Brand.MinimalPrice.ToString();
+            NameLabel.Text = _categoryLocal.Category.Brand.BrandName;
         }
 
         protected override void OnAppearing()

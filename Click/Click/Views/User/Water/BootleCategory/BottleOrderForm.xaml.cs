@@ -1,4 +1,9 @@
-﻿using Click.Views.User.Orders;
+﻿using ApiClick.Models;
+using ApiClick.Models.EnumModels;
+using Click.Models.LocalModels;
+using Click.StaticValues;
+using Click.ViewModels;
+using Click.Views.User.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +18,50 @@ namespace Click.Views.User.Water.BootleCategory
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BottleOrderForm : ContentPage
     {
-        public BottleOrderForm()
+        private readonly WaterOrderViewModel waterOrderVM;
+        private Dictionary<PaymentMethod, Button> PaymentMethodButtons;
+        private App styleAccessor;
+
+        public BottleOrderForm(WaterBrandLocal _waterBrandData)
         {
             InitializeComponent();
+
+            styleAccessor = new App();
+
+            PaymentMethodButtons = new Dictionary<PaymentMethod, Button>()
+            {
+                { PaymentMethod.cash, Cash },
+                { PaymentMethod.card, Card },
+                { PaymentMethod.online, CardOnline }
+            };
+
+            waterOrderVM = new WaterOrderViewModel(false, Kind.bottledWater, _waterBrandData);
+            BindingContext = waterOrderVM;
+            waterOrderVM.Autofill(UsersViewModel.Instance.User);
+
+            //remove and block methods which aren't allowed
+            var toRemove = new List<PaymentMethod>();
+            foreach (var pmb in PaymentMethodButtons)
+            {
+                if (!waterOrderVM.AllowedPaymentMethods.Contains(pmb.Key))
+                {
+                    pmb.Value.IsEnabled = false;
+                    toRemove.Add(pmb.Key);
+                }
+            }
+            toRemove.ForEach(e => PaymentMethodButtons.Remove(e));
+        }
+
+        private void ChangePaymentMethod_Clicked(object sender, EventArgs e)
+        {
+            var selectedPM = PaymentMethodButtons.First(x => x.Value.Equals(sender));
+
+            var initialPM = PaymentMethodButtons[waterOrderVM.PaymentMethod];
+
+            selectedPM.Value.Style = styleAccessor.paymentSelected;
+            initialPM.Style = styleAccessor.payment;
+
+            waterOrderVM.PaymentMethod = selectedPM.Key;
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)
@@ -27,69 +73,23 @@ namespace Click.Views.User.Water.BootleCategory
         {
             Navigation.PopModalAsync();
         }
-        private void CardOnline_Clicked(object sender, EventArgs e)
-        {
-            App app = new App();
-            ClearMethodPayment();
-            CardOnline.Style = app.paymentSelected;
-        }
 
-        private void Card_Clicked(object sender, EventArgs e)
-        {
-            App app = new App();
-            ClearMethodPayment();
-            Card.Style = app.paymentSelected;
-        }
-
-        private void Cash_Clicked(object sender, EventArgs e)
-        {
-            App app = new App();
-            ClearMethodPayment();
-            Cash.Style = app.paymentSelected;
-        }
-        void ClearMethodPayment()
-        {
-            App app = new App();
-            Cash.Style = app.payment;
-            CardOnline.Style = app.payment;
-            Card.Style = app.payment;
-        }
-
-        private void BonusSwitch_Toggled(object sender, ToggledEventArgs e)
-        {
-            if (SumLabel.Text != "")
-            {
-                if (BonusSwitch.IsToggled == true)
-                {
-                    SumLabel.Text = (Convert.ToInt32(PayLabel.Text) - Convert.ToInt32(BonusLabel.Text)).ToString();
-                }
-                else
-                {
-                    SumLabel.Text = PayLabel.Text;
-                }
-            }
-        }
-        private void BottleSwitch_Toggled(object sender, ToggledEventArgs e)
-        {
-            if (BottleLabel.Text != "")
-            {
-                if (BottleSwitch.IsToggled == true)
-                {
-                    BottleLabel.Text = "350 руб.";
-                }
-                else
-                {
-                    BottleLabel.Text = "обмен 150 руб.";
-                }
-            }
-        }
         async private void Confirm_Clicked(object sender, EventArgs e)
         {
-            bool result = await DisplayAlert("Click", "Вы действительно хотите осуществить заказ", "Да", "Нет");
+            bool result = await DisplayAlert("Click", "Вы действительно хотите осуществить заказ?", "Да", "Нет");
             if (result)
             {
-                await DisplayAlert("Click", "Заказ осуществлен, ожидайте", "Понятно");
-                App.Current.MainPage = new OrdersMain();
+                var response = await waterOrderVM.PostOrder();
+                if (response.IsSuccessStatusCode)
+                {
+                    await DisplayAlert("Click", "Заказ осуществлен, ожидайте", "Понятно");
+
+                    await Navigation.PopModalAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Ошибка", AlertMessages.UNEXPECTED_ERROR, "Понятно");
+                }
             }
         }
     }

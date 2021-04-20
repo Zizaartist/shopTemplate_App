@@ -13,7 +13,7 @@
 
     <ContentPage.Content>
         <RefreshView x:Name="Refreshable"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
             <CollectionView x:Name="OrganisationCollection"
                                 ItemsSource="{Binding Brands}"
@@ -78,7 +78,7 @@
                                 <DataTemplate>
                                     <Grid RowDefinitions="Auto">
                                         <Button Text="{Binding Hashtag.HashTagName}"
-                                        Style="{StaticResource TagButton}"
+                                        Style="{Binding Style}"
                                         Command="{Binding OnClick}"
                                         CommandParameter="{Binding .}"/>
                                     </Grid>
@@ -130,7 +130,7 @@
                                         <Image Source="FoodTime.png"
                                                    Style="{StaticResource FoodTime}"
                                                    Grid.Column="3"/>
-                                        <Label Text="{Binding Brand.DeliveryTime}"
+                                        <Label Text="{Binding Brand.BrandInfo.DeliveryTime}"
                                                    Style="{StaticResource VerySmallOrangeLabel}"
                                                    Grid.Column="4"/>
                                         <Image Source="Discount.png"

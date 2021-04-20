@@ -16,8 +16,9 @@ namespace Click.ViewModels.Help
     {
         public K Name { get; private set; }
         public UriImageSource Logo { get; set; }
-        public string DeliveryConditions { get; set; }
+        public string DeliveryTerms { get; set; }
         public decimal Sum { get => Items.Sum(item => item.SumPrice); }
+        public bool HasDeliveryTerms { get; private set; } = false;
 
         public Brand Brand;
 
@@ -28,13 +29,14 @@ namespace Click.ViewModels.Help
         {
             Name = name;
             Brand = brand;
-            Logo = brand.ImgLogo != null ? new UriImageSource
+            Logo = brand.BrandInfo.Logo != null ? new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + brand.ImgLogo.Path),
+                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + brand.BrandInfo.Logo),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
             } : null;
-            DeliveryConditions = brand.Rules;
+            DeliveryTerms = brand.BrandInfo.DeliveryTerms;
+            HasDeliveryTerms = !string.IsNullOrEmpty(brand.BrandInfo.DeliveryTerms);
             selfDestructCommand = _selfDestructCommand;
 
             //RefreshSum = new Command(() => );

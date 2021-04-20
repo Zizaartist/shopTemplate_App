@@ -1,4 +1,5 @@
-﻿using ApiClick.Models.RegisterModels;
+﻿using ApiClick.Models;
+using Click.Models.LocalModels;
 using Click.StaticValues;
 using Newtonsoft.Json;
 using System;
@@ -15,12 +16,12 @@ namespace Click.ViewModels
 
         #region properties
 
-        public ObservableCollection<LocalPointRegister> PointRegisters { get; } = new ObservableCollection<LocalPointRegister>();
+        public ObservableCollection<PointRegisterLocal> PointRegisters { get; } = new ObservableCollection<PointRegisterLocal>();
 
         public PointRegisterViewModel()
         {
-            GetInitialData = NewGetDataCommand(GetInitial);
-            GetMoreData = NewGetDataCommand(GetRemoteData);
+            GetInitialData = NewAsyncCommand(GetInitial);
+            GetMoreData = NewAsyncCommand(GetRemoteData);
         }
 
         #endregion
@@ -34,7 +35,7 @@ namespace Click.ViewModels
 
             try
             {
-                await GetMoreData.ExecuteAsSubTask();
+                await GetMoreData.ExecuteAsync();
             }
             catch (NoConnectionException)
             {
@@ -63,7 +64,7 @@ namespace Click.ViewModels
                     List<PointRegister> tempList = JsonConvert.DeserializeObject<List<PointRegister>>(result);
                     foreach (var item in tempList)
                     {
-                        PointRegisters.Add(new LocalPointRegister() { PointRegister = item });
+                        PointRegisters.Add(new PointRegisterLocal() { PointRegister = item });
                     }
                 }
             }
@@ -79,36 +80,5 @@ namespace Click.ViewModels
 
         #endregion
 
-    }
-
-    public class LocalPointRegister
-    {
-        private PointRegister pointRegister;
-        public PointRegister PointRegister 
-        {
-            get => pointRegister;
-            set 
-            {
-                pointRegister = value;
-                if (pointRegister.ReceiverId != default)
-                {
-                    Value = "+";
-                }
-                else 
-                {
-                    Value = "-";
-                }
-            }
-        }
-
-        private string sign;
-        public string Value 
-        {
-            get => $"{sign} {PointRegister.Points}";
-            set 
-            {
-                sign = value;
-            }
-        }
     }
 }

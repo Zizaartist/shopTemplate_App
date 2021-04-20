@@ -10,9 +10,9 @@ namespace ApiClick.Models
 {
     public partial class BrandInfo
     {
-        
+        [JsonIgnore]
         public int BrandInfoId { get; set; }
-        
+        [JsonIgnore]
         public int BrandId { get; set; }
         public string Description { get; set; }
         public string Logo { get; set; }
@@ -22,7 +22,7 @@ namespace ApiClick.Models
         public string Address { get; set; }
         public string DeliveryTerms { get; set; }
 
-        
+        [JsonIgnore]
         public Brand Brand { get; set; }
     }
 }

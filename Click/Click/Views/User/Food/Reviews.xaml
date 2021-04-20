@@ -13,19 +13,21 @@
     <ContentPage.Content>
         <Grid>
             <RefreshView x:Name="Refreshable"
-                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
                 <CollectionView x:Name="MessagesCollection"
-                            ItemsSource="{Binding Messages}"
+                            ItemsSource="{Binding Reviews}"
                             SelectionMode="Single"
-                            SelectionChanged="MessagesCollection_SelectionChanged">
+                            SelectionChanged="MessagesCollection_SelectionChanged"
+                            RemainingItemsThresholdReachedCommand="{Binding GetMoreData}"
+                            RemainingItemsThreshold="{Binding ItemTreshold}">
                     <CollectionView.Header>
                         <Grid RowDefinitions="Auto,Auto,Auto,Auto">
                             <Grid Style="{StaticResource HeaderGrid}">
                                 <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
-                            <Label Text="{Binding Name}"
+                            <Label x:Name="Name"
                                    Style="{StaticResource WhiteHeaderLabel}"
                                    Margin="10,0,0,0"
                                    Grid.Column="1"/>
@@ -55,7 +57,7 @@
                                         <Image Style="{StaticResource StarRating}"/>
                                     </Grid>
                                 </Frame>
-                                <Label Text="{Binding AllMessagesCount, StringFormat='({0})'}"
+                                <Label x:Name="ReviewCount"
                                    Style="{StaticResource GrayVerySmallLabel}"
                                    Grid.Column="1"/>
                             </Grid>
@@ -73,7 +75,7 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="Всего "/>
-                                                <Span Text="{Binding AllMessagesCount}"/>
+                                                <Span Text="{Binding AllReviewsCount}"/>
                                                 <Span Text=" оценки"/>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -85,7 +87,7 @@
                                Padding="20,0,20,0">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding TextMessagesCount}"/>
+                                        <Span Text="{Binding TextReviewsCount}"/>
                                         <Span Text=" отзыва"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -111,7 +113,7 @@
                                           Grid.Row="2">
                                             <Label Text="{Binding Review.CreatedDate, StringFormat='{0:dd MMMM в HH:mm}'}"
                                                Style="{StaticResource GrayVerySmallLabel}"/>
-                                            <Label Text="{Binding Review.User.Name}"
+                                            <Label Text="{Binding Review.Sender.UserInfo.Name}"
                                                Style="{StaticResource VerySmallBlackLabelBold}"
                                                Grid.Column="1"/>
                                         </Grid>

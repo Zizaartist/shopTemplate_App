@@ -18,10 +18,25 @@ namespace Click.Views.User.Flowers
         public ReviewsFlowers(BrandLocal _brandLocal)
         {
             InitializeComponent();
-            //КОПИПАСТИ С ЕДЫ
 
-            //ReviewsCollection.BindingContext = new ReviewsViewModel();
-            //NameLabel.Text = _brand;
+            Name.Text = _brandLocal.Brand.BrandName;
+            ReviewCount.Text = $"({_brandLocal.Brand.ReviewCount})";
+
+            var messagesVM = new ReviewsViewModel(_brandLocal.Brand.BrandId);
+            BindingContext = messagesVM;
+            Task.Run(async () => await messagesVM.GetInitialData.ExecuteAsync());
+            Task.Run(() => messagesVM.GetReviewCount());
+
+            Points.BindingContext = UsersViewModel.Instance;
+
+            //brand-related
+            Star.BindingContext = _brandLocal;
+        }
+
+        protected override void OnAppearing()
+        {
+            Task.Run(() => UsersViewModel.Instance.GetPoints());
+            base.OnAppearing();
         }
 
         private void Back_Clicked(object sender, EventArgs e)

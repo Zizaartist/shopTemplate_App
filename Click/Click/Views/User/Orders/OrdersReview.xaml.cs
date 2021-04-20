@@ -1,6 +1,8 @@
 ﻿using ApiClick.Models;
 using Click.Models;
 using Click.Models.LocalModels;
+using Click.StaticValues;
+using Click.ViewModels;
 using Click.Views.User.Basket;
 using System;
 using System.Collections.Generic;
@@ -16,14 +18,22 @@ namespace Click.Views.User.Orders
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrdersReview : ContentPage
     {
-        static ImageButton[] imageButtons = new ImageButton[5];
-        int Rating;
-        public OrdersReview(OrderLocal order)
+        private ImageButton[] imageButtons = new ImageButton[5];
+        private readonly ReviewsViewModel reviewVM;
+
+        public OrdersReview(OrderLocal order, decimal points)
         {
             InitializeComponent();
-            BindingContext = order;
+
+            Points.Text = points.ToString();
+            Name.Text = order.Name;
+            Logo.Source = order.Logo;
+
+            reviewVM = new ReviewsViewModel(_orderId: order.Order.OrderId);
+            BindingContext = reviewVM;
             StarMassive();
         }
+
         void StarMassive()
         {
             imageButtons[0] = StarOne;
@@ -32,6 +42,7 @@ namespace Click.Views.User.Orders
             imageButtons[3] = StarFour;
             imageButtons[4] = StarFive;
         }
+
         private void Close_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();
@@ -40,32 +51,28 @@ namespace Click.Views.User.Orders
         private void StarOne_Clicked(object sender, EventArgs e)
         {
             StarRating(0);
-            Rating = 1;
         }
 
         private void StarTwo_Clicked(object sender, EventArgs e)
         {
             StarRating(1);
-            Rating = 2;
         }
 
         private void StarThree_Clicked(object sender, EventArgs e)
         {
             StarRating(2);
-            Rating = 3;
         }
 
         private void StarFour_Clicked(object sender, EventArgs e)
         {
             StarRating(3);
-            Rating = 4;
         }
 
         private void StarFive_Clicked(object sender, EventArgs e)
         {
             StarRating(4);
-            Rating = 4;
         }
+
         void StarRating(int star)
         {
             for(int i=0; i<imageButtons.Length; i++)
@@ -83,8 +90,17 @@ namespace Click.Views.User.Orders
 
          async private void Send_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Click", "Отзыв отправлен", "Понятно");
-            Navigation.PopModalAsync();
+            var response = await reviewVM.PostReview();
+
+            if (response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Click", "Отзыв отправлен", "Понятно");
+                await Navigation.PopModalAsync();
+            }
+            else
+            {
+                await DisplayAlert("Ошибка", AlertMessages.UNEXPECTED_ERROR, "Понятно");
+            }
         }
     }
 }

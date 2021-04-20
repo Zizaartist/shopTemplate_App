@@ -18,7 +18,7 @@ namespace Click.Models.LocalModels
 
             Logo = OrderDetail.Product.Image != null ? new UriImageSource
             {
-                Uri = new Uri(ApiStrings.API_HOST + ApiStrings.API_IMAGES_FOLDER + OrderDetail.Product.Image.Path),
+                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + OrderDetail.Product.Image),
                 CachingEnabled = true,
                 CacheValidity = Caches.IMAGE_CACHE.lifeTime
             } : null;
@@ -49,7 +49,7 @@ namespace Click.Models.LocalModels
 
         public OrderDetail OrderDetail { get; set; }
         public UriImageSource Logo { get; private set; }
-        public Brand Brand { get => OrderDetail.Product.BrandMenu.Brand; }
+        public Brand Brand { get => OrderDetail.Product.Category.Brand; }
         public decimal SumPrice { get => OrderDetail.Price * OrderDetail.Count; }
         public int Count 
         {
