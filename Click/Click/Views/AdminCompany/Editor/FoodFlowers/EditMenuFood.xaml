@@ -16,7 +16,8 @@
                        Grid.Column="1"/>
             </Grid>
             <Button Style="{StaticResource GreenButton}"
-                    Text="Добавить элемент"/>
+                    Text="Добавить элемент"
+                    Margin="20,0,20,0"/>
             <Frame Style="{StaticResource PickerFrame}"
                    VerticalOptions="Center"
                    HorizontalOptions="Start"
@@ -27,29 +28,29 @@
                     </Picker>
             </Frame>
             <Grid Padding="20,10,20,10"
-                    x:Name="FoodWrapper">
+                  x:Name="FoodWrapper">
                 <Frame Style="{StaticResource FrameFoodList}">
                     <Grid RowDefinitions="Auto"
-                            ColumnDefinitions="Auto,Auto">
+                          ColumnDefinitions="Auto,Auto">
                         <Frame Style="{StaticResource FrameImageFoodList}">
                             <Image Style="{StaticResource FoodListImage}"
-                                    Source="{Binding Image}"/>
+                                   Source="{Binding Image}"/>
                         </Frame>
                         <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto">
                             <Label Text="{Binding Title}"
-                                    Style="{StaticResource BlackLabel}"/>
+                                   Style="{StaticResource BlackLabel}"/>
                             <Label Text="{Binding Description}"
-                                    Style="{StaticResource SmallBlackLabel}"
-                                    Grid.Row="1"/>
+                                   Style="{StaticResource SmallBlackLabel}"
+                                   Grid.Row="1"/>
                             <!--Менять изображения на PlusSelected, MinusSelected-->
                             <Grid Grid.Row="2"
-                                            RowDefinitions="Auto"
-                                            HorizontalOptions="End"
-                                            ColumnDefinitions="Auto,Auto,Auto">
+                                  RowDefinitions="Auto"
+                                  HorizontalOptions="End"
+                                  ColumnDefinitions="Auto,Auto,Auto">
                                 <ImageButton Source="Minus.png"
-                                                Style="{StaticResource MinusPlus}"/>
+                                             Style="{StaticResource MinusPlus}"/>
                                 <Label Style="{StaticResource SmallBlackLabelBold}"
-                                                Grid.Column="1">
+                                       Grid.Column="1">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding Price}"/>
@@ -58,8 +59,8 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <ImageButton Source="Plus.png"
-                                                        Style="{StaticResource MinusPlus}"
-                                                        Grid.Column="2"/>
+                                             Style="{StaticResource MinusPlus}"
+                                             Grid.Column="2"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -68,12 +69,12 @@
             <StackLayout Padding="20,0,20,0">
                 <Grid ColumnDefinitions="Auto,*">
                     <Label Style="{StaticResource SmallBlackLabel}"
-                            Text="Изменить фото блюда"
-                            HorizontalTextAlignment="Start"/>
+                           Text="Изменить фото блюда"
+                           HorizontalTextAlignment="Start"/>
                     <Image Grid.Column="1"
-                            Source="PlusButton.png"
-                            Style="{StaticResource BankCard}"
-                            HorizontalOptions="End"/>
+                           Source="PlusButton.png"
+                           Style="{StaticResource BankCard}"
+                           HorizontalOptions="End"/>
                     <Button Grid.ColumnSpan="2"
                             BackgroundColor="Transparent"
                             x:Name="ElementPhotoAdd"
@@ -84,8 +85,8 @@
                         HeightRequest="1"/>
                 <Grid ColumnDefinitions="Auto,*">
                     <Label Style="{StaticResource SmallBlackLabel}"
-                            Text="Изменить название"
-                            HorizontalTextAlignment="Start"/>
+                           Text="Изменить название"
+                           HorizontalTextAlignment="Start"/>
                     <Image Grid.Column="1"
                             Source="PlusButton.png"
                             Style="{StaticResource BankCard}"

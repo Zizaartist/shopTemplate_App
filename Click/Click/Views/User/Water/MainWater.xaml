@@ -24,7 +24,8 @@
                              Style="{StaticResource BonusButton}"
                              Grid.Column="3"/>
             </Grid>
-            <Grid Grid.Row="1" ColumnDefinitions="*,*">
+            <Grid Grid.Row="1" ColumnDefinitions="*,*"
+                  Padding="20,0,20,0">
                 <Frame Style="{StaticResource WaterChoiceFrame}">
                     <Grid RowDefinitions="*, Auto"
                           Padding="10">

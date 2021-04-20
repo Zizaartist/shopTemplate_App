@@ -12,84 +12,85 @@
                        Margin="10,0,0,0"
                        Grid.Column="0"/>
             </Grid>
-            <StackLayout Grid.Row="1"
-                         Padding="20,10,20,0"
+            <ScrollView Grid.Row="1">
+                <StackLayout Padding="20,10,20,0"
                          Spacing="15">
-                <ImageButton Source="Close.png"
+                    <ImageButton Source="Close.png"
                              Style="{StaticResource SearchButton}"
                              HorizontalOptions="End"
                              x:Name="Close"
                              Clicked="Close_Clicked"/>
-                <Image x:Name="Logo"
+                    <Image x:Name="Logo"
                        Style="{StaticResource LogoImage}"/>
-                <Label Style="{StaticResource VeryBigBlackLabel}"
+                    <Label Style="{StaticResource VeryBigBlackLabel}"
                        HorizontalOptions="Center"
                        x:Name="Name"/>
-                <StackLayout HorizontalOptions="Center"
+                    <StackLayout HorizontalOptions="Center"
                              Orientation="Horizontal">
-                    <ImageButton Source="Star.png"
+                        <ImageButton Source="Star.png"
                                  Style="{StaticResource SearchButton}"
                                  x:Name="StarOne"
                                  Command="{Binding ChangeRating}"
                                  CommandParameter="1"
                                  Clicked="StarOne_Clicked"/>
-                    <ImageButton Source="StarWhite.png"
+                        <ImageButton Source="StarWhite.png"
                                  Style="{StaticResource SearchButton}"
                                  x:Name="StarTwo"
                                  Command="{Binding ChangeRating}"
                                  CommandParameter="2"
                                  Clicked="StarTwo_Clicked"/>
-                    <ImageButton Source="StarWhite.png"
+                        <ImageButton Source="StarWhite.png"
                                  Style="{StaticResource SearchButton}"
                                  x:Name="StarThree"
                                  Command="{Binding ChangeRating}"
                                  CommandParameter="3"
                                  Clicked="StarThree_Clicked"/>
-                    <ImageButton Source="StarWhite.png"
+                        <ImageButton Source="StarWhite.png"
                                  Style="{StaticResource SearchButton}"
                                  x:Name="StarFour"
                                  Command="{Binding ChangeRating}"
                                  CommandParameter="4"
                                  Clicked="StarFour_Clicked"/>
-                    <ImageButton Source="StarWhite.png"
+                        <ImageButton Source="StarWhite.png"
                                  Style="{StaticResource SearchButton}"
                                  x:Name="StarFive"
                                  Command="{Binding ChangeRating}"
                                  CommandParameter="5"
                                  Clicked="StarFive_Clicked"/>
-                </StackLayout>
-                <Frame BackgroundColor="{StaticResource WhiteColor}"
+                    </StackLayout>
+                    <Frame BackgroundColor="{StaticResource WhiteColor}"
                        CornerRadius="10">
-                    <StackLayout>
-                        <Editor Placeholder="Написать комментарий..."
+                        <StackLayout>
+                            <Editor Placeholder="Написать комментарий..."
                                 Text="{Binding Text, Mode=TwoWay}"
                                 Style="{StaticResource ReviewEditor}"/>
-                        <Button Style="{StaticResource GreenButton}"
+                            <Button Style="{StaticResource GreenButton}"
                                 x:Name="Send"
                                 Clicked="Send_Clicked"
                                 HeightRequest="40"
                                 WidthRequest="355"
                                 IsEnabled="{Binding IsReviewValid}"
                                 Text="Отправить"/>
-                    </StackLayout>
-                </Frame>
-                <Frame BackgroundColor="{StaticResource WhiteColor}"
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="{StaticResource WhiteColor}"
                        CornerRadius="10"
                        Padding="30,10,30,10">
-                    <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                        <Label Style="{StaticResource BigBlackLabelBold}"
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                            <Label Style="{StaticResource BigBlackLabelBold}"
                                HorizontalOptions="Center"
                                Text="Начислено"/>
-                        <Label Style="{StaticResource BigBlackLabelBold}"
+                            <Label Style="{StaticResource BigBlackLabelBold}"
                                HorizontalOptions="Center"
                                x:Name="Points"
                                Grid.Column="2"/>
-                        <Image Source="BonusIconGray.png"
+                            <Image Source="BonusIconGray.png"
                                Style="{StaticResource BankCard}"
                                Grid.Column="3"/>
-                    </Grid>
-                </Frame>
-            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
