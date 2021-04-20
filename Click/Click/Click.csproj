@@ -40,69 +40,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\EditorMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditAdBanner.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditAdBannerAdd.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMainTag.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMainTimeWork.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMenu.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\FoodFlowers\EditMenuFood.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\Water\BootleEdit.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\Water\TimeWorkEdit.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Editor\Water\WaterCarEdit.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\History\HistoryMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Orders\AboutOrder.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Orders\OrdersMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Orders\SubOrdersMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Profile\ProfileDocumentation.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Profile\ProfileEdit.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Profile\ProfileMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Reports\ReportsDay.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminCompany\Reports\ReportsMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Page1.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <Compile Update="Views\User\Catalogue\CategoryCatalogue.xaml.cs">
+      <DependentUpon>CategoryCatalogue.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\User\Catalogue\ProductCatalogue.xaml.cs">
+      <DependentUpon>ProductCatalogue.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\Registration\Number.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -127,22 +73,13 @@
     <EmbeddedResource Update="Views\User\BonusHistory.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Food\DescriptionOrganization.xaml">
+    <EmbeddedResource Update="Views\User\Catalogue\CategoryCatalogue.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Food\FindFood.xaml">
+    <EmbeddedResource Update="Views\User\Catalogue\Reviews.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Food\FoodAssortment.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Food\MainFood.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Food\Reviews.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Food\SubFoodAssortment.xaml">
+    <EmbeddedResource Update="Views\User\Catalogue\ProductCatalogue.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\User\Main.xaml">
@@ -157,62 +94,8 @@
     <EmbeddedResource Update="Views\User\Profile\AboutApplication.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Profile\EnterAdminCompany.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\User\Profile\ProfileMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\BootleCategory\BootleInfo.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\BootleCategory\BootleMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\BootleCategory\BottleExpressWaiting.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\BootleCategory\BottleOrderForm.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\BootleCategory\BottleOrderFormExpress.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\MainWater.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\WaterCarCategory\WaterCarExpressWaiting.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\WaterCarCategory\WaterCarForm.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\WaterCarCategory\WaterCarFormExpress.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\User\Water\WaterCarCategory\WaterCarMain.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Views\User\Flowers\DescriptionOrganizationFlowers.xaml.cs">
-      <DependentUpon>DescriptionOrganizationFlowers.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\User\Flowers\FindFlowers.xaml.cs">
-      <DependentUpon>FindFlowers.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\User\Flowers\FlowersAssortment.xaml.cs">
-      <DependentUpon>FlowersAssortment.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\User\Flowers\MainFlowers.xaml.cs">
-      <DependentUpon>MainFlowers.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\User\Flowers\ReviewsFlowers.xaml.cs">
-      <DependentUpon>ReviewsFlowers.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\User\Flowers\SubFlowersAssortment.xaml.cs">
-      <DependentUpon>SubFlowersAssortment.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 </Project>
