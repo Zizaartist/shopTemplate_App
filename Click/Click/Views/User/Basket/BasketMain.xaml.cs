@@ -28,24 +28,24 @@ namespace Click.Views.User.Basket
             Task.Run(() => basketVM.GetData());
         }
 
-        private void MainButton_Clicked(object sender, EventArgs e)
+        private void ProfileButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new CategoryCatalogue();
-        }
-
-        private void OrdersButton_Clicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new OrdersMain();
+            Navigation.teleportTo(new ProfileMain());
         }
 
         private void BasketButton_Clicked(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void ProfileButton_Clicked(object sender, EventArgs e)
+        private void OrdersButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new ProfileMain();
+            Navigation.teleportTo(new OrdersMain());
+        }
+
+        private void MainButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopToRootAsync(false);
         }
     }
 }

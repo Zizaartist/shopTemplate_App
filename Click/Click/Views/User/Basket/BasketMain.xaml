@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:selectors="clr-namespace:Click.ViewModels.Selectors" 
-             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:help="clr-namespace:Click.ViewModels.Help"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
              x:Class="Click.Views.User.Basket.BasketMain"
+             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*, Auto">

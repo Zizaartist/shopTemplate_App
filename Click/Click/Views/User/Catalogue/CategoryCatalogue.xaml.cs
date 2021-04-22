@@ -1,6 +1,9 @@
 ﻿using ApiClick.Models;
 using Click.Models.LocalModels;
 using Click.ViewModels;
+using Click.Views.User.Basket;
+using Click.Views.User.Orders;
+using Click.Views.User.Profile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +22,12 @@ namespace Click.Views.User.Food
         {
             InitializeComponent();
 
+            if (parentCategoryId == null)
+            {
+                Back.IsEnabled = false;
+                Back.IsVisible = false;
+            }
+
             //Загружаем меню
             var categoryVM = new CategoryViewModel(parentCategoryId);
             Refreshable.BindingContext = categoryVM;
@@ -34,7 +43,27 @@ namespace Click.Views.User.Food
 
         private void Back_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            Navigation.PopAsync(false);
+        }
+
+        private void ProfileButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.teleportTo(new ProfileMain());
+        }
+
+        private void BasketButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.teleportTo(new BasketMain());
+        }
+
+        private void OrdersButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.teleportTo(new OrdersMain());
+        }
+
+        private void MainButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopToRootAsync(false);
         }
 
         private void CategoriesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)

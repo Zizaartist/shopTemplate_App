@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:selectors="clr-namespace:Click.ViewModels.Selectors"
              x:Class="Click.Views.User.Orders.OrdersMain"
+             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource GrayContentPage}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -174,7 +175,7 @@
                   Margin="0,0,0,0">
                 <ImageButton Style="{StaticResource PanelImageButton}"
                              x:Name="MainButton"
-                             Clicked="Main_Clicked"
+                             Clicked="MainButton_Clicked"
                              Source="HomeIcon.png"/>
                 <Label Style="{StaticResource GrayVerySmallLabelPanel}"
                        Grid.Row="1"
@@ -182,7 +183,7 @@
                 <ImageButton Style="{StaticResource PanelImageButton}"
                              Grid.Column="1"
                              x:Name="OrdersButton"
-                             Clicked="Orders_Clicked"
+                             Clicked="OrdersButton_Clicked"
                              Source="OrdersIconSelected.png"/>
                 <Label Style="{StaticResource WhiteVerySmallLabel}"
                        Grid.Column="1"
@@ -191,7 +192,7 @@
                 <ImageButton Style="{StaticResource PanelImageButton}"
                              Grid.Column="2"
                              x:Name="BasketButton"
-                             Clicked="Basket_Clicked"
+                             Clicked="BasketButton_Clicked"
                              Source="BasketIcon.png"/>
                 <Label Style="{StaticResource GrayVerySmallLabelPanel}"
                        Grid.Column="2"
@@ -199,7 +200,7 @@
                        Text="Корзина"/>
                 <ImageButton Style="{StaticResource PanelImageButton}"
                              x:Name="ProfileButton"
-                             Clicked="Profile_Clicked"
+                             Clicked="ProfileButton_Clicked"
                              Grid.Column="3"
                              Source="ProfileIcon.png"/>
                 <Label Style="{StaticResource GrayVerySmallLabelPanel}"

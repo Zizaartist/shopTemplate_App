@@ -20,21 +20,25 @@ namespace Click.Views.User.Profile
         {
             InitializeComponent();
         }
+        private void ProfileButton_Clicked(object sender, EventArgs e)
+        {
+        }
 
         private void BasketButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new BasketMain();
+            Navigation.teleportTo(new BasketMain());
         }
 
         private void OrdersButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new OrdersMain();
+            Navigation.teleportTo(new OrdersMain());
         }
 
         private void MainButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new CategoryCatalogue();
+            Navigation.PopToRootAsync(false);
         }
+
         private void AboutCompany(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new AboutApplication());

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:Click.Converters"
              x:Class="Click.Views.User.Food.CategoryCatalogue"
+             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource GrayContentPage}">
 
     <ContentPage.Content>
-        <Grid>
+        <Grid RowDefinitions="*,Auto">
             <RefreshView x:Name="Refreshable"
                             IsRefreshing="{Binding IsWorking}"
                             Command="{Binding GetInitialData}">
@@ -14,26 +14,23 @@
                             ItemsSource="{Binding Categories}"
                             SelectionMode="Single"
                             SelectionChanged="CategoriesCollection_SelectionChanged">
-                <CollectionView.Header>
-                    <Grid RowDefinitions="Auto,Auto,Auto"
-                          x:Name="HeaderGrid">
-                            <Grid Style="{StaticResource HeaderGrid}">
-                                <ImageButton x:Name="Back"
+                    <CollectionView.Header>
+                        <Grid Style="{StaticResource HeaderGrid}">
+                            <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
-                                <Image Style="{StaticResource Restaurant}"
+                            <Image Style="{StaticResource Restaurant}"
                                    Grid.Column="1"
                                    Grid.ColumnSpan="2"/>
-                                <Label x:Name="Points"
+                            <Label x:Name="Points"
                                    Text="{Binding Points, StringFormat='У Вас {0}'}"
                                    Style="{StaticResource WhiteMediumLabel}"
                                    Margin="0,0,10,0"
                                    Grid.Column="2"/>
-                                <ImageButton x:Name="Bonus"
+                            <ImageButton x:Name="Bonus"
                                          Clicked="Bonus_Clicked"
                                          Style="{StaticResource BonusButton}"
                                          Grid.Column="3"/>
-                            </Grid>
                         </Grid>
                     </CollectionView.Header>
                     <CollectionView.ItemsLayout>
@@ -58,6 +55,45 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </RefreshView>
+            <Grid Style="{StaticResource NavigationPanelGrid}"
+                  ColumnDefinitions="*,*,*,*"
+                  Grid.Row="2"
+                  RowDefinitions="Auto,Auto">
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="MainButton"
+                             Clicked="MainButton_Clicked"
+                             Source="HomeIconSelected.png"/>
+                <Label Style="{StaticResource WhiteVerySmallLabel}"
+                       Grid.Row="1"
+                       Text="Главная"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="1"
+                             x:Name="OrdersButton"
+                             Clicked="OrdersButton_Clicked"
+                             Source="OrdersIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Заказы"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             Grid.Column="2"
+                             x:Name="BasketButton"
+                             Clicked="BasketButton_Clicked"
+                             Source="BasketIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Корзина"/>
+                <ImageButton Style="{StaticResource PanelImageButton}"
+                             x:Name="ProfileButton"
+                             Clicked="ProfileButton_Clicked"
+                             Grid.Column="3"
+                             Source="ProfileIcon.png"/>
+                <Label Style="{StaticResource GrayVerySmallLabelPanel}"
+                       Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Профиль"/>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

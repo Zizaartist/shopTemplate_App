@@ -31,24 +31,24 @@ namespace Click.Views.User.Orders
             BindingContext = ordersVM;
             Task.Run(() => ordersVM.GetCachedData());
         }
-        private void Profile_Clicked(object sender, EventArgs e)
+        private void ProfileButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new ProfileMain();
+            Navigation.teleportTo(new ProfileMain());
         }
 
-        private void Basket_Clicked(object sender, EventArgs e)
+        private void BasketButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new BasketMain();
+            Navigation.teleportTo(new BasketMain());
         }
 
-        private void Orders_Clicked(object sender, EventArgs e)
+        private void OrdersButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new OrdersMain();
+
         }
 
-        private void Main_Clicked(object sender, EventArgs e)
+        private void MainButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new CategoryCatalogue();
+            Navigation.PopToRootAsync(false);
         }
 
         private async void OrderCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
