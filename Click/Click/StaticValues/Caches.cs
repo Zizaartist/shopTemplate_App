@@ -24,7 +24,7 @@ namespace Click.StaticValues
         /// <summary>
         /// Кэш для хранения пользовательских данных
         /// </summary>
-        public static readonly Cache USER_CACHE = new Cache("User");
+        public static readonly Cache AUTOFILL_CACHE = new Cache("User");
         /// <summary>
         /// Кэш для хранения деталей заказа в корзине покупок
         /// </summary>

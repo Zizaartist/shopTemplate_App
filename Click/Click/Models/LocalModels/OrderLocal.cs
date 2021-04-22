@@ -1,6 +1,7 @@
 ﻿using ApiClick.Models;
 using ApiClick.Models.EnumModels;
 using Click.StaticValues;
+using ShopAdminAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,6 @@ namespace Click.Models.LocalModels
         public OrderLocal(Order _order)
         {
             Order = _order;
-
-            Name = Order.Brand?.BrandName;
-
-            Logo = Order.Brand?.BrandInfo.Logo != null ? new UriImageSource
-            {
-                Uri = new Uri(ApiStrings.HOST + ApiStrings.IMAGES_FOLDER + Order.Brand.BrandInfo.Logo),
-                CachingEnabled = true,
-                CacheValidity = Caches.IMAGE_CACHE.lifeTime
-            } : null;
 
             var temp = new List<string>();
             if (Order.OrderInfo.Street != null) temp.Add(Order.OrderInfo.Street);
@@ -40,8 +32,6 @@ namespace Click.Models.LocalModels
         }
 
         public Order Order { get; private set; }
-        public string Name { get; private set; }
-        public UriImageSource Logo { get; private set; }
         public string Address { get; private set; }
         public bool Delivered { get; private set; }
         public string Status { get; private set; }

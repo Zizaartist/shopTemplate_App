@@ -24,12 +24,6 @@ namespace Click.Views.User
             Task.Run(async () => await pointRegisterVM.GetInitialData.ExecuteAsync());
         }
 
-        protected override void OnAppearing()
-        {
-            Task.Run(() => UsersViewModel.Instance.GetPoints());
-            base.OnAppearing();
-        }
-
         private void Back_Clicked(object sender, EventArgs e)
         {
             Navigation.PopModalAsync();

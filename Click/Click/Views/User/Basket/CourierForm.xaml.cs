@@ -2,7 +2,7 @@
 using Click.Models.LocalModels;
 using Click.StaticValues;
 using Click.ViewModels;
-using Click.ViewModels.Help;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Click.Views.User.Basket
         private BasketViewModel basketVM;
         private Dictionary<PaymentMethod, Button> PaymentMethodButtons;
 
-        public CourierForm(Grouping<string, OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
+        public CourierForm(IEnumerable<OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
         {
             InitializeComponent();
 
@@ -39,7 +39,7 @@ namespace Click.Views.User.Basket
 
             orderVM = new OrderViewModel(_orderDetails, true);
             BindingContext = orderVM;
-            orderVM.Autofill(UsersViewModel.Instance.User);
+            Task.Run(() => orderVM.Autofill());
 
             //remove and block methods which aren't allowed
             var toRemove = new List<PaymentMethod>();
@@ -79,7 +79,7 @@ namespace Click.Views.User.Basket
                 var response = await orderVM.PostOrder();
                 if (response.IsSuccessStatusCode)
                 {
-                    await basketVM.RemoveOrder(orderVM.brandId);
+                    await basketVM.Clear();
                     await DisplayAlert("Click", "Заказ осуществлен, ожидайте", "Понятно");
 
                     await Navigation.PopModalAsync();

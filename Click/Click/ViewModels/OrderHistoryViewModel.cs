@@ -6,6 +6,7 @@ using Click.Models.LocalModels;
 using Click.StaticValues;
 using MvvmHelpers;
 using Newtonsoft.Json;
+using ShopAdminAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -144,7 +145,14 @@ namespace Click.ViewModels
         public async Task<HttpResponseMessage> ClaimPoints(int _orderId) 
         {
             HttpClient httpClient = await createUserClient();
-            return await httpClient.PutAsync($"{ApiStrings.HOST}{ApiStrings.ORDERS_CLAIM_POINTS}{_orderId}", null);
+            var response = await httpClient.PutAsync($"{ApiStrings.HOST}{ApiStrings.ORDERS_CLAIM_POINTS}{_orderId}", null);
+            if (response.IsSuccessStatusCode)
+            {
+                //fire&forget
+                UsersViewModel.Instance.UpdatePoints.ExecuteAsync();
+                GetInitialData.ExecuteAsync();
+            }
+            return response;
         }
     }
 }

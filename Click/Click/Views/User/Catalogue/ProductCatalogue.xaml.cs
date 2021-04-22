@@ -1,5 +1,6 @@
 ﻿using Click.Models;
 using Click.Models.LocalModels;
+using Click.StaticValues;
 using Click.ViewModels;
 using Click.Views.User.Basket;
 using System;
@@ -14,9 +15,9 @@ using Xamarin.Forms.Xaml;
 namespace Click.Views.User.Food
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SubFoodAssortment : ContentPage
+    public partial class ProductCatalogue : ContentPage
     {
-        public SubFoodAssortment(CategoryLocal _categoryLocal)
+        public ProductCatalogue(CategoryLocal _categoryLocal)
         {
             InitializeComponent();
 
@@ -31,15 +32,7 @@ namespace Click.Views.User.Food
             //Баллы достаточно просто сбайндить
             Points.BindingContext = UsersViewModel.Instance;
 
-            //category-related
-            MinimalPrice.Text = _categoryLocal.Category.Brand.MinimalPrice.ToString();
-            BrandName.Text = _categoryLocal.Category.Brand.BrandName;
-        }
-
-        protected override void OnAppearing()
-        {
-            Task.Run(() => UsersViewModel.Instance.GetPoints());
-            base.OnAppearing();
+            MinimalPrice.Text = Constants.MINIMAL_PRICE.ToString(); 
         }
 
         private void FoodCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)

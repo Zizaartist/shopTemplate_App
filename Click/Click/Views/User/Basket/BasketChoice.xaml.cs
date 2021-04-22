@@ -1,6 +1,6 @@
 ﻿using Click.Models.LocalModels;
 using Click.ViewModels;
-using Click.ViewModels.Help;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +15,10 @@ namespace Click.Views.User.Basket
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BasketChoice : ContentPage
     {
-        private Grouping<string, OrderDetailLocal> orderDetails;
+        private IEnumerable<OrderDetailLocal> orderDetails;
         private readonly BasketViewModel basketVM;
 
-        public BasketChoice(Grouping<string, OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
+        public BasketChoice(IEnumerable<OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
         {
             InitializeComponent();
 

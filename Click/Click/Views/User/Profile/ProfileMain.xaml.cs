@@ -1,5 +1,6 @@
 ﻿using Akavache;
 using Click.Views.User.Basket;
+using Click.Views.User.Food;
 using Click.Views.User.Orders;
 using System;
 using System.Collections.Generic;
@@ -32,16 +33,11 @@ namespace Click.Views.User.Profile
 
         private void MainButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new Main();
+            App.Current.MainPage = new CategoryCatalogue();
         }
         private void AboutCompany(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new AboutApplication());
-        }
-
-        private void EnterAdminCompany_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new EnterAdminCompany());
         }
 
         private void Button_Clicked(object sender, EventArgs e)

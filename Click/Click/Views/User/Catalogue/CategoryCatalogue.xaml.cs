@@ -13,36 +13,18 @@ using Xamarin.Forms.Xaml;
 namespace Click.Views.User.Food
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FoodAssortment : ContentPage
+    public partial class CategoryCatalogue : ContentPage
     {
-        BrandLocal brandLocal;
-
-        public FoodAssortment(BrandLocal _brandLocal)
+        public CategoryCatalogue(int? parentCategoryId = null)
         {
             InitializeComponent();
 
-            brandLocal = _brandLocal;
-
             //Загружаем меню
-            var categoryVM = new CategoryViewModel(_brandLocal.Brand);
+            var categoryVM = new CategoryViewModel(parentCategoryId);
             Refreshable.BindingContext = categoryVM;
             Task.Run(() => categoryVM.GetCachedData());
 
-            ReviewCount.Text = _brandLocal.Brand.ReviewCount.ToString();
-
             Points.BindingContext = UsersViewModel.Instance;
-
-            //brand-related
-            BrandName.Text = _brandLocal.Brand.BrandName;
-            BrandLogo.Source = _brandLocal.Logo;
-            BrandBanner.Source = _brandLocal.Banner;
-            Star.BindingContext = _brandLocal;
-        }
-
-        protected override void OnAppearing()
-        {
-            Task.Run(() => UsersViewModel.Instance.GetPoints());
-            base.OnAppearing();
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)
@@ -61,18 +43,15 @@ namespace Click.Views.User.Food
             {
                 var category = CategoriesCollection.SelectedItem as CategoryLocal;
                 CategoriesCollection.SelectedItem = null;
-                Navigation.PushModalAsync(new SubFoodAssortment(category));
+                if (category.Category.IsEndpoint)
+                {
+                    Navigation.PushModalAsync(new ProductCatalogue(category));
+                }
+                else
+                {
+                    Navigation.PushAsync(new CategoryCatalogue(category.Category.CategoryId), false);
+                }
             }
-        }
-
-        private void About_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new DescriptionOrganization(brandLocal.Brand.BrandId));
-        }
-
-        private void Messages_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new Messages(brandLocal));
         }
     }
 }

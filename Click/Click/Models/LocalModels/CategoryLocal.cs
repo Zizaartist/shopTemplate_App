@@ -1,5 +1,6 @@
 ﻿using ApiClick.Models;
 using Click.StaticValues;
+using ShopAdminAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

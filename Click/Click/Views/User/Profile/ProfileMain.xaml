@@ -45,8 +45,8 @@
                 </Grid>
                 <Button BackgroundColor="{StaticResource GrayColor}"
                         HeightRequest="1"/>
-                
-                
+
+
                 <Grid>
                     <Label Style="{StaticResource SmallBlackLabel}"
                            Text="Очистить кэш (debug)"/>
@@ -59,13 +59,6 @@
                             Clicked="Button_Clicked"
                             HeightRequest="15"/>
                 </Grid>
-                
-                
-                <Button Style="{StaticResource GreenButton}"
-                        Text="Войти как исполнитель"
-                        x:Name="EnterAdminCompany"
-                        Clicked="EnterAdminCompany_Clicked"
-                        Margin="0,20,0,0"/>
             </StackLayout>
             <Grid Style="{StaticResource NavigationPanelGrid}"
                   ColumnDefinitions="*,*,*,*"

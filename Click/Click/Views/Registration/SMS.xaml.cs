@@ -2,6 +2,7 @@
 using Click.StaticValues;
 using Click.ViewModels;
 using Click.Views.User;
+using Click.Views.User.Food;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,13 @@ namespace Click.Views.Registration
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SMS : ContentPage
     {
-        RegistrationViewModel registrationVM;
-        private bool alreadyRegistered;
+        AuthViewModel registrationVM;
 
-        public SMS(RegistrationViewModel _registractionVM, bool _alreadyRegistered)
+        public SMS(AuthViewModel _registractionVM)
         {
             InitializeComponent();
             registrationVM = _registractionVM;
             BindingContext = registrationVM;
-            alreadyRegistered = _alreadyRegistered;
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
@@ -35,24 +34,14 @@ namespace Click.Views.Registration
             {
                 if ((await registrationVM.CodeCheck()).IsSuccessStatusCode)
                 {
-                    if (alreadyRegistered)
+                    if ((await registrationVM.GetToken()).IsSuccessStatusCode)
                     {
-                        await BlobCache.Secure.InsertObject<string>(Caches.PHONE_CACHE.key, registrationVM.CorrectPhone);
-                        await new TokenFunctions().requestUserToken();
-                        App.Current.MainPage = new NavigationPage(new Main());
+                        //Токен сохранен - можно войти
+                        App.Current.MainPage = new NavigationPage(new CategoryCatalogue());
                     }
                     else
                     {
-                        if ((await registrationVM.Registration()).IsSuccessStatusCode)
-                        {
-                            await BlobCache.Secure.InsertObject<string>(Caches.PHONE_CACHE.key, registrationVM.CorrectPhone);
-                            await new TokenFunctions().requestUserToken();
-                            App.Current.MainPage = new NavigationPage(new Main());
-                        }
-                        else
-                        {
-                            await DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, "Понятно");
-                        }
+                        await DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, "Понятно");
                     }
                 }
                 else

@@ -6,20 +6,20 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace ApiClick.Models
+namespace ShopAdminAPI.Models
 {
     public partial class OrderDetail
     {
         [JsonIgnore]
         public int OrderDetailId { get; set; }
-        [JsonIgnore]
-        public int OrderId { get; set; }
         public int Count { get; set; }
         public int? ProductId { get; set; }
         public decimal Price { get; set; }
-
-        public virtual Product Product { get; set; }
         [JsonIgnore]
-        public Order Order { get; set; }
+        public int OrderId { get; set; }
+
+        [JsonIgnore]
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

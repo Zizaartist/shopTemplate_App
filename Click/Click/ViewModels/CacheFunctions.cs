@@ -13,7 +13,6 @@ namespace Click.ViewModels
     /// </summary>
     public class CacheFunctions
     {
-        private readonly List<string> keys = new List<string>() { "phone", "token" };
         private readonly List<IBlobCache> caches = new List<IBlobCache>() { BlobCache.Secure, 
                                                                             BlobCache.LocalMachine, 
                                                                             BlobCache.UserAccount };
@@ -30,12 +29,9 @@ namespace Click.ViewModels
         public async Task<bool> firstTimeLaunchCheck()
         {
             var cacheKeys = await BlobCache.Secure.GetAllKeys();
-            foreach (string key in keys)
+            if (!cacheKeys.Contains("token"))
             {
-                if (!cacheKeys.Contains(key))
-                {
-                    await BlobCache.Secure.InsertObject<string>(key, null);
-                }
+                await BlobCache.Secure.InsertObject<string>("token", null);
             }
             return true;
         }

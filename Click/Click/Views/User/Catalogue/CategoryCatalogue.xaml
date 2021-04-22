@@ -2,14 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:Click.Converters"
-             x:Class="Click.Views.User.Food.FoodAssortment"
+             x:Class="Click.Views.User.Food.CategoryCatalogue"
              Style="{StaticResource GrayContentPage}">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:RatingConverter x:Key="ratingConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <ContentPage.Content>
         <Grid>
@@ -23,8 +17,8 @@
                 <CollectionView.Header>
                     <Grid RowDefinitions="Auto,Auto,Auto"
                           x:Name="HeaderGrid">
-                        <Grid Style="{StaticResource HeaderGrid}">
-                            <ImageButton x:Name="Back"
+                            <Grid Style="{StaticResource HeaderGrid}">
+                                <ImageButton x:Name="Back"
                                          Clicked="Back_Clicked"
                                          Style="{StaticResource BackButton}"/>
                                 <Image Style="{StaticResource Restaurant}"
@@ -39,52 +33,6 @@
                                          Clicked="Bonus_Clicked"
                                          Style="{StaticResource BonusButton}"
                                          Grid.Column="3"/>
-                            </Grid>
-                            <Grid Grid.Row="1"
-                              Margin="0,-8,0,0">
-                                <Image x:Name="BrandBanner" 
-                                       Style="{StaticResource BannerSubImage}"/>
-                                <Frame Style="{StaticResource LogoFrame}">
-                                    <Image x:Name="BrandLogo" 
-                                           Style="{StaticResource LogoImage}"/>
-                                </Frame>
-                            </Grid>
-                            <Grid RowDefinitions="Auto,Auto"
-                              Grid.Row="2"
-                              Padding="15,10,15,15">
-                                <Label x:Name="BrandName"
-                                   Style="{StaticResource VeryBigBlackLabel}"/>
-                                <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto">
-                                    <Frame CornerRadius="15"
-                                       WidthRequest="70"
-                                       HeightRequest="20"
-                                       BackgroundColor="{StaticResource WhiteColor}"
-                                       Padding="0">
-                                        <Grid Style="{StaticResource StarGridBackground}"
-                                          HorizontalOptions="Center">
-                                            <Grid Style="{StaticResource StarGrid}"
-                                                WidthRequest="{Binding Brand.Rating, Converter={StaticResource ratingConverter}, ConverterParameter={x:Reference Star}}"
-                                            x:Name="Star"/>
-                                            <Image Style="{StaticResource StarRating}"/>
-                                        </Grid>
-                                    </Frame>
-                                    <Label x:Name="ReviewCount"
-                                        Text="{Binding AllMessagesCount}"
-                                       Style="{StaticResource GrayVerySmallLabel}"
-                                       Grid.Column="1"/>
-                                </Grid>
-                                <Grid Grid.Column="1"
-                                  Grid.RowSpan="2">
-                                    <Button Text="Отзывы"
-                                        x:Name="Messages"
-                                        Clicked="Messages_Clicked"
-                                        Style="{StaticResource WhiteSmallButton}"/>
-                                    <Button Text="Подробнее"
-                                        x:Name="About"
-                                        Clicked="About_Clicked"
-                                        Style="{StaticResource WhiteSmallButton}"
-                                        Grid.Column="1"/>
-                                </Grid>
                             </Grid>
                         </Grid>
                     </CollectionView.Header>

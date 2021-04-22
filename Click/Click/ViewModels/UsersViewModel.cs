@@ -15,6 +15,7 @@ using Click.StaticValues;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace Click.ViewModels
 {
@@ -22,11 +23,11 @@ namespace Click.ViewModels
     {
         private static object syncRoot = new Object();
         private static UsersViewModel instance;
-        public static UsersViewModel Instance 
+        public static UsersViewModel Instance
         {
-            get 
+            get
             {
-                if (instance == null) 
+                if (instance == null)
                 {
                     lock (syncRoot)
                     {
@@ -36,7 +37,7 @@ namespace Click.ViewModels
                         }
                     }
                 }
-                    
+
                 return instance;
             }
         }
@@ -45,34 +46,23 @@ namespace Click.ViewModels
         public decimal Points 
         {
             get => points;
-            set 
-            {
-                if (points == value) return;
-                points = value;
-                OnPropertyChanged();
-            }
+            set { SetProperty(ref points, value); }
         }
 
-        private User user;
-        public User User
+        public AsyncCommand UpdatePoints { get; } //Пока лучший способ предотвращения параллельных вызовов
+
+        public UsersViewModel() 
         {
-            get => user;
-            set
-            {
-                if (value == user) return;
-                user = value;
-                OnPropertyChanged();
-            }
+            UpdatePoints = new AsyncCommand(UpdatePointsTask, allowsMultipleExecutions: false);
         }
 
-        public async Task GetPoints()
+        private async Task UpdatePointsTask()
         {
             try
             {
                 HttpClient client = await createUserClient();
 
-                var response = await client.GetAsync(ApiStrings.HOST +
-                                                                     ApiStrings.USERS_POINTS);
+                var response = await client.GetAsync(ApiStrings.HOST + ApiStrings.USERS_POINTS);
                 string result = await response.Content.ReadAsStringAsync();
                 Points = JsonConvert.DeserializeObject<decimal>(result);
             }
@@ -100,47 +90,6 @@ namespace Click.ViewModels
             catch (Exception e)
             {
                 throw CheckIfConnectionException(e);
-            }
-        }
-
-        public async Task GetData()
-        {
-            User = null;
-
-            //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
-            User cachedUser = await new CacheFunctions().tryToGet<User>(Caches.USER_CACHE.key, CacheFunctions.BlobCaches.UserAccount);
-
-            //Если кэшированный пользователь найден - присваивание
-            if (cachedUser != null)
-            {
-                User = cachedUser;
-            }
-            //В ином случае - получить от api и записать в кэш
-            else
-            {
-                try
-                {
-                    HttpClient client = await createUserClient();
-
-                    //Получение данных юзера по токену
-                    HttpResponseMessage response = await client.GetAsync(ApiStrings.HOST +
-                                                                         ApiStrings.USERS_MY_DATA);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string result = await response.Content.ReadAsStringAsync();
-                        cachedUser = JsonConvert.DeserializeObject<User>(result);
-                        User = cachedUser;
-                        await BlobCache.UserAccount.InsertObject(Caches.USER_CACHE.key, cachedUser, Caches.USER_CACHE.lifeTime);
-                    }
-                }
-                catch (NoConnectionException)
-                {
-                    throw;
-                }
-                catch (Exception e)
-                {
-                    throw CheckIfConnectionException(e);
-                }
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Click.Models.LocalModels;
 using Click.ViewModels;
-using Click.ViewModels.Help;
+using Click.Views.User.Food;
 using Click.Views.User.Orders;
 using Click.Views.User.Profile;
 using System;
@@ -30,7 +30,7 @@ namespace Click.Views.User.Basket
 
         private void MainButton_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new Main();
+            App.Current.MainPage = new CategoryCatalogue();
         }
 
         private void OrdersButton_Clicked(object sender, EventArgs e)
@@ -46,12 +46,6 @@ namespace Click.Views.User.Basket
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new ProfileMain();
-        }
-
-        private void Basket_Clicked(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            Navigation.PushModalAsync(new BasketChoice(button.BindingContext as Grouping<string, OrderDetailLocal>, basketVM));
         }
     }
 }

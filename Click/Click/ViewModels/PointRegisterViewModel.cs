@@ -2,6 +2,7 @@
 using Click.Models.LocalModels;
 using Click.StaticValues;
 using Newtonsoft.Json;
+using ShopAdminAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

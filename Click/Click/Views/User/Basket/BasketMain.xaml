@@ -124,10 +124,6 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Button x:Name="Basket"
-                                                    Clicked="Basket_Clicked"
-                                                    BackgroundColor="Transparent"
-                                                    Grid.ColumnSpan="3"/>
                                         </Grid>
                                     </Frame>
                                 </StackLayout>

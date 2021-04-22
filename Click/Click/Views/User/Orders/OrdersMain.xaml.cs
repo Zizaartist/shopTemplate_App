@@ -4,6 +4,7 @@ using Click.Models.LocalModels;
 using Click.StaticValues;
 using Click.ViewModels;
 using Click.Views.User.Basket;
+using Click.Views.User.Food;
 using Click.Views.User.Profile;
 using Newtonsoft.Json;
 using System;
@@ -47,7 +48,7 @@ namespace Click.Views.User.Orders
 
         private void Main_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new Main();
+            App.Current.MainPage = new CategoryCatalogue();
         }
 
         private async void OrderCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -65,8 +66,8 @@ namespace Click.Views.User.Orders
                         decimal points = JsonConvert.DeserializeObject<decimal>(result);
 
                         //провоцируем перезапись кэша, fire&forget
-                        Task.Run(async () => await ordersVM.GetInitial());
-                        await Navigation.PushModalAsync(new OrdersReview(selection, points));
+                        await ordersVM.GetInitial();
+                        await DisplayAlert("Click", $"Получено {points} баллов", "Ok");
                     }
                     else 
                     {

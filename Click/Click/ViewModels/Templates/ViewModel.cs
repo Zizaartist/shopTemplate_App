@@ -19,40 +19,18 @@ namespace Click.ViewModels
     //Создал чисто ради сокращения повторяемого кода
     public abstract class ViewModel : BaseViewModel
     {
-        protected async Task<HttpClient> createUserClient() 
+        protected static async Task<HttpClient> createUserClient() 
         {
             HttpClient client = HttpClientSingleton.Instance;
-            try
-            { 
-                //await new TokenFunctions().checkAndRefreshToken();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key));
-                return client;
-            }
-            catch (Exception e)
-            {
-                throw CheckIfConnectionException(e);
-            }
-        }
-
-        protected async Task<HttpClient> createAdminClient()
-        {
-            HttpClient client = HttpClientSingleton.Instance;
-            try
-            {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await BlobCache.Secure.GetObject<string>(Caches.TOKEN_CACHE.key));
-                return client;
-            }
-            catch
-            {
-                throw;
-            }
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await new CacheFunctions().tryToGet<string>(Caches.TOKEN_CACHE.key, CacheFunctions.BlobCaches.Secure));
+            return client;
         }
 
         protected string SerializeIgnoreNull(object _value) => JsonConvert.SerializeObject(_value,
             Formatting.Indented,
             new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
-        public bool isConnected 
+        public static bool isConnected 
         {
             get 
             {
@@ -64,10 +42,6 @@ namespace Click.ViewModels
                     default:
                         return false;
                 }
-            }
-            set
-            {
-                OnPropertyChanged(); //forces to update dependent views
             }
         }
 

@@ -1,16 +1,18 @@
-﻿using ApiClick.Models;
+﻿using Akavache;
+using ApiClick.Models;
 using Click.StaticValues;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Reactive.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Click.ViewModels
 {
-    public class RegistrationViewModel : ViewModel
+    public class AuthViewModel : ViewModel
     {
 
         #region properties
@@ -75,8 +77,6 @@ namespace Click.ViewModels
             }
         }
 
-        public string CorrectPhone { get; set; }
-
         public bool IsValidNumber 
         { 
             get 
@@ -116,7 +116,7 @@ namespace Click.ViewModels
             try
             {
                 var client = HttpClientSingleton.Instance;
-                var response = await client.PostAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_CODE_CHECK + "?code=" + Code + "&phone=" + Phone, null);
+                var response = await client.PostAsync($"{ApiStrings.HOST}{ApiStrings.ACCOUNT_CODE_CHECK}?code={Code}&phone={Phone}", null);
                 return response;
             }
             catch (Exception e)
@@ -125,37 +125,35 @@ namespace Click.ViewModels
             }
         }
 
-        public async Task<HttpResponseMessage> Registration()
-        {
-            try
-            {
-                var client = HttpClientSingleton.Instance;
-                User user = new User()
-                {
-                    Phone = Phone
-                };
-                var json = SerializeIgnoreNull(user);
-                var data = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync(ApiStrings.HOST + ApiStrings.USERS_CONTROLLER + "?code=" + Code, data);
-                return response;
-            }
-            catch (Exception e)
-            {
-                throw CheckIfConnectionException(e);
-            }
-        }
-
-        //Проверяет наличие пользователя с таким номером
-        public async Task<HttpResponseMessage> validatePhone()
+        public async Task<HttpResponseMessage> GetToken()
         {
             try
             {
                 HttpClient client = HttpClientSingleton.Instance;
 
-                HttpResponseMessage msg = await client.PostAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_VALID_PHONE + "?phone=" + Phone, null);
-                CorrectPhone = await msg.Content.ReadAsStringAsync();
-                return msg;
+                var response = await client.PostAsync($"{ApiStrings.HOST}{ApiStrings.ACCOUNT_USERS_TOKEN}?phone={Phone}&code={Code}", null);
+
+                if (response.IsSuccessStatusCode) 
+                {
+                    var template = new { access_token = "", username = "" };
+                    string result = await response.Content.ReadAsStringAsync();
+                    var tokenModel = JsonConvert.DeserializeAnonymousType(result, template);
+                    await BlobCache.Secure.InsertObject(Caches.TOKEN_CACHE.key, tokenModel.access_token);
+                }
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw CheckIfConnectionException(e);
+            }
+        }
+
+        public async Task<HttpResponseMessage> Validation()
+        {
+            try
+            {
+                HttpClient client = await createUserClient();
+                return await client.GetAsync($"{ApiStrings.HOST}{ ApiStrings.ACCOUNT_VALIDATE}");
             }
             catch (Exception e)
             {

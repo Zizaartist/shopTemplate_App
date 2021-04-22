@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Click.Models.LocalModels;
 using MvvmHelpers;
+using ShopAdminAPI.Models;
 
 namespace Click.ViewModels
 {
@@ -131,10 +132,7 @@ namespace Click.ViewModels
                         ProductLists.Add(new ProductLocal(item, UpdateBindings, AddToSelected, RemoveFromSelected));
                     }
 
-                    await BlobCache.LocalMachine.InsertObject(Caches.PRODUCTS_CACHE.key + "_" +
-                                                                menu.Brand.Kind.ToString() + "_" +
-                                                                menu.Brand.BrandId.ToString() + "_" +
-                                                                menu.CategoryId.ToString(), (NextPage, ProductLists.Select(e => e.Product)), Caches.PRODUCTS_CACHE.lifeTime);
+                    await BlobCache.LocalMachine.InsertObject(Caches.PRODUCTS_CACHE.key + "_" + menu.CategoryId.ToString(), (NextPage, ProductLists.Select(e => e.Product)), Caches.PRODUCTS_CACHE.lifeTime);
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -158,10 +156,7 @@ namespace Click.ViewModels
         public async Task GetCachedData()
         {
             //Пытаемся вытащить данные из кэша, при неудаче создаем пустую ячейку для предотвращения KeyNotFoundException
-            (int, List<Product>) cachedProducts = await new CacheFunctions().tryToGet<(int, List<Product>)>(Caches.PRODUCTS_CACHE.key + "_" +
-                                                                                                    menu.Brand.Kind.ToString() + "_" +
-                                                                                                    menu.Brand.BrandId.ToString() + "_" +
-                                                                                                    menu.CategoryId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
+            (int, List<Product>) cachedProducts = await new CacheFunctions().tryToGet<(int, List<Product>)>(Caches.PRODUCTS_CACHE.key + "_" + menu.CategoryId.ToString(), CacheFunctions.BlobCaches.LocalMachine);
 
             ProductLists.Clear();
 

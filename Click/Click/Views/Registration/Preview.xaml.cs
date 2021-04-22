@@ -2,6 +2,7 @@
 using Click.StaticValues;
 using Click.ViewModels;
 using Click.Views.User;
+using Click.Views.User.Food;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,8 @@ namespace Click.Views.Registration
                     case AuthResult.success:
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            App.Current.MainPage = new NavigationPage(new Main());
+                            Task.Run(() => UsersViewModel.Instance.UpdatePoints.ExecuteAsync());
+                            App.Current.MainPage = new NavigationPage(new CategoryCatalogue());
                         });
                         break;
                     case AuthResult.registration:
@@ -58,12 +60,6 @@ namespace Click.Views.Registration
             Task.Run(() => NewPage());
         }
 
-        protected async override void OnAppearing()
-        {
-
-            base.OnAppearing();
-        }
-
         async Task NewPage()
         {
             logo.Opacity = 0;
@@ -72,51 +68,32 @@ namespace Click.Views.Registration
 
         private async Task<AuthResult> Authorize()
         {
-            TokenFunctions authentificator = new TokenFunctions();
+            AuthViewModel authentificator = new AuthViewModel();
             CacheFunctions cacheManager = new CacheFunctions();
 
             try
             {
                 if (await cacheManager.firstTimeLaunchCheck())
                 {
-                    int numberOfAttempts = 3; //attempts to log-in before throwing an error
-                    var phone = await BlobCache.Secure.GetObject<string>(Caches.PHONE_CACHE.key);
+                    var response = await authentificator.Validation();
 
-                    for (int i = 1; i <= numberOfAttempts; i++)
+                    if (!response.IsSuccessStatusCode)
                     {
-                        var response = await authentificator.validateUser();
-
-                        if (!response.IsSuccessStatusCode)
+                        switch (response.StatusCode)
                         {
-                            switch (response.StatusCode)
+                            case HttpStatusCode.Unauthorized:
                             {
-                                //Не зареган
-                                case HttpStatusCode.NotFound:
-                                    {
-                                        return AuthResult.registration;
-                                    }
-                                case HttpStatusCode.Unauthorized:
-                                    {
-                                        HttpResponseMessage response_token = await authentificator.requestUserToken();
-                                        if (!response_token.IsSuccessStatusCode)
-                                        {
-                                            return AuthResult.error; //Невозможно получить токен юзера - критическая ошибка
-                                        }
-                                        authentificator.writeToken(response_token);
-                                        break;
-                                    }
-                                default: return AuthResult.error; //Необработанная ошибка сервера
+                                return AuthResult.registration;
                             }
-                        }
-                        else
-                        {
-                            return AuthResult.success; //единственный случай успешного исхода
+                            default: return AuthResult.error; //Необработанная ошибка сервера
                         }
                     }
+                    else
+                    {
+                        return AuthResult.success; //единственный случай успешного исхода
+                    }
                 }
-
-                //Попыток авторизации не осталось
-                return AuthResult.error;
+                return AuthResult.error; //Необработанная ошибка кэша
             }
             catch(Exception e)
             {

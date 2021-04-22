@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Click.Views.User.Food.SubFoodAssortment"
+             x:Class="Click.Views.User.Food.ProductCatalogue"
              Style="{StaticResource GrayContentPage}">
+    
     <ContentPage.Content>
         <Grid>
             <!--при появлении BasketPanel, у этой CollectionView надо выставить значение Margin="0,0,0,100" и обратно по нулям при исчезновении-->

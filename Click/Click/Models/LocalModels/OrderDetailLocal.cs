@@ -1,6 +1,7 @@
 ﻿using ApiClick.Models;
 using Click.StaticValues;
 using MvvmHelpers;
+using ShopAdminAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,7 +50,6 @@ namespace Click.Models.LocalModels
 
         public OrderDetail OrderDetail { get; set; }
         public UriImageSource Logo { get; private set; }
-        public Brand Brand { get => OrderDetail.Product.Category.Brand; }
         public decimal SumPrice { get => OrderDetail.Price * OrderDetail.Count; }
         public int Count 
         {

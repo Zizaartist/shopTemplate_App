@@ -9,7 +9,7 @@ using System.Linq;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace ApiClick.Models
+namespace ShopAdminAPI.Models
 {
     public partial class Order
     {
@@ -20,36 +20,28 @@ namespace ApiClick.Models
         }
 
         public int OrderId { get; set; }
-        public int OrdererId { get; set; }
-        public Kind Kind { get; set; }
+        public int UserId { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public bool? PointsUsed { get; set; }
+        public bool PointsUsed { get; set; }
         public decimal? DeliveryPrice { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int? BrandId { get; set; }
 
-        
+        [JsonIgnore]
+        public virtual User User { get; set; }
         public virtual OrderInfo OrderInfo { get; set; }
-        public virtual WaterOrder WaterOrder { get; set; }
-        public Brand Brand { get; set; }
-        [JsonIgnore]
-        public User Orderer { get; set; }
-        [JsonIgnore]
-        public Review Review { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [JsonIgnore]
         public virtual ICollection<PointRegister> PointRegisters { get; set; }
-
         [NotMapped]
-        public bool Delivery { get; set; } //Получаем от клиента
+        public bool? Delivery { get; set; } //Получаем от клиента
         [NotMapped]
         [JsonIgnore]
         public PointRegister PointRegister
         {
-            get 
+            get
             {
-                return PointRegisters?.FirstOrDefault(pr => pr.SenderId == OrdererId);
+                return PointRegisters?.FirstOrDefault(pr => pr.UsedOrReceived);
             }
         }
         [NotMapped]
