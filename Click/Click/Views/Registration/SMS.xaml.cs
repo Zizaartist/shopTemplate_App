@@ -25,7 +25,6 @@ namespace Click.Views.Registration
             InitializeComponent();
             registrationVM = _registractionVM;
             BindingContext = registrationVM;
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void Confirm_Clicked(object sender, EventArgs e)
@@ -36,8 +35,7 @@ namespace Click.Views.Registration
                 {
                     if ((await registrationVM.GetToken()).IsSuccessStatusCode)
                     {
-                        //Токен сохранен - можно войти
-                        App.Current.MainPage = new NavigationPage(new CategoryCatalogue());
+                        await Navigation.PopAsync();
                     }
                     else
                     {

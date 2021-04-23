@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Click.Views.Registration.Number"
              Style="{StaticResource WhiteContentPage}">
+    
     <ContentPage.Content>
         <Grid Style="{StaticResource WrapperGrid}">
             <Grid.RowDefinitions>
@@ -25,7 +26,9 @@
                     <Entry x:Name="NumberEntry"
                            Text="{Binding Phone, Mode=TwoWay}"
                            Style="{StaticResource EntryGray}"
-                           Placeholder="Ввести номер телефона"/>
+                           Placeholder="Ввести номер телефона"
+                           Keyboard="Numeric"
+                           />
                 </Frame>
                 <Label Style="{StaticResource SmallBlackLabel}"
                        Text="При подтверждении на номер будет отправлено СМС с паролем"

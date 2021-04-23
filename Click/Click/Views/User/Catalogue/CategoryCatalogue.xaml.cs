@@ -74,7 +74,7 @@ namespace Click.Views.User.Food
                 CategoriesCollection.SelectedItem = null;
                 if (category.Category.IsEndpoint)
                 {
-                    Navigation.PushModalAsync(new ProductCatalogue(category));
+                    Navigation.PushAsync(new ProductCatalogue(category));
                 }
                 else
                 {

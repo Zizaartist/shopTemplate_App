@@ -37,7 +37,7 @@ namespace Click
             InitializeComponent();
             InitializationPublicStyles();
 
-            Akavache.BlobCache.ApplicationName = "Click";
+            Akavache.BlobCache.ApplicationName = "Shop";
             Akavache.BlobCache.EnsureInitialized();
 
             MainPage = new Preview();

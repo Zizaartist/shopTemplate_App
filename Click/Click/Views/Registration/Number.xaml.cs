@@ -20,18 +20,19 @@ namespace Click.Views.Registration
         {
             InitializeComponent();
             BindingContext = registrationVM;
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void Confirm_Clicked(object sender, EventArgs e)
         {
             if ((await registrationVM.SmsCheck()).IsSuccessStatusCode)
             {
-                App.Current.MainPage = new NavigationPage(new SMS(registrationVM));
+                await Navigation.PushAsync(new SMS(registrationVM));
+                var thisPage = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(thisPage);
             }
             else
             {
-                await DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, "Понятно");
+                await  DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, "Понятно");
             }
         }
     }

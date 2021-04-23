@@ -45,13 +45,14 @@ namespace Click.Views.Registration
                     case AuthResult.registration:
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            App.Current.MainPage = new NavigationPage(new Number());
+                            Task.Run(() => new AuthViewModel().GetDefaultToken());
+                            App.Current.MainPage = new NavigationPage(new CategoryCatalogue());
                         });
                         break;
                     case AuthResult.error:
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("Click", AlertMessages.UNEXPECTED_ERROR, "Понятно");
+                            DisplayAlert("Error", AlertMessages.UNEXPECTED_ERROR, "Понятно");
                         });
                         //Выход из приложения
                         break;

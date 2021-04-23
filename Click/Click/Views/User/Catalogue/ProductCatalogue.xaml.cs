@@ -25,7 +25,7 @@ namespace Click.Views.User.Food
             Task.Run(() => basketVM.GetData());
 
             //Загружаем продукцию
-            var productVM = new ProductListViewModel(_categoryLocal.Category, basketVM.AddToBasket);
+            var productVM = new ProductsViewModel(_categoryLocal.Category, basketVM.AddToBasket);
             BindingContext = productVM;
             Task.Run(() => productVM.GetCachedData());
 
@@ -45,7 +45,7 @@ namespace Click.Views.User.Food
 
         private void Back_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            Navigation.PopAsync();
         }
 
         private void Bonus_Clicked(object sender, EventArgs e)
@@ -61,6 +61,11 @@ namespace Click.Views.User.Food
         private void Clear_Clicked(object sender, EventArgs e)
         {
             AboutProductGrid.IsVisible = false;
+        }
+
+        private void Basket_Clicked_1(object sender, EventArgs e)
+        {
+            DisplayAlert("","Добавленно в корзину","Ок");
         }
     }
 }

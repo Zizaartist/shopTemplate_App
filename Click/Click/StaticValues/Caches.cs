@@ -20,6 +20,9 @@ namespace Click.StaticValues
         /// </summary>
         public static readonly Cache TOKEN_CACHE = new Cache("token");
 
+
+        public static readonly Cache TOKENTYPE_CACHE = new Cache("tokenType");
+
         //UserAccount
         /// <summary>
         /// Кэш для хранения пользовательских данных

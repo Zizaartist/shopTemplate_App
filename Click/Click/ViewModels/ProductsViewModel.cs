@@ -20,7 +20,7 @@ using ShopAdminAPI.Models;
 
 namespace Click.ViewModels
 {
-    public class ProductListViewModel : CollectionViewModel
+    public class ProductsViewModel : CollectionViewModel
     {
         #region properties
 
@@ -59,7 +59,7 @@ namespace Click.ViewModels
 
         #region methods
 
-        public ProductListViewModel(Category _menu, Command _addToBasket = null)
+        public ProductsViewModel(Category _menu, Command _addToBasket = null)
         {
             menu = _menu;
 

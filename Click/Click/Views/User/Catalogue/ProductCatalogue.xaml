@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Click.Views.User.Food.ProductCatalogue"
-             Style="{StaticResource GrayContentPage}">
+             Style="{StaticResource GrayContentPage}"
+             NavigationPage.HasNavigationBar="False"
+             >
 
     <ContentPage.Content>
         <Grid>
@@ -131,6 +133,7 @@
                                     Command="{Binding AddToBasket}"
                                     CommandParameter="{Binding SelectedProducts}"
                                     BackgroundColor="Transparent"
+                                    Clicked="Basket_Clicked_1"
                                     Grid.ColumnSpan="3"/>
                         </Grid>
                     </Frame>

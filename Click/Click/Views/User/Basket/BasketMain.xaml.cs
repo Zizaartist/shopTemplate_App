@@ -1,5 +1,7 @@
 ﻿using Click.Models.LocalModels;
+using Click.StaticValues;
 using Click.ViewModels;
+using Click.Views.Registration;
 using Click.Views.User.Food;
 using Click.Views.User.Orders;
 using Click.Views.User.Profile;
@@ -28,9 +30,19 @@ namespace Click.Views.User.Basket
             Task.Run(() => basketVM.GetData());
         }
 
-        private void OrderButton_Clicked(object sender, EventArgs e)
+        private async void OrderButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BasketChoice(basketVM));
+            CacheFunctions cache = new CacheFunctions();
+
+            string qew = await cache.tryToGet<string>(Caches.TOKENTYPE_CACHE.key, CacheFunctions.BlobCaches.Secure);
+            if (qew == "Default")
+            {
+                await Navigation.PushAsync(new Number());
+            }
+            else
+            {
+                await Navigation.PushAsync(new BasketChoice(basketVM));
+            }
         }
 
         private void ProfileButton_Clicked(object sender, EventArgs e)

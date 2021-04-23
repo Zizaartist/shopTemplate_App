@@ -6,7 +6,7 @@ namespace Click.StaticValues
 {
     public static class ApiStrings
     {
-        public const string HOST = "https://shopapidebug.azurewebsites.net/";
+        public const string HOST = "https://apishoptemplate.azurewebsites.net/";
 
         //Auth
 
@@ -14,6 +14,8 @@ namespace Click.StaticValues
         /// POST: api/Auth/UserToken/?phone=79991745473&code=3667
         /// </summary>
         public const string ACCOUNT_USERS_TOKEN = "api/Auth/UserToken/";
+
+        public const string ACCOUNT_DEFAULT_TOKEN = "/api/Auth/UserTokenDefault/";
         /// <summary>
         /// POST: api/Auth/SmsCheck/?phone=79991745473
         /// </summary>

@@ -139,6 +139,7 @@ namespace Click.ViewModels
                     string result = await response.Content.ReadAsStringAsync();
                     var tokenModel = JsonConvert.DeserializeAnonymousType(result, template);
                     await BlobCache.Secure.InsertObject(Caches.TOKEN_CACHE.key, tokenModel.access_token);
+                    await BlobCache.Secure.InsertObject(Caches.TOKENTYPE_CACHE.key, "User");
                 }
                 return response;
             }
@@ -154,6 +155,28 @@ namespace Click.ViewModels
             {
                 HttpClient client = await createUserClient();
                 return await client.GetAsync($"{ApiStrings.HOST}{ ApiStrings.ACCOUNT_VALIDATE}");
+            }
+            catch (Exception e)
+            {
+                throw CheckIfConnectionException(e);
+            }
+        }
+
+        public async Task GetDefaultToken()
+        {
+            try
+            {
+                HttpClient client = await createUserClient();
+                var response = await client.GetAsync($"{ApiStrings.HOST}{ ApiStrings.ACCOUNT_DEFAULT_TOKEN}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var template = new { access_token = "", username = "" };
+                    string result = await response.Content.ReadAsStringAsync();
+                    var tokenModel = JsonConvert.DeserializeAnonymousType(result, template);
+                    await BlobCache.Secure.InsertObject(Caches.TOKEN_CACHE.key, tokenModel.access_token);
+                    await BlobCache.Secure.InsertObject(Caches.TOKENTYPE_CACHE.key, "Default");
+                }
             }
             catch (Exception e)
             {
