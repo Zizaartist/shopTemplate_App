@@ -159,6 +159,7 @@
                                Margin="0,10,0,10">
                             <Entry BackgroundColor="{StaticResource GrayColorLight}"
                                    Placeholder="Введите текст"
+                                   Text="{Binding Text, Mode=TwoWay}"
                                    FontSize="{StaticResource ButtonFont}"
                                    FontFamily="{StaticResource NeoSansPro}"
                                    VerticalTextAlignment="Start"/>

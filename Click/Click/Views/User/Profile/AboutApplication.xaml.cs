@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Click.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,15 @@ namespace Click.Views.User.Profile
     {
         static ImageButton[] imageButtons = new ImageButton[5];
         int Rating;
+        private readonly ErrorReportViewModel errorReportVM;
+
         public AboutApplication()
         {
             InitializeComponent();
             StarMassive();
+
+            errorReportVM = new ErrorReportViewModel();
+            BindingContext = errorReportVM;
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -103,6 +109,7 @@ namespace Click.Views.User.Profile
 
         private void Send_Clicked(object sender, EventArgs e)
         {
+            Task.Run(() => errorReportVM.PostReport());
             Background.IsVisible = false;
             FrameReview.IsVisible = false;
         }

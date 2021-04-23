@@ -34,7 +34,7 @@ namespace ShopAdminAPI.Models
         [JsonIgnore]
         public virtual ICollection<PointRegister> PointRegisters { get; set; }
         [NotMapped]
-        public bool? Delivery { get; set; } //Получаем от клиента
+        public bool Delivery { get; set; } //Получаем от клиента
         [NotMapped]
         [JsonIgnore]
         public PointRegister PointRegister

@@ -25,7 +25,15 @@ namespace Click.StaticValues
         /// <summary>
         /// GET: api/Auth/ValidateToken/?phone=79991745473
         /// </summary>
-        public const string ACCOUNT_VALIDATE = "api/Auth/ValidateToken/"; 
+        public const string ACCOUNT_VALIDATE = "api/Auth/ValidateToken/";
+        /// <summary>
+        /// GET: api/Auth/GetMyPoints/
+        /// </summary>
+        public const string ACCOUNT_POINTS = "api/Auth/GetMyPoints/";
+        /// <summary>
+        /// PUT: api/Auth/ChangeNumber/?newPhoneNumber=88005553535&code=3344
+        /// </summary>
+        public const string ACCOUNT_PHONE_CHANGE = "api/Auth/ChangeNumber/";
 
         //Categories
 
@@ -33,6 +41,13 @@ namespace Click.StaticValues
         /// GET: api/Categories/
         /// </summary>
         public const string CATEGORIES_CONTROLLER = "api/Categories/";
+
+        //ErrorReport
+
+        /// <summary>
+        /// POST: api/ErrorReports
+        /// </summary>
+        public const string ERRORREPORTS_CONTROLLER = "api/ErrorReports/";
 
         //Images
 
@@ -69,20 +84,5 @@ namespace Click.StaticValues
         /// GET: api/Products/ByCategory/{id}/{_page}
         /// </summary>
         public const string PRODUCTS_GET_BY_MENU = "api/Products/ByCategory/";
-
-        //Users
-
-        /// <summary>
-        /// PUT: api/Users/ POST: api/Users/?code=3366
-        /// </summary>
-        public const string USERS_CONTROLLER = "api/Users/";
-        /// <summary>
-        /// GET: api/Users/GetMyPoints/
-        /// </summary>
-        public const string USERS_POINTS = "api/Users/GetMyPoints/";
-        /// <summary>
-        /// PUT: api/Users/ChangeNumber/?newPhoneNumber=88005553535&code=3344
-        /// </summary>
-        public const string USERS_PHONE_CHANGE = "api/Users/ChangeNumber/";
     }
 }

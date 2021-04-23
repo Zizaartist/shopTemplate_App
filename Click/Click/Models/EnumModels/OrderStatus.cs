@@ -14,7 +14,6 @@ namespace ApiClick.Models.EnumModels
         received, //Принят брендом (автоматически или через агрегатор)
         onWay, //Исполнитель утверждает что уже доставляет товар
         delivered, //Доставка произведена
-        completed //Клиент подтвердил получение баллов
     }
 
     public class OrderStatusDictionaries 
@@ -24,8 +23,7 @@ namespace ApiClick.Models.EnumModels
             { OrderStatus.sent, "Отправлено" },
             { OrderStatus.received, "Принято" },
             { OrderStatus.onWay, "В пути" },
-            { OrderStatus.delivered, "Доставлено" },
-            { OrderStatus.completed, "Доставлено" }
+            { OrderStatus.delivered, "Доставлено" }
         };
     }
 }

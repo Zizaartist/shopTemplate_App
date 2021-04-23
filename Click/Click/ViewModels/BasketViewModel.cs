@@ -23,6 +23,8 @@ namespace Click.ViewModels
         //brandId & product pair
         public ObservableRangeCollection<OrderDetailLocal> OrderDetails { get; } = new ObservableRangeCollection<OrderDetailLocal>();
 
+        public decimal TotalSum { get => OrderDetails.Sum(detail => detail.SumPrice); }
+
         public Command OrderDetailSelfDestruct { get; }
 
         public Command AddToBasket { get; } 
@@ -39,6 +41,8 @@ namespace Click.ViewModels
                 var detail = param as OrderDetailLocal;
                 OrderDetails.Remove(detail);
             });
+
+            OrderDetails.CollectionChanged += (sender, e) => OnPropertyChanged("TotalSum");
 
             //Fire and forget
             SaveChangesCommand = new Command(async () => await SaveChangesToCache());

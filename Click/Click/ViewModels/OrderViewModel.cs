@@ -124,14 +124,11 @@ namespace Click.ViewModels
             }
         }
 
-        public ICollection<PaymentMethod> AllowedPaymentMethods { get; }
-
         public bool ValidTakeaway 
         {
             get 
             {
-                if (!string.IsNullOrEmpty(Name) &&
-                    AllowedPaymentMethods.Contains(PaymentMethod)) //Не должно нарушаться 
+                if (!string.IsNullOrEmpty(Name))
                 {
                     return true;
                 }

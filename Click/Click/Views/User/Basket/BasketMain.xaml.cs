@@ -28,6 +28,11 @@ namespace Click.Views.User.Basket
             Task.Run(() => basketVM.GetData());
         }
 
+        private void OrderButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new BasketChoice(basketVM));
+        }
+
         private void ProfileButton_Clicked(object sender, EventArgs e)
         {
             Navigation.teleportTo(new ProfileMain());

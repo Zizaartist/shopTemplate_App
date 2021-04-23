@@ -62,9 +62,12 @@ namespace Click.ViewModels
             {
                 HttpClient client = await createUserClient();
 
-                var response = await client.GetAsync(ApiStrings.HOST + ApiStrings.USERS_POINTS);
-                string result = await response.Content.ReadAsStringAsync();
-                Points = JsonConvert.DeserializeObject<decimal>(result);
+                var response = await client.GetAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_POINTS);
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    Points = JsonConvert.DeserializeObject<decimal>(result);
+                }
             }
             catch (NoConnectionException)
             {
@@ -81,7 +84,7 @@ namespace Click.ViewModels
             try
             {
                 var client = await createUserClient();
-                return await client.PutAsync(ApiStrings.HOST + ApiStrings.USERS_PHONE_CHANGE + "?newPhoneNumber=" + newNumber + "&code=" + code, null);
+                return await client.PutAsync(ApiStrings.HOST + ApiStrings.ACCOUNT_PHONE_CHANGE + "?newPhoneNumber=" + newNumber + "&code=" + code, null);
             }
             catch (NoConnectionException)
             {

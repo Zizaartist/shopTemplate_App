@@ -22,7 +22,7 @@ namespace Click.Views.User.Basket
         private BasketViewModel basketVM;
         private Dictionary<PaymentMethod, Button> PaymentMethodButtons;
 
-        public TakeawayForm(IEnumerable<OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
+        public TakeawayForm(BasketViewModel _basketVM)
         {
             InitializeComponent();
 
@@ -37,21 +37,9 @@ namespace Click.Views.User.Basket
 
             basketVM = _basketVM;
 
-            orderVM = new OrderViewModel(_orderDetails, false);
+            orderVM = new OrderViewModel(_basketVM.OrderDetails, false);
             BindingContext = orderVM;
             Task.Run(() => orderVM.Autofill());
-
-            //remove and block methods which aren't allowed
-            var toRemove = new List<PaymentMethod>();
-            foreach (var pmb in PaymentMethodButtons)
-            {
-                if (!orderVM.AllowedPaymentMethods.Contains(pmb.Key))
-                {
-                    pmb.Value.IsEnabled = false;
-                    toRemove.Add(pmb.Key);
-                }
-            }
-            toRemove.ForEach(e => PaymentMethodButtons.Remove(e));
         }
 
         private void ChangePaymentMethod_Clicked(object sender, EventArgs e)

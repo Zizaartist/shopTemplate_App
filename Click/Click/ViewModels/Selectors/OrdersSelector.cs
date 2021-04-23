@@ -30,7 +30,7 @@ namespace Click.ViewModels.Selectors
             {
                 return Header;
             }
-            if (order.Order.OrderStatus == OrderStatus.completed)
+            if (order.Order.OrderStatus == OrderStatus.delivered)
             {
                 return DeliveredOrder;
             }

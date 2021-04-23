@@ -36,6 +36,7 @@ namespace Click.ViewModels
         {
             Orders.Clear();
             NextPage = 0;
+            encounteredCompleted = false;
 
             try
             {
@@ -75,7 +76,7 @@ namespace Click.ViewModels
                     var localizedList = new List<OrderLocal>();
                     foreach (var item in tempList)
                     {
-                        if (item.OrderStatus == OrderStatus.completed && !encounteredCompleted)
+                        if (item.OrderStatus == OrderStatus.delivered && !encounteredCompleted)
                         {
                             encounteredCompleted = true;
                             localizedList.Add(null);
@@ -140,19 +141,6 @@ namespace Click.ViewModels
                     throw CheckIfConnectionException(e);
                 }
             }
-        }
-
-        public async Task<HttpResponseMessage> ClaimPoints(int _orderId) 
-        {
-            HttpClient httpClient = await createUserClient();
-            var response = await httpClient.PutAsync($"{ApiStrings.HOST}{ApiStrings.ORDERS_CLAIM_POINTS}{_orderId}", null);
-            if (response.IsSuccessStatusCode)
-            {
-                //fire&forget
-                UsersViewModel.Instance.UpdatePoints.ExecuteAsync();
-                GetInitialData.ExecuteAsync();
-            }
-            return response;
         }
     }
 }

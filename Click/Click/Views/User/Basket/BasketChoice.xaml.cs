@@ -15,14 +15,12 @@ namespace Click.Views.User.Basket
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BasketChoice : ContentPage
     {
-        private IEnumerable<OrderDetailLocal> orderDetails;
         private readonly BasketViewModel basketVM;
 
-        public BasketChoice(IEnumerable<OrderDetailLocal> _orderDetails, BasketViewModel _basketVM)
+        public BasketChoice(BasketViewModel _basketVM)
         {
             InitializeComponent();
 
-            orderDetails = _orderDetails;
             basketVM = _basketVM;
         }
 
@@ -42,7 +40,7 @@ namespace Click.Views.User.Basket
             }
             else
             {
-                Navigation.PushModalAsync(new TakeawayForm(orderDetails, basketVM));
+                Navigation.PushModalAsync(new TakeawayForm(basketVM));
             }
         }
 
@@ -57,7 +55,7 @@ namespace Click.Views.User.Basket
             }
             else
             {
-                Navigation.PushModalAsync(new CourierForm(orderDetails, basketVM));
+                Navigation.PushModalAsync(new CourierForm(basketVM));
             }
         }
     }

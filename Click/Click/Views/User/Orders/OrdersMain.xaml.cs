@@ -50,31 +50,5 @@ namespace Click.Views.User.Orders
         {
             Navigation.PopToRootAsync(false);
         }
-
-        private async void OrderCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.CurrentSelection.Any())
-            {
-                OrderCollection.SelectedItem = null;
-                if ((e.CurrentSelection.LastOrDefault() as OrderLocal).Delivered == true)
-                {
-                    var selection = e.CurrentSelection.LastOrDefault() as OrderLocal;
-                    var response = await ordersVM.ClaimPoints(selection.Order.OrderId);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string result = await response.Content.ReadAsStringAsync();
-                        decimal points = JsonConvert.DeserializeObject<decimal>(result);
-
-                        //провоцируем перезапись кэша, fire&forget
-                        await ordersVM.GetInitial();
-                        await DisplayAlert("Click", $"Получено {points} баллов", "Ok");
-                    }
-                    else 
-                    {
-                        await DisplayAlert("Ошибка", AlertMessages.ERROR_CAN_NOT_CLAIM_POINTS, "Ok");
-                    }
-                }
-            }
-        }
     }
 }
